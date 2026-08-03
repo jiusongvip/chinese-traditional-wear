@@ -1,0 +1,164 @@
+---
+const experiences = [
+  { id: "xian", name: "Xi''an", coords: { x: 430, y: 280 }, type: "Hanfu", desc: "Hanfu photoshoots on the ancient city wall, Tang dynasty costume experiences at Daming Palace, Hanfu street in Datang Everbright City.", price: "150-400 RMB", rating: "Top Choice" },
+  { id: "beijing", name: "Beijing", coords: { x: 530, y: 190 }, type: "Tang Suit & Imperial", desc: "Tang suit workshops in hutong tailors, imperial robe experiences near Forbidden City, qipao boutiques in Nanluoguxiang.", price: "200-600 RMB", rating: "Popular" },
+  { id: "shanghai", name: "Shanghai", coords: { x: 600, y: 340 }, type: "Qipao & Cheongsam", desc: "Custom qipao tailoring in the French Concession, South Bund Fabric Market, vintage qipao shopping on Changle Road.", price: "300-1500 RMB", rating: "Top Choice" },
+  { id: "suzhou", name: "Suzhou", coords: { x: 570, y: 370 }, type: "Silk & Accessories", desc: "Silk qipao rentals for classical garden photoshoots, silk market shopping, embroidery workshops, handcrafted fan stores.", price: "100-300 RMB", rating: "Popular" },
+  { id: "hangzhou", name: "Hangzhou", coords: { x: 580, y: 400 }, type: "Silk & Song Dynasty", desc: "China National Silk Museum costume try-ons, Song dynasty hanfu by West Lake, silk shopping at Hangzhou Silk City.", price: "80-250 RMB", rating: "Recommended" },
+  { id: "chengdu", name: "Chengdu", coords: { x: 340, y: 360 }, type: "Hanfu & Tea Culture", desc: "Hanfu tea ceremonies in traditional teahouses, Shu embroidery workshops, hanfu street at Jinli Ancient Street.", price: "100-300 RMB", rating: "Hotspot" },
+  { id: "luoyang", name: "Luoyang", coords: { x: 480, y: 280 }, type: "Hanfu & Tang Dynasty", desc: "Hanfu experiences near Longmen Grottoes, Tang dynasty costumes at Luoyang Old Town, peony-themed traditional dress.", price: "100-250 RMB", rating: "Rising Star" },
+  { id: "guizhou", name: "Guizhou", coords: { x: 350, y: 440 }, type: "Miao & Ethnic", desc: "Miao silver headdress and embroidery villages, batik workshops, ethnic festival costumes, handmade textile markets.", price: "50-200 RMB", rating: "Authentic" },
+  { id: "dali", name: "Dali", coords: { x: 250, y: 460 }, type: "Bai & Ethnic", desc: "Bai minority tie-dye workshops, ethnic costume experiences in ancient Dali town, Naxi textile traditions in Lijiang.", price: "80-250 RMB", rating: "Authentic" },
+  { id: "nanjing", name: "Nanjing", coords: { x: 560, y: 320 }, type: "Ming Dynasty & Silk", desc: "Ming dynasty hanfu at Ming Xiaoling Mausoleum, silk brocade (yunjin) museum and workshops, qipao at Confucius Temple area.", price: "100-300 RMB", rating: "Recommended" },
+];
+
+const chinaPath = "M 520 100 L 560 95 L 590 100 L 620 110 L 640 115 L 660 130 L 650 145 L 640 155 L 630 150 L 610 155 L 600 140 L 590 135 L 570 140 L 560 150 L 555 160 L 560 170 L 565 175 L 572 168 L 585 172 L 590 180 L 595 175 L 610 180 L 620 190 L 615 200 L 605 195 L 595 205 L 585 200 L 575 210 L 570 220 L 560 230 L 555 240 L 550 235 L 545 250 L 540 260 L 535 270 L 530 285 L 520 280 L 510 290 L 500 300 L 490 310 L 480 320 L 470 330 L 475 345 L 465 355 L 455 370 L 445 380 L 435 395 L 425 410 L 415 425 L 405 440 L 395 455 L 380 465 L 360 470 L 340 475 L 320 480 L 300 485 L 280 485 L 260 480 L 240 470 L 230 455 L 225 440 L 220 420 L 215 400 L 210 380 L 205 360 L 210 340 L 220 320 L 230 300 L 240 280 L 250 260 L 260 240 L 270 225 L 280 210 L 295 200 L 310 190 L 330 180 L 350 170 L 370 160 L 390 155 L 410 150 L 430 145 L 450 135 L 470 125 L 490 115 L 508 105 L 520 100 Z";
+---
+
+<section id="experience-map" class="py-24 text-white overflow-hidden" style="background-color: #1c1917;">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-12 text-center">
+      <span class="text-xs font-medium text-[#e87470] tracking-[0.15em] uppercase">Interactive Map</span>
+      <h2 class="font-serif-sc text-3xl sm:text-4xl font-bold tracking-tight text-white mt-2">
+        Where to Experience Chinese Traditional Wear
+      </h2>
+      <p class="mt-3 text-stone-400 leading-relaxed max-w-xl mx-auto">
+        Click any city to see what traditional clothing experiences await you there.
+      </p>
+    </div>
+
+    <!-- Map (full width) -->
+    <div class="relative rounded-2xl overflow-hidden border border-stone-700 mb-6" style="padding-bottom: 56%; max-height: 600px; background-color: #292524;">
+      <svg viewBox="150 55 510 455" class="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg" id="china-map">
+        <!-- China outline -->
+        <path d={chinaPath} fill="#292524" stroke="#44403c" stroke-width="2.5" stroke-linejoin="round" />
+        
+        <!-- Grid lines -->
+        <line x1="200" y1="100" x2="660" y2="100" stroke="#292524" stroke-width="0.5" stroke-dasharray="4 4" />
+        <line x1="200" y1="200" x2="660" y2="200" stroke="#292524" stroke-width="0.5" stroke-dasharray="4 4" />
+        <line x1="200" y1="300" x2="660" y2="300" stroke="#292524" stroke-width="0.5" stroke-dasharray="4 4" />
+        <line x1="200" y1="400" x2="660" y2="400" stroke="#292524" stroke-width="0.5" stroke-dasharray="4 4" />
+        
+        <!-- City markers -->
+        {experiences.map((exp) => (
+          <g class="city-marker cursor-pointer" data-city={exp.id}>
+            <circle cx={exp.coords.x} cy={exp.coords.y} r="16" fill="none" stroke="#b5343a" stroke-width="1.5" opacity="0" class="pulse-ring">
+              <animate attributeName="r" from="6" to="20" dur="2.5s" repeatCount="indefinite" />
+              <animate attributeName="opacity" from="0.5" to="0" dur="2.5s" repeatCount="indefinite" />
+            </circle>
+            <circle cx={exp.coords.x} cy={exp.coords.y} r="5" fill="#b5343a" stroke="#fecaca" stroke-width="1.5" class="city-dot" />
+            <text x={exp.coords.x} y={exp.coords.y - 14} text-anchor="middle" fill="#a8a29e" font-size="10" font-weight="600" letter-spacing="0.3" class="city-label pointer-events-none">{exp.name}</text>
+          </g>
+        ))}
+      </svg>
+
+      <!-- Detail popup (hidden by default) -->
+      <div id="city-detail" class="absolute bottom-4 right-4 left-4 lg:left-auto lg:w-80 bg-stone-900/95 backdrop-blur-md border border-stone-700 rounded-xl p-5 opacity-0 translate-y-2 pointer-events-none transition-all duration-300 z-10" style="box-shadow: 0 8px 32px rgba(0,0,0,0.5);">
+        <div class="flex items-start justify-between mb-3">
+          <div>
+            <h3 id="detail-name" class="text-base font-semibold text-white"></h3>
+            <p id="detail-type" class="text-xs text-[#e87470] font-medium mt-0.5"></p>
+          </div>
+          <span id="detail-rating" class="text-[10px] px-2 py-0.5 rounded-full bg-stone-800 text-stone-400 font-medium"></span>
+        </div>
+        <p id="detail-desc" class="text-xs text-stone-300 leading-relaxed mb-3"></p>
+        <div class="flex items-center gap-2 pt-3 border-t border-stone-700">
+          <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#78716c" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          <span id="detail-price" class="text-xs text-stone-500"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom: compact city chip ribbon -->
+    <div class="flex flex-wrap justify-center gap-2">
+      {experiences.map((exp) => (
+        <button type="button" class="city-chip group inline-flex items-center gap-1.5 px-3 py-1.5 bg-stone-900 border border-stone-800 rounded-full text-xs text-stone-400 hover:border-stone-600 hover:text-white transition-colors" data-city-chip={exp.id}>
+          <span class="w-1.5 h-1.5 rounded-full bg-[#b5343a]"></span>
+          {exp.name}
+          <span class="text-stone-600">·</span>
+          <span class="text-stone-500">{exp.type}</span>
+        </button>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .city-marker .city-dot { transition: r 0.2s ease, fill 0.2s ease; }
+  .city-marker.active .city-dot { r: 8; fill: #e87470; }
+  .city-marker.active .city-label { fill: #ffffff; font-size: 11px; }
+  .city-chip.active { border-color: #b5343a; color: #ffffff; background: #1c1917; }
+</style>
+
+<script>
+  const expData = {
+    "xian": { name: "Xi''an", type: "Hanfu", desc: "Hanfu photoshoots on the ancient city wall, Tang dynasty costume experiences at Daming Palace, Hanfu street in Datang Everbright City.", price: "150-400 RMB", rating: "Top Choice" },
+    "beijing": { name: "Beijing", type: "Tang Suit & Imperial", desc: "Tang suit workshops in hutong tailors, imperial robe experiences near Forbidden City, qipao boutiques in Nanluoguxiang.", price: "200-600 RMB", rating: "Popular" },
+    "shanghai": { name: "Shanghai", type: "Qipao & Cheongsam", desc: "Custom qipao tailoring in the French Concession, South Bund Fabric Market, vintage qipao shopping on Changle Road.", price: "300-1500 RMB", rating: "Top Choice" },
+    "suzhou": { name: "Suzhou", type: "Silk & Accessories", desc: "Silk qipao rentals for classical garden photoshoots, silk market shopping, embroidery workshops, handcrafted fan stores.", price: "100-300 RMB", rating: "Popular" },
+    "hangzhou": { name: "Hangzhou", type: "Silk & Song Dynasty", desc: "China National Silk Museum costume try-ons, Song dynasty hanfu by West Lake, silk shopping at Hangzhou Silk City.", price: "80-250 RMB", rating: "Recommended" },
+    "chengdu": { name: "Chengdu", type: "Hanfu & Tea Culture", desc: "Hanfu tea ceremonies in traditional teahouses, Shu embroidery workshops, hanfu street at Jinli Ancient Street.", price: "100-300 RMB", rating: "Hotspot" },
+    "luoyang": { name: "Luoyang", type: "Hanfu & Tang Dynasty", desc: "Hanfu experiences near Longmen Grottoes, Tang dynasty costumes at Luoyang Old Town, peony-themed traditional dress.", price: "100-250 RMB", rating: "Rising Star" },
+    "guizhou": { name: "Guizhou", type: "Miao & Ethnic", desc: "Miao silver headdress and embroidery villages, batik workshops, ethnic festival costumes, handmade textile markets.", price: "50-200 RMB", rating: "Authentic" },
+    "dali": { name: "Dali", type: "Bai & Ethnic", desc: "Bai minority tie-dye workshops, ethnic costume experiences in ancient Dali town, Naxi textile traditions in Lijiang.", price: "80-250 RMB", rating: "Authentic" },
+    "nanjing": { name: "Nanjing", type: "Ming Dynasty & Silk", desc: "Ming dynasty hanfu at Ming Xiaoling Mausoleum, silk brocade (yunjin) museum and workshops, qipao at Confucius Temple area.", price: "100-300 RMB", rating: "Recommended" },
+  };
+
+  const detail = document.getElementById("city-detail");
+  const dn = document.getElementById("detail-name");
+  const dt = document.getElementById("detail-type");
+  const dd = document.getElementById("detail-desc");
+  const dp = document.getElementById("detail-price");
+  const dr = document.getElementById("detail-rating");
+  let activeCity = null;
+
+  function showDetail(cityId) {
+    const d = expData[cityId];
+    if (!d) return;
+    dn.textContent = d.name;
+    dt.textContent = d.type;
+    dd.textContent = d.desc;
+    dp.textContent = "Typical cost: " + d.price;
+    dr.textContent = d.rating;
+    detail.classList.add("opacity-100", "translate-y-0", "pointer-events-auto");
+    detail.classList.remove("opacity-0", "translate-y-2", "pointer-events-none");
+    activeCity = cityId;
+    // Highlight marker + chip
+    document.querySelectorAll(".city-marker, .city-chip").forEach(el => el.classList.remove("active"));
+    document.querySelector(`.city-marker[data-city="${cityId}"]`)?.classList.add("active");
+    document.querySelector(`.city-chip[data-city-chip="${cityId}"]`)?.classList.add("active");
+  }
+
+  function hideDetail() {
+    detail.classList.add("opacity-0", "translate-y-2", "pointer-events-none");
+    detail.classList.remove("opacity-100", "translate-y-0", "pointer-events-auto");
+    activeCity = null;
+    document.querySelectorAll(".city-marker, .city-chip").forEach(el => el.classList.remove("active"));
+  }
+
+  // Click on map markers
+  document.querySelectorAll(".city-marker").forEach(marker => {
+    marker.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const id = marker.getAttribute("data-city");
+      if (activeCity === id) { hideDetail(); } else { showDetail(id); }
+    });
+  });
+
+  // Click on bottom chips
+  document.querySelectorAll(".city-chip").forEach(chip => {
+    chip.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const id = chip.getAttribute("data-city-chip");
+      if (activeCity === id) { hideDetail(); } else { showDetail(id); }
+    });
+  });
+
+  // Click away to close
+  document.getElementById("china-map").addEventListener("click", () => hideDetail());
+  document.getElementById("experience-map").addEventListener("click", (e) => {
+    if (!e.target.closest("#city-detail") && !e.target.closest(".city-marker") && !e.target.closest(".city-chip")) {
+      hideDetail();
+    }
+  });
+</script>

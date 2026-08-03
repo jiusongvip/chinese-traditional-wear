@@ -1,0 +1,8 @@
+c=open(r"D:\workspaces\website\chinese-traditional-wear\src\pages\index.astro","r",encoding="utf-8").read()
+print("Lines:", len(c.splitlines()))
+print("compare-preview:", "compare-preview" in c)
+print("quiz id:", chr(34)+"quiz"+chr(34) in c)
+print("Major Styles:", "Major Styles" in c)
+print("New Here?:", "New Here?" in c)
+print("EEAT:", "ChinaStyle Editorial" in c)
+print("Looking to Buy:", "Looking to Buy" in c)

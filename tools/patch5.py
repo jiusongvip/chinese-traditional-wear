@@ -1,0 +1,12 @@
+c=open(r"D:\workspaces\website\chinese-traditional-wear\src\pages\index.astro","r",encoding="utf-8").read()
+
+# Insert Looking to Buy section before CTA
+marker = "Ready to Explore Chinese Traditional Wear?"
+idx = c.find(marker)
+sec_start = c.rfind("<section", 0, idx)
+
+buy_block = '\n  <section class="py-24 bg-white">\n    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">\n      <div class="mb-12 text-center">\n        <span class="text-xs font-medium text-[#b5343a] tracking-[0.15em] uppercase">For Shoppers</span>\n        <h2 class="font-serif-sc text-3xl sm:text-4xl font-bold tracking-tight text-stone-900">\n          Looking to Buy Traditional Clothing?\n        </h2>\n        <p class="mt-4 text-stone-500 leading-relaxed max-w-xl mx-auto">\n          Where to find authentic pieces, from custom tailoring to ready-to-wear.\n        </p>\n      </div>\n      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">\n        <div class="bg-stone-50 rounded-xl p-6 border border-stone-100">\n          <h3 class="font-semibold text-stone-900">Custom Qipao</h3>\n          <p class="text-sm text-stone-500 mt-2">Bespoke cheongsam at Shanghai South Bund Fabric Market. 3-5 day turnaround, 300-800 RMB.</p>\n          <a href="/qipao-cheongsam" class="inline-block mt-3 text-xs font-medium text-[#b5343a] hover:underline">See qipao guide \u2192</a>\n        </div>\n        <div class="bg-stone-50 rounded-xl p-6 border border-stone-100">\n          <h3 class="font-semibold text-stone-900">Tang Suit &amp; Jackets</h3>\n          <p class="text-sm text-stone-500 mt-2">Beijing hutong tailors craft authentic mandarin-collar jackets. Off-the-rack from 50-150 RMB.</p>\n          <a href="/tang-suit" class="inline-block mt-3 text-xs font-medium text-[#b5343a] hover:underline">See tang suit guide \u2192</a>\n        </div>\n        <div class="bg-stone-50 rounded-xl p-6 border border-stone-100">\n          <h3 class="font-semibold text-stone-900">Accessories &amp; Textiles</h3>\n          <p class="text-sm text-stone-500 mt-2">Silk fans, jade pendants, embroidered shoes in Suzhou and Hangzhou markets.</p>\n          <a href="/accessories" class="inline-block mt-3 text-xs font-medium text-[#b5343a] hover:underline">See accessories guide \u2192</a>\n        </div>\n      </div>\n    </div>\n  </section>\n\n'
+c = c[:sec_start] + buy_block + c[sec_start:]
+
+open(r"D:\workspaces\website\chinese-traditional-wear\src\pages\index.astro","w",encoding="utf-8",newline="\n").write(c)
+print("Looking to Buy section added, lines:", len(c.splitlines()))

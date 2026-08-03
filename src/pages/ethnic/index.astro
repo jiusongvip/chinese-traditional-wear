@@ -1,0 +1,53 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Ethnic Minority Clothing: Miao, Bai & More"
+  description="Explore textile traditions of China's 55 ethnic minorities. Visit Miao silver-smithing in Guizhou and Bai tie-dye workshops in Yunnan on your trip."
+  ogImage="/images/og-ethnic.webp"
+  canonicalUrl="/ethnic"
+  articleDate="2026-08-03"
+  breadcrumbs={[{ name: "Home", url: "/" }, { name: "Ethnic & Minority", url: "/ethnic/" }]}>
+  <section class="pt-24 pb-16">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="text-xs font-medium text-[#b5343a] tracking-[0.15em] uppercase">ChinaStyle Travel Guide</span>
+      <h1 class="font-serif-sc text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-stone-900 mt-3">
+        Ethnic Minority Textile Traditions
+      </h1>
+      <p class="mt-6 text-lg text-stone-500 leading-relaxed max-w-2xl">
+        Beyond Hanfu and qipao lies a vast world of textile traditions. China''s 55 officially recognized ethnic minorities each have distinct clothing languages — from the Miao''s silver-and-embroidery masterpieces to the Bai''s indigo tie-dye, the Tibetan chuba to the Uyghur atlas silk. Visiting these communities offers the most immersive cultural experience a textile lover can have in China.
+      </p>
+
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="overflow-hidden rounded-xl bg-stone-100 aspect-[4/5]">
+          <img src="/images/cat-ethnic.webp" alt="Miao festival attire: silver & embroidery" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" loading="lazy" width="1536" height="1024" />
+        </div>
+        <div class="overflow-hidden rounded-xl bg-stone-100 aspect-[4/5]">
+          <img src="/images/gallery-miao-guizhou.webp" alt="Bai tie-dye workshop in Dali" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" loading="lazy" width="1024" height="1536" />
+        </div>
+      </div>
+
+      <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-10 mb-4">Miao (Guizhou): Silver & Embroidery</h2>
+      <p class="text-stone-600 leading-relaxed">The Miao are China''s most celebrated textile artists. A single festival outfit can weigh 15-20 kg in silver headdresses, neck rings, and chest plates, paired with indigo-dyed jackets covered in months of hand-stitched embroidery. Visit the villages around Kaili in Guizhou province. The best time is during the Lusheng Festival (usually October/November) when thousands of Miao women parade in full regalia. You can try on lighter versions of the silver headdress and embroidered jacket at village guesthouses. Cost: 50-150 RMB for costume rental. The embroidery pieces — especially the baby carriers — are museum-quality art that can be purchased directly from the women who stitched them.</p>
+
+      <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-10 mb-4">Bai (Yunnan): Tie-Dye & Indigo</h2>
+      <p class="text-stone-600 leading-relaxed">The Bai people of Dali are masters of tie-dye (zaran). Their traditional dress features a white top with indigo-dyed patterns, a red vest, and an embroidered headdress representing Dali''s famous "wind, flowers, snow, and moon." Visit Zhoucheng village near Dali Old Town, where every household runs a tie-dye workshop. You can design and dye your own piece in about an hour (80-120 RMB) and rent a full Bai costume (50-100 RMB) for photos around Erhai Lake.</p>
+
+      <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-10 mb-4">Tibetan (Western Sichuan, Yunnan, Tibet)</h2>
+      <p class="text-stone-600 leading-relaxed">The chuba — a wrap-around robe tied at the waist with a sash — is the signature Tibetan garment, made from wool or sheepskin depending on altitude. Men wear one sleeve off the shoulder (a practical adaptation to high-altitude temperature swings). In Shangri-La (Yunnan) and Kangding (Sichuan), shops rent Tibetan costumes for 80-200 RMB. Pair it with turquoise and coral jewelry for the full effect. The best backdrop: a Tibetan monastery at golden hour.</p>
+
+      <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-10 mb-4">Uyghur (Xinjiang): Atlas Silk & Doppa Caps</h2>
+      <p class="text-stone-600 leading-relaxed">Uyghur women wear vibrantly patterned atlas silk dresses with embroidered doppa caps. Men wear long shirts (kuoynak) with embroidered waistcoats. The Sunday bazaar in Kashgar is one of the world''s great textile markets — bolts of atlas silk, embroidered caps, and handmade boots fill entire lanes. Atlas silk fabric costs 50-200 RMB per meter. A tailor-made dress takes 2-3 days. The colors are among the boldest in any textile tradition on earth.</p>
+    </div>
+  </section>
+
+      <div class="mt-12 pt-8 border-t border-stone-200 text-center">
+        <h2 class="font-serif-sc text-lg font-semibold text-stone-900 mb-3">Sources & Further Reading</h2>
+        <ul class="space-y-1 text-sm text-stone-500 inline-block text-left">
+          <li>&bull; <a href="https://en.chinaculture.org/" class="text-[#b5343a] hover:underline" target="_blank" rel="noopener">China Culture.org</a> — Ministry of Culture official resource on Chinese heritage and traditions</li>
+          <li>&bull; <a href="https://en.dpm.org.cn/" class="text-[#b5343a] hover:underline" target="_blank" rel="noopener">The Palace Museum</a> (Forbidden City, Beijing) — original imperial robes and textile collections</li>
+          <li>&bull; <a href="https://www.chinasilkmuseum.com/" class="text-[#b5343a] hover:underline" target="_blank" rel="noopener">China National Silk Museum</a> (Hangzhou) — world''s largest silk and textile museum</li>
+        </ul>
+      </div>
+</BaseLayout>

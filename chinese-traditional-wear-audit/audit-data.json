@@ -1,0 +1,273 @@
+{
+  "summary": {
+    "health_score": 25,
+    "business_type": "Travel Guide / Cultural Tourism",
+    "top_findings": [
+      "No schema markup on any of 23 pages",
+      "Missing robots.txt and sitemap.xml",
+      "No canonical URLs — duplicate content risk",
+      "14 of 21 content pages below 300 words (thin content)",
+      "Zero E-E-A-T signals (no author, no about, no dates)"
+    ],
+    "quick_wins": [
+      "Add FAQPage schema to homepage FAQ section",
+      "Add Organization + WebSite schema to homepage",
+      "Create robots.txt and XML sitemap",
+      "Add Open Graph tags to BaseLayout",
+      "Fix garbled UTF-8 in meta descriptions"
+    ]
+  },
+  "categories": [
+    {
+      "name": "Technical SEO",
+      "score": 10,
+      "what_works": [
+        "Clean directory-style URLs without .html extensions",
+        "Mobile viewport meta present on all pages",
+        "Meta charset declared on all pages"
+      ],
+      "findings": [
+        {
+          "title": "No robots.txt",
+          "severity": "Critical",
+          "description": "No /robots.txt file in dist/ or public/. Search engines have no crawling directives, no sitemap pointer, and no AI crawler guidance.",
+          "recommendation": "Create robots.txt at site root with sitemap pointer, crawl-delay, and GPTBot/Claude-Web directives."
+        },
+        {
+          "title": "No sitemap.xml",
+          "severity": "Critical",
+          "description": "No XML sitemap found. 23 pages must be discovered organically via internal links.",
+          "recommendation": "Generate sitemap.xml listing all 23 pages with lastmod dates."
+        },
+        {
+          "title": "No canonical URLs",
+          "severity": "Critical",
+          "description": "0 of 23 pages have a canonical link tag. Duplicate content risk from URL variants when deployed.",
+          "recommendation": "Add self-referencing canonical tags to BaseLayout."
+        },
+        {
+          "title": "Meta refresh redirects instead of 301",
+          "severity": "High",
+          "description": "/qipao/ and /tang/ use meta http-equiv='refresh' redirects which search engines handle poorly for SEO value transfer.",
+          "recommendation": "Replace with proper 301 redirects at the server or Astro config level."
+        }
+      ]
+    },
+    {
+      "name": "Content Quality",
+      "score": 30,
+      "what_works": [
+        "Homepage (1,373 words), /hanfu/ (1,020), /plan-trip/ (1,233) have solid content depth",
+        "Writing quality is clear, engaging, and accessible for international audiences",
+        "FAQ content is well-structured with substantive answers"
+      ],
+      "findings": [
+        {
+          "title": "14 thin content pages below 300 words",
+          "severity": "Critical",
+          "description": "17 of 21 content pages fail minimum word count quality gates. Pages like /blog/ (30 words), /gallery/ (44), /compare/ (45), and /quiz/ (48) are effectively empty.",
+          "recommendation": "Expand thin pages to meet quality gates: 800 words for feature pages, 500-600 for secondary pages, 800 for FAQ."
+        },
+        {
+          "title": "Zero E-E-A-T signals",
+          "severity": "Critical",
+          "description": "No author attribution, no about page, no citations, no publication dates on any page. Google's quality raters and AI models both penalize this.",
+          "recommendation": "Create /about/ page with author bios. Add publication dates and author bylines to content pages. Cite authoritative sources for historical claims."
+        },
+        {
+          "title": "Empty blog",
+          "severity": "High",
+          "description": "Blog page has 30 words and zero posts. This is the primary channel for long-tail keyword coverage.",
+          "recommendation": "Publish 5 foundational posts in month 1, then maintain 1-2 posts per week."
+        },
+        {
+          "title": "Strategic pivot from educational to travel guide",
+          "severity": "Medium",
+          "description": "SITE-PLAN targeted an educational encyclopedia of Chinese traditional clothing. The built site is travel-focused. This changes keyword targeting and audience.",
+          "recommendation": "Clarify strategy. If travel-focused, optimize titles and meta for travel-intent keywords. If educational, reduce travel language and add educational depth."
+        }
+      ]
+    },
+    {
+      "name": "On-Page SEO",
+      "score": 35,
+      "what_works": [
+        "Title tags and meta descriptions present on all content pages",
+        "H1-H2 heading hierarchy generally well-structured",
+        "Internal navigation links exist in header and footer",
+        "Descriptive anchor text throughout"
+      ],
+      "findings": [
+        {
+          "title": "No Open Graph or Twitter Card tags",
+          "severity": "Critical",
+          "description": "Zero social meta tags on any page. Social shares display bare URLs with no preview image, title, or description.",
+          "recommendation": "Add OG and Twitter Card tags to BaseLayout with dynamic per-page values."
+        },
+        {
+          "title": "Homepage H1 lacks primary keyword",
+          "severity": "High",
+          "description": "H1 is 'Wear China's History on Your Journey' — the primary keyword 'Chinese Traditional Wear' does not appear anywhere in the heading hierarchy.",
+          "recommendation": "Change H1 to 'Chinese Traditional Wear Through the Ages' or similar keyword-inclusive variant."
+        },
+        {
+          "title": "11 of 15 titles exceed 60-char SERP limit",
+          "severity": "Medium",
+          "description": "Most titles will be truncated in Google search results, losing the brand name and potentially critical keywords.",
+          "recommendation": "Shorten titles to 50-60 characters while preserving primary keywords near the beginning."
+        },
+        {
+          "title": "Garbled UTF-8 in meta descriptions",
+          "severity": "Medium",
+          "description": "/dynasties/ and /accessories/ meta descriptions contain garbled characters. Likely an encoding issue in source Astro components.",
+          "recommendation": "Fix encoding in source, verify with build output."
+        }
+      ]
+    },
+    {
+      "name": "Schema / Structured Data",
+      "score": 0,
+      "what_works": [],
+      "findings": [
+        {
+          "title": "No schema markup on any page",
+          "severity": "Critical",
+          "description": "Zero JSON-LD blocks, zero microdata, zero RDFa across all 23 pages. Missing Organization, FAQPage, Article, BreadcrumbList, and WebSite schemas.",
+          "recommendation": "Implement Organization and WebSite on homepage, FAQPage on FAQ content, Article on all content pages, BreadcrumbList on all pages."
+        }
+      ]
+    },
+    {
+      "name": "Performance (CWV)",
+      "score": 60,
+      "what_works": [
+        "Lightweight build (~43 KB CSS total)",
+        "Astro SSG generates pure HTML with minimal JS",
+        "Tailwind purging keeps CSS lean"
+      ],
+      "findings": [
+        {
+          "title": "Google Fonts render-blocking",
+          "severity": "High",
+          "description": "Outfit and Noto Serif SC loaded from Google Fonts CDN without font-display: swap. Blocks text rendering and causes CLS.",
+          "recommendation": "Self-host fonts or add display=swap parameter to font URLs."
+        },
+        {
+          "title": "All images externally hotlinked",
+          "severity": "Medium",
+          "description": "All images served from images.unsplash.com with no CDN control over caching, format, or performance.",
+          "recommendation": "Self-host critical images with WebP/AVIF conversion. Use srcset for responsive loading."
+        },
+        {
+          "title": "No explicit image dimensions",
+          "severity": "Medium",
+          "description": "Missing width/height attributes on most img tags causing CLS risk.",
+          "recommendation": "Add explicit width and height to all img elements."
+        }
+      ]
+    },
+    {
+      "name": "AI Search Readiness",
+      "score": 10,
+      "what_works": [
+        "Semantic HTML structure (header, nav, main, section, footer)",
+        "Good heading hierarchy for AI parsing",
+        "FAQ content exists for featured-snippet eligibility"
+      ],
+      "findings": [
+        {
+          "title": "No AI crawler directives",
+          "severity": "Critical",
+          "description": "No robots.txt exists, so no GPTBot, Claude-Web, or PerplexityBot directives. No /llms.txt endpoint.",
+          "recommendation": "Add robots.txt with explicit AI crawler directives. Create /llms.txt with structured content summary."
+        },
+        {
+          "title": "Missing author and date signals",
+          "severity": "High",
+          "description": "AI models prioritize content with clear authorship and publication dates. Zero such signals on this site.",
+          "recommendation": "Add author attribution and publication dates to all content pages."
+        }
+      ]
+    },
+    {
+      "name": "Images",
+      "score": 30,
+      "what_works": [
+        "Descriptive alt text on homepage hero and category images",
+        "Correct loading strategy (eager for hero, lazy for others)"
+      ],
+      "findings": [
+        {
+          "title": "All images externally hotlinked",
+          "severity": "High",
+          "description": "All 20 images on homepage served from images.unsplash.com. No format optimization, no caching control, no guaranteed uptime.",
+          "recommendation": "Self-host key images. Use picture element with WebP/AVIF sources."
+        },
+        {
+          "title": "Gallery section has duplicate alt text",
+          "severity": "Medium",
+          "description": "All 6 gallery images have identical alt text despite showing different locations.",
+          "recommendation": "Give each gallery image a unique, descriptive alt text."
+        },
+        {
+          "title": "No responsive images",
+          "severity": "Medium",
+          "description": "No srcset or sizes attributes on any image. Mobile users download desktop-resolution images.",
+          "recommendation": "Add srcset with 2-3 breakpoints and sizes attribute."
+        }
+      ]
+    }
+  ],
+  "action_plan": {
+    "phases": [
+      {
+        "name": "Phase 1: Critical Fixes",
+        "timeframe": "Week 1",
+        "items": [
+          "Add schema markup (Organization, WebSite, FAQPage, Article, BreadcrumbList)",
+          "Create robots.txt and sitemap.xml",
+          "Add canonical URLs to all pages",
+          "Replace meta refresh redirects with 301 redirects",
+          "Add Open Graph and Twitter Card tags to BaseLayout"
+        ]
+      },
+      {
+        "name": "Phase 2: High-Impact Improvements",
+        "timeframe": "Weeks 2-3",
+        "items": [
+          "Expand 14 thin content pages to meet quality gates",
+          "Create /about/ page with E-E-A-T signals",
+          "Add author attribution and publication dates",
+          "Fix garbled UTF-8 encoding in meta descriptions",
+          "Shorten title tags to 50-60 character range"
+        ]
+      },
+      {
+        "name": "Phase 3: Content & Authority",
+        "timeframe": "Month 2",
+        "items": [
+          "Launch blog with 5 foundational posts",
+          "Self-host fonts with font-display: swap",
+          "Self-host and optimize key images",
+          "Add srcset and responsive images",
+          "Add explicit image dimensions"
+        ]
+      },
+      {
+        "name": "Phase 4: Monitoring & Iteration",
+        "timeframe": "Ongoing",
+        "items": [
+          "Publish 1-2 blog posts per week",
+          "Monitor Google Search Console",
+          "Track Core Web Vitals",
+          "Monthly content freshness review",
+          "Quarterly competitive analysis"
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "findings_dir": "findings/",
+    "screenshots_dir": "screenshots/"
+  }
+}

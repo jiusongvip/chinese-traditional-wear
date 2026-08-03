@@ -1,0 +1,36 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Contact Us | ChinaStyle Traditional Wear Guide"
+  description="Contact the ChinaStyle team with questions about Chinese traditional clothing experiences, travel tips, or suggestions for our cultural travel guides."
+  canonicalUrl="/contact"
+  breadcrumbs={[{ name: "Home", url: "/" }, { name: "Contact", url: "/contact/" }]}>
+  <section class="pt-24 pb-16">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="text-xs font-medium text-[#b5343a] tracking-[0.15em] uppercase">Get in Touch</span>
+      <h1 class="font-serif-sc text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-stone-900 mt-3">
+        Contact ChinaStyle
+      </h1>
+      <p class="mt-6 text-lg text-stone-500 leading-relaxed max-w-2xl">
+        Have a question about planning your Chinese traditional clothing experience? Found a great tailor, rental shop, or workshop we should know about? We welcome reader tips, corrections, and suggestions.
+      </p>
+
+      <div class="mt-10 p-8 bg-stone-50 rounded-xl space-y-6">
+        <div>
+          <h2 class="font-serif-sc text-lg font-semibold text-stone-900">Email Us</h2>
+          <p class="text-stone-600 mt-1">For editorial inquiries, tips, and suggestions: <span class="text-[#b5343a] font-medium">hello@chinesetraditionalwear.com</span></p>
+        </div>
+        <div>
+          <h2 class="font-serif-sc text-lg font-semibold text-stone-900">Response Time</h2>
+          <p class="text-stone-600 mt-1">We read every message and typically respond within 2-3 business days. For urgent travel questions, please check our <a href="/faq" class="text-[#b5343a] hover:underline">FAQ page</a> and <a href="/plan-trip" class="text-[#b5343a] hover:underline">Plan Your Trip guide</a>.</p>
+        </div>
+        <div>
+          <h2 class="font-serif-sc text-lg font-semibold text-stone-900">Editorial Policy</h2>
+          <p class="text-stone-600 mt-1">ChinaStyle is independently researched and written. We are not affiliated with any rental shop, tailor, or tour company. If we recommend a place, it''s because we genuinely believe it offers the best experience.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
