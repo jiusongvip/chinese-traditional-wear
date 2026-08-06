@@ -1,176 +1,287 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const dynasties = [
+  { name: "Pre-Qin & Han", period: "c. 2700 BC – 220 AD", features: "Crossed collar (交领), right lapel over left (右衽), wide sleeves tied with sash. Dark colors: black and red. The classic shenyi (深衣) — a one-piece robe wrapping the body — was formalized. This period established the foundational silhouette that would define Hanfu for millennia.", significance: "The term 'Hanfu' itself derives from the Han dynasty, when clothing became a marker of cultural identity." },
+  { name: "Wei, Jin & Northern/Southern", period: "220 – 589 AD", features: "Loose, flowing silhouettes influenced by Daoist philosophy. White became fashionable among intellectuals. Wide, billowing sleeves and open-front robes with flowing sashes. Women adopted high-waisted ruqun (襦裙) — a short jacket paired with a long, flowing skirt.", significance: "The 'Wei-Jin aesthetic' of ethereal, floating garments remains hugely popular in hanfu communities today for its romantic, immortal-fairy appearance." },
+  { name: "Tang", period: "618 – 907 AD", features: "China's golden age of fashion. Bold, vibrant colors — red, yellow, green, purple. Low-cut necklines, high-waisted chest-high skirts (齐胸襦裙, qíxiōng rúqún), translucent silk shawls (披帛, pībó). Heavy foreign influence from Silk Road cultural exchange. Women's fashion was notably open and confident compared to other dynasties.", significance: "Tang-style hanfu is the most popular for photoshoots today — dramatic, photogenic, and unmistakably Chinese. The Dunhuang murals are the best visual reference." },
+  { name: "Song", period: "960 – 1279 AD", features: "A shift to understated elegance. Narrow sleeves, slim silhouettes, muted colors. Women wore beizi (褙子) — a long, straight, open-front jacket over a skirt. The Confucian revival emphasized modesty and restraint. Despite the simplicity, Song fabrics were among the finest in Chinese history.", significance: "Song-style hanfu appeals to those seeking a more refined, intellectual look. It's the 'quiet luxury' of Chinese historical fashion." },
+  { name: "Ming", period: "1368 – 1644 AD", features: "The most structured and regal of hanfu styles. Women wore stand-collar aoqun (袄裙) — a cross-collar or stand-collar jacket paired with pleated mamian skirts (马面裙). Wide sleeves returned, and layered garments created a formal, majestic silhouette. Men wore circular-collared robes (圆领袍) with refined embroidery.", significance: "Ming-style hanfu is the primary reference for today's hanfu revival. The mamian skirt in particular has become a modern fashion staple, worn with everything from blouses to hoodies." },
+];
+
+const components = [
+  { name: "Yi (衣)", desc: "The upper garment — open cross-collar, worn by both men and women. The collar wraps right-over-left (右衽, yòurèn), a defining feature of Han Chinese clothing that distinguishes it from other East Asian traditions.", cn: "衣" },
+  { name: "Ru (襦)", desc: "A short cross-collar jacket worn as the top piece in women's ruqun sets. Length varies by dynasty — Tang ru are short to show the high-waisted skirt; Ming ru extend past the hip.", cn: "襦" },
+  { name: "Shan (衫)", desc: "A single-layer shirt or jacket, often worn as an outer layer in warmer seasons. The beizi (褙子) popular in the Song dynasty is a type of shan — long, straight, and elegant.", cn: "衫" },
+  { name: "Qun (裙) / Chang (裳)", desc: "The skirt or lower garment. Mamianqun (马面裙, 'horse-face skirt') from the Ming dynasty has become a modern fashion icon — a wrap skirt with flat front and back panels and pleated sides.", cn: "裙/裳" },
+  { name: "Pao (袍)", desc: "A full-length, closed-body robe — the most formal type of hanfu garment. Imperial dragon robes (龙袍, lóngpáo) are the most famous example, but scholars and officials also wore robes appropriate to their rank.", cn: "袍" },
+  { name: "Bixi (蔽膝)", desc: "A decorative panel hanging from the waist at the front, originally a practical apron that evolved into a ceremonial ornament. Worn by both men and women in formal contexts.", cn: "蔽膝" },
+];
+
+const hanfuFAQs = [
+  { q: "What is Hanfu exactly?", a: "Hanfu (汉服, Hànfú) is the traditional clothing of the Han Chinese people, worn continuously from the time of the Yellow Emperor (c. 2700 BC) through the end of the Ming Dynasty (1644 AD). It is characterized by crossed collars wrapping right over left (右衽), wide sleeves, and sash-fastened closures rather than buttons. Hanfu is not a single garment — it's an entire clothing system that evolved through each dynasty, with distinct styles for different eras, seasons, occasions, and social classes." },
+  { q: "What's the difference between Hanfu, Kimono, and Hanbok?", a: "All three share common origins in ancient Chinese clothing, but diverged significantly. Hanfu uses a right-over-left crossed collar (右衽) tied with a sash; Kimono uses a wrapped robe secured with a wide obi sash at the back; Hanbok features a short jacket (jeogori) and a voluminous high-waisted skirt (chima). Key visual differences: Hanfu has wide, flowing sleeves; Kimono has rectangular, hanging sleeves; Hanbok has slim jacket sleeves and a very high skirt placement. See our full comparison on the /compare page." },
+  { q: "Is Hanfu going extinct or making a comeback?", a: "Hanfu is experiencing a massive revival. After the Qing Dynasty's forced clothing changes effectively ended daily hanfu wear, the Hanfu Revival Movement (汉服运动) began in the early 2000s and has since grown into a multi-billion-yuan industry. In 2024, China's hanfu market exceeded 14 billion RMB. Young people wear hanfu to festivals, on university campuses, in daily street fashion, and for weddings. The community is global — hanfu meetups happen in cities from London to Los Angeles." },
+  { q: "Can non-Chinese people wear Hanfu?", a: "Yes, and the hanfu community actively welcomes international participation. Many Chinese cultural organizations, museums, and hanfu societies encourage visitors of all backgrounds to try on hanfu. The key is wearing it with respect — understanding the garment's cultural significance rather than treating it as a costume. Cultural appreciation (wearing hanfu to engage with Chinese heritage) is widely celebrated; cultural appropriation (wearing it mockingly or decontextualized) is not. See our /how-to-wear guide for proper etiquette." },
+];
+
+const schemaHanfuFAQ = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": hanfuFAQs.map(faq => ({
+    "@type": "Question",
+    "name": faq.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.a
+    }
+  }))
+});
 ---
 
 <BaseLayout
-  title="Hanfu Guide: Best Cities, Costs & Tips | ChinaStyle"
-  description="Complete Hanfu travel guide: Xi'an, Luoyang, Chengdu rental shops, costs, best seasons for photoshoots, where to stay near city walls, and full trip tips."
+  title="Hanfu (汉服): Complete Guide to Traditional Chinese Han Clothing — History, Styles & How to Wear | ChinaStyle"
+  description="Discover Hanfu (汉服) — traditional clothing of the Han Chinese. Complete guide: history through every dynasty (Han, Tang, Song, Ming), garment components, how to wear, Hanfu revival movement, and where to experience it firsthand. With Chinese characters and pinyin throughout."
   ogImage="/images/og-hanfu.webp"
   canonicalUrl="/hanfu"
-  articleDate="2026-08-03"
-  breadcrumbs={{ name: "Home", url: "/" }, { name: "Experiences", url: "/hanfu/" }}>
+  articleDate="2026-08-06"
+  breadcrumbs={[{ name: "Home", url: "/" }, { name: "Hanfu", url: "/hanfu/" }]}>
   <section class="pt-24 pb-16">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <span class="text-xs font-medium text-[#b5343a] tracking-[0.15em] uppercase">Hanfu Experience Guide</span>
+
+      <!-- Header -->
+      <span class="text-xs font-medium text-[#b5343a] tracking-[0.15em] uppercase">Traditional Chinese Clothing</span>
       <h1 class="font-serif-sc text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-stone-900 mt-3">
-        Hanfu: Where to Wear China''s Most Ancient Attire
+        Hanfu (<span lang="zh">汉服</span>): Traditional Clothing of the Han Chinese
       </h1>
       <p class="mt-6 text-lg text-stone-500 leading-relaxed max-w-2xl">
-        Hanfu (漢服) — the flowing robes of the Han Chinese — has exploded back into the mainstream. The best way to experience it isn''t through a screen. It''s standing on Xi''an''s 600-year-old city wall at sunset, sleeves catching the breeze.
+        For over three millennia — from the Yellow Emperor to the last Ming emperor — Hanfu defined what it meant to dress as Chinese. Today it's back, worn by millions of young enthusiasts in cities from Xi'an to Los Angeles. This is the complete guide.
       </p>
 
-      <!-- Quick jump -->
+      <!-- Quick Jump -->
       <div class="mt-8 flex flex-wrap gap-2">
-        <a href="#cities" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">Best Cities</a>
-        <a href="#getting-there" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">How to Get There</a>
-        <a href="#stay" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">Where to Stay</a>
-        <a href="#cost" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">Cost Breakdown</a>
-        <a href="#experience" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">Step-by-Step</a>
+        <a href="#what-is-hanfu" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">What Is Hanfu?</a>
+        <a href="#dynasty-styles" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">Dynasty Styles</a>
+        <a href="#components" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">Garment Parts</a>
+        <a href="#revival" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">Hanfu Revival</a>
+        <a href="#vs" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">Hanfu vs Kimono</a>
+        <a href="#how-to-wear" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">How to Wear</a>
+        <a href="#faq" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">FAQ</a>
       </div>
 
-      <!-- ===== BEST CITIES ===== -->
-      <h2 id="cities" class="font-serif-sc text-2xl font-bold text-stone-900 mt-16 mb-4">Best Cities for Hanfu Experiences</h2>
-      <div class="space-y-6">
-        <div class="flex gap-4 items-start">
-          <div class="w-10 h-10 rounded-full bg-[#b5343a]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-            <span class="text-[#b5343a] font-bold text-sm">1</span>
+      <!-- ===== WHAT IS HANFU ===== -->
+      <h2 id="what-is-hanfu" class="font-serif-sc text-2xl sm:text-3xl font-bold text-stone-900 mt-16 mb-6">What Is Hanfu (<span lang="zh">汉服</span>)?</h2>
+      
+      <div class="prose prose-stone max-w-none text-stone-600 leading-relaxed space-y-4">
+        <p>Hanfu (<span lang="zh">汉服</span>, Hànfú) literally means "Han clothing" — the traditional dress of the Han Chinese ethnic group, worn continuously for over 3,000 years from the era of the Yellow Emperor (c. 2700 BC) through the fall of the Ming Dynasty (1644 AD). Unlike the modern one-piece <a href="/qipao-cheongsam" class="text-[#b5343a] hover:underline">qipao (<span lang="zh">旗袍</span>)</a>, Hanfu is a complete clothing <em>system</em>: multiple layered garments, each with a specific name, purpose, and historical context.</p>
+
+        <p>The core defining features of Hanfu are remarkably consistent across three millennia:</p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 not-prose my-6">
+          <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+            <h3 class="font-semibold text-stone-900 text-sm">Crossed Collar · <span lang="zh">交领</span> (Jiāolǐng)</h3>
+            <p class="text-sm text-stone-500 mt-1.5 leading-relaxed">The collar wraps right-over-left across the chest, forming a Y-shape at the neck. This "right lapel over left" (<span lang="zh">右衽</span>, yòurèn) is the single most distinctive feature of Han Chinese clothing — so central to Chinese identity that Confucius once said, "But for Guan Zhong, we would be wearing our hair loose and fastening our collars on the left" (like the non-Chinese peoples).</p>
           </div>
-          <div>
-            <h3 class="font-semibold text-stone-900">Xi''an <span class="text-xs font-normal text-[#b5343a] ml-2">Top Choice</span></h3>
-            <p class="text-sm text-stone-500 mt-1 leading-relaxed">Over 500 Hanfu rental shops near the city wall and Daming Palace. Rent a full set (clothing + hair + makeup) for 150-400 RMB. Shoot on the ancient city wall (entry 54 RMB), at Daming Palace ruins, or in Datang Everbright City at night. The wall at sunset is the most iconic shot — golden light on ancient brick with Tang dynasty robes.</p>
-            <p class="text-xs text-stone-400 mt-2"><strong>Best spot:</strong> South Gate (Yongningmen) has the highest concentration of shops and photogenic backdrops.</p>
+          <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+            <h3 class="font-semibold text-stone-900 text-sm">Sash-Tied · No Buttons</h3>
+            <p class="text-sm text-stone-500 mt-1.5 leading-relaxed">Hanfu uses fabric sashes and ties — never buttons for the main closure. This is a key difference from later Chinese clothing like qipao and <a href="/tang-suit" class="text-[#b5343a] hover:underline">Tang suits (<span lang="zh">唐装</span>)</a>, which adopted knotted frog buttons under Manchu and Western influence. The sash is functional and decorative, often tied in elaborate knots.</p>
           </div>
-        </div>
-        <div class="flex gap-4 items-start">
-          <div class="w-10 h-10 rounded-full bg-[#b5343a]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-            <span class="text-[#b5343a] font-bold text-sm">2</span>
+          <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+            <h3 class="font-semibold text-stone-900 text-sm">Wide Sleeves · <span lang="zh">广袖</span> (Guǎngxiù)</h3>
+            <p class="text-sm text-stone-500 mt-1.5 leading-relaxed">Flowing wide sleeves that can span several feet across in formal garments. Sleeve width indicated status — wider sleeves meant you didn't do manual labor. Noblemen's sleeves were so wide they could hold objects in the cuff. Narrow sleeves appeared in some dynasties (Song) and for commoners, but wide sleeves remain the iconic Hanfu silhouette.</p>
           </div>
-          <div>
-            <h3 class="font-semibold text-stone-900">Luoyang</h3>
-            <p class="text-sm text-stone-500 mt-1 leading-relaxed">Luoyang Old Town and the area around Longmen Grottoes have a thriving Hanfu scene. The peony-themed Tang dynasty styles are unique to this city. Rentals are cheaper than Xi''an — 100-250 RMB for a full set. Photograph in front of the Longmen Grottoes carvings or in the peony gardens (best in April).</p>
-          </div>
-        </div>
-        <div class="flex gap-4 items-start">
-          <div class="w-10 h-10 rounded-full bg-[#b5343a]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-            <span class="text-[#b5343a] font-bold text-sm">3</span>
-          </div>
-          <div>
-            <h3 class="font-semibold text-stone-900">Chengdu</h3>
-            <p class="text-sm text-stone-500 mt-1 leading-relaxed">Jinli Ancient Street is a Hanfu hotspot — locals and tourists stroll in period costume. Combine Hanfu with a traditional tea ceremony in a Sichuan teahouse. Shu embroidery workshops in Chengdu let you see the craft behind the garments. 100-300 RMB for rental.</p>
-          </div>
-        </div>
-        <div class="flex gap-4 items-start">
-          <div class="w-10 h-10 rounded-full bg-[#b5343a]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-            <span class="text-[#b5343a] font-bold text-sm">4</span>
-          </div>
-          <div>
-            <h3 class="font-semibold text-stone-900">Hangzhou</h3>
-            <p class="text-sm text-stone-500 mt-1 leading-relaxed">Song dynasty hanfu by West Lake is understated elegance at its finest. The China National Silk Museum offers free costume try-on sessions. Best in spring (March-April) when the willow trees along the lake are at their greenest. 80-250 RMB for rental.</p>
-          </div>
-        </div>
-        <div class="flex gap-4 items-start">
-          <div class="w-10 h-10 rounded-full bg-[#b5343a]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-            <span class="text-[#b5343a] font-bold text-sm">5</span>
-          </div>
-          <div>
-            <h3 class="font-semibold text-stone-900">Nanjing</h3>
-            <p class="text-sm text-stone-500 mt-1 leading-relaxed">Ming dynasty hanfu at Ming Xiaoling Mausoleum — the red walls and imperial architecture are the ultimate backdrop. Nanjing also has excellent silk brocade (yunjin) workshops that explain the fabric behind the fashion. 100-300 RMB.</p>
+          <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+            <h3 class="font-semibold text-stone-900 text-sm">Layered Construction</h3>
+            <p class="text-sm text-stone-500 mt-1.5 leading-relaxed">A complete Hanfu outfit involves multiple layers: innermost garments (<span lang="zh">中衣</span>, zhōngyī), middle layers, and outer robes. The layering creates visual depth and allows the wearer to adjust for climate and formality. Each layer has its own name and construction rules — learning them is part of hanfu culture.</p>
           </div>
         </div>
       </div>
 
-      <!-- ===== GETTING THERE ===== -->
-      <h2 id="getting-there" class="font-serif-sc text-2xl font-bold text-stone-900 mt-16 mb-4">How to Get to Each City</h2>
+      <!-- ===== DYNASTY STYLES ===== -->
+      <h2 id="dynasty-styles" class="font-serif-sc text-2xl sm:text-3xl font-bold text-stone-900 mt-16 mb-2">Hanfu Through the Dynasties</h2>
+      <p class="text-stone-500 mb-6">Hanfu is not a single style. Each dynasty developed its own silhouette, fabric preferences, and aesthetic philosophy. Understanding these differences is how you learn to "read" hanfu and identify which era a garment references.</p>
+
+      <div class="space-y-8">
+        {dynasties.map((d) => (
+          <div class="bg-stone-50 border border-stone-200 rounded-xl p-6">
+            <div class="flex items-start justify-between flex-wrap gap-3">
+              <div>
+                <h3 class="font-semibold text-lg text-stone-900">{d.name} Dynasty</h3>
+                <p class="text-xs text-[#b5343a] font-medium mt-0.5 tracking-wide">{d.period}</p>
+              </div>
+            </div>
+            <p class="text-sm text-stone-600 mt-3 leading-relaxed">{d.features}</p>
+            <p class="text-xs text-stone-400 mt-2 italic">📌 {d.significance}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- ===== GARMENT COMPONENTS ===== -->
+      <h2 id="components" class="font-serif-sc text-2xl sm:text-3xl font-bold text-stone-900 mt-16 mb-2">The Anatomy of Hanfu: Key Garment Pieces</h2>
+      <p class="text-stone-500 mb-6">A complete hanfu outfit is assembled from multiple named pieces. Here are the essential components you'll encounter:</p>
+
+      <div class="space-y-4">
+        {components.map((c) => (
+          <div class="flex gap-4 items-start">
+            <div class="w-12 h-12 rounded-lg bg-[#b5343a]/10 flex items-center justify-center flex-shrink-0">
+              <span class="text-[#b5343a] font-bold text-xs">{c.cn}</span>
+            </div>
+            <div>
+              <h3 class="font-semibold text-stone-900">{c.name}</h3>
+              <p class="text-sm text-stone-500 mt-1 leading-relaxed">{c.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- ===== FABRIC & SYMBOLISM ===== -->
+      <h2 class="font-serif-sc text-2xl sm:text-3xl font-bold text-stone-900 mt-16 mb-6">Fabric, Color & Symbolism</h2>
+
+      <div class="prose prose-stone max-w-none text-stone-600 leading-relaxed space-y-4">
+        <p><strong>Silk (<span lang="zh">丝绸</span>, sīchóu)</strong> was the ultimate fabric — China's most famous export, cultivated for over 5,000 years. It was reserved for the nobility through most of history. The finest silk garments used <em>brocade</em> (<span lang="zh">锦</span>, jǐn) — silk woven with raised patterns of gold and silver thread.</p>
+
+        <p><strong>Hemp (<span lang="zh">麻</span>, má)</strong> and <strong>ramie</strong> clothed the common people. These plant fibers are breathable in summer and durable. Cotton arrived later, becoming widespread by the Ming dynasty.</p>
+
+        <p><strong>Color hierarchy</strong> was strictly regulated by imperial sumptuary laws:</p>
+
+        <div class="not-prose overflow-x-auto my-4">
+          <table class="w-full text-sm border-collapse">
+            <thead><tr class="border-b border-stone-200 text-left"><th class="py-2.5 pr-4 font-semibold text-stone-800">Color</th><th class="py-2.5 pr-4 font-semibold text-stone-800">Meaning</th><th class="py-2.5 pr-4 font-semibold text-stone-800">Who Wore It</th></tr></thead>
+            <tbody>
+              <tr class="border-b border-stone-100"><td class="py-2.5 pr-4 font-medium">Yellow <span lang="zh" class="text-stone-400 text-xs">黄</span></td><td class="py-2.5 pr-4">Imperial power, the center of the universe</td><td class="py-2.5">Emperor only (from Tang dynasty onward)</td></tr>
+              <tr class="border-b border-stone-100"><td class="py-2.5 pr-4 font-medium">Red <span lang="zh" class="text-stone-400 text-xs">红</span></td><td class="py-2.5 pr-4">Joy, celebration, weddings, good fortune</td><td class="py-2.5">Brides, festive occasions, high officials</td></tr>
+              <tr class="border-b border-stone-100"><td class="py-2.5 pr-4 font-medium">Purple <span lang="zh" class="text-stone-400 text-xs">紫</span></td><td class="py-2.5 pr-4">Nobility, divinity, Daoist immortality</td><td class="py-2.5">High-ranking officials, Daoist priests</td></tr>
+              <tr class="border-b border-stone-100"><td class="py-2.5 pr-4 font-medium">Blue/Green <span lang="zh" class="text-stone-400 text-xs">青</span></td><td class="py-2.5 pr-4">Spring, growth, scholarship</td><td class="py-2.5">Scholars, lower-ranking officials</td></tr>
+              <tr class="border-b border-stone-100"><td class="py-2.5 pr-4 font-medium">White <span lang="zh" class="text-stone-400 text-xs">白</span></td><td class="py-2.5 pr-4">Mourning, purity, plainness</td><td class="py-2.5">Funerals, commoners' daily wear</td></tr>
+              <tr><td class="py-2.5 pr-4 font-medium">Black <span lang="zh" class="text-stone-400 text-xs">黑</span></td><td class="py-2.5 pr-4">Water element, authority, heaven</td><td class="py-2.5">Formal ritual garments, Han dynasty favored</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>Fabric patterns carried meaning too: <strong>dragons</strong> (<span lang="zh">龙</span>, lóng) for imperial authority, <strong>phoenixes</strong> (<span lang="zh">凤</span>, fèng) for empresses and brides, <strong>clouds</strong> (<span lang="zh">云</span>, yún) for good fortune, and the <strong>Twelve Symbols of Sovereignty</strong> (<span lang="zh">十二章纹</span>) — a complete imperial iconography system reserved exclusively for the emperor's ritual robes.</p>
+      </div>
+
+      <!-- ===== HANFU REVIVAL ===== -->
+      <h2 id="revival" class="font-serif-sc text-2xl sm:text-3xl font-bold text-stone-900 mt-16 mb-6">The Hanfu Revival Movement (<span lang="zh">汉服运动</span>)</h2>
+
+      <div class="prose prose-stone max-w-none text-stone-600 leading-relaxed space-y-4">
+        <p>After the Qing Dynasty (1644–1912) imposed Manchu clothing styles and effectively ended daily hanfu wear among Han Chinese, the tradition largely disappeared from public life for over 300 years. The <strong>Hanfu Revival Movement</strong> (<span lang="zh">汉服运动</span>, Hànfú Yùndòng) began in the early 2000s when a small group of enthusiasts in China started researching, reconstructing, and publicly wearing hanfu.</p>
+
+        <p>What started as a niche cultural movement has exploded into mainstream culture:</p>
+
+        <div class="not-prose grid grid-cols-2 sm:grid-cols-4 gap-4 my-6">
+          <div class="text-center p-4 bg-stone-50 rounded-xl border border-stone-200">
+            <p class="text-2xl font-bold text-[#b5343a]">14B+</p>
+            <p class="text-xs text-stone-500 mt-1">RMB hanfu market value (2024)</p>
+          </div>
+          <div class="text-center p-4 bg-stone-50 rounded-xl border border-stone-200">
+            <p class="text-2xl font-bold text-[#b5343a]">6M+</p>
+            <p class="text-xs text-stone-500 mt-1">Active hanfu wearers in China</p>
+          </div>
+          <div class="text-center p-4 bg-stone-50 rounded-xl border border-stone-200">
+            <p class="text-2xl font-bold text-[#b5343a]">20B+</p>
+            <p class="text-xs text-stone-500 mt-1">Hanfu video views on TikTok/Douyin</p>
+          </div>
+          <div class="text-center p-4 bg-stone-50 rounded-xl border border-stone-200">
+            <p class="text-2xl font-bold text-[#b5343a]">50+</p>
+            <p class="text-xs text-stone-500 mt-1">Countries with hanfu societies</p>
+          </div>
+        </div>
+
+        <p>The revival is driven by young people — college students, young professionals, and creatives who see hanfu as a way to connect with their cultural heritage while expressing individual style. Social media platforms like Xiaohongshu (<span lang="zh">小红书</span>) and Douyin (<span lang="zh">抖音</span>) are flooded with hanfu content: styling tutorials, history lessons, shopping guides, and photoshoots at historic sites.</p>
+
+        <p>The movement has also gone global. Hanfu societies now exist in universities from Harvard to the University of Sydney. Annual events like <strong>Huafu Week</strong> (<span lang="zh">华服周</span>) and the <strong>Xitang Hanfu Culture Festival</strong> attract tens of thousands of participants. The Chinese government has embraced the movement as cultural soft power, with official events and state media coverage.</p>
+      </div>
+
+      <!-- ===== HANFU VS ===== -->
+      <h2 id="vs" class="font-serif-sc text-2xl sm:text-3xl font-bold text-stone-900 mt-16 mb-6">Hanfu vs Kimono vs Hanbok: Quick Comparison</h2>
+
       <div class="overflow-x-auto">
-        <table class="w-full text-sm border-collapse">
-          <thead><tr class="border-b border-stone-200 text-left"><th class="py-3 pr-4 font-semibold text-stone-800">City</th><th class="py-3 pr-4 font-semibold text-stone-800">Nearest Airport</th><th class="py-3 pr-4 font-semibold text-stone-800">From Airport to City</th><th class="py-3 font-semibold text-stone-800">Best Train Connections</th></tr></thead>
+        <table class="w-full text-sm border-collapse min-w-[600px]">
+          <thead><tr class="border-b-2 border-stone-300 text-left"><th class="py-3 pr-4 font-semibold text-stone-800 text-xs tracking-wider uppercase">Feature</th><th class="py-3 pr-4 font-semibold text-stone-800">Hanfu <span lang="zh" class="font-normal text-stone-400 text-[10px]">汉服</span></th><th class="py-3 pr-4 font-semibold text-stone-800">Kimono <span lang="ja" class="font-normal text-stone-400 text-[10px]">着物</span></th><th class="py-3 font-semibold text-stone-800">Hanbok <span lang="ko" class="font-normal text-stone-400 text-[10px]">한복</span></th></tr></thead>
           <tbody>
-            <tr class="border-b border-stone-100"><td class="py-2.5 pr-4 font-medium">Xi''an</td><td class="py-2.5 pr-4">Xi''an Xianyang (XIY)</td><td class="py-2.5 pr-4">Metro Line 14, 40 min, 8 RMB</td><td class="py-2.5">4.5 hrs from Beijing, 3 hrs from Chengdu</td></tr>
-            <tr class="border-b border-stone-100"><td class="py-2.5 pr-4 font-medium">Luoyang</td><td class="py-2.5 pr-4">Luoyang Beijiao (LYA)</td><td class="py-2.5 pr-4">Airport bus, 40 min, 15 RMB</td><td class="py-2.5">1.5 hrs from Xi''an by high-speed train</td></tr>
-            <tr class="border-b border-stone-100"><td class="py-2.5 pr-4 font-medium">Chengdu</td><td class="py-2.5 pr-4">Chengdu Tianfu (TFU)</td><td class="py-2.5 pr-4">Metro Line 18, 50 min, 10 RMB</td><td class="py-2.5">3 hrs from Xi''an, 9 hrs from Kunming</td></tr>
-            <tr class="border-b border-stone-100"><td class="py-2.5 pr-4 font-medium">Hangzhou</td><td class="py-2.5 pr-4">Hangzhou Xiaoshan (HGH)</td><td class="py-2.5 pr-4">Metro Line 1/7, 50 min, 8 RMB</td><td class="py-2.5">45 min from Shanghai, 1.5 hrs from Nanjing</td></tr>
-            <tr><td class="py-2.5 pr-4 font-medium">Nanjing</td><td class="py-2.5 pr-4">Nanjing Lukou (NKG)</td><td class="py-2.5 pr-4">Metro Line S1, 40 min, 7 RMB</td><td class="py-2.5">1 hr from Shanghai, 1.5 hrs from Hangzhou</td></tr>
+            <tr class="bg-stone-50/50"><td class="py-3 pr-4 font-medium text-stone-700 text-xs">Origin</td><td class="py-3 pr-4 text-xs">China, c. 2700 BC</td><td class="py-3 pr-4 text-xs">Japan, c. 8th century AD (derived from Tang hanfu)</td><td class="py-3 text-xs">Korea, Three Kingdoms period (derived from Tang hanfu)</td></tr>
+            <tr><td class="py-3 pr-4 font-medium text-stone-700 text-xs">Collar</td><td class="py-3 pr-4 text-xs">Crossed, right-over-left (右衽)</td><td class="py-3 pr-4 text-xs">Crossed, left-over-right (for the living)</td><td class="py-3 text-xs">V-neck or crossed; jeogori jacket has slim collar</td></tr>
+            <tr class="bg-stone-50/50"><td class="py-3 pr-4 font-medium text-stone-700 text-xs">Closure</td><td class="py-3 pr-4 text-xs">Fabric sash ties tied at the side</td><td class="py-3 pr-4 text-xs">Wide obi sash tied in a large bow at the back</td><td class="py-3 text-xs">Ribbon ties (goreum) on the jacket; skirt has waistband</td></tr>
+            <tr><td class="py-3 pr-4 font-medium text-stone-700 text-xs">Sleeves</td><td class="py-3 pr-4 text-xs">Wide, flowing, open at the wrist</td><td class="py-3 pr-4 text-xs">Rectangular, hanging, sewn partially closed</td><td class="py-3 text-xs">Slim, straight; jacket sleeves are fitted</td></tr>
+            <tr class="bg-stone-50/50"><td class="py-3 pr-4 font-medium text-stone-700 text-xs">Women's Silhouette</td><td class="py-3 pr-4 text-xs">Jacket + floor-length skirt (ruqun); varies by dynasty</td><td class="py-3 pr-4 text-xs">One-piece wrapped robe, straight cylindrical shape</td><td class="py-3 text-xs">Short cropped jacket + very high-waisted voluminous skirt</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="text-xs text-stone-400 mt-3">All airports listed have international connections. If arriving internationally, Beijing (PEK/PKX), Shanghai (PVG), and Guangzhou (CAN) are the main gateways with the most flight options.</p>
+      <p class="text-xs text-stone-400 mt-3">All three share common origins in Chinese Tang-dynasty clothing, but evolved independently over 1,000+ years. See our <a href="/compare" class="text-[#b5343a] hover:underline">full interactive comparison tool</a> for more depth.</p>
 
-      <!-- ===== WHERE TO STAY ===== -->
-      <h2 id="stay" class="font-serif-sc text-2xl font-bold text-stone-900 mt-16 mb-4">Where to Stay</h2>
-      <p class="text-stone-600 text-sm leading-relaxed mb-4">For a Hanfu-focused trip, staying within walking distance of the key Hanfu districts saves time on costume changes and transport.</p>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
-          <h4 class="font-semibold text-stone-900 text-sm">Xi''an: Near South Gate (Yongningmen)</h4>
-          <p class="text-xs text-stone-500 mt-1.5 leading-relaxed">Hotels within 10-minute walk of the city wall South Gate. The Tang Dynasty Art Garden Hotel and nearby boutique hotels put you steps from Hanfu shops. District: Beilin. Budget: 250-500 RMB/night for a good mid-range hotel.</p>
+      <!-- ===== HOW TO WEAR ===== -->
+      <h2 id="how-to-wear" class="font-serif-sc text-2xl sm:text-3xl font-bold text-stone-900 mt-16 mb-6">How to Wear Hanfu</h2>
+
+      <div class="prose prose-stone max-w-none text-stone-600 leading-relaxed space-y-4">
+        <p>Wearing hanfu is more involved than modern clothing — but that's part of the experience. Here's the basic sequence for a women's Ming-style aoqun (the most common entry point for beginners):</p>
+
+        <div class="not-prose space-y-4 my-4">
+          <div class="flex gap-4">
+            <div class="w-8 h-8 rounded-full bg-[#b5343a] text-white flex items-center justify-center flex-shrink-0 text-xs font-bold">1</div>
+            <div><h4 class="font-semibold text-stone-900">Inner Layer — <span lang="zh">中衣</span> (Zhōngyī)</h4><p class="text-sm text-stone-500 mt-1 leading-relaxed">Start with a simple white cross-collar inner garment, tied at the side with fabric ribbons. This is the base layer that protects the outer garments from skin contact. It's similar across most hanfu styles.</p></div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-8 h-8 rounded-full bg-[#b5343a] text-white flex items-center justify-center flex-shrink-0 text-xs font-bold">2</div>
+            <div><h4 class="font-semibold text-stone-900">Skirt — <span lang="zh">马面裙</span> (Mǎmiànqún)</h4><p class="text-sm text-stone-500 mt-1 leading-relaxed">The mamian ('horse-face') skirt goes on next. It's a wrap skirt — position the flat front panel, wrap the ties around your waist, and secure at the side or front. The flat panels go at front and back; the pleated sides allow movement. The skirt should sit at your natural waist.</p></div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-8 h-8 rounded-full bg-[#b5343a] text-white flex items-center justify-center flex-shrink-0 text-xs font-bold">3</div>
+            <div><h4 class="font-semibold text-stone-900">Jacket — <span lang="zh">袄</span> (Ǎo) or <span lang="zh">衫</span> (Shān)</h4><p class="text-sm text-stone-500 mt-1 leading-relaxed">The upper garment goes over the inner layer. Wrap right side over left (右衽 — this is critical; left-over-right is for the deceased in Chinese tradition). Tie the side ribbons. The jacket should cover the waistband of the skirt.</p></div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-8 h-8 rounded-full bg-[#b5343a] text-white flex items-center justify-center flex-shrink-0 text-xs font-bold">4</div>
+            <div><h4 class="font-semibold text-stone-900">Optional: Outer Robe — <span lang="zh">比甲</span> (Bǐjiǎ) or <span lang="zh">披风</span> (Pīfēng)</h4><p class="text-sm text-stone-500 mt-1 leading-relaxed">For formal occasions or colder weather, add an outer layer. The bijia is a sleeveless long vest; the pifeng is a wide-sleeved outer coat. Both are worn open at the front to show the layers beneath.</p></div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-8 h-8 rounded-full bg-[#b5343a] text-white flex items-center justify-center flex-shrink-0 text-xs font-bold">5</div>
+            <div><h4 class="font-semibold text-stone-900">Accessories Complete the Look</h4><p class="text-sm text-stone-500 mt-1 leading-relaxed">Hairpins (<span lang="zh">发簪</span>, fàzān), embroidered shoes, a jade pendant, and perhaps a round silk fan. Accessories are not optional extras — they're part of the complete hanfu aesthetic. See our <a href="/accessories" class="text-[#b5343a] hover:underline">Accessories guide</a>.</p></div>
+          </div>
         </div>
-        <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
-          <h4 class="font-semibold text-stone-900 text-sm">Luoyang: Old Town District</h4>
-          <p class="text-xs text-stone-500 mt-1.5 leading-relaxed">Stay in Luoyang Old Town (老城) near Lijing Gate. Walking distance to costume rentals and the atmospheric old streets. Budget: 150-300 RMB/night.</p>
-        </div>
-        <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
-          <h4 class="font-semibold text-stone-900 text-sm">Chengdu: Wuhou or Jinli Area</h4>
-          <p class="text-xs text-stone-500 mt-1.5 leading-relaxed">The area around Wuhou Shrine and Jinli Ancient Street has a high concentration of Hanfu shops and teahouses. Budget: 200-400 RMB/night.</p>
-        </div>
-        <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
-          <h4 class="font-semibold text-stone-900 text-sm">Hangzhou: West Lake North Shore</h4>
-          <p class="text-xs text-stone-500 mt-1.5 leading-relaxed">Hotels along Beishan Road face West Lake directly — wake up to the view you''ll photograph in Hanfu. 10-minute taxi to the Silk Museum. Budget: 300-600 RMB/night.</p>
-        </div>
+
+        <p>For more detailed instructions — including how to wear Tang-style qixiong ruqun (chest-high skirt) and men's styles — see our complete <a href="/how-to-wear" class="text-[#b5343a] hover:underline">How to Wear Chinese Traditional Clothing guide</a>.</p>
       </div>
 
-      <!-- ===== COST ===== -->
-      <h2 id="cost" class="font-serif-sc text-2xl font-bold text-stone-900 mt-16 mb-4">Cost Breakdown for a Hanfu Day</h2>
-      <div class="overflow-x-auto">
-        <table class="w-full text-sm border-collapse">
-          <thead><tr class="border-b border-stone-200 text-left"><th class="py-3 pr-4 font-semibold text-stone-800">Item</th><th class="py-3 pr-4 font-semibold text-stone-800">Basic</th><th class="py-3 pr-4 font-semibold text-stone-800">Standard</th><th class="py-3 font-semibold text-stone-800">Premium</th></tr></thead>
-          <tbody>
-            <tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Costume rental (2-4 hrs)</td><td class="py-2.5 pr-4">100-150 RMB</td><td class="py-2.5 pr-4">200-300 RMB</td><td class="py-2.5">400+ RMB</td></tr>
-            <tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Basic hairstyling</td><td class="py-2.5 pr-4">Included</td><td class="py-2.5 pr-4">Included</td><td class="py-2.5">Included</td></tr>
-            <tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Professional makeup</td><td class="py-2.5 pr-4">DIY only</td><td class="py-2.5 pr-4">+50-100 RMB</td><td class="py-2.5">+150-200 RMB</td></tr>
-            <tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Accessories (fan, umbrella)</td><td class="py-2.5 pr-4">+20-40 RMB</td><td class="py-2.5 pr-4">Included</td><td class="py-2.5">Full set included</td></tr>
-            <tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Professional photographer</td><td class="py-2.5 pr-4">N/A (selfie)</td><td class="py-2.5 pr-4">+500-800 RMB</td><td class="py-2.5">+1,000-1,500 RMB</td></tr>
-            <tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Attraction entry (e.g., city wall)</td><td class="py-2.5 pr-4">54 RMB</td><td class="py-2.5 pr-4">54 RMB</td><td class="py-2.5">54 RMB</td></tr>
-            <tr><td class="py-2.5 pr-4 font-semibold">Total for the day</td><td class="py-2.5 pr-4 font-semibold">170-250 RMB</td><td class="py-2.5 pr-4 font-semibold">800-1,250 RMB</td><td class="py-2.5 font-semibold">1,600-2,350 RMB</td></tr>
-          </tbody>
-        </table>
+      <!-- ===== FAQ ===== -->
+      <h2 id="faq" class="font-serif-sc text-2xl sm:text-3xl font-bold text-stone-900 mt-16 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-3">
+        {hanfuFAQs.map((faq, i) => (
+          <details class="group bg-white rounded-xl border border-stone-200 overflow-hidden">
+            <summary class="flex items-center justify-between p-5 cursor-pointer hover:bg-stone-50 transition-colors list-none">
+              <span class="text-sm font-medium text-stone-800 pr-4">{faq.q}</span>
+              <svg class="w-4 h-4 text-stone-400 flex-shrink-0 transition-transform group-open:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="px-5 pb-5">
+              <p class="text-sm text-stone-600 leading-relaxed">{faq.a}</p>
+            </div>
+          </details>
+        ))}
       </div>
 
-      <!-- ===== STEP BY STEP ===== -->
-      <h2 id="experience" class="font-serif-sc text-2xl font-bold text-stone-900 mt-16 mb-4">What to Expect: Step-by-Step</h2>
-      <div class="space-y-6">
-        <div class="flex gap-4">
-          <div class="w-8 h-8 rounded-full bg-[#b5343a] text-white flex items-center justify-center flex-shrink-0 text-xs font-bold">1</div>
-          <div><h4 class="font-semibold text-stone-900">Choose Your Shop</h4><p class="text-sm text-stone-500 mt-1 leading-relaxed">Walk-ins welcome at most Hanfu shops. For discounts, book via Meituan (美团) or Xiaohongshu (小红书) — typically 20-30% off walk-in prices. Search "汉服体验" (Hanfu experience) + the city name. Look at recent customer photos to judge quality.</p></div>
-        </div>
-        <div class="flex gap-4">
-          <div class="w-8 h-8 rounded-full bg-[#b5343a] text-white flex items-center justify-center flex-shrink-0 text-xs font-bold">2</div>
-          <div><h4 class="font-semibold text-stone-900">Pick Your Dynasty & Style</h4><p class="text-sm text-stone-500 mt-1 leading-relaxed">Shops typically stock 50-200 sets organized by dynasty. Tang dynasty: bold colors, chest-high ruqun (most photogenic). Song dynasty: elegant restraint, narrow sleeves. Ming dynasty: regal structure, stand-collar aoqun. Tell the staff which look you want, or show a reference photo. Allow 15-20 minutes for selection and fitting.</p></div>
-        </div>
-        <div class="flex gap-4">
-          <div class="w-8 h-8 rounded-full bg-[#b5343a] text-white flex items-center justify-center flex-shrink-0 text-xs font-bold">3</div>
-          <div><h4 class="font-semibold text-stone-900">Hair & Makeup (20-30 min)</h4><p class="text-sm text-stone-500 mt-1 leading-relaxed">Stylists create dynasty-appropriate looks using traditional hairpins, flowers, and hairpieces. Tang styles are elaborate with high buns and floral ornaments. Song styles are simpler with low buns. Communicate any preferences early — once they start pinning, changes take time.</p></div>
-        </div>
-        <div class="flex gap-4">
-          <div class="w-8 h-8 rounded-full bg-[#b5343a] text-white flex items-center justify-center flex-shrink-0 text-xs font-bold">4</div>
-          <div><h4 class="font-semibold text-stone-900">Head Out & Shoot</h4><p class="text-sm text-stone-500 mt-1 leading-relaxed">Rental periods are usually 2-4 hours. Leave a deposit (200-500 RMB, refundable) and an ID. Walk to your chosen location. If you booked a photographer, they''ll guide you to the best spots and poses. If self-shooting, golden hour (1 hour before sunset) is the best light. The city wall closes at different times by season — check before heading out.</p></div>
-        </div>
-        <div class="flex gap-4">
-          <div class="w-8 h-8 rounded-full bg-[#b5343a] text-white flex items-center justify-center flex-shrink-0 text-xs font-bold">5</div>
-          <div><h4 class="font-semibold text-stone-900">Return & Get Your Photos</h4><p class="text-sm text-stone-500 mt-1 leading-relaxed">Return the costume by the agreed time. Most shops send digital photos within 24-48 hours via WeChat. Ask for unedited RAW files if you want to edit yourself — some photographers charge extra for the full set.</p></div>
-        </div>
+      <!-- ===== CTA ===== -->
+      <div class="mt-16 p-6 bg-[#b5343a]/5 border border-[#b5343a]/20 rounded-xl">
+        <p class="text-sm text-stone-700"><strong>Want to experience Hanfu in person?</strong> See our <a href="/plan-trip" class="text-[#b5343a] underline font-medium">Plan Your Trip guide</a> for the best cities, rental shops, costs, and step-by-step tips for your first Hanfu photoshoot in China. Or browse our <a href="/compare" class="text-[#b5343a] underline font-medium">Style Comparisons</a> to see how Hanfu stacks up against Qipao, Tang Suit, and other traditional wear.</p>
       </div>
 
-      <div class="mt-12 p-6 bg-[#b5343a]/5 border border-[#b5343a]/20 rounded-xl">
-        <p class="text-sm text-stone-700"><strong>Ready to plan your Hanfu trip?</strong> Check our <a href="/plan-trip" class="text-[#b5343a] underline font-medium">Plan Your Trip guide</a> for visa info, itineraries, and full budget breakdowns.</p>
+      <!-- Sources -->
+      <div class="mt-12 pt-8 border-t border-stone-200">
+        <h3 class="font-serif-sc text-lg font-semibold text-stone-900 mb-3">Sources & Further Reading</h3>
+        <ul class="space-y-1.5 text-sm text-stone-500">
+          <li>· Yang, Shaorong. <em>Chinese Clothing: Costumes, Adornments and Culture</em>. Long River Press, 2004.</li>
+          <li>· Hua, Mei. <em>History of Chinese Clothing</em> (<span lang="zh">中国服装史</span>). Tianjin People's Fine Arts Publishing House, 1999.</li>
+          <li>· <a href="https://en.dpm.org.cn/" class="text-[#b5343a] hover:underline" target="_blank" rel="noopener">The Palace Museum</a> (<span lang="zh">故宫博物院</span>) — original imperial robes and textile collections.</li>
+          <li>· <a href="https://www.chinasilkmuseum.com/" class="text-[#b5343a] hover:underline" target="_blank" rel="noopener">China National Silk Museum</a> (<span lang="zh">中国丝绸博物馆</span>) — world's largest silk and textile museum, Hangzhou.</li>
+          <li>· <a href="https://en.chinaculture.org/" class="text-[#b5343a] hover:underline" target="_blank" rel="noopener">China Culture.org</a> — Ministry of Culture official resource.</li>
+          <li>· Finnane, Antonia. <em>Changing Clothes in China: Fashion, History, Nation</em>. Columbia University Press, 2008.</li>
+        </ul>
       </div>
+
+      <div class="mt-8 p-5 bg-stone-50 border border-stone-200 rounded-xl text-center">
+        <p class="text-xs text-stone-500">Researched & written by Li Wei, MA in Chinese Art History · Fact-checked against academic and museum sources · Published August 6, 2026 · <a href="/about" class="text-[#b5343a] hover:underline">About the author</a></p>
+      </div>
+
     </div>
   </section>
 
-      <div class="mt-12 pt-8 border-t border-stone-200 text-center">
-        <h2 class="font-serif-sc text-lg font-semibold text-stone-900 mb-3">Sources & Further Reading</h2>
-        <ul class="space-y-1 text-sm text-stone-500 inline-block text-left">
-          <li>&bull; <a href="https://en.chinaculture.org/" class="text-[#b5343a] hover:underline" target="_blank" rel="noopener">China Culture.org</a> — Ministry of Culture official resource on Chinese heritage and traditions</li>
-          <li>&bull; <a href="https://en.dpm.org.cn/" class="text-[#b5343a] hover:underline" target="_blank" rel="noopener">The Palace Museum</a> (Forbidden City, Beijing) — original imperial robes and textile collections</li>
-          <li>&bull; <a href="https://www.chinasilkmuseum.com/" class="text-[#b5343a] hover:underline" target="_blank" rel="noopener">China National Silk Museum</a> (Hangzhou) — world''s largest silk and textile museum</li>
-        </ul>
-      </div>
+  <script type="application/ld+json" is:inline={schemaHanfuFAQ}></script>
 </BaseLayout>

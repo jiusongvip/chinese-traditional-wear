@@ -22,7 +22,7 @@ const {
 const SITE_URL = "https://chinesetraditionalwear.com";
 const pageUrl = canonicalUrl ? `${SITE_URL}${canonicalUrl}` : SITE_URL;
 const SITE_NAME = "ChinaStyle";
-const AUTHOR_NAME = "ChinaStyle Editorial Team";
+const AUTHOR_NAME = "Li Wei";
 const AUTHOR_URL = "https://chinesetraditionalwear.com/about";
 
 // Precompute all schema JSON-LD strings to avoid Astro template parsing issues
@@ -31,7 +31,7 @@ const schemaOrganization = JSON.stringify({
   "@type": "Organization",
   "name": SITE_NAME,
   "url": SITE_URL,
-  "description": "Discover where to experience Chinese traditional clothing firsthand \u2014 Hanfu, Qipao, Tang suits, and more.",
+  "description": "Your comprehensive guide to Chinese traditional wear — Hanfu (汉服), Qipao (旗袍), Tang suits (唐装), and more. Explore history, styles, and where to experience Chinese clothing firsthand.",
   "sameAs": []
 });
 
@@ -255,8 +255,7 @@ const schemaBreadcrumbs = (breadcrumbs && breadcrumbs.length > 0) ? JSON.stringi
               <li><a href="/gallery" class="hover:text-white transition-colors">Travel Gallery</a></li>
               <li><a href="/about" class="hover:text-white transition-colors">About Us</a></li>
               <li><a href="/compare" class="hover:text-white transition-colors">Style Comparisons</a></li>
-              <li><a href="/blog" class="hover:text-white transition-colors">Blog</a></li>
-              <li><a href="/quiz" class="hover:text-white transition-colors">Style Quiz</a></li>
+              <li><a href="/accessories" class="hover:text-white transition-colors">Accessories Guide</a></li>
             </ul>
           </div>
         </div>

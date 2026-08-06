@@ -1,51 +1,261 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const tangFAQ = [
+  { q: "Is the Tang suit from the Tang Dynasty?", a: "No — this is the most common misconception. The Tang suit (唐装, Tángzhuāng) has nothing to do with the Tang Dynasty (618–907 AD). It's a modern evolution of the Qing-dynasty Magua (马褂), a Manchu riding jacket. Overseas Chinese communities in the 20th century called Chinese-style clothing 'Tang clothes' (referring to 'Tang' as a general term for Chinese identity, from 'Tangren Jie' / Chinatown). The name stuck, and today's Tang suit is a 20th-21st century garment, not an ancient one." },
+  { q: "What's the difference between a Tang suit and a Zhongshan suit?", a: "Tang suit: festive, decorative, silk brocade, knotted frog buttons, stand-up collar — worn at celebrations and cultural events. Zhongshan suit (中山装): austere, military-inspired, wool/cotton, regular buttons, turned-down collar — worn at political and formal state occasions. Tang suit is celebratory; Zhongshan suit is institutional. See our <a href='/zhongshan' class='text-[#b5343a] hover:underline'>Zhongshan suit guide</a> for the full comparison." },
+  { q: "When should I wear a Tang suit?", a: "Chinese New Year (春节) is the peak season — families across China and diaspora communities wear Tang suits for reunion dinners and temple visits. Other appropriate occasions: weddings (as a groom or guest), Mid-Autumn Festival, business openings, cultural performances, and as a distinctive dinner jacket at international events. For travelers, a custom Tang suit makes an extraordinary, wearable souvenir. It pairs well with dark jeans for casual settings or dress trousers for semi-formal events." },
+  { q: "How much does a custom Tang suit cost in China?", a: "In Beijing: 200-500 RMB for a good-quality silk Tang suit jacket from hutong tailors (2-4 day turnaround). Higher-end silk brocade with hand-embroidery: 500-1,200 RMB. Off-the-rack: 50-150 RMB at markets like Silk Street (秀水街). In Hong Kong: 800-2,000 HKD. Online: 30-100 USD from specialty retailers. The price depends on fabric quality (silk vs. polyester), embroidery complexity, and whether it's custom-tailored or ready-made." },
+];
+
+const schemaTangFAQ = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": tangFAQ.map(faq => ({
+    "@type": "Question",
+    "name": faq.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.a.replace(/<[^>]*>/g, '')
+    }
+  }))
+});
 ---
 
 <BaseLayout
-  title="Tang Suit Guide: Beijing Tailors & Wear | ChinaStyle"
-  description="Find authentic Tang suits in Beijing's hutongs. Complete guide to mandarin-collar jackets, frog buttons, and Chinese festive menswear for travelers."
+  title="Tang Suit (唐装): Complete Guide to Chinese Festive Jackets — History, Style & Where to Buy | ChinaStyle"
+  description="Everything about the Tang suit (唐装, Tángzhuāng) — the iconic Chinese mandarin-collar jacket. History from Qing Magua to 2001 APEC, design elements (mandarin collar, frog buttons, silk brocade), when and how to wear, best Beijing tailors, and Chinese New Year styling. With Chinese characters and pinyin."
   ogImage="/images/og-tang-suit.webp"
   canonicalUrl="/tang-suit"
-  articleDate="2026-08-03"
+  articleDate="2026-08-06"
   breadcrumbs={[{ name: "Home", url: "/" }, { name: "Tang Suit", url: "/tang-suit/" }]}>
   <section class="pt-24 pb-16">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <span class="text-xs font-medium text-[#b5343a] tracking-[0.15em] uppercase">ChinaStyle Travel Guide</span>
+
+      <!-- Header -->
+      <span class="text-xs font-medium text-[#b5343a] tracking-[0.15em] uppercase">Traditional Chinese Clothing</span>
       <h1 class="font-serif-sc text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-stone-900 mt-3">
-        The Tang Suit: China''s Festive Jacket
+        The Tang Suit (<span lang="zh">唐装</span>): China's Festive Mandarin Jacket
       </h1>
       <p class="mt-6 text-lg text-stone-500 leading-relaxed max-w-2xl">
-        Despite its name, the Tang suit (tangzhuang) isn''t from the Tang dynasty — it''s a modern evolution of Qing-era Magua riding jackets, popularized globally when world leaders wore them at the 2001 APEC summit. Today, it''s China''s go-to festive menswear, and Beijing''s hutong tailors are the best place to get one made.
+        It's not from the Tang Dynasty. It's not an ancient garment. But the Tang suit — with its mandarin collar, knotted frog buttons, and auspicious silk brocade — has become the uniform of Chinese celebration, worn by everyone from Beijing grandfathers at New Year dinner to world leaders at the 2001 APEC summit. This is the full story.
       </p>
 
-      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="overflow-hidden rounded-xl bg-stone-100 aspect-[4/3]">
-          <img src="/images/cat-tang-suit.webp" alt="Tang suit: mandarin collar & frog buttons" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" loading="lazy" width="1536" height="1024" />
+      <!-- Quick Jump -->
+      <div class="mt-8 flex flex-wrap gap-2">
+        <a href="#what-is-tang" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">What Is Tang Suit?</a>
+        <a href="#history" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">History & Origin</a>
+        <a href="#design" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">Design Elements</a>
+        <a href="#how-to-wear" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">How to Wear</a>
+        <a href="#where-to-buy" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">Where to Buy</a>
+        <a href="#symbolism" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">Patterns & Symbols</a>
+        <a href="#faq" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">FAQ</a>
+      </div>
+
+      <!-- ===== WHAT IS TANG SUIT ===== -->
+      <h2 id="what-is-tang" class="font-serif-sc text-2xl sm:text-3xl font-bold text-stone-900 mt-16 mb-6">What Is a Tang Suit (<span lang="zh">唐装</span>)?</h2>
+      
+      <div class="prose prose-stone max-w-none text-stone-600 leading-relaxed space-y-4">
+        <p>Let's clear up the biggest misconception first: <strong>the Tang suit has nothing to do with the Tang Dynasty</strong> (618–907 AD). The name is a 20th-century invention — overseas Chinese communities referred to themselves as "Tang people" (<span lang="zh">唐人</span>, Tángrén), and their clothing as "Tang clothes." Chinatowns worldwide are called <em>Tangren Jie</em> (<span lang="zh">唐人街</span>, "Tang people street"). The "Tang" in Tang suit refers to Chinese identity, not the historical dynasty.</p>
+
+        <p>The garment itself descends from the <strong>Magua</strong> (<span lang="zh">马褂</span>, Mǎguà) — a Manchu riding jacket worn during the Qing Dynasty (1644–1912). Manchu horsemen needed a jacket that was short enough to ride in, warm enough for northern winters, and formal enough for court. The result was a straight-cut, hip-length jacket with a stand-up collar and front-button closure — the template for today's Tang suit.</p>
+
+        <div class="not-prose grid grid-cols-1 sm:grid-cols-3 gap-4 my-6">
+          <div class="bg-stone-50 border border-stone-200 rounded-xl p-5 text-center">
+            <p class="text-2xl font-bold text-[#b5343a]">Mandarin Collar</p>
+            <p class="text-xs text-stone-500 mt-1.5">Stand-up collar (立领) — the Tang suit's most recognizable feature, framing the face and creating a dignified profile</p>
+          </div>
+          <div class="bg-stone-50 border border-stone-200 rounded-xl p-5 text-center">
+            <p class="text-2xl font-bold text-[#b5343a]">Frog Buttons</p>
+            <p class="text-xs text-stone-500 mt-1.5">Hand-tied knotted fasteners (盘扣, pánkòu) — each button is a miniature work of silk-cord art</p>
+          </div>
+          <div class="bg-stone-50 border border-stone-200 rounded-xl p-5 text-center">
+            <p class="text-2xl font-bold text-[#b5343a]">Silk Brocade</p>
+            <p class="text-xs text-stone-500 mt-1.5">Auspicious patterns woven in gold and silver thread — dragons, clouds, longevity characters</p>
+          </div>
         </div>
-        <div class="overflow-hidden rounded-xl bg-stone-100 aspect-[4/3]">
-          <img src="/images/gallery-tang-beijing.webp" alt="Beijing hutong tailor at work" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" loading="lazy" width="1024" height="1536" />
+
+        <p>Today's Tang suit is a 20th-21st century creation that blends the Qing Magua silhouette with modern tailoring, Western suit-making techniques, and contemporary fabric technology. It occupies a unique position in Chinese fashion: neither ancient nor Western, neither fully formal nor fully casual — a versatile jacket that bridges tradition and modernity.</p>
+      </div>
+
+      <!-- ===== HISTORY ===== -->
+      <h2 id="history" class="font-serif-sc text-2xl sm:text-3xl font-bold text-stone-900 mt-16 mb-6">From Manchu Cavalry to Global Stage: The Tang Suit's Journey</h2>
+
+      <div class="space-y-5">
+        <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+          <span class="text-xs font-medium text-[#b5343a] tracking-wider uppercase">1644–1912 · Qing Dynasty Origins</span>
+          <h3 class="font-semibold text-stone-900 mt-1">The Magua — Manchu Riding Jacket</h3>
+          <p class="text-sm text-stone-600 mt-2 leading-relaxed">The Magua was practical military wear for Manchu cavalry: short enough to sit on a horse, warm, dignified. When the Manchus conquered China and established the Qing Dynasty in 1644, the Magua was absorbed into court dress. By the 18th century, it was worn by all Qing officials as formal attire. The yellow Magua (<span lang="zh">黄马褂</span>) was an imperial gift — receiving one from the emperor was one of the highest honors a Qing subject could receive. The basic silhouette — stand-up collar, front opening, straight cut — was established in this period and remains the Tang suit's foundation today.</p>
+        </div>
+        <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+          <span class="text-xs font-medium text-[#b5343a] tracking-wider uppercase">1912–1949 · Republican Era Evolution</span>
+          <h3 class="font-semibold text-stone-900 mt-1">From Magua to Modern Jacket</h3>
+          <p class="text-sm text-stone-600 mt-2 leading-relaxed">After the Qing fell, the Magua didn't disappear — it evolved. Shanghai tailors refined the cut, improved the fit, and introduced better fabrics. The garment became a standard piece in Chinese men's wardrobes alongside Western suits and the rising <a href="/zhongshan" class="text-[#b5343a] hover:underline">Zhongshan suit (中山装)</a>. Overseas Chinese communities — particularly in Southeast Asia — maintained the tradition of wearing Magua-style jackets for festivals and formal occasions, preserving the style through decades when it declined on the mainland.</p>
+        </div>
+        <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+          <span class="text-xs font-medium text-[#b5343a] tracking-wider uppercase">2001 · The APEC Moment</span>
+          <h3 class="font-semibold text-stone-900 mt-1">World Leaders in Tang Suits — The Global Debut</h3>
+          <p class="text-sm text-stone-600 mt-2 leading-relaxed">The Tang suit's modern identity was cemented on October 21, 2001, when 20 world leaders — including George W. Bush, Vladimir Putin, and Junichiro Koizumi — posed for the APEC summit 'family photo' in Shanghai, all wearing matching Tang suits. The image went global. The suits were designed by Shanghai tailors: deep blue silk brocade with circular longevity (<span lang="zh">寿</span>) patterns and traditional frog buttons. The moment transformed the Tang suit from an aging diaspora tradition into a globally recognized symbol of Chinese culture. Sales exploded overnight in China and Chinatowns worldwide.</p>
+        </div>
+        <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+          <span class="text-xs font-medium text-[#b5343a] tracking-wider uppercase">2001–Present · The Modern Tang Suit</span>
+          <h3 class="font-semibold text-stone-900 mt-1">Festive Essential &amp; Fashion Statement</h3>
+          <p class="text-sm text-stone-600 mt-2 leading-relaxed">Post-APEC, the Tang suit became the default Chinese festive menswear. Chinese New Year now sees millions of Tang suits — from grandfathers in traditional silk brocade to young men in slim-fit linen versions. Designers have reinterpreted it: shorter cuts, bolder colors, mixed fabrics, casual versions in cotton and denim. Women's versions have emerged — fitted Tang suit jackets with Mandarin collars paired with everything from qipaos to jeans. The garment has completed its journey from Manchu cavalry to Chinese New Year staple to global fashion influence.</p>
         </div>
       </div>
 
-      <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-10 mb-4">What Defines a Tang Suit</h2>
-      <p class="text-stone-600 leading-relaxed">The mandarin (stand-up) collar, front-opening with knotted frog buttons (pan kou), and a straight, boxy cut that sits comfortably on most body types. Traditional versions use silk brocade with auspicious patterns — dragons, clouds, longevity characters. Modern versions come in linen, cotton, and wool blends for everyday wear. Colors carry meaning: red for celebrations and weddings, black with gold for formal occasions, navy for business settings. A well-made Tang suit jacket costs 200-500 RMB at Beijing tailor shops and takes 2-4 days to complete.</p>
+      <!-- ===== DESIGN ELEMENTS ===== -->
+      <h2 id="design" class="font-serif-sc text-2xl sm:text-3xl font-bold text-stone-900 mt-16 mb-2">Design Elements: Reading a Tang Suit</h2>
+      <p class="text-stone-500 mb-6">Every detail of a Tang suit carries meaning. Understanding these elements helps you choose — and appreciate — the right jacket:</p>
 
-      <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-10 mb-4">Where to Get One in Beijing</h2>
-      <p class="text-stone-600 leading-relaxed">The best Tang suit tailors cluster in Beijing''s remaining hutong neighborhoods. Nanluoguxiang has tourist-friendly shops with English-speaking staff and quicker turnaround. For a more authentic experience, head to the tailor shops near Dashilar and Qianmen — family-run operations that have been cutting silk for generations. Prices are 20-30% lower in these older neighborhoods, and the craftsmanship is often superior. Pro tip: bring a photo of the style you want. Most tailors can replicate any Tang suit design from a reference image.</p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse">
+          <thead><tr class="border-b-2 border-stone-300 text-left"><th class="py-3 pr-4 font-semibold text-stone-800 text-xs tracking-wider uppercase w-[100px]">Element</th><th class="py-3 pr-4 font-semibold text-stone-800 text-xs tracking-wider uppercase">Chinese</th><th class="py-3 font-semibold text-stone-800 text-xs tracking-wider uppercase">Description</th></tr></thead>
+          <tbody>
+            <tr class="bg-stone-50/50"><td class="py-3 pr-4 font-medium text-stone-700 text-xs">Collar</td><td class="py-3 pr-4 text-xs"><span lang="zh">立领</span> Lìlǐng</td><td class="py-3 text-xs text-stone-600">The stand-up mandarin collar is 3-4cm tall. It sits against the neck without choking — two fingers should fit between collar and skin. The collar is stiffened with interfacing to hold its shape. Some modern Tang suits use a half-height collar for a more relaxed look.</td></tr>
+            <tr><td class="py-3 pr-4 font-medium text-stone-700 text-xs">Frog Buttons</td><td class="py-3 pr-4 text-xs"><span lang="zh">盘扣</span> Pánkòu</td><td class="py-3 text-xs text-stone-600">Hand-tied from the same silk cord as the garment's trim. A standard Tang suit has 5-7 frog buttons down the center front. Each button consists of a knot (the 'ball') and a loop — the knot passes through the loop to close. Elaborate versions form butterflies, flowers, or auspicious characters. Machine-made frog buttons are common on budget jackets; hand-tied buttons indicate quality.</td></tr>
+            <tr class="bg-stone-50/50"><td class="py-3 pr-4 font-medium text-stone-700 text-xs">Cut</td><td class="py-3 pr-4 text-xs"><span lang="zh">版型</span> Bǎnxíng</td><td class="py-3 text-xs text-stone-600">The traditional cut is straight and boxy — designed to sit comfortably on most body types without tailoring. Modern cuts are slimmer, with shaped side seams and sometimes shoulder darts for a more fitted silhouette. Traditionalists prefer the relaxed cut; younger wearers gravitate toward slim-fit versions.</td></tr>
+            <tr><td class="py-3 pr-4 font-medium text-stone-700 text-xs">Sleeves</td><td class="py-3 pr-4 text-xs"><span lang="zh">袖</span> Xiù</td><td class="py-3 text-xs text-stone-600">Traditional Tang suit sleeves are straight-cut and end at the wrist. They're wide enough for comfort but not the flowing wide sleeves of hanfu. Some modern designs add a Western-style shirt cuff with a small frog button closure.</td></tr>
+            <tr class="bg-stone-50/50"><td class="py-3 pr-4 font-medium text-stone-700 text-xs">Length</td><td class="py-3 pr-4 text-xs"><span lang="zh">衣长</span> Yīcháng</td><td class="py-3 text-xs text-stone-600">Hip-length is standard. The jacket should cover the waistband of trousers but not extend more than halfway down the seat. Shorter cuts (waist-length) are a modern variation; longer cuts (mid-thigh) echo the Qing Magua style and are more formal.</td></tr>
+            <tr><td class="py-3 pr-4 font-medium text-stone-700 text-xs">Lining</td><td class="py-3 pr-4 text-xs"><span lang="zh">里衬</span> Lǐchèn</td><td class="py-3 text-xs text-stone-600">Quality Tang suits are fully lined in silk or rayon. The lining should be smooth, breathable, and in a complementary color. A well-made jacket has no visible raw edges — the lining is sewn in by hand for a clean finish.</td></tr>
+          </tbody>
+        </table>
+      </div>
 
-      <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-10 mb-4">When to Wear It</h2>
-      <p class="text-stone-600 leading-relaxed">Chinese New Year is the peak season — red Tang suits appear everywhere from family dinners to temple fairs. Weddings call for elaborate silk brocade with gold embroidery. For travelers, a made-to-measure Tang suit makes an extraordinary souvenir: it''s wearable, packable, and carries a story. Many men wear their Tang suit jacket as a distinctive dinner jacket back home. It pairs well with dark jeans for casual settings or dress trousers for semi-formal events.</p>
-    </div>
-  </section>
+      <!-- ===== HOW TO WEAR ===== -->
+      <h2 id="how-to-wear" class="font-serif-sc text-2xl sm:text-3xl font-bold text-stone-900 mt-16 mb-6">How to Wear a Tang Suit</h2>
 
-      <div class="mt-12 pt-8 border-t border-stone-200 text-center">
+      <div class="prose prose-stone max-w-none text-stone-600 leading-relaxed space-y-4">
+        <p>The Tang suit's versatility is its strength. Here's how to style it for different occasions:</p>
+
+        <div class="not-prose grid grid-cols-1 sm:grid-cols-2 gap-4 my-4">
+          <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+            <h3 class="font-semibold text-stone-900 text-sm">Chinese New Year &amp; Festivals</h3>
+            <p class="text-xs text-stone-500 mt-1.5 leading-relaxed">Red silk brocade Tang suit + black trousers + black leather shoes. The classic New Year look. Add a subtle gold watch and skip the tie — the mandarin collar is decoration enough. For children, bright red with gold embroidery is standard. For women: a fitted red Tang suit jacket over a black dress or with a matching skirt.</p>
+          </div>
+          <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+            <h3 class="font-semibold text-stone-900 text-sm">Weddings (Guest)</h3>
+            <p class="text-xs text-stone-500 mt-1.5 leading-relaxed">Dark silk brocade (navy, deep burgundy) with subtle gold or silver patterns. Avoid solid red — you don't want to compete with the bride, who traditionally wears red. Pair with dark wool trousers and polished Oxfords. The Tang suit is an excellent choice for a Chinese wedding guest — it shows cultural engagement without the formality of a full Western suit.</p>
+          </div>
+          <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+            <h3 class="font-semibold text-stone-900 text-sm">Smart Casual / Dinner</h3>
+            <p class="text-xs text-stone-500 mt-1.5 leading-relaxed">A linen or cotton Tang suit in navy, charcoal, or forest green. The natural fabric tones down the formality. Wear over a white crew-neck t-shirt for a contemporary look. Dark jeans work well here — this is how young Chinese men are wearing Tang suits in daily life. Roll the sleeves once for extra casualness.</p>
+          </div>
+          <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+            <h3 class="font-semibold text-stone-900 text-sm">Business / International Events</h3>
+            <p class="text-xs text-stone-500 mt-1.5 leading-relaxed">Black or dark navy silk brocade with restrained gold or silver pattern. The APEC look — diplomatic, respectful, unmistakably Chinese. Wear with formal black trousers and black Oxfords. This is the Tang suit's most impactful use: it communicates cultural confidence in international settings. A black Tang suit jacket can stand in for a tuxedo jacket at creative black-tie events.</p>
+          </div>
+        </div>
+
+        <p><strong>What to avoid:</strong> Don't wear a tie with a Tang suit — the mandarin collar is designed to stand alone. Don't mix a Tang suit jacket with shorts or athletic wear. And don't wear a wrinkled Tang suit — silk brocade creases visibly; steam it before wearing. For more styling guidance across all Chinese clothing types, see our <a href="/how-to-wear" class="text-[#b5343a] hover:underline">How to Wear guide</a>.</p>
+      </div>
+
+      <!-- ===== SYMBOLISM ===== -->
+      <h2 id="symbolism" class="font-serif-sc text-2xl sm:text-3xl font-bold text-stone-900 mt-16 mb-6">Patterns & Symbols: The Language of Silk Brocade</h2>
+
+      <div class="prose prose-stone max-w-none text-stone-600 leading-relaxed space-y-4">
+        <p>Tang suit brocade isn't random decoration — it's a visual language of good wishes. Every pattern carries meaning:</p>
+
+        <div class="not-prose grid grid-cols-2 sm:grid-cols-3 gap-3 my-4">
+          <div class="bg-stone-50 border border-stone-200 rounded-xl p-4 text-center">
+            <p class="text-sm font-semibold text-stone-900">Dragon · <span lang="zh">龙</span> Lóng</p>
+            <p class="text-xs text-stone-500 mt-1">Power, authority, masculine energy. The most prestigious pattern. Traditionally imperial; now worn by anyone for important occasions.</p>
+          </div>
+          <div class="bg-stone-50 border border-stone-200 rounded-xl p-4 text-center">
+            <p class="text-sm font-semibold text-stone-900">Phoenix · <span lang="zh">凤</span> Fèng</p>
+            <p class="text-xs text-stone-500 mt-1">Grace, feminine beauty, rebirth. Often paired with dragon for marital harmony. Popular on women's Tang suit jackets.</p>
+          </div>
+          <div class="bg-stone-50 border border-stone-200 rounded-xl p-4 text-center">
+            <p class="text-sm font-semibold text-stone-900">Longevity · <span lang="zh">寿</span> Shòu</p>
+            <p class="text-xs text-stone-500 mt-1">Long life, health, wisdom. The circular shòu character — featured on the 2001 APEC suits — is the most recognized Tang suit motif. Appropriate for elders and formal occasions.</p>
+          </div>
+          <div class="bg-stone-50 border border-stone-200 rounded-xl p-4 text-center">
+            <p class="text-sm font-semibold text-stone-900">Fortune · <span lang="zh">福</span> Fú</p>
+            <p class="text-xs text-stone-500 mt-1">Good fortune, blessings, happiness. The most popular pattern for Chinese New Year Tang suits. Often embroidered in gold on red silk.</p>
+          </div>
+          <div class="bg-stone-50 border border-stone-200 rounded-xl p-4 text-center">
+            <p class="text-sm font-semibold text-stone-900">Clouds · <span lang="zh">云</span> Yún</p>
+            <p class="text-xs text-stone-500 mt-1">Auspiciousness, heaven's blessing, upward mobility. Often used as background pattern or combined with dragons. Adds visual richness without being overpowering.</p>
+          </div>
+          <div class="bg-stone-50 border border-stone-200 rounded-xl p-4 text-center">
+            <p class="text-sm font-semibold text-stone-900">Peony · <span lang="zh">牡丹</span> Mǔdān</p>
+            <p class="text-xs text-stone-500 mt-1">Wealth, honor, feminine beauty. China's national flower. Common on women's Tang suits and for wedding attire.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== WHERE TO BUY ===== -->
+      <h2 id="where-to-buy" class="font-serif-sc text-2xl sm:text-3xl font-bold text-stone-900 mt-16 mb-6">Where to Buy or Get a Tang Suit Made</h2>
+
+      <div class="prose prose-stone max-w-none text-stone-600 leading-relaxed space-y-4">
+        <p><strong>Beijing</strong> is the world capital of Tang suit tailoring. The best options, in descending order of authenticity:</p>
+
+        <div class="not-prose space-y-4 my-4">
+          <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-xs px-2 py-0.5 bg-[#b5343a] text-white rounded-full font-medium">Best Experience</span>
+              <h3 class="font-semibold text-stone-900">Dashilar & Qianmen Hutong Tailors (<span lang="zh">大栅栏</span>)</h3>
+            </div>
+            <p class="text-xs text-stone-500 leading-relaxed">Family-run tailor shops that have cut silk for generations. Prices are 20-30% lower than tourist areas, and the craftsmanship is often superior. Most can replicate any Tang suit design from a reference photo. Budget: 200-400 RMB for a quality silk jacket. Turnaround: 2-4 days. Bring a photo of the style you want. These tailors are disappearing as Beijing's hutongs are redeveloped — visit while you can.</p>
+          </div>
+          <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-xs px-2 py-0.5 bg-stone-500 text-white rounded-full font-medium">Convenient</span>
+              <h3 class="font-semibold text-stone-900">Nanluoguxiang & Silk Street (<span lang="zh">秀水街</span>)</h3>
+            </div>
+            <p class="text-xs text-stone-500 leading-relaxed">Tourist-friendly shops with English-speaking staff. Quick turnaround — some can finish a jacket in 24 hours. Higher prices (300-600 RMB) and slightly lower quality than the hutong tailors, but more convenient for visitors with limited time. Nanluoguxiang has the added benefit of being a beautiful historic hutong for photos after your fitting. Silk Street (Xiushui) has a huge concentration of shops but expect aggressive bargaining — starting prices are often 50% above what they'll accept.</p>
+          </div>
+          <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-xs px-2 py-0.5 bg-stone-500 text-white rounded-full font-medium">Modern</span>
+              <h3 class="font-semibold text-stone-900">Shanghai Design Studios</h3>
+            </div>
+            <p class="text-xs text-stone-500 leading-relaxed">For those seeking a more contemporary interpretation — slimmer cuts, unconventional fabrics (linen, denim, wool blends), and fusion designs. Shanghai's independent designers in the French Concession are pushing Tang suit aesthetics forward. Budget: 500-1,500 RMB. Turnaround: 1-2 weeks. This is the best option if you want a Tang suit you'll wear regularly, not just for festivals.</p>
+          </div>
+        </div>
+
+        <p>For those not traveling to China: specialty online retailers like The Hanfu Story, East Meets Dress, and various Etsy sellers offer ready-made Tang suits. Expect to pay 50-150 USD for machine-made, 150-400 USD for hand-finished. For a detailed travel guide covering all the cities mentioned, see our <a href="/plan-trip" class="text-[#b5343a] hover:underline">Plan Your Trip section</a>.</p>
+      </div>
+
+      <!-- ===== FAQ ===== -->
+      <h2 id="faq" class="font-serif-sc text-2xl sm:text-3xl font-bold text-stone-900 mt-16 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-3">
+        {tangFAQ.map((faq, i) => (
+          <details class="group bg-white rounded-xl border border-stone-200 overflow-hidden">
+            <summary class="flex items-center justify-between p-5 cursor-pointer hover:bg-stone-50 transition-colors list-none">
+              <span class="text-sm font-medium text-stone-800 pr-4">{faq.q}</span>
+              <svg class="w-4 h-4 text-stone-400 flex-shrink-0 transition-transform group-open:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="px-5 pb-5">
+              <p class="text-sm text-stone-600 leading-relaxed" set:html={faq.a}></p>
+            </div>
+          </details>
+        ))}
+      </div>
+
+      <!-- ===== CTA ===== -->
+      <div class="mt-16 p-6 bg-[#b5343a]/5 border border-[#b5343a]/20 rounded-xl">
+        <p class="text-sm text-stone-700"><strong>Planning a trip to experience Tang suit culture firsthand?</strong> Our <a href="/plan-trip" class="text-[#b5343a] underline font-medium">Plan Your Trip guide</a> covers Beijing hutong tailor maps, budget breakdowns, and itineraries that combine Tang suit shopping with Forbidden City visits. Also explore <a href="/hanfu" class="text-[#b5343a] underline font-medium">Hanfu</a> and <a href="/qipao-cheongsam" class="text-[#b5343a] underline font-medium">Qipao</a> for China's other iconic clothing traditions.</p>
+      </div>
+
+      <!-- Sources -->
+      <div class="mt-12 pt-8 border-t border-stone-200">
         <h3 class="font-serif-sc text-lg font-semibold text-stone-900 mb-3">Sources & Further Reading</h3>
-        <ul class="space-y-1 text-sm text-stone-500 inline-block text-left">
-          <li>&bull; <a href="https://en.chinaculture.org/" class="text-[#b5343a] hover:underline" target="_blank" rel="noopener">China Culture.org</a> — Ministry of Culture official resource on Chinese heritage and traditions</li>
-          <li>&bull; <a href="https://www.chinasilkmuseum.com/" class="text-[#b5343a] hover:underline" target="_blank" rel="noopener">China National Silk Museum</a> — world’s largest silk and textile museum, Hangzhou</li>
-          <li>&bull; <a href="https://en.dpm.org.cn/" class="text-[#b5343a] hover:underline" target="_blank" rel="noopener">The Palace Museum</a> — original imperial robes and textile collections, Beijing</li>
+        <ul class="space-y-1.5 text-sm text-stone-500">
+          <li>· Finnane, Antonia. <em>Changing Clothes in China: Fashion, History, Nation</em>. Columbia University Press, 2008.</li>
+          <li>· Yang, Shaorong. <em>Chinese Clothing: Costumes, Adornments and Culture</em>. Long River Press, 2004.</li>
+          <li>· <a href="https://en.dpm.org.cn/" class="text-[#b5343a] hover:underline" target="_blank" rel="noopener">The Palace Museum</a> (<span lang="zh">故宫博物院</span>) — Qing dynasty court dress and magua collections.</li>
+          <li>· <a href="https://en.chinaculture.org/" class="text-[#b5343a] hover:underline" target="_blank" rel="noopener">China Culture.org</a> — official cultural heritage resource.</li>
+          <li>· Garrett, Valery. <em>Chinese Dress: From the Qing Dynasty to the Present</em>. Tuttle Publishing, 2007.</li>
         </ul>
       </div>
 
+      <div class="mt-8 p-5 bg-stone-50 border border-stone-200 rounded-xl text-center">
+        <p class="text-xs text-stone-500">Researched & written by Li Wei, MA in Chinese Art History · Fact-checked against academic sources and museum collections · Published August 6, 2026 · <a href="/about" class="text-[#b5343a] hover:underline">About the author</a></p>
+      </div>
+
+    </div>
+  </section>
+
+  <script type="application/ld+json" is:inline={schemaTangFAQ}></script>
 </BaseLayout>

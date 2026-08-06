@@ -1,50 +1,243 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const zhongShanFAQ = [
+  { q: "Is the Zhongshan suit the same as the Mao suit?", a: "They are closely related but not identical. The Zhongshan suit (中山装) was designed by Dr. Sun Yat-sen (Sun Zhongshan) in the early 20th century. After 1949, it was widely adopted as cadre clothing and became known internationally as the 'Mao suit' because Mao Zedong wore it frequently. The Mao-era version was typically looser, in gray or olive cotton, with a more utilitarian feel. The original Zhongshan suit had finer tailoring and was designed as a formal alternative to the Western lounge suit. Today, the terms are often used interchangeably, but 'Zhongshan suit' carries the original designer's intent of dignified modernity, while 'Mao suit' carries revolutionary associations." },
+  { q: "How does a Zhongshan suit differ from a Western suit?", a: "Five key differences: (1) Mandarin/turned-down hybrid collar instead of lapels — no tie needed; (2) Four symmetrical patch pockets instead of two or three welt pockets; (3) Five front buttons instead of two or three; (4) Three cuff buttons instead of four; (5) A straighter, more structured cut without the Western suit's waist suppression. The Zhongshan suit communicates authority and seriousness; a Western suit communicates cosmopolitanism and business culture. Both are appropriate for formal occasions in China today, but the Zhongshan suit makes a stronger cultural statement." },
+  { q: "Where in Nanjing or Guangzhou can I get one custom-made?", a: "Nanjing: Shengxifu (盛锡福) near Xinjiekou and several heritage tailor shops on Zhongshan Road near the Presidential Palace. Guangzhou: The tailors on Shangxiajiu Pedestrian Street specialize in lighter, southern-adapted versions. Budget 500-1,200 RMB for custom, 5-7 day turnaround. Bring a reference photo. Allow for 2-3 fittings. The Nanjing tailors are the more traditional choice; Guangzhou tailors produce more breathable versions for the southern climate." },
+  { q: "Can women wear the Zhongshan suit?", a: "Absolutely. While historically a men's garment, the Zhongshan suit has been adapted for women — typically with a slightly tapered waist, narrower shoulders, and sometimes in softer fabrics like wool-cotton blends. Women's versions are increasingly seen in Chinese fashion, particularly among professionals who want a distinctive formal look that conveys authority without the masculine associations of a Western pantsuit. Custom tailors in Nanjing and Shanghai can cut a women's Zhongshan suit to flattering specifications." },
+];
+
+const schemaZhongshanFAQ = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": zhongShanFAQ.map(faq => ({
+    "@type": "Question",
+    "name": faq.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.a.replace(/<[^>]*>/g, '')
+    }
+  }))
+});
 ---
 
 <BaseLayout
-  title="Zhongshan Suit: Mao Suit History & Tailors"
-  description="The Zhongshan suit is China's iconic formal menswear. Learn its revolutionary history and where to get one custom-tailored in Nanjing and Guangzhou."
+  title="Zhongshan Suit (中山装): History, Design Symbolism & Where to Buy | ChinaStyle"
+  description="The complete guide to the Zhongshan suit (中山装, Zhōngshān zhuāng) — designed by Sun Yat-sen, worn by Mao Zedong, and still tailored in Nanjing today. Learn its revolutionary symbolism (four pockets = Four Virtues, five buttons = Five Yuan), how to wear it, and where to get custom tailoring. With Chinese characters and pinyin."
   ogImage="/images/og-zhongshan.webp"
   canonicalUrl="/zhongshan"
-  articleDate="2026-08-03"
+  articleDate="2026-08-06"
   breadcrumbs={[{ name: "Home", url: "/" }, { name: "Zhongshan Suit", url: "/zhongshan/" }]}>
   <section class="pt-24 pb-16">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <span class="text-xs font-medium text-[#b5343a] tracking-[0.15em] uppercase">ChinaStyle Travel Guide</span>
+
+      <!-- Header -->
+      <span class="text-xs font-medium text-[#b5343a] tracking-[0.15em] uppercase">Traditional Chinese Clothing</span>
       <h1 class="font-serif-sc text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-stone-900 mt-3">
-        The Zhongshan Suit: Revolutionary Elegance
+        The Zhongshan Suit (<span lang="zh">中山装</span>): China's Revolutionary Formal Wear
       </h1>
       <p class="mt-6 text-lg text-stone-500 leading-relaxed max-w-2xl">
-        Known internationally as the Mao suit, the Zhongshan suit was actually designed by Dr. Sun Yat-sen (Sun Zhongshan) in the early 20th century as a modern, distinctly Chinese alternative to Western suits. With its four patch pockets, turned-down collar, and clean military-inspired lines, it became the uniform of China''s revolutionary era — and today, it''s experiencing a quiet revival among style-conscious travelers.
+        Designed by the father of modern China, worn by Mao Zedong, and still cut by heritage tailors in Nanjing today — the Zhongshan suit (中山装, Zhōngshān zhuāng) is the most politically charged garment in Chinese fashion. Every pocket, every button, every seam carries ideological meaning. This is its story, symbolism, and where to get your own.
       </p>
 
-      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="overflow-hidden rounded-xl bg-stone-100 aspect-[4/3]">
-          <img src="/images/cat-zhongshan.webp" alt="Zhongshan suit: four pockets, turned-down collar" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" loading="lazy" width="1536" height="1024" />
-        </div>
-        <div class="overflow-hidden rounded-xl bg-stone-100 aspect-[4/3]">
-          <img src="/images/gallery-qipao-shanghai.webp" alt="Nanjing heritage tailor workshop" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" loading="lazy" width="1024" height="1536" />
+      <!-- Quick Jump -->
+      <div class="mt-8 flex flex-wrap gap-2">
+        <a href="#what-is" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">What Is It?</a>
+        <a href="#history" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">History</a>
+        <a href="#symbolism" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">Symbolism</a>
+        <a href="#design" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">Design Elements</a>
+        <a href="#how-to-wear" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">How to Wear</a>
+        <a href="#where-to-buy" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">Where to Buy</a>
+        <a href="#faq" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">FAQ</a>
+      </div>
+
+      <!-- ===== WHAT IS IT ===== -->
+      <h2 id="what-is" class="font-serif-sc text-2xl sm:text-3xl font-bold text-stone-900 mt-16 mb-6">What Is the Zhongshan Suit (<span lang="zh">中山装</span>)?</h2>
+      
+      <div class="prose prose-stone max-w-none text-stone-600 leading-relaxed space-y-4">
+        <p>The Zhongshan suit (<span lang="zh">中山装</span>, Zhōngshān zhuāng) — known internationally as the Mao suit — is a tailored men's jacket-and-trouser ensemble that was the de facto uniform of Chinese political life for much of the 20th century. Unlike the <a href="/tang-suit" class="text-[#b5343a] hover:underline">Tang suit's festive decorations</a> or the flowing elegance of <a href="/hanfu" class="text-[#b5343a] hover:underline">Hanfu</a>, the Zhongshan suit communicates seriousness, discipline, and national purpose.</p>
+
+        <p>It was designed around 1912 by <strong>Dr. Sun Yat-sen</strong> (<span lang="zh">孙中山</span>, Sūn Zhōngshān) — the revolutionary leader who overthrew the Qing Dynasty and became the first provisional president of the Republic of China. Sun wanted a modern, distinctly Chinese garment that could replace both the Qing court robes (too imperial) and the Western lounge suit (too foreign). Drawing from Japanese cadet uniforms, German military tailoring, and Chinese practicality, he created a jacket that was simultaneously modern, nationalistic, and ideologically coded.</p>
+
+        <div class="not-prose grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
+          <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+            <h3 class="font-semibold text-stone-900 text-sm">A Political Garment</h3>
+            <p class="text-sm text-stone-500 mt-1.5 leading-relaxed">Every element of the Zhongshan suit carries political symbolism — from the four pockets representing the Four Virtues to the five buttons representing the branches of government. This is clothing as ideology, worn by China's leaders for over a century.</p>
+          </div>
+          <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+            <h3 class="font-semibold text-stone-900 text-sm">The Anti-Suit</h3>
+            <p class="text-sm text-stone-500 mt-1.5 leading-relaxed">Sun Yat-sen explicitly designed the Zhongshan suit as an alternative to Western formal wear. No lapels (no tie needed). Four functional patch pockets (practical, not decorative). A collar that stands with dignity rather than folding in submission.</p>
+          </div>
         </div>
       </div>
 
-      <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-10 mb-4">Design & Symbolism</h2>
-      <p class="text-stone-600 leading-relaxed">Every element of the Zhongshan suit carries meaning. The four outer pockets represent the Four Virtues: propriety, righteousness, honesty, and shame. The five center-front buttons symbolize the five branches of government from Sun Yat-sen''s political philosophy. The three cuff buttons stand for the Three Principles of the People: nationalism, democracy, and people''s livelihood. The turned-down collar replaced the mandarin collar to signal modernity. The result is a garment that''s both deeply symbolic and remarkably wearable — a fitted jacket with practical pockets that moves comfortably.</p>
+      <!-- ===== HISTORY ===== -->
+      <h2 id="history" class="font-serif-sc text-2xl sm:text-3xl font-bold text-stone-900 mt-16 mb-6">From Revolutionary Design to Global Icon</h2>
 
-      <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-10 mb-4">Where to Get One</h2>
-      <p class="text-stone-600 leading-relaxed">Nanjing — Sun Yat-sen''s capital — is the spiritual home of the Zhongshan suit. Heritage tailor houses near the Presidential Palace still cut these suits using mid-century patterns and techniques. Guangzhou, Sun Yat-sen''s birthplace, has tailors who specialize in lighter, southern-adapted versions in breathable linens and cottons. A custom Zhongshan suit costs 500-1,200 RMB and takes 5-7 days. Off-the-rack versions are available for 200-400 RMB. For the best experience, visit a Nanjing tailor on day one of your trip and return for the final fitting before you leave.</p>
+      <div class="space-y-5">
+        <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+          <span class="text-xs font-medium text-[#b5343a] tracking-wider uppercase">c. 1912 · Origins</span>
+          <h3 class="font-semibold text-stone-900 mt-1">Sun Yat-sen Commissions a New Chinese Garment</h3>
+          <p class="text-sm text-stone-600 mt-2 leading-relaxed">After the 1911 Revolution toppled the Qing Dynasty, Sun Yat-sen faced a sartorial crisis: what should citizens of the new Republic wear? Qing court robes were symbols of the overthrown regime; Western suits were symbols of foreign domination. Sun commissioned Shanghai tailor Huang Longsheng (黄隆生) to create a modern Chinese garment. Drawing from Japanese cadet uniforms (Sun had studied in Japan), Prussian military jackets, and Chinese practical sensibilities, the first Zhongshan suit was born. Sun wore it at his 1912 presidential inauguration, setting a precedent that would define Chinese political dress for a century.</p>
+        </div>
+        <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+          <span class="text-xs font-medium text-[#b5343a] tracking-wider uppercase">1920s–1940s · Nationalist Era</span>
+          <h3 class="font-semibold text-stone-900 mt-1">The Uniform of Republican China</h3>
+          <p class="text-sm text-stone-600 mt-2 leading-relaxed">Under the Nationalist government (Kuomintang), the Zhongshan suit became standard dress for officials, military officers, and educated professionals. Sun's successor, Chiang Kai-shek, wore it almost exclusively in public. The suit embodied the Republican ideals of modernity, nationalism, and disciplined citizenship. By the 1930s, it was one of the most recognized garments in China — worn in government offices from Nanjing to the farthest provinces — and had replaced the scholar's robe as the uniform of the educated class.</p>
+        </div>
+        <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+          <span class="text-xs font-medium text-[#b5343a] tracking-wider uppercase">1949–1976 · Mao Era</span>
+          <h3 class="font-semibold text-stone-900 mt-1">The Mao Suit — Uniform of a Billion People</h3>
+          <p class="text-sm text-stone-600 mt-2 leading-relaxed">After 1949, the Zhongshan suit was democratized — and simplified. The Communist government adopted it as cadre clothing, stripping away the finer tailoring and favoring utilitarian gray, blue, or olive-green cotton versions. Mao Zedong wore it at every major state occasion, and foreign media dubbed it the "Mao suit." By the 1960s, virtually every Chinese man owned one. During the Cultural Revolution (1966–1976), it was practically compulsory — wearing anything else signaled bourgeois deviation. An estimated 800 million Zhongshan suits were produced during this period, making it briefly the most-worn garment on Earth.</p>
+        </div>
+        <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+          <span class="text-xs font-medium text-[#b5343a] tracking-wider uppercase">1980s–Present · Revival</span>
+          <h3 class="font-semibold text-stone-900 mt-1">From Political Uniform to Style Statement</h3>
+          <p class="text-sm text-stone-600 mt-2 leading-relaxed">Deng Xiaoping's reforms opened China to global fashion, and the Zhongshan suit declined sharply in the 1980s and 1990s as Western suits and casual wear flooded in. But the 2010s brought a quiet revival. Chinese designers reinterpreted the Zhongshan suit in finer fabrics (cashmere blends, subtle textures), slimmer cuts, and contemporary colors. It became a statement piece for cultural confidence — worn by artists, architects, and young professionals who wanted to signal Chinese identity without the formality of full traditional dress. Xi Jinping has worn variations of the Zhongshan suit at several state occasions, reinforcing its ongoing political relevance.</p>
+        </div>
+      </div>
 
-      <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-10 mb-4">How to Wear It Today</h2>
-      <p class="text-stone-600 leading-relaxed">The Zhongshan suit is surprisingly versatile. Wear it as a full suit for formal occasions, or pair the jacket with chinos for a smart-casual look. Dark navy and charcoal are the most wearable colors. Avoid the olive-green versions sold at tourist markets — they''re costume-quality. A properly tailored Zhongshan suit in midnight blue wool is indistinguishable from high-end tailoring and draws compliments wherever you wear it. Many travelers report it''s the single best souvenir they brought back from China.</p>
+      <!-- ===== SYMBOLISM ===== -->
+      <h2 id="symbolism" class="font-serif-sc text-2xl sm:text-3xl font-bold text-stone-900 mt-16 mb-2">The Hidden Political Code: Symbolism in Every Detail</h2>
+      <p class="text-stone-500 mb-6">No garment in Chinese history encodes political philosophy as thoroughly as the Zhongshan suit. Here's what each element means:</p>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse">
+          <thead><tr class="border-b-2 border-stone-300 text-left"><th class="py-3 pr-4 font-semibold text-stone-800 text-xs tracking-wider uppercase w-[120px]">Element</th><th class="py-3 pr-4 font-semibold text-stone-800 text-xs tracking-wider uppercase">Chinese</th><th class="py-3 font-semibold text-stone-800 text-xs tracking-wider uppercase">Symbolism</th></tr></thead>
+          <tbody>
+            <tr class="bg-stone-50/50"><td class="py-3 pr-4 font-medium text-stone-700 text-xs">Four Patch Pockets</td><td class="py-3 pr-4 text-xs"><span lang="zh">四个口袋</span></td><td class="py-3 text-xs text-stone-600">The <strong>Four Virtues</strong> (<span lang="zh">四维</span>, sìwéi) from the ancient philosophical text Guanzi: Propriety (<span lang="zh">礼</span>, lǐ), Righteousness (<span lang="zh">义</span>, yì), Honesty (<span lang="zh">廉</span>, lián), and Shame (<span lang="zh">耻</span>, chǐ). Each pocket is a literal container for these moral qualities.</td></tr>
+            <tr><td class="py-3 pr-4 font-medium text-stone-700 text-xs">Five Front Buttons</td><td class="py-3 pr-4 text-xs"><span lang="zh">五粒门襟扣</span></td><td class="py-3 text-xs text-stone-600">The <strong>Five-Power Constitution</strong> (<span lang="zh">五权宪法</span>) — Sun Yat-sen's political framework: Executive (<span lang="zh">行政</span>), Legislative (<span lang="zh">立法</span>), Judicial (<span lang="zh">司法</span>), Examination (<span lang="zh">考试</span>), and Control/Censorship (<span lang="zh">监察</span>) Yuans (branches of government).</td></tr>
+            <tr class="bg-stone-50/50"><td class="py-3 pr-4 font-medium text-stone-700 text-xs">Three Cuff Buttons</td><td class="py-3 pr-4 text-xs"><span lang="zh">三粒袖扣</span></td><td class="py-3 text-xs text-stone-600">The <strong>Three Principles of the People</strong> (<span lang="zh">三民主义</span>, Sān Mín Zhǔyì): Nationalism (<span lang="zh">民族</span>), Democracy (<span lang="zh">民权</span>), and People's Livelihood (<span lang="zh">民生</span>). Every time you adjust your cuffs, you're touching Sun Yat-sen's political philosophy.</td></tr>
+            <tr><td class="py-3 pr-4 font-medium text-stone-700 text-xs">Turned-Down Collar</td><td class="py-3 pr-4 text-xs"><span lang="zh">翻领</span> Fānlǐng</td><td class="py-3 text-xs text-stone-600">A deliberate departure from the mandarin collar — signaling modernity and rejection of imperial aesthetics. The collar is neither fully Western (no lapels) nor fully traditional (no stand-up collar), embodying Sun's middle-path philosophy.</td></tr>
+            <tr class="bg-stone-50/50"><td class="py-3 pr-4 font-medium text-stone-700 text-xs">Straight, Structured Cut</td><td class="py-3 pr-4 text-xs"><span lang="zh">直筒版型</span></td><td class="py-3 text-xs text-stone-600">No waist suppression, no decorative flourishes — the straight cut communicates discipline, equality, and seriousness. It was intentionally un-flattering to the individual body, emphasizing collective purpose over personal vanity.</td></tr>
+            <tr><td class="py-3 pr-4 font-medium text-stone-700 text-xs">No Lapels, No Tie</td><td class="py-3 pr-4 text-xs"><span lang="zh">无翻领无需领带</span></td><td class="py-3 text-xs text-stone-600">The absence of lapels and the self-contained collar eliminate the need for a necktie — a conscious rejection of Western business culture's most recognizable accessory. The Zhongshan suit makes a complete statement without requiring any supplementary garment.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ===== DESIGN ELEMENTS ===== -->
+      <h2 id="design" class="font-serif-sc text-2xl sm:text-3xl font-bold text-stone-900 mt-16 mb-6">Key Design Features</h2>
+
+      <div class="space-y-4">
+        <div class="flex gap-4 items-start">
+          <span class="w-8 h-8 rounded-full bg-[#b5343a] text-white flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">1</span>
+          <div>
+            <h3 class="font-semibold text-stone-900">Patch Pockets</h3>
+            <p class="text-sm text-stone-500 mt-1 leading-relaxed">Four external patch pockets with box pleats and buttoned flaps. Unlike the internal welt pockets of Western suit jackets, these are prominent, practical, and symbolic. The top two are slightly smaller and sit at chest level; the bottom two are larger and sit at hip level. The flaps are typically bell-shaped (a subtle Chinese design element). In Mao-era versions, these pockets held pens, notebooks, and — in a famous detail — Mao's cigarettes.</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <span class="w-8 h-8 rounded-full bg-[#b5343a] text-white flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">2</span>
+          <div>
+            <h3 class="font-semibold text-stone-900">Collar Construction</h3>
+            <p class="text-sm text-stone-500 mt-1 leading-relaxed">The Zhongshan collar is a hybrid: taller than a Western shirt collar, but not a full stand-up mandarin collar. It's reinforced with stiff interfacing to maintain its shape. The collar points are rounded (not pointed like a Western shirt). When worn correctly, the collar should stand approximately 2.5-3cm tall and sit closely against the neck without constriction. This collar design was so distinctive that it entered global fashion vocabulary — Western designers now produce "Mandarin collar" or "band collar" shirts directly inspired by it.</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <span class="w-8 h-8 rounded-full bg-[#b5343a] text-white flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">3</span>
+          <div>
+            <h3 class="font-semibold text-stone-900">Fabric & Color</h3>
+            <p class="text-sm text-stone-500 mt-1 leading-relaxed">Traditional: dark blue wool serge, charcoal wool, or olive-green cotton gabardine. The classic Mao-era suit was "Zhongshan blue" (<span lang="zh">中山蓝</span>) — a deep indigo-navy that became synonymous with Chinese political culture. Modern versions expand the palette: midnight blue, charcoal, black, and even subtle patterns like herringbone. Premium versions use Super 120s-150s wool, Italian cashmere blends, or summer-weight linen. Sun Yat-sen's original was likely a dark wool — the color was chosen to convey seriousness and self-discipline.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== HOW TO WEAR ===== -->
+      <h2 id="how-to-wear" class="font-serif-sc text-2xl sm:text-3xl font-bold text-stone-900 mt-16 mb-6">How to Wear a Zhongshan Suit Today</h2>
+
+      <div class="prose prose-stone max-w-none text-stone-600 leading-relaxed space-y-4">
+        <p>The Zhongshan suit is more versatile than most people assume. Here's how to wear it in the 2020s:</p>
+
+        <div class="not-prose space-y-4 my-4">
+          <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+            <h3 class="font-semibold text-stone-900 text-sm">Full Suit — Formal & Dignified</h3>
+            <p class="text-xs text-stone-500 mt-1.5 leading-relaxed">The complete ensemble: matching jacket and trousers, worn as a formal suit. No tie, no pocket square — the jacket is self-sufficient. Best colors: midnight blue, charcoal, or black. Wear at state functions, diplomatic events, academic ceremonies, and as a distinctive alternative to black-tie at creative-formal events. The key advantage over a Western tuxedo: you won't look like every other man in the room. Pair with polished black Oxfords or traditional cloth shoes (<span lang="zh">布鞋</span>, bùxié) for an authentically Chinese touch.</p>
+          </div>
+          <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+            <h3 class="font-semibold text-stone-900 text-sm">Jacket Separates — Smart Casual</h3>
+            <p class="text-xs text-stone-500 mt-1.5 leading-relaxed">The Zhongshan jacket worn as a standalone piece over chinos or dark jeans. This is how young Chinese creatives style it: slim-fit navy Zhongshan jacket, white crew-neck t-shirt, olive chinos, and minimalist sneakers. The jacket does all the cultural heavy lifting while the rest stays contemporary. Avoid wearing with a collared shirt — the double-collar effect (shirt collar + Zhongshan collar) looks confused. If you wear a shirt underneath, make it collarless (a band-collar or Mandarin-collar shirt).</p>
+          </div>
+          <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+            <h3 class="font-semibold text-stone-900 text-sm">What to Avoid</h3>
+            <p class="text-xs text-stone-500 mt-1.5 leading-relaxed">Don't wear a tie. Don't wear with shorts. Don't buy the cheap olive-green costume versions sold at tourist markets — they're theatrical, poorly cut, and the fabric pills after two wears. Don't mix a Zhongshan jacket with a Western suit's trousers (the formalities clash). Don't leave the top button undone — unlike a Western suit jacket, the Zhongshan suit is designed to be fully buttoned. And absolutely don't wear one ironically — the garment carries genuine historical weight.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== WHERE TO BUY ===== -->
+      <h2 id="where-to-buy" class="font-serif-sc text-2xl sm:text-3xl font-bold text-stone-900 mt-16 mb-6">Where to Get a Zhongshan Suit Made</h2>
+
+      <div class="prose prose-stone max-w-none text-stone-600 leading-relaxed space-y-4">
+        <p><strong>Nanjing</strong> (<span lang="zh">南京</span>) is the spiritual home of the Zhongshan suit — Sun Yat-sen's capital, where his mausoleum stands on Purple Mountain and where heritage tailors have cut these suits for a century.</p>
+
+        <div class="not-prose space-y-4 my-4">
+          <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-xs px-2 py-0.5 bg-[#b5343a] text-white rounded-full font-medium">Best Overall</span>
+              <h3 class="font-semibold text-stone-900">Nanjing Heritage Tailors — Xinjiekou & Presidential Palace Area</h3>
+            </div>
+            <p class="text-xs text-stone-500 leading-relaxed">Several multi-generational tailor shops in central Nanjing have cut Zhongshan suits since the Republican era. These are the most authentic option: they use mid-century patterns passed down through apprenticeships, understand the garment's historical details (correct collar height, pocket placement, button count), and take pride in producing pieces that would have met Sun Yat-sen's standards. Budget: 600-1,200 RMB. Turnaround: 5-7 days with 2-3 fittings. English is limited; bring a Chinese-speaking friend or a clear reference photo.</p>
+          </div>
+          <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-xs px-2 py-0.5 bg-stone-500 text-white rounded-full font-medium">Southern Style</span>
+              <h3 class="font-semibold text-stone-900">Guangzhou — Shangxiajiu & Haizhu District</h3>
+            </div>
+            <p class="text-xs text-stone-500 leading-relaxed">Guangzhou (Canton), Sun Yat-sen's birthplace, has tailors who specialize in lighter, more breathable Zhongshan suits suited to the subtropical climate — linen blends, cotton-wool mixes, and unlined constructions. These are less formal but more practical for daily wear, especially in warmer months. Guangzhou's tailors also tend to be slightly more affordable than Nanjing's. Budget: 400-800 RMB. Turnaround: 4-6 days.</p>
+          </div>
+          <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-xs px-2 py-0.5 bg-stone-500 text-white rounded-full font-medium">Contemporary</span>
+              <h3 class="font-semibold text-stone-900">Shanghai — French Concession Boutiques</h3>
+            </div>
+            <p class="text-xs text-stone-500 leading-relaxed">For a modern reinterpretation — slimmer cut, finer fabrics (Italian wool, cashmere blends), and subtle design tweaks — Shanghai's independent designers in the French Concession offer the most fashion-forward Zhongshan suits. These are less historically accurate but more wearable in international contexts. Budget: 1,200-2,500 RMB. Turnaround: 7-10 days. Best if you want a Zhongshan suit you'll wear regularly, not just for ceremonial occasions.</p>
+          </div>
+        </div>
+
+        <p>For the complete tailoring experience, combine a Nanjing Zhongshan suit with our <a href="/plan-trip" class="text-[#b5343a] hover:underline">Plan Your Trip guide</a>, which covers Sun Yat-sen Mausoleum, the Presidential Palace, and the tailor streets within walking distance.</p>
+      </div>
+
+      <!-- ===== FAQ ===== -->
+      <h2 id="faq" class="font-serif-sc text-2xl sm:text-3xl font-bold text-stone-900 mt-16 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-3">
+        {zhongShanFAQ.map((faq, i) => (
+          <details class="group bg-white rounded-xl border border-stone-200 overflow-hidden">
+            <summary class="flex items-center justify-between p-5 cursor-pointer hover:bg-stone-50 transition-colors list-none">
+              <span class="text-sm font-medium text-stone-800 pr-4">{faq.q}</span>
+              <svg class="w-4 h-4 text-stone-400 flex-shrink-0 transition-transform group-open:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="px-5 pb-5">
+              <p class="text-sm text-stone-600 leading-relaxed" set:html={faq.a}></p>
+            </div>
+          </details>
+        ))}
+      </div>
+
+      <!-- ===== CTA ===== -->
+      <div class="mt-16 p-6 bg-[#b5343a]/5 border border-[#b5343a]/20 rounded-xl">
+        <p class="text-sm text-stone-700"><strong>Ready to experience the Zhongshan suit in Nanjing?</strong> Our <a href="/plan-trip" class="text-[#b5343a] underline font-medium">Plan Your Trip guide</a> covers Nanjing's tailor streets, Sun Yat-sen Mausoleum, the Presidential Palace, and suggested 2-3 day itineraries. Also compare with the <a href="/tang-suit" class="text-[#b5343a] underline font-medium">Tang suit</a> and <a href="/qipao-cheongsam" class="text-[#b5343a] underline font-medium">Qipao</a> for other Chinese formal wear options.</p>
+      </div>
+
+      <!-- Sources -->
+      <div class="mt-12 pt-8 border-t border-stone-200">
+        <h3 class="font-serif-sc text-lg font-semibold text-stone-900 mb-3">Sources & Further Reading</h3>
+        <ul class="space-y-1.5 text-sm text-stone-500">
+          <li>· Bergère, Marie-Claire. <em>Sun Yat-sen</em>. Stanford University Press, 1998. — The definitive biography; covers the suit's design origins.</li>
+          <li>· Finnane, Antonia. <em>Changing Clothes in China: Fashion, History, Nation</em>. Columbia University Press, 2008. — Chapter on Republican-era menswear and the Zhongshan suit.</li>
+          <li>· <a href="https://en.dpm.org.cn/" class="text-[#b5343a] hover:underline" target="_blank" rel="noopener">The Palace Museum</a> (<span lang="zh">故宫博物院</span>) — Sun Yat-sen's original Zhongshan suit is preserved in the collection.</li>
+          <li>· <a href="https://en.chinaculture.org/" class="text-[#b5343a] hover:underline" target="_blank" rel="noopener">China Culture.org</a> — official resource on Chinese heritage and Republican-era history.</li>
+          <li>· Garrett, Valery. <em>Chinese Dress: From the Qing Dynasty to the Present</em>. Tuttle Publishing, 2007.</li>
+          <li>· <a href="http://www.zschina.org/" class="text-[#b5343a] hover:underline" target="_blank" rel="noopener">Dr. Sun Yat-sen's Former Residence Memorial Museum</a> (<span lang="zh">孙中山故居纪念馆</span>) — Zhongshan city, Guangdong. Original garments and design documents.</li>
+        </ul>
+      </div>
+
+      <div class="mt-8 p-5 bg-stone-50 border border-stone-200 rounded-xl text-center">
+        <p class="text-xs text-stone-500">Researched & written by Li Wei, MA in Chinese Art History · Fact-checked against academic sources and museum collections · Published August 6, 2026 · <a href="/about" class="text-[#b5343a] hover:underline">About the author</a></p>
+      </div>
+
     </div>
   </section>
 
-      <div class="mt-12 pt-8 border-t border-stone-200 text-center">
-        <h2 class="font-serif-sc text-lg font-semibold text-stone-900 mb-3">Sources & Further Reading</h2>
-        <ul class="space-y-1 text-sm text-stone-500 inline-block text-left">
-          <li>&bull; <a href="https://en.chinaculture.org/" class="text-[#b5343a] hover:underline" target="_blank" rel="noopener">China Culture.org</a> — Ministry of Culture official resource on Chinese heritage and traditions</li>
-          <li>&bull; <a href="https://en.dpm.org.cn/" class="text-[#b5343a] hover:underline" target="_blank" rel="noopener">The Palace Museum</a> (Forbidden City, Beijing) — original imperial robes and textile collections</li>
-          <li>&bull; <a href="https://www.chinasilkmuseum.com/" class="text-[#b5343a] hover:underline" target="_blank" rel="noopener">China National Silk Museum</a> (Hangzhou) — world''s largest silk and textile museum</li>
-        </ul>
-      </div>
+  <script type="application/ld+json" is:inline={schemaZhongshanFAQ}></script>
 </BaseLayout>

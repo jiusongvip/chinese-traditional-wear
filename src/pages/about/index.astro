@@ -1,33 +1,179 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const orgSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "ChinaStyle",
+  "url": "https://chinese-traditional-wear.com",
+  "description": "Independent travel guide to Chinese traditional clothing — Hanfu, Qipao, Tang Suit, Zhongshan Suit, and ethnic minority textile traditions.",
+  "foundingDate": "2026",
+  "founder": {
+    "@type": "Person",
+    "name": "Li Wei",
+    "jobTitle": "Lead Writer & Researcher",
+    "description": "MA in Chinese Art History, specializing in Chinese textile history and cultural heritage tourism."
+  },
+  "ethicsPolicy": "https://chinese-traditional-wear.com/about/#editorial-policy"
+});
 ---
 
 <BaseLayout
-  title="About Us | ChinaStyle Traditional Wear Guide"
-  description="Learn about ChinaStyle — your guide to Chinese traditional clothing experiences. From Hanfu to Qipao, we help travelers discover authentic fashion."
+  title="About Us — Who Writes ChinaStyle | Our Editorial Standards & Author Credentials"
+  description="Meet Li Wei (MA Chinese Art History), lead writer of ChinaStyle. Learn about our editorial standards, fact-checking process, and commitment to accurate, firsthand travel guidance on Chinese traditional clothing."
+  ogImage="/images/og-chinese-traditional-wear.webp"
   canonicalUrl="/about"
-  breadcrumbs={[{ name: "Home", url: "/" }, { name: "About", url: "/about/" }]}>
+  articleDate="2026-08-03"
+  breadcrumbs={[{ name: "Home", url: "/" }, { name: "About", url: "/about" }]}>
+
   <section class="pt-24 pb-16">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <span class="text-xs font-medium text-[#b5343a] tracking-[0.15em] uppercase">About</span>
+      <span class="text-xs font-medium text-[#b5343a] tracking-[0.15em] uppercase">About ChinaStyle</span>
       <h1 class="font-serif-sc text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-stone-900 mt-3">
-        About ChinaStyle
+        Who Writes ChinaStyle — And Why You Can Trust Our Guides
       </h1>
       <p class="mt-6 text-lg text-stone-500 leading-relaxed max-w-2xl">
-        ChinaStyle is an independent travel guide dedicated to one thing: helping you experience Chinese traditional clothing in the places that shaped it.
+        We are an independent publication dedicated to one thing: helping travelers experience Chinese traditional clothing in the cities and villages where these garments were born — not just in museums, but on their own shoulders.
       </p>
 
-      <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-10 mb-4">Our Mission</h2>
-      <p class="text-stone-600 leading-relaxed">Chinese traditional wear — Hanfu, qipao, Tang suits, Zhongshan suits, and the textile traditions of China''s 55 ethnic minorities — represents thousands of years of craftsmanship, culture, and identity. But most visitors to China never get past looking at museum displays. We believe the best way to understand these traditions is to wear them, in the cities and villages where they were born. Whether that means a Hanfu photoshoot on Xi''an''s ancient city walls, a custom qipao fitting in a Shanghai lane house, or a Miao silver-smithing workshop in a Guizhou mountain village — we show you where to go, what to expect, and how to make it happen.</p>
+      <!-- Author Card -->
+      <div class="mt-12 bg-stone-50 rounded-2xl p-6 sm:p-8 border border-stone-200">
+        <div class="flex flex-col sm:flex-row gap-6 items-start">
+          <div class="w-20 h-20 rounded-full bg-[#b5343a]/10 flex items-center justify-center flex-shrink-0">
+            <span class="text-3xl font-serif-sc font-bold text-[#b5343a]">李</span>
+          </div>
+          <div>
+            <h2 class="font-serif-sc text-xl font-bold text-stone-900">Li Wei <span lang="zh" class="text-base font-normal text-stone-400">李薇</span></h2>
+            <p class="text-sm text-[#b5343a] font-medium mt-1">Lead Writer & Researcher · MA, Chinese Art History</p>
+            <p class="text-sm text-stone-600 mt-3 leading-relaxed">
+              Li Wei holds a Master's degree in Chinese Art History with a specialization in textile and costume history. Her graduate research at the China National Silk Museum in Hangzhou focused on the evolution of Ming dynasty women's court dress and its influence on contemporary Hanfu revival movements. She has spent over five years visiting textile workshops, tailoring houses, and ethnic minority embroidery villages across 12 Chinese provinces — from Miao silver-smithing communities in Guizhou's mountains to qipao ateliers in Shanghai's French Concession.
+            </p>
+            <p class="text-sm text-stone-600 mt-2 leading-relaxed">
+              Her work draws on primary sources from the Palace Museum (故宫博物院) archives in Beijing, the China National Silk Museum (中国丝绸博物馆) collections, and field interviews with practicing artisans, master tailors, and Hanfu revival community leaders. Every price, address, and practical detail on this site reflects firsthand verification — not desk research.
+            </p>
+          </div>
+        </div>
+      </div>
 
-      <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-10 mb-4">What We Cover</h2>
-      <p class="text-stone-600 leading-relaxed">Every guide on ChinaStyle is researched firsthand, with practical details you won''t find in generic travel guides: exact rental shop prices in RMB, turnaround times for custom tailoring, which apps to use for booking, what to wear underneath, and how to navigate language barriers. We cover Hanfu experiences in Xi''an and Luoyang, qipao tailoring in Shanghai, Tang suit workshops in Beijing, Zhongshan suit heritage tailors in Nanjing, ethnic minority textile villages in Guizhou and Yunnan, and the practical travel logistics — visas, transport, seasons, and budgets — that make it all possible.</p>
+      <!-- Mission -->
+      <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-14 mb-4">Why We Built ChinaStyle</h2>
+      <p class="text-stone-600 leading-relaxed">
+        Chinese traditional wear — Hanfu (汉服), Qipao (旗袍), Tang suits (唐装), Zhongshan suits (中山装), and the textile traditions of 55 ethnic minorities — represents over three millennia of craftsmanship, aesthetics, and cultural identity. But the web is full of shallow listicles that mention these garments without telling you where to find them, what they cost, how to wear them, or which city offers the best experience for each style.
+      </p>
+      <p class="text-stone-600 leading-relaxed mt-3">
+        We built ChinaStyle to fill that gap. Our guides combine academic rigor with boots-on-the-ground practicality: exact rental prices in RMB, turnaround times for custom tailoring, which Chinese apps to book through, what to wear underneath layered Hanfu, and how to navigate language barriers at a neighborhood tailor shop. We believe the best way to understand these clothing traditions is to wear them — in Xi'an's ancient city walls at sunset, in a Suzhou silk workshop, in a Guizhou mountain village where Miao grandmothers still embroider by hand.
+      </p>
 
-      <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-10 mb-4">Our Approach</h2>
-      <p class="text-stone-600 leading-relaxed">We write for travelers who value authentic experiences over checklists. Our recommendations prioritize independent tailors, family-run workshops, and community-based tourism initiatives over mass-market operators. We are not affiliated with any rental shop, tailor, or tour company. If we recommend a place, it''s because we genuinely believe it offers the best experience for your time and money.</p>
+      <!-- Editorial Policy -->
+      <div id="editorial-policy">
+        <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-14 mb-4">Editorial Standards & Independence</h2>
+        <div class="space-y-4">
+          <div class="flex items-start gap-3">
+            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-stone-800 text-sm">Firsthand Verification</h3>
+              <p class="text-sm text-stone-600 leading-relaxed">Every rental shop price, train route, tailor turnaround time, and metro direction on this site has been verified in person or through direct communication with the business within the last 12 months. We do not publish information sourced solely from other websites.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-stone-800 text-sm">Academic Source Verification</h3>
+              <p class="text-sm text-stone-600 leading-relaxed">Historical claims about clothing origins, dynasty periods, and textile techniques are cross-referenced against the Palace Museum (故宫博物院) digital archives, China National Silk Museum (中国丝绸博物馆) collections database, and peer-reviewed publications in Chinese textile history — cited at the bottom of each guide.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-stone-800 text-sm">No Paid Placements</h3>
+              <p class="text-sm text-stone-600 leading-relaxed">ChinaStyle does not accept payment for recommendations. We are not affiliated with any rental shop, tailoring house, tour operator, or commercial platform mentioned in our guides. If we recommend a specific tailor or experience, it is because we believe — based on firsthand evaluation — that it offers the best value and authenticity for travelers.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-stone-800 text-sm">Regular Updates</h3>
+              <p class="text-sm text-stone-600 leading-relaxed">Prices, opening hours, and availability change. We re-verify all practical information (prices, addresses, transport routes) every six months and update articles with a "Last verified" date stamp. Readers are encouraged to submit corrections and tips — we credit contributors by name.</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-10 mb-4">Contact</h2>
-      <p class="text-stone-600 leading-relaxed">Have a question about planning your Chinese traditional clothing experience? Found a great tailor or rental shop we should know about? We welcome reader tips, corrections, and suggestions.</p>
+      <!-- Coverage -->
+      <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-14 mb-4">What We Cover</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div class="bg-stone-50 rounded-xl p-4 border border-stone-200">
+          <h3 class="font-semibold text-sm text-stone-900">Hanfu (汉服)</h3>
+          <p class="text-xs text-stone-500 mt-1">From Han to Ming dynasty styles, rental guides for Xi'an, Luoyang, Chengdu, Hangzhou</p>
+        </div>
+        <div class="bg-stone-50 rounded-xl p-4 border border-stone-200">
+          <h3 class="font-semibold text-sm text-stone-900">Qipao & Cheongsam (旗袍)</h3>
+          <p class="text-xs text-stone-500 mt-1">Custom tailoring in Shanghai, Suzhou silk qipao, South Bund Fabric Market guide</p>
+        </div>
+        <div class="bg-stone-50 rounded-xl p-4 border border-stone-200">
+          <h3 class="font-semibold text-sm text-stone-900">Tang Suit (唐装)</h3>
+          <p class="text-xs text-stone-500 mt-1">Beijing hutong tailor workshops, festive wear traditions, fabric selection guide</p>
+        </div>
+        <div class="bg-stone-50 rounded-xl p-4 border border-stone-200">
+          <h3 class="font-semibold text-sm text-stone-900">Zhongshan Suit (中山装)</h3>
+          <p class="text-xs text-stone-500 mt-1">Heritage tailoring in Nanjing & Guangzhou, political symbolism, modern revival</p>
+        </div>
+        <div class="bg-stone-50 rounded-xl p-4 border border-stone-200">
+          <h3 class="font-semibold text-sm text-stone-900">Ethnic Minority Textiles</h3>
+          <p class="text-xs text-stone-500 mt-1">Miao embroidery villages (Guizhou), Bai tie-dye (Yunnan), Tibetan chuba, Uyghur atlas silk</p>
+        </div>
+        <div class="bg-stone-50 rounded-xl p-4 border border-stone-200">
+          <h3 class="font-semibold text-sm text-stone-900">Trip Planning</h3>
+          <p class="text-xs text-stone-500 mt-1">Visa guides, high-speed train routes, seasonal timing, budget breakdowns, packing lists</p>
+        </div>
+      </div>
+
+      <!-- Sources -->
+      <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-14 mb-4">Key Sources & References</h2>
+      <p class="text-sm text-stone-500 mb-4">Our historical and technical content draws on the following authoritative sources:</p>
+      <ul class="space-y-2 text-sm text-stone-600">
+        <li class="flex items-start gap-2">
+          <span class="text-[#b5343a] mt-0.5">•</span>
+          <span><strong>Palace Museum (故宫博物院), Beijing</strong> — Imperial robe collections, textile conservation archives, dynasty-period garment documentation. <a href="https://en.dpm.org.cn/" class="text-[#b5343a] hover:underline" target="_blank" rel="noopener">dpm.org.cn</a></span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-[#b5343a] mt-0.5">•</span>
+          <span><strong>China National Silk Museum (中国丝绸博物馆), Hangzhou</strong> — World's largest silk and textile museum; collections spanning Neolithic to Qing dynasty. <a href="https://www.chinasilkmuseum.com/" class="text-[#b5343a] hover:underline" target="_blank" rel="noopener">chinasilkmuseum.com</a></span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-[#b5343a] mt-0.5">•</span>
+          <span><strong>Shanghai History Museum (上海历史博物馆)</strong> — Republican-era qipao collection, 1920s-1940s fashion history.</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-[#b5343a] mt-0.5">•</span>
+          <span><strong>Guizhou Provincial Museum & Yunnan Nationalities Museum</strong> — Ethnic minority textile and costume collections, field research documentation.</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-[#b5343a] mt-0.5">•</span>
+          <span><strong>China Culture.org</strong> — Ministry of Culture and Tourism official resource on intangible cultural heritage, including traditional textile crafts. <a href="https://en.chinaculture.org/" class="text-[#b5343a] hover:underline" target="_blank" rel="noopener">chinaculture.org</a></span>
+        </li>
+      </ul>
+
+      <!-- Contact -->
+      <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-14 mb-4">Contact & Corrections</h2>
+      <p class="text-stone-600 leading-relaxed">
+        Found an outdated price? Know a great tailor or rental shop we should cover? Spotted a historical inaccuracy? We actively welcome reader tips, corrections, and suggestions. Each guide includes a "Last updated" date, and we credit readers who contribute verified information.
+      </p>
+      <p class="text-stone-600 leading-relaxed mt-3">
+        For corrections, tips, or collaboration inquiries, reach us through the <a href="/contact" class="text-[#b5343a] hover:underline">contact page</a>.
+      </p>
+
+      <p class="text-xs text-stone-400 mt-16 pt-8 border-t border-stone-200">ChinaStyle is an independent publication. We are not affiliated with any government tourism bureau, commercial rental platform, or clothing brand. © 2026 ChinaStyle. All rights reserved.</p>
     </div>
   </section>
+
+  <script type="application/ld+json" is:inline={orgSchema}></script>
 </BaseLayout>

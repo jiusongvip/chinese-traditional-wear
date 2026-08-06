@@ -2,22 +2,99 @@
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 ---
 <BaseLayout
-  title="China Transport Guide: Trains, Metro & Didi"
-  description="Navigate China like a pro: high-speed trains between clothing cities, costs, trip.com booking tips, metro systems, and Didi ride-hailing for travelers."
+  title="China Transport Guide: Trains, Airports & Apps | ChinaStyle" description="Complete transport guide for a traditional clothing trip: airport transfers for Beijing, Shanghai, Xi'an; high-speed train routes, booking on trip.com, Didi step-by-step, metro systems, and luggage tips."
   canonicalUrl="/plan-trip/transport"
   articleDate="2026-08-03"
-  breadcrumbs={{ name: "Home", url: "/" }, { name: "Plan Your Trip", url: "/plan-trip/" }, { name: "Transport Guide", url: "/plan-trip/transport/" }}>
+  breadcrumbs={[{ name: "Home", url: "/" }, { name: "Plan Your Trip", url: "/plan-trip/" }, { name: "Transport Guide", url: "/plan-trip/transport/" }]}>
   <section class="pt-24 pb-16"><div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
     <span class="text-xs font-medium text-[#b5343a] tracking-[0.15em] uppercase">Plan Your Trip · Transport</span>
-    <h1 class="font-serif-sc text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-stone-900 mt-3">Getting Around China: Trains, Metros & Apps</h1>
-    <p class="mt-6 text-lg text-stone-500 leading-relaxed max-w-2xl">China''s high-speed rail network covers every city in our guide. It''s fast, punctual, and half the price of equivalent European or Japanese trains.</p>
-    <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-16 mb-4">Key Train Routes for Your Trip</h2>
-    <div class="overflow-x-auto"><table class="w-full text-sm border-collapse"><thead><tr class="border-b border-stone-200 text-left"><th class="py-3 pr-4 font-semibold">Route</th><th class="py-3 pr-4 font-semibold">Duration</th><th class="py-3 pr-4 font-semibold">2nd Class</th><th class="py-3 pr-4 font-semibold">1st Class</th></tr></thead><tbody><tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Beijing to Xi''an</td><td class="py-2.5 pr-4">4.5 hrs</td><td class="py-2.5 pr-4">515 RMB</td><td class="py-2.5 pr-4">825 RMB</td></tr><tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Xi''an to Chengdu</td><td class="py-2.5 pr-4">3 hrs</td><td class="py-2.5 pr-4">263 RMB</td><td class="py-2.5 pr-4">420 RMB</td></tr><tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Shanghai to Suzhou</td><td class="py-2.5 pr-4">25 min</td><td class="py-2.5 pr-4">40 RMB</td><td class="py-2.5 pr-4">70 RMB</td></tr><tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Shanghai to Hangzhou</td><td class="py-2.5 pr-4">45 min</td><td class="py-2.5 pr-4">73 RMB</td><td class="py-2.5 pr-4">117 RMB</td></tr><tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Hangzhou to Nanjing</td><td class="py-2.5 pr-4">1.5 hrs</td><td class="py-2.5 pr-4">118 RMB</td><td class="py-2.5 pr-4">189 RMB</td></tr><tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Beijing to Shanghai</td><td class="py-2.5 pr-4">4.5 hrs</td><td class="py-2.5 pr-4">553 RMB</td><td class="py-2.5 pr-4">930 RMB</td></tr></tbody></table></div>
-    <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-14 mb-4">How to Book</h2>
-    <p class="text-stone-600 leading-relaxed mb-4"><strong>trip.com</strong> — English interface, foreign cards accepted, small booking fee (10-30 RMB). Best for first-time visitors. Book 1-2 weeks ahead. <strong>12306</strong> — official app, no booking fee but Chinese-only. You need a Chinese phone number.</p>
-    <p class="text-stone-600 leading-relaxed mb-4"><strong>At the station:</strong> Arrive 45 min before, security check, passport needed. Gate opens 15 min before, closes 5 min before. Trains leave exactly on time.</p>
-    <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-14 mb-4">Within Cities</h2>
-    <p class="text-stone-600 leading-relaxed mb-4"><strong>Metro:</strong> Every city has a modern system, English signage, 3-9 RMB/ride. <strong>Didi:</strong> China''s Uber, English app, pay through the app, 15-40 RMB for cross-city trips.</p>
-    <div class="mt-8"><a href="/plan-trip" class="text-sm text-stone-400 hover:text-stone-600 transition-colors">Back to Plan Your Trip</a></div>
+    <h1 class="font-serif-sc text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-stone-900 mt-3">Getting Around China: Complete Transport Guide</h1>
+    <p class="mt-6 text-lg text-stone-500 leading-relaxed max-w-2xl">China's transport infrastructure is world-class — high-speed trains connect every city in our guide, metro systems are modern and English-signed, and ride-hailing apps work seamlessly. Here's everything you need to navigate your traditional clothing trip.</p>
+
+    <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-14 mb-4">Arriving: Airport Transfer by City</h2>
+    <p class="text-sm text-stone-500 mb-6">Each major city has different airport options. Here's how to get from the plane to your hotel efficiently.</p>
+
+    <div class="space-y-5">
+      <div class="bg-stone-50 rounded-xl p-5">
+        <h3 class="font-semibold text-sm text-stone-900">Beijing — Capital (PEK) + Daxing (PKX)</h3>
+        <p class="text-xs text-stone-500 mt-1 leading-relaxed"><strong>PEK (Capital):</strong> Airport Express train to Dongzhimen (25 RMB, 20 min), then transfer to Metro Line 2 or hail a Didi. Taxi to city center: 100–150 RMB, 40–60 min. <strong>PKX (Daxing):</strong> Daxing Airport Express to Caoqiao (35 RMB, 19 min), then Metro Line 10. Taxi to city center: 150–200 RMB, 50–70 min. Both airports have clear English signage.</p>
+      </div>
+      <div class="bg-stone-50 rounded-xl p-5">
+        <h3 class="font-semibold text-sm text-stone-900">Shanghai — Pudong (PVG) + Hongqiao (SHA)</h3>
+        <p class="text-xs text-stone-500 mt-1 leading-relaxed"><strong>PVG (Pudong):</strong> Maglev train to Longyang Road (50 RMB, 8 min — the world's fastest commercial train at 431 km/h), then Metro Line 2. Or Metro Line 2 directly (90 min to city center, 7 RMB). Taxi: 180–250 RMB, 50–70 min. <strong>SHA (Hongqiao):</strong> Connected to Hongqiao Railway Station — Metro Lines 2, 10, and 17. Taxi to Bund area: 50–80 RMB, 30 min.</p>
+      </div>
+      <div class="bg-stone-50 rounded-xl p-5">
+        <h3 class="font-semibold text-sm text-stone-900">Xi'an — Xianyang (XIY)</h3>
+        <p class="text-xs text-stone-500 mt-1 leading-relaxed">Airport shuttle bus to city center: 25 RMB, 60 min (multiple routes — Bell Tower, Railway Station, High-Tech Zone). Metro Line 14 now connects directly from XIY to Xi'an North Station (30 min). Taxi: 120–150 RMB, 45–60 min. Tip: the shuttle bus is reliable and drops you at the Bell Tower — ideal if your hotel is nearby.</p>
+      </div>
+      <div class="bg-stone-50 rounded-xl p-5">
+        <h3 class="font-semibold text-sm text-stone-900">Hangzhou, Nanjing, Chengdu, Guiyang, Kunming</h3>
+        <p class="text-xs text-stone-500 mt-1 leading-relaxed">All five cities have metro lines connecting their airports to city centers. Hangzhou Xiaoshan (HGH): Metro Line 1 or 7, 20 RMB, 50 min. Nanjing Lukou (NKG): Metro Line S1 to Nanjing South Station, 8 RMB, 35 min. Chengdu Tianfu (TFU): Metro Line 18, 40 min. Guiyang (KWE): Metro Line 2. Kunming (KMG): Metro Line 6. In each case, follow English signs to the metro — it's always cheaper and often faster than a taxi.</p>
+      </div>
+    </div>
+
+    <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-14 mb-4">High-Speed Train Routes for Your Trip</h2>
+    <p class="text-sm text-stone-500 mb-4">China's high-speed rail (gaotie, 高铁) runs at 300 km/h. Trains are punctual to the minute. Book through trip.com (English) or the official 12306.cn (Chinese-only). Tickets go on sale 15 days in advance.</p>
+    <div class="overflow-x-auto"><table class="w-full text-sm border-collapse"><thead><tr class="border-b border-stone-200 text-left"><th class="py-3 pr-4 font-semibold">Route</th><th class="py-3 pr-4 font-semibold">Duration</th><th class="py-3 pr-4 font-semibold">2nd Class</th><th class="py-3 pr-4 font-semibold">1st Class</th><th class="py-3 font-semibold">Frequency</th></tr></thead><tbody>
+      <tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Beijing → Xi'an</td><td class="py-2.5 pr-4">4–5.5 hrs</td><td class="py-2.5 pr-4">515 RMB</td><td class="py-2.5 pr-4">825 RMB</td><td class="py-2.5 text-xs">20+ trains/day</td></tr>
+      <tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Xi'an → Chengdu</td><td class="py-2.5 pr-4">3–4 hrs</td><td class="py-2.5 pr-4">263 RMB</td><td class="py-2.5 pr-4">420 RMB</td><td class="py-2.5 text-xs">15+ trains/day</td></tr>
+      <tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Shanghai → Suzhou</td><td class="py-2.5 pr-4">25–30 min</td><td class="py-2.5 pr-4">40 RMB</td><td class="py-2.5 pr-4">70 RMB</td><td class="py-2.5 text-xs">Every 10–15 min</td></tr>
+      <tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Shanghai → Hangzhou</td><td class="py-2.5 pr-4">45–60 min</td><td class="py-2.5 pr-4">73 RMB</td><td class="py-2.5 pr-4">117 RMB</td><td class="py-2.5 text-xs">Every 15–20 min</td></tr>
+      <tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Hangzhou → Nanjing</td><td class="py-2.5 pr-4">1.5–2 hrs</td><td class="py-2.5 pr-4">118 RMB</td><td class="py-2.5 pr-4">189 RMB</td><td class="py-2.5 text-xs">10+ trains/day</td></tr>
+      <tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Beijing → Shanghai</td><td class="py-2.5 pr-4">4.5–6 hrs</td><td class="py-2.5 pr-4">553 RMB</td><td class="py-2.5 pr-4">930 RMB</td><td class="py-2.5 text-xs">40+ trains/day</td></tr>
+      <tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Guiyang → Kaili</td><td class="py-2.5 pr-4">40 min</td><td class="py-2.5 pr-4">59 RMB</td><td class="py-2.5 pr-4">95 RMB</td><td class="py-2.5 text-xs">10+ trains/day</td></tr>
+      <tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Kunming → Dali</td><td class="py-2.5 pr-4">2 hrs</td><td class="py-2.5 pr-4">145 RMB</td><td class="py-2.5 pr-4">230 RMB</td><td class="py-2.5 text-xs">15+ trains/day</td></tr>
+      <tr><td class="py-2.5 pr-4">Beijing → Nanjing</td><td class="py-2.5 pr-4">3.5–4.5 hrs</td><td class="py-2.5 pr-4">444 RMB</td><td class="py-2.5 pr-4">710 RMB</td><td class="py-2.5 text-xs">30+ trains/day</td></tr>
+    </tbody></table></div>
+    <p class="text-xs text-stone-400 mt-3">Prices are for G-series high-speed trains (fastest). D-series trains are 20–30% cheaper but 20–50% slower. 1st class offers wider seats, more legroom, and quieter carriages — worth the 60% premium for rides over 4 hours.</p>
+
+    <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-14 mb-4">How to Book Trains: Step by Step</h2>
+    <div class="space-y-3 text-sm text-stone-600 leading-relaxed">
+      <p><strong>Option 1 — trip.com (recommended for first-timers):</strong> English interface, accepts foreign credit cards, small booking fee (10–30 RMB per ticket). Download the app, search your route, select train and class, enter passport details, pay. You'll receive a QR code — scan it at the ticket gate. No need to pick up a paper ticket. Book 1–2 weeks ahead for best availability.</p>
+      <p><strong>Option 2 — 12306.cn:</strong> Official China Railway app. Chinese-only interface, no booking fee, requires a Chinese phone number for registration. If you have a Chinese friend or hotel concierge who can help, you'll save the trip.com booking fee. The English version (12306.cn/en) exists but is less reliable.</p>
+      <p><strong>At the station:</strong> Arrive 45 minutes before departure. Pass through security (metal detector + bag scan — liquids over 100ml are confiscated). Show your passport and booking QR code at the gate. Gates open 15 minutes before departure and close 5 minutes before. Trains leave exactly on time — a 10-second delay makes national news.</p>
+      <p><strong>Luggage:</strong> Overhead racks above seats fit standard carry-on bags. Larger suitcases go in racks at carriage ends. There's no formal luggage limit, but if you're traveling with multiple large suitcases (e.g., after a major shopping spree), consider shipping them via SF Express (顺丰速运) — reliable, affordable, and they'll deliver to your next hotel.</p>
+    </div>
+
+    <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-14 mb-4">Within Cities: Metro, Bus & Didi</h2>
+    
+    <div class="bg-stone-50 rounded-xl p-5 mb-5">
+      <h3 class="font-semibold text-sm text-stone-900">Metro Systems</h3>
+      <p class="text-xs text-stone-500 mt-1 leading-relaxed">Every city in our guide has a modern metro with English signage, English station announcements, and security checks at every entrance. Fares are distance-based: 3–9 RMB per ride. Buy single-journey tickets at machines (English interface available) or use Alipay's transport QR code (scan to enter, scan to exit — automatically deducts fare). Key metro lines for traditional wear destinations:</p>
+      <ul class="text-xs text-stone-500 mt-2 space-y-1">
+        <li>· <strong>Beijing Line 2</strong> — loops the city center, stops at Qianmen (Forbidden City), Yonghegong (hutong tailors), Dongzhimen (Airport Express transfer).</li>
+        <li>· <strong>Xi'an Line 2</strong> — north-south through city center, stops at Bell Tower, South Gate (Yongningmen — Hanfu rental district), and Xiaozhai (Shaanxi History Museum).</li>
+        <li>· <strong>Shanghai Line 2</strong> — east-west artery connecting Hongqiao Airport, People's Square, Nanjing Road, Lujiazui, and Pudong Airport.</li>
+        <li>· <strong>Shanghai Line 10</strong> — serves the French Concession (South Shaanxi Road, Shanghai Library stations) and Hongqiao.</li>
+        <li>· <strong>Hangzhou Line 1</strong> — connects Hangzhou East Station, West Lake (Longxiangqiao station), and the Silk Museum area.</li>
+      </ul>
+    </div>
+
+    <div class="bg-stone-50 rounded-xl p-5 mb-5">
+      <h3 class="font-semibold text-sm text-stone-900">Didi: How to Use China's Uber</h3>
+      <p class="text-xs text-stone-500 mt-1 leading-relaxed">Didi (滴滴出行) is essential for photographers carrying costume bags and for reaching sites not served by metro. Download the Didi app before your trip. It has an English interface and accepts foreign cards linked through Alipay.</p>
+      <div class="space-y-1.5 text-xs text-stone-500 mt-2">
+        <p><strong>How to use:</strong> Open app → enter destination in English (major landmarks are recognized) → select car type (Express is cheapest, Premier is nicer for airport runs) → confirm pickup point → wait. The app shows the driver's location, license plate, and ETA in real time.</p>
+        <p><strong>Typical fares:</strong> Cross-city trips within Beijing/Shanghai: 20–50 RMB. Airport to city center: 100–200 RMB. Short hops (2–3 km): 12–18 RMB.</p>
+        <p><strong>Communication tip:</strong> The app has a built-in messaging feature with auto-translate. Most drivers will call you — if you don't speak Chinese, send a pre-typed message in the app: "我在定位点等你" (I'm waiting at the pickup point).</p>
+        <p><strong>Payment:</strong> The fare is automatically charged through Alipay/WeChat Pay at the end of the ride. No cash needed, no tipping expected.</p>
+      </div>
+    </div>
+
+    <div class="bg-stone-50 rounded-xl p-5">
+      <h3 class="font-semibold text-sm text-stone-900">Buses & Alternative Transport</h3>
+      <p class="text-xs text-stone-500 mt-1 leading-relaxed">City buses are 2 RMB but challenging for non-Chinese speakers — routes and stops are rarely in English. In Guizhou and Yunnan, long-distance buses connect villages not served by trains (e.g., Kaili to Xijiang Miao Village: 1 hr, 35 RMB). These can be booked at the local bus station on the day of travel. For groups of 3+: hiring a private car with driver for the day through your hotel is often cheaper than multiple Didi rides and gives you flexibility for photoshoot locations.</p>
+    </div>
+
+    <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-14 mb-4">Practical Tips</h2>
+    <div class="space-y-3 text-sm text-stone-600 leading-relaxed">
+      <p><strong>Real-name registration:</strong> All tickets — trains, flights, even some long-distance buses — require your passport number. Always carry your physical passport (not a copy). Hotel check-in also requires passport scanning.</p>
+      <p><strong>Station security:</strong> Every metro and train station has airport-style security. Bags go through X-ray, you walk through a metal detector. Liquids over 100ml are confiscated at train stations. Pocket knives, scissors, and aerosols are also prohibited on trains.</p>
+      <p><strong>Luggage storage:</strong> Most train stations have left-luggage counters (寄存处, 10–30 RMB per bag per day). Useful if you have a late train and want to explore luggage-free. Major museums and some Hanfu shops in Xi'an also offer bag storage.</p>
+      <p><strong>Overnight trains:</strong> For long distances (e.g., Beijing to Xi'an), overnight sleeper trains (D-series "moving hotel") depart around 9 PM and arrive at 7 AM. A soft sleeper (4-berth compartment with locking door) costs 400–500 RMB — you save a hotel night and arrive ready for a full day. Book soft sleeper, not hard sleeper (6-berth, open corridor, no privacy).</p>
+      <p><strong>Internet & apps:</strong> Download maps.me or Maps.co for offline navigation. Google Maps works with a VPN but Chinese apps are more accurate. Set up Alipay with your passport and foreign card before departure — you'll need it for metro QR codes, Didi, and payments everywhere.</p>
+    </div>
+
+    <div class="mt-8"><a href="/plan-trip" class="text-sm text-stone-400 hover:text-stone-600 transition-colors">← Back to Plan Your Trip</a></div>
   </div></section>
 </BaseLayout>

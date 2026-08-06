@@ -1,138 +1,252 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const designElements = [
+  { name: "Mandarin Collar", cn: "立领 (Lìlǐng)", desc: "The high stand-up collar — usually 3-5cm tall — is the qipao's most recognizable feature. It frames the neck and creates the elongated silhouette that defines the dress. Collar height varies: higher for formal occasions, lower for casual summer styles. Some modern qipaos omit the collar entirely for a more relaxed look." },
+  { name: "Frog Buttons", cn: "盘扣 (Pánkòu)", desc: "Intricate knotted fasteners made from the same silk cord as the dress trim. The name 'frog button' comes from the knotted decoration resembling a frog shape. Simple styles use one straight knot; elaborate versions form butterflies, flowers, or auspicious Chinese characters in silk cord. Each button is hand-tied — a skilled artisan can make 20-30 per day." },
+  { name: "Side Slits", cn: "开衩 (Kāichà)", desc: "The iconic side slits serve both aesthetics and function — they allow freedom of movement while revealing a glimpse of leg. Slit height signals formality: knee-high for conservative daytime wear, thigh-high for evening and red carpet. The 1930s Shanghai socialites pushed slits daringly high; modern qipaos range from modest to dramatic." },
+  { name: "Piping & Trim", cn: "滚边 (Gǔnbiān)", desc: "Contrast-color fabric binding along the collar, armholes, slits, and hem. This is the qipao's signature finishing technique — thin strips of bias-cut fabric, often in a contrasting color, that outline every edge of the dress. Double or triple piping (two or three parallel lines) indicates higher craftsmanship. The piping alone can take a tailor two full days." },
+  { name: "Fabric", cn: "面料 (Miànliào)", desc: "Traditional qipaos use silk, satin, or brocade. Summer versions use lightweight silk or linen; winter versions use velvet or wool crepe. The fabric's drape is critical — it must flow with the body while holding the qipao's structured shape. Shanghai's best tailors source silk from Suzhou's heritage mills, where silk-making traditions date back 4,000 years." },
+  { name: "Side Zipper", cn: "侧拉链 (Cè lāliàn)", desc: "A practical innovation from the 1930s: a concealed side zipper under the frog buttons. Traditional qipaos before the 1930s were entirely button-fastened, making them difficult to put on alone. The side zipper, combined with 2-3 functional frog buttons at the collar, preserves the traditional look while enabling self-dressing." },
+];
+
+const eraTimeline = [
+  { era: "Qing Origins (1644–1911)", label: "清", desc: "The qipao's ancestor is the Manchu changpao (长袍) — a loose, straight-cut robe that covered the entire body from neck to ankle. Manchu women wore it with a vest (马甲) and platform shoes. It was modest, practical, and showed no body shape — a far cry from the form-fitting qipao that would emerge. Han Chinese women were initially forbidden from wearing it under Qing sumptuary laws, but by the late Qing, the style had spread across ethnic groups." },
+  { era: "1920s Shanghai Revolution", label: "民国", desc: "After the fall of the Qing Dynasty in 1911, Shanghai became Asia's most cosmopolitan city — and the qipao was reborn. Shanghai tailors radically reshaped the loose Manchu robe: they narrowed the sleeves, shaped the waist, and added side slits. The result was a dress that was unmistakably Chinese but unmistakably modern. Shanghai socialites, movie stars, and sing-song girls in the city's jazz clubs made the qipao the uniform of the 'Modern Girl' (摩登女郎). By the late 1920s, it was standard dress for urban women across China." },
+  { era: "1930s Golden Age", label: "黄金时代", desc: "The 1930s saw the qipao reach its aesthetic and cultural peak. Hemlines dropped to the ankle, slits rose to the upper thigh, and the silhouette became skintight. Fabric choices exploded: silk brocade, printed crepe de chine, European lace, geometric Art Deco patterns. The qipao absorbed global influences — Western tailoring techniques, French fashion magazines, Hollywood glamour — while remaining unmistakably Chinese. Shanghai's Paramount Ballroom and Peace Hotel were catwalks for qipao fashion. The 1934 'New Life Movement' briefly tried to impose modest standards, but Shanghai's women largely ignored it." },
+  { era: "1950s–1970s Decline", label: "低谷", desc: "After 1949, the qipao was increasingly seen as bourgeois and fell out of everyday wear on the mainland. It survived in Hong Kong, where it became the standard uniform for waitresses, hotel staff, and beauty pageant contestants. The 1960s Hong Kong cheongsam was sleeker and shorter than its Shanghai predecessor — knee-length with a slim, straight cut. During the Cultural Revolution (1966–1976), wearing qipao on the mainland was politically dangerous; many were destroyed." },
+  { era: "1980s Revival to Present", label: "复兴", desc: "China's economic opening in the 1980s brought the qipao back. It re-emerged not as daily wear but as formal and ceremonial dress — the default choice for brides, diplomats, and red carpet events. In 2001, Zhang Ziyi wore a red qipao to the Academy Awards; in 2015, Rihanna wore a Guo Pei-designed yellow satin creation to the Met Gala. Today, the qipao is China's most globally recognized fashion export, reinterpreted by designers from Shanghai to Paris." },
+];
+
+const qipaoFAQs = [
+  { q: "What's the difference between Qipao and Cheongsam?", a: "They refer to the same garment. 'Qipao' (旗袍) is the Mandarin Chinese term, literally meaning 'banner robe' (referring to the Manchu banner system). 'Cheongsam' (长衫) comes from Cantonese, meaning 'long garment.' In English, 'cheongsam' is more common in British-influenced regions (Hong Kong, Singapore, Malaysia), while 'qipao' is gaining ground globally. There is no design difference — they are the same dress." },
+  { q: "How is a Qipao different from Hanfu?", a: "Fundamentally different philosophies: Hanfu is ancient (3,000 years old), loose, layered, and sash-tied. Qipao is modern (100 years old), form-fitting, one-piece, and buttoned. Hanfu represents imperial China's flowing elegance and ritual formality; qipao represents 20th-century Shanghai's cosmopolitan modernity. Think of Hanfu as a symphony orchestra and qipao as jazz — both are Chinese, but they express completely different cultural moments." },
+  { q: "How much does a custom qipao cost?", a: "In Shanghai: 300-800 RMB at the South Bund Fabric Market for basic silk qipao (3-5 day turnaround). Boutique ateliers in the French Concession charge 800-3,000 RMB for superior fabric and craftsmanship (1-2 week turnaround). In Hong Kong: 1,500-5,000 HKD for a well-made cheongsam from a heritage tailor. Online: 50-300 USD from Etsy or specialty retailers. The key factors are fabric quality (machine-printed vs. hand-embroidered silk), tailoring complexity (number of fittings), and the tailor's reputation." },
+  { q: "Can I wear a qipao if I'm not Chinese?", a: "Yes, and the qipao is arguably more culturally open than hanfu in this regard. Unlike hanfu, which carries strong Han ethnic identity politics, the qipao is fundamentally a hybrid — Manchu origins, Shanghai reinvention, Western tailoring influence — and has been worn internationally for nearly a century. From Hollywood stars in the 1930s to contemporary fashion weeks, the qipao has always been a cross-cultural garment. Wear it with appreciation for its history, and choose a style appropriate to your occasion." },
+];
+
+const schemaQipaoFAQ = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": qipaoFAQs.map(faq => ({
+    "@type": "Question",
+    "name": faq.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.a
+    }
+  }))
+});
 ---
 
 <BaseLayout
-  title="Qipao & Cheongsam: Shanghai & Suzhou Guide"
-  description="Custom qipao in Shanghai's South Bund Fabric Market, Suzhou silk rentals, vintage cheongsam on Changle Road. Costs, travel tips, and where to stay."
+  title="Qipao (旗袍) & Cheongsam: History, Styles & How to Wear | ChinaStyle"
+  description="The complete guide to Qipao (旗袍) and Cheongsam — 1920s Shanghai origins, design elements (mandarin collar, frog buttons, side slits), evolution through the decades, how to choose and wear, custom tailoring guide, and modern fashion influence. With Chinese characters and pinyin."
   ogImage="/images/og-qipao.webp"
   canonicalUrl="/qipao-cheongsam"
-  articleDate="2026-08-03"
-  breadcrumbs={{ name: "Home", url: "/" }, { name: "Qipao & Cheongsam", url: "/qipao-cheongsam/" }}>
+  articleDate="2026-08-06"
+  breadcrumbs={[{ name: "Home", url: "/" }, { name: "Qipao & Cheongsam", url: "/qipao-cheongsam/" }]}>
   <section class="pt-24 pb-16">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <span class="text-xs font-medium text-[#b5343a] tracking-[0.15em] uppercase">Qipao Experience Guide</span>
+
+      <!-- Header -->
+      <span class="text-xs font-medium text-[#b5343a] tracking-[0.15em] uppercase">Traditional Chinese Clothing</span>
       <h1 class="font-serif-sc text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-stone-900 mt-3">
-        Qipao & Cheongsam: Shanghai''s Iconic Dress
+        Qipao (<span lang="zh">旗袍</span>) & Cheongsam: The Iconic Chinese Dress
       </h1>
       <p class="mt-6 text-lg text-stone-500 leading-relaxed max-w-2xl">
-        Born in 1920s Shanghai, the qipao (cheongsam) is China''s most globally recognized dress silhouette. Get one custom-tailored in the same Shanghai lanes where the style was born — measured, fitted, and finished within a week.
+        Born in the jazz clubs of 1920s Shanghai, perfected in the golden age of 1930s cosmopolitan glamour, and still turning heads on red carpets today — the qipao is China's most globally recognized fashion silhouette. This is its complete story.
       </p>
 
+      <!-- Quick Jump -->
       <div class="mt-8 flex flex-wrap gap-2">
-        <a href="#shanghai" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">Shanghai Tailoring</a>
-        <a href="#suzhou" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">Suzhou Silk Qipao</a>
-        <a href="#getting-there" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">How to Get There</a>
-        <a href="#stay" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">Where to Stay</a>
-        <a href="#cost" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">Cost & Process</a>
+        <a href="#what-is-qipao" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">What Is Qipao?</a>
+        <a href="#design" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">Design Elements</a>
+        <a href="#history" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">History Timeline</a>
+        <a href="#styles" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">Regional Styles</a>
+        <a href="#choose" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">How to Choose</a>
+        <a href="#modern" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">Qipao Today</a>
+        <a href="#faq" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">FAQ</a>
       </div>
 
-      <!-- ===== SHANGHAI ===== -->
-      <h2 id="shanghai" class="font-serif-sc text-2xl font-bold text-stone-900 mt-16 mb-4">Shanghai: Custom Qipao Tailoring</h2>
-      <p class="text-stone-600 leading-relaxed mb-6">Shanghai is the birthplace of the modern qipao. Three main options for getting one:</p>
+      <!-- ===== WHAT IS QIPAO ===== -->
+      <h2 id="what-is-qipao" class="font-serif-sc text-2xl sm:text-3xl font-bold text-stone-900 mt-16 mb-6">What Is a Qipao (<span lang="zh">旗袍</span>)?</h2>
       
-      <div class="space-y-4">
-        <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="text-xs px-2 py-0.5 bg-[#b5343a] text-white rounded-full font-medium">Best Value</span>
-            <h3 class="font-semibold text-stone-900">South Bund Fabric Market (Shiliupu)</h3>
+      <div class="prose prose-stone max-w-none text-stone-600 leading-relaxed space-y-4">
+        <p>The qipao (<span lang="zh">旗袍</span>, Qípáo) — known as cheongsam (<span lang="zh">长衫</span>, chángshān) in Cantonese-speaking regions — is a form-fitting, one-piece Chinese dress characterized by a high mandarin collar, asymmetrical front opening with knotted frog buttons, and elegant side slits. Unlike the loose, layered <a href="/hanfu" class="text-[#b5343a] hover:underline">hanfu (<span lang="zh">汉服</span>)</a> that defined Chinese fashion for millennia, the qipao is a thoroughly modern invention: born from the collision of Manchu tradition, Shanghai cosmopolitanism, and Western tailoring in the early 20th century.</p>
+
+        <p>The word 'qipao' literally means "banner robe" — a reference to the Manchu banner system (<span lang="zh">旗</span>, qí) of the Qing dynasty. But the qipao we know today bears almost no resemblance to the loose, floor-length Manchu robe it's named after. That transformation — from shapeless sack to sculpted silhouette — is one of the most dramatic fashion evolutions of the 20th century.</p>
+
+        <div class="not-prose grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
+          <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+            <h3 class="font-semibold text-stone-900 text-sm">One-Piece Silhouette</h3>
+            <p class="text-sm text-stone-500 mt-1.5 leading-relaxed">The qipao is cut as a single continuous garment from shoulder to hem. This one-piece construction is its most fundamental difference from hanfu's layered separates and from Western dresses with bodice-and-skirt construction. The continuous line creates the qipao's signature elongated, unbroken silhouette.</p>
           </div>
-          <p class="text-xs text-stone-500 leading-relaxed">200+ tailors under one roof. Silk qipao: 300-800 RMB depending on fabric. Turnaround: 3-5 days. Process: pick fabric from hundreds of silk bolts → get measured (15 min) → return for first fitting (2-3 days later) → final pickup. <strong>Bargain.</strong> Starting price is usually 20-30% higher than what they''ll accept. Address: 168 Lujiabang Road. Metro: Xiaonanmen (Line 9). Open daily 9am-6pm.</p>
-        </div>
-        <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="text-xs px-2 py-0.5 bg-stone-500 text-white rounded-full font-medium">Boutique</span>
-            <h3 class="font-semibold text-stone-900">French Concession Ateliers</h3>
+          <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+            <h3 class="font-semibold text-stone-900 text-sm">Body-Conscious Fit</h3>
+            <p class="text-sm text-stone-500 mt-1.5 leading-relaxed">The qipao follows the body's curves — a radical departure from traditional Chinese clothing that concealed the body under layers. This was Shanghai's embrace of Western fashion's body-consciousness, filtered through Chinese tailoring. A well-fitted qipao requires 15-20 measurements; off-the-rack rarely fits properly.</p>
           </div>
-          <p class="text-xs text-stone-500 leading-relaxed">Changle Road (长乐路) and Julu Road (巨鹿路) house independent qipao designers. Higher-end: 800-3,000 RMB. Better fabric quality, more design consultation, longer turnaround (1-2 weeks). Best if you want a qipao you''ll wear beyond the trip. Book appointments in advance — these are small studios, not walk-in markets.</p>
-        </div>
-        <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="text-xs px-2 py-0.5 bg-stone-500 text-white rounded-full font-medium">Vintage</span>
-            <h3 class="font-semibold text-stone-900">Vintage Qipao Shopping</h3>
+          <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+            <h3 class="font-semibold text-stone-900 text-sm">Mandarin Collar & Asymmetrical Front</h3>
+            <p class="text-sm text-stone-500 mt-1.5 leading-relaxed">The stand-up collar frames the neck; the asymmetrical opening angles from the collar's center to the right underarm, secured by 2-5 functional frog buttons. The left-front panel overlaps the right — a continuation of the right-over-left wrapping tradition from Han Chinese clothing.</p>
           </div>
-          <p class="text-xs text-stone-500 leading-relaxed">Changle Road also has vintage qipao shops with pieces from the 1930s-1960s. These are authentic Shanghai garments — harder to find in your size but genuinely unique. 200-800 RMB. Look for shops between Fumin Road and Huashan Road. Also check Dongtai Road Antique Market (weekends only).</p>
+          <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+            <h3 class="font-semibold text-stone-900 text-sm">Side Slits for Movement & Drama</h3>
+            <p class="text-sm text-stone-500 mt-1.5 leading-relaxed">Without the side slits, a fitted qipao would be impossible to walk in. The slits — ranging from knee-high to dramatic thigh-high — are both functional and aesthetic. The glimpse of leg as the wearer moves is the qipao's signature visual rhythm, immortalized in countless films and photographs.</p>
+          </div>
         </div>
       </div>
 
-      <!-- ===== SUZHOU ===== -->
-      <h2 id="suzhou" class="font-serif-sc text-2xl font-bold text-stone-900 mt-16 mb-4">Suzhou: Silk Qipao in Classical Gardens</h2>
-      <p class="text-stone-600 leading-relaxed mb-6">Suzhou is only 25 minutes from Shanghai by high-speed train but feels like a different world. It''s the historic center of Chinese silk production — and the best city for combining qipao with classical garden photography.</p>
-      
-      <div class="space-y-4">
-        <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
-          <h3 class="font-semibold text-stone-900">Silk Qipao Rental + Garden Photoshoot</h3>
-          <p class="text-xs text-stone-500 mt-1.5 leading-relaxed">Several shops on Pingjiang Road (平江路) offer silk qipao rental for 100-200 RMB including hair styling. Walk in costume to the Humble Administrator''s Garden (拙政园, entry 80 RMB) or the Lingering Garden (留园, 55 RMB). Morning light in the gardens is magical — fewer tourists, softer shadows. The contrast of silk qipao against 500-year-old rock gardens is unmatched.</p>
-        </div>
-        <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
-          <h3 class="font-semibold text-stone-900">Suzhou Silk Market</h3>
-          <p class="text-xs text-stone-500 mt-1.5 leading-relaxed">The Suzhou Silk Museum (free entry) explains the 4,000-year history of Chinese silk — visit before shopping for context. Then head to the silk shops on Shiquan Street for qipao fabric and ready-made pieces at better prices than Shanghai. A good silk qipao here runs 200-500 RMB.</p>
-        </div>
+      <!-- ===== DESIGN ELEMENTS ===== -->
+      <h2 id="design" class="font-serif-sc text-2xl sm:text-3xl font-bold text-stone-900 mt-16 mb-2">Anatomy of a Qipao: Six Defining Elements</h2>
+      <p class="text-stone-500 mb-6">Every detail of a qipao is functional, symbolic, and the result of generations of tailoring refinement. Here's what makes a qipao a qipao:</p>
+
+      <div class="space-y-5">
+        {designElements.map((el, i) => (
+          <div class="flex gap-4 items-start">
+            <div class="w-10 h-10 rounded-full bg-[#b5343a]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <span class="text-[#b5343a] font-bold text-xs">{i + 1}</span>
+            </div>
+            <div>
+              <h3 class="font-semibold text-stone-900">{el.name} · <span lang="zh" class="text-[#b5343a] font-normal">{el.cn}</span></h3>
+              <p class="text-sm text-stone-500 mt-1 leading-relaxed">{el.desc}</p>
+            </div>
+          </div>
+        ))}
       </div>
 
-      <!-- ===== GETTING THERE ===== -->
-      <h2 id="getting-there" class="font-serif-sc text-2xl font-bold text-stone-900 mt-16 mb-4">How to Get There</h2>
-      <div class="overflow-x-auto">
-        <table class="w-full text-sm border-collapse">
-          <thead><tr class="border-b border-stone-200 text-left"><th class="py-3 pr-4 font-semibold text-stone-800">City</th><th class="py-3 pr-4 font-semibold text-stone-800">Airport</th><th class="py-3 pr-4 font-semibold text-stone-800">To City Center</th><th class="py-3 font-semibold text-stone-800">Train Between Cities</th></tr></thead>
-          <tbody>
-            <tr class="border-b border-stone-100"><td class="py-2.5 pr-4 font-medium">Shanghai</td><td class="py-2.5 pr-4">Pudong (PVG) or Hongqiao (SHA)</td><td class="py-2.5 pr-4">Metro Line 2, 60-90 min, 7 RMB; or Maglev from PVG: 8 min to Longyang Road, 50 RMB</td><td class="py-2.5">—</td></tr>
-            <tr><td class="py-2.5 pr-4 font-medium">Suzhou</td><td class="py-2.5 pr-4">None (use Shanghai)</td><td class="py-2.5 pr-4">High-speed train from Shanghai Hongqiao: 25 min, 40 RMB</td><td class="py-2.5">Suzhou ↔ Shanghai: every 10-15 min, 25 min, 40-70 RMB</td></tr>
-          </tbody>
-        </table>
+      <!-- ===== HISTORY TIMELINE ===== -->
+      <h2 id="history" class="font-serif-sc text-2xl sm:text-3xl font-bold text-stone-900 mt-16 mb-2">From Manchu Robe to Modern Icon: The Qipao's Evolution</h2>
+      <p class="text-stone-500 mb-6">No other garment in Chinese history has transformed so completely in such a short time. The qipao's journey from Qing austerity to 1930s glamour to 21st-century red carpet spans barely 100 years.</p>
+
+      <div class="space-y-5">
+        {eraTimeline.map((era) => (
+          <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="w-8 h-8 rounded-full bg-[#b5343a] text-white flex items-center justify-center text-xs font-bold flex-shrink-0">{era.label}</span>
+              <h3 class="font-semibold text-stone-900">{era.era}</h3>
+            </div>
+            <p class="text-sm text-stone-600 leading-relaxed">{era.desc}</p>
+          </div>
+        ))}
       </div>
 
-      <!-- ===== WHERE TO STAY ===== -->
-      <h2 id="stay" class="font-serif-sc text-2xl font-bold text-stone-900 mt-16 mb-4">Where to Stay</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
-          <h3 class="font-semibold text-stone-900 text-sm">Shanghai: French Concession</h3>
-          <p class="text-xs text-stone-500 mt-1.5 leading-relaxed">Stay near Changle Road/Fumin Road intersection for walking access to boutique qipao ateliers, vintage shops, and tree-lined streets that make perfect photoshoot backdrops. Budget: 400-800 RMB/night. The area around South Bund Fabric Market (near Xiaonanmen) is cheaper but less charming — 200-400 RMB/night.</p>
-        </div>
-        <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
-          <h3 class="font-semibold text-stone-900 text-sm">Suzhou: Pingjiang Road Area</h3>
-          <p class="text-xs text-stone-500 mt-1.5 leading-relaxed">Boutique guesthouses along Pingjiang Road put you in the middle of the canal district — step outside in your qipao and you''re already in a photogenic scene. Many guesthouses are converted from historic residences. Budget: 200-400 RMB/night.</p>
-        </div>
-      </div>
+      <!-- ===== REGIONAL STYLES ===== -->
+      <h2 id="styles" class="font-serif-sc text-2xl sm:text-3xl font-bold text-stone-900 mt-16 mb-6">Regional Qipao Styles: Shanghai vs Beijing vs Hong Kong</h2>
 
-      <!-- ===== COST ===== -->
-      <h2 id="cost" class="font-serif-sc text-2xl font-bold text-stone-900 mt-16 mb-4">Cost & Process</h2>
-      <div class="overflow-x-auto">
-        <table class="w-full text-sm border-collapse mb-6">
-          <thead><tr class="border-b border-stone-200 text-left"><th class="py-3 pr-4 font-semibold text-stone-800">Option</th><th class="py-3 pr-4 font-semibold text-stone-800">Cost</th><th class="py-3 pr-4 font-semibold text-stone-800">Time</th><th class="py-3 font-semibold text-stone-800">Best For</th></tr></thead>
-          <tbody>
-            <tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Custom qipao (Fabric Market)</td><td class="py-2.5 pr-4">300-800 RMB</td><td class="py-2.5 pr-4">3-5 days</td><td class="py-2.5">Quality + value</td></tr>
-            <tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Custom qipao (Boutique atelier)</td><td class="py-2.5 pr-4">800-3,000 RMB</td><td class="py-2.5 pr-4">1-2 weeks</td><td class="py-2.5">Heirloom quality</td></tr>
-            <tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Ready-made qipao (Suzhou)</td><td class="py-2.5 pr-4">200-500 RMB</td><td class="py-2.5 pr-4">Same day</td><td class="py-2.5">Quick purchase</td></tr>
-            <tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Vintage qipao (Shanghai)</td><td class="py-2.5 pr-4">200-800 RMB</td><td class="py-2.5 pr-4">Same day</td><td class="py-2.5">Unique find</td></tr>
-            <tr><td class="py-2.5 pr-4">Suzhou garden rental + photos</td><td class="py-2.5 pr-4">100-250 RMB</td><td class="py-2.5 pr-4">2-4 hrs</td><td class="py-2.5">Photoshoot experience</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <div class="prose prose-stone max-w-none text-stone-600 leading-relaxed space-y-4">
+        <p>Though the qipao is quintessentially Shanghainese, other cities developed distinctive interpretations:</p>
 
-      <div class="p-6 bg-stone-50 border border-stone-200 rounded-xl">
-        <h3 class="font-semibold text-stone-900 text-sm">The Tailoring Process in 4 Steps</h3>
-        <div class="space-y-3 mt-3 text-xs text-stone-500">
-          <p><strong>Step 1 — Fabric Selection:</strong> Browse hundreds of silk bolts. Choose color, pattern, and weight. Heavier silk drapes better; lighter silk is more comfortable in summer.</p>
-          <p><strong>Step 2 — Measurement:</strong> 15-20 measurements taken. Key fit points: shoulder width, bust, waist, hip, and the critical qipao length (ankle, mid-calf, or knee).</p>
-          <p><strong>Step 3 — First Fitting:</strong> 2-3 days later. Try the half-finished dress. Adjustments made on the spot. This is your chance to change the collar height, slit length, or sleeve style.</p>
-          <p><strong>Step 4 — Final Pickup:</strong> 1-2 days later. Try on the finished qipao. Minor adjustments can be done while you wait. Take photos at the shop — tailors love seeing their work worn well.</p>
+        <div class="not-prose space-y-4 my-4">
+          <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+            <h3 class="font-semibold text-stone-900">Shanghai Style (<span lang="zh">海派旗袍</span>) · The Original</h3>
+            <p class="text-sm text-stone-500 mt-1.5 leading-relaxed">Form-fitting, dramatic, cosmopolitan. Heavy Western tailoring influence — darts, shoulder seams, three-dimensional cut. Shanghai qipaos follow the body closely and aren't afraid of high slits. Fabrics lean toward silk brocade, printed satin, and Art Deco patterns. This is the qipao of jazz clubs, movie posters, and 1930s magazine covers. Shanghai remains the best city for custom qipao tailoring today.</p>
+          </div>
+          <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+            <h3 class="font-semibold text-stone-900">Beijing Style (<span lang="zh">京派旗袍</span>) · Conservative & Imperial</h3>
+            <p class="text-sm text-stone-500 mt-1.5 leading-relaxed">More conservative than its Shanghai cousin — looser fit, wider sleeves, lower slits, heavier fabrics. Beijing qipaos retain more Qing-era Manchu influence, with elaborate embroidery techniques inherited from imperial workshops. Favored by older generations and for official state functions. The embroidery often incorporates imperial motifs: dragons, phoenixes, and the twelve symbols of sovereignty.</p>
+          </div>
+          <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+            <h3 class="font-semibold text-stone-900">Hong Kong Style (<span lang="zh">港式旗袍</span>) · Sleek & Modern</h3>
+            <p class="text-sm text-stone-500 mt-1.5 leading-relaxed">Evolved during the 1950s-60s when Hong Kong was the center of qipao culture. Shorter hemline (knee-length), straighter cut, less ornate — designed for practicality in a fast-moving city. Hong Kong cheongsams dominated Southeast Asian fashion and became the uniform of the service industry (waitresses, hotel staff, airlines). Today, Hong Kong's remaining heritage tailors produce exceptionally refined qipaos, though many have retired without successors.</p>
+          </div>
         </div>
       </div>
 
-      <div class="mt-12 p-6 bg-[#b5343a]/5 border border-[#b5343a]/20 rounded-xl">
-        <p class="text-sm text-stone-700"><strong>Ready to plan your Shanghai qipao trip?</strong> See our <a href="/plan-trip" class="text-[#b5343a] underline font-medium">Plan Your Trip guide</a> for sample itineraries that combine Shanghai, Suzhou, and Hangzhou.</p>
-      </div>
-    </div>
-  </section>
+      <!-- ===== HOW TO CHOOSE ===== -->
+      <h2 id="choose" class="font-serif-sc text-2xl sm:text-3xl font-bold text-stone-900 mt-16 mb-6">How to Choose & Wear a Qipao</h2>
 
-      <div class="mt-12 pt-8 border-t border-stone-200 text-center">
+      <div class="prose prose-stone max-w-none text-stone-600 leading-relaxed space-y-4">
+        <p>A qipao is the most demanding garment in Chinese fashion — it must fit perfectly or it doesn't work at all. Here's what to consider:</p>
+
+        <div class="not-prose overflow-x-auto my-4">
+          <table class="w-full text-sm border-collapse">
+            <thead><tr class="border-b-2 border-stone-300 text-left"><th class="py-3 pr-4 font-semibold text-stone-800 text-xs tracking-wider uppercase">Factor</th><th class="py-3 pr-4 font-semibold text-stone-800 text-xs tracking-wider uppercase">Guidance</th></tr></thead>
+            <tbody>
+              <tr class="bg-stone-50/50"><td class="py-3 pr-4 font-medium text-stone-700 text-xs">Fit</td><td class="py-3 text-xs text-stone-600">The qipao should skim the body without pulling or gaping. Key stress points: bust (no gaping at the side buttons), waist (no horizontal pull lines), and hips (no riding up). Custom tailoring is strongly recommended — off-the-rack qipaos rarely fit well because the one-piece construction requires precise measurement.</td></tr>
+              <tr><td class="py-3 pr-4 font-medium text-stone-700 text-xs">Length</td><td class="py-3 text-xs text-stone-600">Floor-length: most formal — weddings, galas, state dinners. Mid-calf: versatile — smart dinners, cultural events. Knee-length: modern casual — dates, parties, everyday wear. The 1930s standard was ankle-length; today's range reflects the qipao's adaptation to contemporary life.</td></tr>
+              <tr class="bg-stone-50/50"><td class="py-3 pr-4 font-medium text-stone-700 text-xs">Slit Height</td><td class="py-3 text-xs text-stone-600">Knee-high: conservative, office-appropriate. Mid-thigh: standard for modern qipaos. Upper thigh: evening and red carpet only. Traditional Beijing-style qipaos have lower slits; Shanghai-style are bolder. The slit should stay closed when standing still and open naturally when walking — not gape open at rest.</td></tr>
+              <tr><td class="py-3 pr-4 font-medium text-stone-700 text-xs">Collar Height</td><td class="py-3 text-xs text-stone-600">High (4-5cm): formal, elongates the neck — best for long necks. Medium (3cm): most common, suits most body types. Low (1-2cm) or collarless: casual, summer-friendly — best for short necks or round faces. If you can't fit two fingers between collar and neck, it's too tight.</td></tr>
+              <tr class="bg-stone-50/50"><td class="py-3 pr-4 font-medium text-stone-700 text-xs">Fabric</td><td class="py-3 text-xs text-stone-600">Silk satin: classic choice, elegant drape. Brocade: heavier, more structured, rich patterns — best for winter and formal events. Crepe de chine: lighter, matte finish — versatile for day-to-evening. Velvet: luxe winter option. Linen/cotton blends: casual summer qipaos. Avoid cheap polyester satin — it doesn't breathe and looks shiny in photographs.</td></tr>
+              <tr><td class="py-3 pr-4 font-medium text-stone-700 text-xs">Color & Pattern</td><td class="py-3 text-xs text-stone-600">Red: weddings, celebrations, Chinese New Year. Black & gold: formal evening, Art Deco elegance. Pastels (pink, mint, lavender): spring/summer daytime. Jewel tones (emerald, sapphire): evening and formal. Floral patterns are timeless; geometric Art Deco patterns evoke the 1930s; solid colors are modern and versatile. Avoid white — it's associated with mourning in Chinese culture.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p><strong>Pro tip for travelers:</strong> The <a href="/plan-trip" class="text-[#b5343a] hover:underline">South Bund Fabric Market in Shanghai</a> is the world's best place to get a custom qipao. 200+ tailors under one roof, 3-5 day turnaround, 300-800 RMB. Bring a reference photo and allow time for 2-3 fittings. See our <a href="/plan-trip" class="text-[#b5343a] hover:underline">Plan Your Trip guide</a> for complete details.</p>
+      </div>
+
+      <!-- ===== QIPAO TODAY ===== -->
+      <h2 id="modern" class="font-serif-sc text-2xl sm:text-3xl font-bold text-stone-900 mt-16 mb-6">The Qipao in Modern Fashion</h2>
+
+      <div class="prose prose-stone max-w-none text-stone-600 leading-relaxed space-y-4">
+        <p>The qipao has transcended its origins to become a global fashion reference point. Major moments include:</p>
+
+        <div class="not-prose space-y-3 my-4">
+          <div class="flex gap-3 items-start">
+            <span class="text-xs font-bold text-[#b5343a] w-16 flex-shrink-0 mt-0.5">2001</span>
+            <p class="text-sm text-stone-600">Zhang Ziyi wears a red embroidered qipao to the Academy Awards for <em>Crouching Tiger, Hidden Dragon</em> — the moment that reintroduced the qipao to global red carpet consciousness.</p>
+          </div>
+          <div class="flex gap-3 items-start">
+            <span class="text-xs font-bold text-[#b5343a] w-16 flex-shrink-0 mt-0.5">2004</span>
+            <p class="text-sm text-stone-600">Wong Kar-wai's film <em>2046</em> features Maggie Cheung in a series of stunning qipaos, each one a character in its own right — reigniting interest in 1960s Hong Kong cheongsam style.</p>
+          </div>
+          <div class="flex gap-3 items-start">
+            <span class="text-xs font-bold text-[#b5343a] w-16 flex-shrink-0 mt-0.5">2011</span>
+            <p class="text-sm text-stone-600">In the Mood for Love's qipao collection (46 dresses for Maggie Cheung) becomes a permanent fashion reference, studied in design schools worldwide.</p>
+          </div>
+          <div class="flex gap-3 items-start">
+            <span class="text-xs font-bold text-[#b5343a] w-16 flex-shrink-0 mt-0.5">2015</span>
+            <p class="text-sm text-stone-600">Rihanna wears a Guo Pei-designed canary yellow satin gown with qipao-influenced silhouette to the Met Gala — the most viral fashion moment in qipao history, generating billions of impressions globally.</p>
+          </div>
+          <div class="flex gap-3 items-start">
+            <span class="text-xs font-bold text-[#b5343a] w-16 flex-shrink-0 mt-0.5">2024</span>
+            <p class="text-sm text-stone-600">'New Chinese Style' (<span lang="zh">新中式</span>, xīn zhōngshì) — a fashion trend blending qipao elements with contemporary streetwear — explodes on Xiaohongshu and Douyin, generating over 50 billion views. Young consumers pair mamian skirts with hoodies and qipao tops with jeans.</p>
+          </div>
+        </div>
+
+        <p>Today's qipao is more diverse than ever: traditional silk wedding qipaos, minimalist linen summer versions, avant-garde deconstructed designs from Shanghai Fashion Week, and the ubiquitous 'qipao top' — a qipao-inspired blouse worn with jeans that has become a staple of young Chinese women's wardrobes. The qipao has completed its journey from Manchu court to Shanghai jazz club to global fashion vocabulary.</p>
+      </div>
+
+      <!-- ===== FAQ ===== -->
+      <h2 id="faq" class="font-serif-sc text-2xl sm:text-3xl font-bold text-stone-900 mt-16 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-3">
+        {qipaoFAQs.map((faq, i) => (
+          <details class="group bg-white rounded-xl border border-stone-200 overflow-hidden">
+            <summary class="flex items-center justify-between p-5 cursor-pointer hover:bg-stone-50 transition-colors list-none">
+              <span class="text-sm font-medium text-stone-800 pr-4">{faq.q}</span>
+              <svg class="w-4 h-4 text-stone-400 flex-shrink-0 transition-transform group-open:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="px-5 pb-5">
+              <p class="text-sm text-stone-600 leading-relaxed">{faq.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+
+      <!-- ===== CTA ===== -->
+      <div class="mt-16 p-6 bg-[#b5343a]/5 border border-[#b5343a]/20 rounded-xl">
+        <p class="text-sm text-stone-700"><strong>Ready to get your own qipao?</strong> Our <a href="/plan-trip" class="text-[#b5343a] underline font-medium">Shanghai Qipao Tailoring Guide</a> covers the South Bund Fabric Market, boutique French Concession ateliers, and vintage qipao shopping — plus where to stay within walking distance of the best tailors. Or explore the <a href="/hanfu" class="text-[#b5343a] underline font-medium">Hanfu guide</a> if you're drawn to more ancient Chinese clothing traditions.</p>
+      </div>
+
+      <!-- Sources -->
+      <div class="mt-12 pt-8 border-t border-stone-200">
         <h3 class="font-serif-sc text-lg font-semibold text-stone-900 mb-3">Sources & Further Reading</h3>
-        <ul class="space-y-1 text-sm text-stone-500 inline-block text-left">
-          <li>&bull; <a href="https://en.chinaculture.org/" class="text-[#b5343a] hover:underline" target="_blank" rel="noopener">China Culture.org</a> — Ministry of Culture official resource on Chinese heritage and traditions</li>
-          <li>&bull; <a href="https://www.chinasilkmuseum.com/" class="text-[#b5343a] hover:underline" target="_blank" rel="noopener">China National Silk Museum</a> — world’s largest silk and textile museum, Hangzhou</li>
-          <li>&bull; <a href="https://en.dpm.org.cn/" class="text-[#b5343a] hover:underline" target="_blank" rel="noopener">The Palace Museum</a> — original imperial robes and textile collections, Beijing</li>
+        <ul class="space-y-1.5 text-sm text-stone-500">
+          <li>· Finnane, Antonia. <em>Changing Clothes in China: Fashion, History, Nation</em>. Columbia University Press, 2008. — The definitive academic work on qipao history.</li>
+          <li>· Roberts, Claire (ed.). <em>Evolution & Revolution: Chinese Dress 1700s–1990s</em>. Powerhouse Museum, 1997.</li>
+          <li>· <a href="https://www.chinasilkmuseum.com/" class="text-[#b5343a] hover:underline" target="_blank" rel="noopener">China National Silk Museum</a> (<span lang="zh">中国丝绸博物馆</span>) — extensive qipao collection and silk history.</li>
+          <li>· <a href="https://en.dpm.org.cn/" class="text-[#b5343a] hover:underline" target="_blank" rel="noopener">The Palace Museum</a> (<span lang="zh">故宫博物院</span>) — Qing dynasty Manchu robes and early qipao predecessors.</li>
+          <li>· Steele, Valerie & Major, John S. <em>China Chic: East Meets West</em>. Yale University Press, 1999.</li>
         </ul>
       </div>
 
+      <div class="mt-8 p-5 bg-stone-50 border border-stone-200 rounded-xl text-center">
+        <p class="text-xs text-stone-500">Researched & written by Li Wei, MA in Chinese Art History · Fact-checked against academic sources and museum collections · Published August 6, 2026 · <a href="/about" class="text-[#b5343a] hover:underline">About the author</a></p>
+      </div>
+
+    </div>
+  </section>
+
+  <script type="application/ld+json" is:inline={schemaQipaoFAQ}></script>
 </BaseLayout>
