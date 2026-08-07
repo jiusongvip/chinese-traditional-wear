@@ -6,5 +6,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://chinese-traditional-wear.com',
   trailingSlash: 'never',
-  integrations: [tailwind(), sitemap()],
+  integrations: [tailwind(), sitemap({
+    filter: (url) => !url.endsWith('/qipao') && !url.endsWith('/tang'),
+  })],
 });
