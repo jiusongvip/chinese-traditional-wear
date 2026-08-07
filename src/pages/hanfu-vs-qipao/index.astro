@@ -1,0 +1,229 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "What is the main difference between Hanfu and Qipao?", "acceptedAnswer": { "@type": "Answer", "text": "Hanfu is loose, layered, and flowing — spanning 3,000+ years from the Han to Ming dynasties — with crossed collars (交领), wide sleeves, and sash closures. Qipao is form-fitting, one-piece, and modern — born in 1920s Shanghai — with a high mandarin collar (立领), frog buttons (盘扣), and side slits. Hanfu represents ancient imperial China; Qipao represents modern Shanghai glamour." } },
+    { "@type": "Question", "name": "Which is better for a photoshoot — Hanfu or Qipao?", "acceptedAnswer": { "@type": "Answer", "text": "Hanfu excels at outdoor historical sites (Xi'an city walls, Suzhou gardens, ancient temples) and creates dramatic, flowing silhouettes. Qipao shines in urban settings (Shanghai's Bund and French Concession, modern interiors) and produces elegant, figure-flattering portraits. For maximum variety, many travelers book both — a Hanfu session in Xi'an and a qipao session in Shanghai." } },
+    { "@type": "Question", "name": "Is Hanfu or Qipao more affordable to rent?", "acceptedAnswer": { "@type": "Answer", "text": "Hanfu rentals are generally cheaper: 100-300 RMB for a basic set with hairstyling in Xi'an or Luoyang. Qipao rentals in Shanghai run 150-400 RMB. Custom tailoring is the reverse — a bespoke qipao (300-800 RMB at South Bund Fabric Market) is cheaper than a custom Hanfu set (800-3000+ RMB from specialized Hanfu tailors)." } },
+    { "@type": "Question", "name": "Can men wear Hanfu and Qipao?", "acceptedAnswer": { "@type": "Answer", "text": "Hanfu has extensive men's styles across all dynasties — scholar robes, warrior costumes, and formal court attire. Qipao is traditionally women's wear; men seeking a similar era-appropriate look should consider the Zhongshan suit (中山装) or a mandarin-collar Tang suit (唐装), both from the same Republican-era period." } },
+    { "@type": "Question", "name": "Which is more historically authentic?", "acceptedAnswer": { "@type": "Answer", "text": "Both are authentic but from different eras. Hanfu represents clothing worn by Han Chinese for over 3,000 years across multiple dynasties — it is the older and more historically rooted tradition. Qipao is also authentic Chinese clothing, but from the 20th century (1920s-1940s), blending Manchu robe structure with Western tailoring. Neither is more 'authentic' — they belong to different chapters of Chinese fashion history." } },
+    { "@type": "Question", "name": "Where should I go to try Hanfu vs Qipao?", "acceptedAnswer": { "@type": "Answer", "text": "Hanfu: Xi'an (ancient city wall, Daming Palace), Luoyang (Longmen Grottoes area), Chengdu (Jinli Ancient Street), Hangzhou (West Lake). Qipao: Shanghai (French Concession, the Bund, South Bund Fabric Market for custom tailoring), Suzhou (silk qipao in classical gardens). For the best of both, fly into Shanghai for qipao, then take the 2-hour high-speed train to Hangzhou for Song dynasty Hanfu by West Lake." } }
+  ]
+});
+---
+
+<BaseLayout
+  title="Hanfu vs Qipao: Full Comparison — Which Chinese Traditional Dress Is Right for You?"
+  description="Complete Hanfu vs Qipao comparison: history, silhouette, cost, best cities, photoshoot suitability, and how to choose between China's two most iconic traditional garments. With detailed comparison table, FAQ, and travel recommendations."
+  ogImage="/images/og-hanfu.webp"
+  articleDate="2026-08-06"
+  canonicalUrl="/hanfu-vs-qipao"
+  breadcrumbs={[{ name: "Home", url: "/" }, { name: "Compare", url: "/compare" }, { name: "Hanfu vs Qipao", url: "/hanfu-vs-qipao" }]}>
+
+  <section class="pt-24 pb-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="text-xs font-medium text-vermillion-600 tracking-[0.15em] uppercase">Style Comparison</span>
+      <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-warm-900 mt-3">
+        Hanfu vs Qipao: Which Chinese Traditional Dress Is Right for You?
+      </h1>
+      <p class="mt-6 text-lg text-warm-500 leading-relaxed max-w-3xl">
+        Two of China's most iconic garments — one ancient, one modern. Hanfu (<span lang="zh">汉服</span>) spans 3,000 years of dynastic history with flowing robes and crossed collars. Qipao (<span lang="zh">旗袍</span>) emerged from 1920s Shanghai as a sleek, form-fitting fusion of East and West. This guide compares every dimension that matters for your trip: silhouette, cost, best cities, photoshoot potential, and how to choose.
+      </p>
+
+      <!-- Quick Answer Box -->
+      <div class="mt-8 bg-vermillion-600/5 border border-vermillion-600/20 rounded-xl p-5 sm:p-6">
+        <p class="text-sm font-semibold text-vermillion-600 mb-2">The 30-Second Answer</p>
+        <p class="text-sm text-warm-700 leading-relaxed">
+          <strong>Choose Hanfu</strong> if you want dramatic, flowing photos at ancient historical sites (Xi'an city walls, Suzhou gardens) and don't mind layers and preparation time. <strong>Choose Qipao</strong> if you want elegant, figure-flattering portraits in urban settings (Shanghai lanes, modern interiors) with simpler wear and faster turnaround. Many travelers do both — Hanfu in Xi'an, qipao in Shanghai.
+        </p>
+      </div>
+
+      <!-- Full Comparison Table -->
+      <h2 class="font-display text-2xl font-bold text-warm-900 mt-14 mb-4">Complete Comparison: Hanfu vs Qipao</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse min-w-[700px]">
+          <thead>
+            <tr class="border-b-2 border-warm-300 text-left">
+              <th class="py-3 pr-4 font-semibold text-warm-800 text-xs tracking-wider uppercase w-[140px]">Dimension</th>
+              <th class="py-3 pr-4 font-semibold text-warm-800">Hanfu <span lang="zh" class="font-normal text-warm-400 text-[10px]">汉服</span></th>
+              <th class="py-3 font-semibold text-warm-800">Qipao <span lang="zh" class="font-normal text-warm-400 text-[10px]">旗袍</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-warm-100 bg-warm-50/50"><td class="py-3 pr-4 font-medium text-warm-700 text-xs">Time Period</td><td class="py-3 pr-4 text-warm-600 text-xs">c. 2700 BC – 1644 AD (Han to Ming dynasties)</td><td class="py-3 text-warm-600 text-xs">1920s Shanghai to present</td></tr>
+            <tr class="border-b border-warm-100"><td class="py-3 pr-4 font-medium text-warm-700 text-xs">Origin</td><td class="py-3 pr-4 text-warm-600 text-xs">Han Chinese civilization; codified in Zhou dynasty ritual texts</td><td class="py-3 text-warm-600 text-xs">Manchu qizhuang (banner dress) + 1920s Western tailoring techniques</td></tr>
+            <tr class="border-b border-warm-100 bg-warm-50/50"><td class="py-3 pr-4 font-medium text-warm-700 text-xs">Silhouette</td><td class="py-3 pr-4 text-warm-600 text-xs">Loose, flowing, layered — robe over robe, cinched with a sash</td><td class="py-3 text-warm-600 text-xs">Form-fitting, one-piece, body-hugging with side slits</td></tr>
+            <tr class="border-b border-warm-100"><td class="py-3 pr-4 font-medium text-warm-700 text-xs">Collar</td><td class="py-3 pr-4 text-warm-600 text-xs">Crossed collar (<span lang="zh">交领 jiāolǐng</span>) — right lapel wraps over left (<span lang="zh">右衽 yòurèn</span>)</td><td class="py-3 text-warm-600 text-xs">High mandarin stand-up collar (<span lang="zh">立领 lìlǐng</span>)</td></tr>
+            <tr class="border-b border-warm-100 bg-warm-50/50"><td class="py-3 pr-4 font-medium text-warm-700 text-xs">Closure</td><td class="py-3 pr-4 text-warm-600 text-xs">Sash ties (<span lang="zh">系带 jìdài</span>) — no buttons on traditional Hanfu</td><td class="py-3 text-warm-600 text-xs">Frog buttons (<span lang="zh">盘扣 pánkòu</span>) + side zipper or snap fasteners</td></tr>
+            <tr class="border-b border-warm-100"><td class="py-3 pr-4 font-medium text-warm-700 text-xs">Sleeves</td><td class="py-3 pr-4 text-warm-600 text-xs">Wide, flowing — varies from narrow (Song) to extremely wide (Tang, Han)</td><td class="py-3 text-warm-600 text-xs">Slim, fitted — cap sleeves, short sleeves, or three-quarter length</td></tr>
+            <tr class="border-b border-warm-100 bg-warm-50/50"><td class="py-3 pr-4 font-medium text-warm-700 text-xs">Fabric</td><td class="py-3 pr-4 text-warm-600 text-xs">Silk, hemp, cotton, ramie — varies by dynasty and social class</td><td class="py-3 text-warm-600 text-xs">Silk, satin, brocade, velvet, modern synthetic blends</td></tr>
+            <tr class="border-b border-warm-100"><td class="py-3 pr-4 font-medium text-warm-700 text-xs">Layers</td><td class="py-3 pr-4 text-warm-600 text-xs">3-5+ layers: inner garment (<span lang="zh">中衣</span>), middle robe (<span lang="zh">袍</span>), outer jacket or coat (<span lang="zh">褙子/比甲</span>), skirt (<span lang="zh">裙</span>)</td><td class="py-3 text-warm-600 text-xs">Single dress — may be worn with a matching jacket or shawl</td></tr>
+            <tr class="border-b border-warm-100 bg-warm-50/50"><td class="py-3 pr-4 font-medium text-warm-700 text-xs">Gender</td><td class="py-3 pr-4 text-warm-600 text-xs">Both men and women — extensive styles for each gender across all dynasties</td><td class="py-3 text-warm-600 text-xs">Primarily women — men's equivalent is Tang suit or Zhongshan suit</td></tr>
+            <tr class="border-b border-warm-100"><td class="py-3 pr-4 font-medium text-warm-700 text-xs">Dressing Complexity</td><td class="py-3 pr-4 text-warm-600 text-xs">High — requires assistance for proper layering and sash tying (10-15 min)</td><td class="py-3 text-warm-600 text-xs">Low — slip on like a dress; zips or snaps closed (2-3 min)</td></tr>
+            <tr class="border-b border-warm-100 bg-warm-50/50"><td class="py-3 pr-4 font-medium text-warm-700 text-xs">Rental Cost</td><td class="py-3 pr-4 text-warm-600 text-xs">100-300 RMB basic; 300-500 RMB premium with professional makeup</td><td class="py-3 text-warm-600 text-xs">150-400 RMB rental; 300-800 RMB custom tailored</td></tr>
+            <tr class="border-b border-warm-100"><td class="py-3 pr-4 font-medium text-warm-700 text-xs">Best Photo Backdrop</td><td class="py-3 pr-4 text-warm-600 text-xs">Ancient city walls, temple courtyards, classical gardens, mountain landscapes</td><td class="py-3 text-warm-600 text-xs">Art deco lanes, heritage buildings, jazz-age interiors, city skylines</td></tr>
+            <tr class="border-b border-warm-100 bg-warm-50/50"><td class="py-3 pr-4 font-medium text-warm-700 text-xs">Best Cities</td><td class="py-3 pr-4 text-warm-600 text-xs">Xi'an, Luoyang, Hangzhou, Chengdu, Nanjing</td><td class="py-3 text-warm-600 text-xs">Shanghai, Suzhou, Beijing (modern districts), Hong Kong</td></tr>
+            <tr class="border-b border-warm-100"><td class="py-3 pr-4 font-medium text-warm-700 text-xs">Season Suitability</td><td class="py-3 pr-4 text-warm-600 text-xs">Spring & autumn best; winter layering possible; summer heavy fabrics can be hot</td><td class="py-3 text-warm-600 text-xs">Spring & autumn ideal; sleeveless styles work well in summer; pair with coat in winter</td></tr>
+            <tr class="border-b border-warm-100 bg-warm-50/50"><td class="py-3 pr-4 font-medium text-warm-700 text-xs">Cultural Vibe</td><td class="py-3 pr-4 text-warm-600 text-xs">Ancient, ethereal, imperial, scholarly — transports you to dynastic China</td><td class="py-3 text-warm-600 text-xs">Glamorous, sophisticated, cosmopolitan — evokes 1930s Shanghai jazz age</td></tr>
+            <tr><td class="py-3 pr-4 font-medium text-warm-700 text-xs">Modern Status</td><td class="py-3 pr-4 text-warm-600 text-xs">Massive youth revival; millions wear it at festivals, daily life, and social media</td><td class="py-3 text-warm-600 text-xs">Global fashion icon; weddings, diplomacy, red carpets, and formal occasions worldwide</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Deep Dive: History -->
+      <h2 class="font-display text-2xl font-bold text-warm-900 mt-14 mb-4">The Story Behind Each Garment</h2>
+      
+      <h3 class="font-display text-xl font-semibold text-warm-800 mt-8 mb-3">Hanfu: 3,000 Years of Dynastic Fashion</h3>
+      <p class="text-warm-600 leading-relaxed">
+        Hanfu is not one garment — it's an entire clothing system that evolved across two dozen dynasties. The core principle remained consistent: <strong>crossed collars wrapping right-over-left</strong> (<span lang="zh">交领右衽</span>), wide sleeves, and sash ties instead of buttons. But each dynasty reinterpreted the silhouette:
+      </p>
+      <ul class="mt-3 space-y-2 text-sm text-warm-600">
+        <li><strong>Han Dynasty (206 BC–220 AD):</strong> Deep overlapping robes in black and red, the origin of the name "Hanfu" itself. Wide sleeves that extended well past the hands signified leisure and status — you couldn't do manual labor in them.</li>
+        <li><strong>Tang Dynasty (618–907):</strong> China's most fashion-daring era. Women wore chest-high ruqun skirts paired with short open-front jackets, exposed necklines, and bold Central Asian patterns. The <span lang="zh">花钿</span> (huadian) forehead flower became the dynasty's beauty signature.</li>
+        <li><strong>Song Dynasty (960–1279):</strong> Neo-Confucian restraint. Narrower sleeves, straighter silhouettes, muted celadon and lavender tones. The long, sleeveless beizi jacket became the era's defining piece.</li>
+        <li><strong>Ming Dynasty (1368–1644):</strong> The Hanfu revival movement's primary reference. Pleated mamianqun skirts, stand-collar jackets with ornate buttons, and circular-collared formal robes. Bright reds and blues in brocade — regal and structured.</li>
+      </ul>
+
+      <h3 class="font-display text-xl font-semibold text-warm-800 mt-8 mb-3">Qipao: Shanghai's Jazz Age Revolution</h3>
+      <p class="text-warm-600 leading-relaxed">
+        The qipao's story is modern and transformative. Its ancestor is the Manchu <span lang="zh">旗装</span> (qizhuang) — a loose, straight robe worn by Manchu women during the Qing dynasty that concealed the body entirely. When the Qing fell in 1912 and Shanghai became Asia's most cosmopolitan city, Chinese women began demanding clothing that reflected their new social freedoms.
+      </p>
+      <p class="text-warm-600 leading-relaxed mt-3">
+        The 1920s qipao was born when Shanghai tailors took the Manchu robe and applied Western dressmaking techniques — <strong>darts for shaping, higher side slits for movement, luxurious imported fabrics</strong>. By the 1930s, the qipao had become <em>the</em> uniform of the Shanghai modern woman: movie stars, socialites, and university students all wore it. The 1930s qipao reached its peak — floor-length, body-skimming, with high mandarin collars and delicate frog-button closures, often in printed silk with art deco patterns.
+      </p>
+      <p class="text-warm-600 leading-relaxed mt-3">
+        After 1949, the qipao declined in mainland China but thrived in Hong Kong, where it evolved into the sleek, high-slit cheongsam we recognize today. In the 21st century, the qipao has become China's most globally recognized fashion export — worn at state dinners, on red carpets, and by brides worldwide.
+      </p>
+
+      <!-- How to Choose -->
+      <h2 class="font-display text-2xl font-bold text-warm-900 mt-14 mb-4">How to Choose: Decision Guide</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+        <div class="bg-amber-50 border border-amber-200 rounded-xl p-5">
+          <h3 class="font-semibold text-amber-900 text-sm flex items-center gap-2">
+            <span class="text-lg">👘</span> Choose Hanfu If...
+          </h3>
+          <ul class="mt-3 space-y-1.5 text-xs text-amber-800">
+            <li>• You want dramatic, flowing photos with fabric movement</li>
+            <li>• You're visiting Xi'an, Luoyang, or Hangzhou</li>
+            <li>• You enjoy the ritual of elaborate dressing</li>
+            <li>• You want to feel like an ancient dynasty character</li>
+            <li>• You're traveling in a group (group Hanfu photos are spectacular)</li>
+            <li>• You have an interest in historical accuracy and dynasty aesthetics</li>
+            <li>• You're shooting outdoors at historical sites</li>
+          </ul>
+        </div>
+        <div class="bg-rose-50 border border-rose-200 rounded-xl p-5">
+          <h3 class="font-semibold text-rose-900 text-sm flex items-center gap-2">
+            <span class="text-lg">👗</span> Choose Qipao If...
+          </h3>
+          <ul class="mt-3 space-y-1.5 text-xs text-rose-800">
+            <li>• You want elegant, figure-flattering portraits</li>
+            <li>• You're in Shanghai or Suzhou</li>
+            <li>• You want a quick, simple dressing experience</li>
+            <li>• You prefer a modern, cosmopolitan aesthetic</li>
+            <li>• You want a wearable souvenir (custom qipao to take home)</li>
+            <li>• You're shooting indoors or in urban settings</li>
+            <li>• You're attending a formal event or dinner afterward</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- The Combo Approach -->
+      <div class="mt-6 bg-warm-50 border border-warm-200 rounded-xl p-5">
+        <h3 class="font-semibold text-warm-900 text-sm">The Best of Both: A Two-City Combo</h3>
+        <p class="text-sm text-warm-600 mt-2 leading-relaxed">
+          Many travelers book <strong>Hanfu in Xi'an</strong> (ancient city wall at sunset, 150-300 RMB) and <strong>qipao in Shanghai</strong> (custom tailored at South Bund Fabric Market, 300-800 RMB). Fly or take the 6-hour high-speed train between them. This gives you two completely different aesthetics, photo backdrops, and cultural experiences — and the custom qipao becomes a lifelong souvenir.
+        </p>
+      </div>
+
+      <!-- Practical: Cost Breakdown -->
+      <h2 class="font-display text-2xl font-bold text-warm-900 mt-14 mb-4">Cost Comparison: Hanfu vs Qipao Experience</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="border-b-2 border-warm-300 text-left">
+              <th class="py-3 pr-4 font-semibold text-xs tracking-wider uppercase">Experience</th>
+              <th class="py-3 pr-4 font-semibold text-xs tracking-wider uppercase">Hanfu (Xi'an)</th>
+              <th class="py-3 font-semibold text-xs tracking-wider uppercase">Qipao (Shanghai)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-warm-100 bg-warm-50/50"><td class="py-2.5 pr-4 text-xs">Basic rental (2-4 hrs)</td><td class="py-2.5 pr-4 text-xs">100-200 RMB</td><td class="py-2.5 text-xs">150-300 RMB</td></tr>
+            <tr class="border-b border-warm-100"><td class="py-2.5 pr-4 text-xs">With professional makeup & hair</td><td class="py-2.5 pr-4 text-xs">300-500 RMB</td><td class="py-2.5 text-xs">350-600 RMB</td></tr>
+            <tr class="border-b border-warm-100 bg-warm-50/50"><td class="py-2.5 pr-4 text-xs">Photoshoot package (1-2 hrs, photographer)</td><td class="py-2.5 pr-4 text-xs">500-1,500 RMB</td><td class="py-2.5 text-xs">600-1,800 RMB</td></tr>
+            <tr class="border-b border-warm-100"><td class="py-2.5 pr-4 text-xs">Custom tailoring (to keep)</td><td class="py-2.5 pr-4 text-xs">800-3,000+ RMB</td><td class="py-2.5 text-xs">300-800 RMB</td></tr>
+            <tr class="border-b border-warm-100 bg-warm-50/50"><td class="py-2.5 pr-4 text-xs">Location entry fee</td><td class="py-2.5 pr-4 text-xs">City wall 54 RMB; Daming Palace 60 RMB</td><td class="py-2.5 text-xs">The Bund free; Yu Garden 40 RMB</td></tr>
+            <tr><td class="py-2.5 pr-4 text-xs font-medium">Total (basic rental + location)</td><td class="py-2.5 pr-4 text-xs font-medium">~150-250 RMB</td><td class="py-2.5 text-xs font-medium">~150-340 RMB</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs text-warm-400 mt-3">Prices as of 2026. Booking via Meituan or Xiaohongshu typically saves 20-30% on listed prices. Deposits of 200-500 RMB are standard and refundable.</p>
+
+      <!-- FAQ -->
+      <h2 class="font-display text-2xl font-bold text-warm-900 mt-14 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-3">
+        <details class="group bg-white rounded-xl border border-warm-200 overflow-hidden">
+          <summary class="flex items-center justify-between p-5 cursor-pointer hover:bg-warm-50 transition-colors list-none">
+            <span class="text-sm font-medium text-warm-800 pr-4">What is the main difference between Hanfu and Qipao?</span>
+            <svg class="w-4 h-4 text-warm-400 flex-shrink-0 transition-transform group-open:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="px-5 pb-5"><p class="text-sm text-warm-600 leading-relaxed">Hanfu is loose, layered, and flowing — spanning 3,000+ years from the Han to Ming dynasties — with crossed collars (交领), wide sleeves, and sash closures. Qipao is form-fitting, one-piece, and modern — born in 1920s Shanghai — with a high mandarin collar (立领), frog buttons (盘扣), and side slits. Hanfu represents ancient imperial China; Qipao represents modern Shanghai glamour.</p></div>
+        </details>
+        <details class="group bg-white rounded-xl border border-warm-200 overflow-hidden">
+          <summary class="flex items-center justify-between p-5 cursor-pointer hover:bg-warm-50 transition-colors list-none">
+            <span class="text-sm font-medium text-warm-800 pr-4">Which is better for a photoshoot?</span>
+            <svg class="w-4 h-4 text-warm-400 flex-shrink-0 transition-transform group-open:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="px-5 pb-5"><p class="text-sm text-warm-600 leading-relaxed">Hanfu excels at outdoor historical sites (Xi'an city walls, Suzhou gardens) and creates dramatic, flowing silhouettes. Qipao shines in urban settings (Shanghai's Bund, modern interiors) with elegant, figure-flattering portraits. For maximum variety, book both — Hanfu in Xi'an and qipao in Shanghai.</p></div>
+        </details>
+        <details class="group bg-white rounded-xl border border-warm-200 overflow-hidden">
+          <summary class="flex items-center justify-between p-5 cursor-pointer hover:bg-warm-50 transition-colors list-none">
+            <span class="text-sm font-medium text-warm-800 pr-4">Is Hanfu or Qipao more affordable?</span>
+            <svg class="w-4 h-4 text-warm-400 flex-shrink-0 transition-transform group-open:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="px-5 pb-5"><p class="text-sm text-warm-600 leading-relaxed">Hanfu rentals are generally cheaper (100-300 RMB basic in Xi'an vs. 150-400 RMB for qipao in Shanghai). But custom tailoring is the reverse — a bespoke qipao at South Bund Fabric Market (300-800 RMB) costs far less than a custom Hanfu set (800-3,000+ RMB). For the best value, rent Hanfu and buy a custom qipao.</p></div>
+        </details>
+        <details class="group bg-white rounded-xl border border-warm-200 overflow-hidden">
+          <summary class="flex items-center justify-between p-5 cursor-pointer hover:bg-warm-50 transition-colors list-none">
+            <span class="text-sm font-medium text-warm-800 pr-4">Can men wear Hanfu and Qipao?</span>
+            <svg class="w-4 h-4 text-warm-400 flex-shrink-0 transition-transform group-open:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="px-5 pb-5"><p class="text-sm text-warm-600 leading-relaxed">Hanfu has extensive men's styles — scholar robes, warrior costumes, formal court attire. Qipao is traditionally women's wear. Men seeking a similar Republican-era look should consider the Zhongshan suit (中山装) or mandarin-collar Tang suit (唐装).</p></div>
+        </details>
+        <details class="group bg-white rounded-xl border border-warm-200 overflow-hidden">
+          <summary class="flex items-center justify-between p-5 cursor-pointer hover:bg-warm-50 transition-colors list-none">
+            <span class="text-sm font-medium text-warm-800 pr-4">Where should I go for each?</span>
+            <svg class="w-4 h-4 text-warm-400 flex-shrink-0 transition-transform group-open:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="px-5 pb-5"><p class="text-sm text-warm-600 leading-relaxed">Hanfu: Xi'an (city wall, Daming Palace), Luoyang (Longmen Grottoes), Hangzhou (West Lake). Qipao: Shanghai (French Concession, the Bund, South Bund Fabric Market for custom tailoring), Suzhou (silk qipao in classical gardens). For both in one trip: fly into Shanghai for qipao, then take the 2-hour high-speed train to Hangzhou for Song dynasty Hanfu by West Lake.</p></div>
+        </details>
+        <details class="group bg-white rounded-xl border border-warm-200 overflow-hidden">
+          <summary class="flex items-center justify-between p-5 cursor-pointer hover:bg-warm-50 transition-colors list-none">
+            <span class="text-sm font-medium text-warm-800 pr-4">Which is more historically authentic?</span>
+            <svg class="w-4 h-4 text-warm-400 flex-shrink-0 transition-transform group-open:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="px-5 pb-5"><p class="text-sm text-warm-600 leading-relaxed">Both are authentic but from different eras. Hanfu represents clothing worn for over 3,000 years — it is the older tradition. Qipao is also authentic Chinese clothing, but from the 20th century (1920s-1940s). Neither is more "authentic" — they belong to different chapters of Chinese fashion history.</p></div>
+        </details>
+      </div>
+
+      <!-- Related Links -->
+      <div class="mt-12 pt-8 border-t border-warm-200">
+        <p class="text-xs text-warm-400 mb-3">Continue exploring:</p>
+        <div class="flex flex-wrap gap-2">
+          <a href="/compare" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-warm-600 hover:bg-stone-200 transition-colors">Full Style Comparison Tool</a>
+          <a href="/hanfu" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-warm-600 hover:bg-stone-200 transition-colors">Hanfu Guide</a>
+          <a href="/qipao-cheongsam" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-warm-600 hover:bg-stone-200 transition-colors">Qipao Guide</a>
+          <a href="/plan-trip/budget" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-warm-600 hover:bg-stone-200 transition-colors">Trip Budget</a>
+          <a href="/plan-trip/itineraries" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-warm-600 hover:bg-stone-200 transition-colors">Sample Itineraries</a>
+        </div>
+      </div>
+
+      <p class="text-xs text-warm-400 mt-16 pt-8 border-t border-warm-200">Researched & written by Li Wei, MA in Chinese Art History · Fact-checked against Palace Museum (故宫博物院) & China National Silk Museum (中国丝绸博物馆) archives · Last verified August 2026</p>
+    </div>
+  </section>
+
+  <script type="application/ld+json" is:inline={faqSchema}></script>
+</BaseLayout>

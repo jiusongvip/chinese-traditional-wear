@@ -1,0 +1,152 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const productSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "item": { "@type": "Product", "name": "Custom Qipao (Cheongsam)", "description": "Bespoke qipao tailored at Shanghai's South Bund Fabric Market. 300-800 RMB, 3-5 day turnaround.", "offers": { "@type": "AggregateOffer", "lowPrice": "300", "highPrice": "800", "priceCurrency": "CNY" } } },
+    { "@type": "ListItem", "position": 2, "item": { "@type": "Product", "name": "Ready-to-Wear Tang Suit", "description": "Mandarin-collar jacket with frog buttons. Beijing hutong tailors and Silk Street. 50-300 RMB.", "offers": { "@type": "AggregateOffer", "lowPrice": "50", "highPrice": "300", "priceCurrency": "CNY" } } },
+    { "@type": "ListItem", "position": 3, "item": { "@type": "Product", "name": "Hanfu Full Set", "description": "Complete dynasty-accurate Hanfu sets from Xi'an Hanfu streets. 200-3000+ RMB.", "offers": { "@type": "AggregateOffer", "lowPrice": "200", "highPrice": "3000", "priceCurrency": "CNY" } } },
+    { "@type": "ListItem", "position": 4, "item": { "@type": "Product", "name": "Silk Fan (Tuanshan)", "description": "Hand-painted silk round fans from Suzhou. 80-200 RMB hand-painted; 20-50 RMB printed.", "offers": { "@type": "AggregateOffer", "lowPrice": "20", "highPrice": "200", "priceCurrency": "CNY" } } },
+    { "@type": "ListItem", "position": 5, "item": { "@type": "Product", "name": "Miao Silver Jewelry", "description": "Handcrafted Miao silver bracelets, necklaces, and headdresses from Kaili, Guizhou. 100-2000+ RMB.", "offers": { "@type": "AggregateOffer", "lowPrice": "100", "highPrice": "2000", "priceCurrency": "CNY" } } }
+  ]
+});
+---
+
+<BaseLayout
+  title="Where to Buy Chinese Traditional Clothing — Custom Tailors, Markets & Online Shops 2026"
+  description="Complete buying guide: where to buy Hanfu, Qipao, Tang Suit in China. Custom tailoring in Shanghai & Beijing, ready-to-wear markets, ethnic textiles in Guizhou, and online shops that ship internationally."
+  ogImage="/images/og-chinese-traditional-wear.webp"
+  articleDate="2026-08-06"
+  canonicalUrl="/where-to-buy"
+  breadcrumbs={[{ name: "Home", url: "/" }, { name: "Where to Buy", url: "/where-to-buy" }]}>
+
+  <section class="pt-24 pb-16">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="text-xs font-medium text-vermillion-600 tracking-[0.15em] uppercase">Shopping Guide</span>
+      <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-warm-900 mt-3">
+        Where to Buy Chinese Traditional Clothing
+      </h1>
+      <p class="mt-6 text-lg text-warm-500 leading-relaxed max-w-2xl">
+        From custom-tailored qipao in Shanghai to handmade Miao silver in Guizhou mountain villages — this guide covers exactly where to shop, what to pay, and how to avoid tourist traps when buying authentic Chinese traditional clothing.
+      </p>
+
+      <!-- Overview Table -->
+      <div class="mt-10 overflow-x-auto">
+        <table class="w-full text-sm border-collapse min-w-[650px]">
+          <thead>
+            <tr class="border-b-2 border-warm-300 text-left">
+              <th class="py-3 pr-4 font-semibold text-xs tracking-wider uppercase">What You Want</th>
+              <th class="py-3 pr-4 font-semibold text-xs tracking-wider uppercase">Best City</th>
+              <th class="py-3 pr-4 font-semibold text-xs tracking-wider uppercase">Where Exactly</th>
+              <th class="py-3 font-semibold text-xs tracking-wider uppercase">Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-warm-100"><td class="py-2.5 pr-4 font-medium text-xs">Custom Qipao</td><td class="py-2.5 pr-4 text-xs">Shanghai</td><td class="py-2.5 pr-4 text-xs">South Bund Fabric Market (南外滩面料市场), 399 Lujiabang Road</td><td class="py-2.5 text-xs">300-800 RMB</td></tr>
+            <tr class="border-b border-warm-100 bg-warm-50/50"><td class="py-2.5 pr-4 font-medium text-xs">Ready-to-Wear Hanfu</td><td class="py-2.5 pr-4 text-xs">Xi'an</td><td class="py-2.5 pr-4 text-xs">Hanfu shops near South Gate (永宁门) & Muslim Quarter area</td><td class="py-2.5 text-xs">200-1,500 RMB</td></tr>
+            <tr class="border-b border-warm-100"><td class="py-2.5 pr-4 font-medium text-xs">Tang Suit Jacket</td><td class="py-2.5 pr-4 text-xs">Beijing</td><td class="py-2.5 pr-4 text-xs">Silk Street (秀水街) & hutong tailor workshops</td><td class="py-2.5 text-xs">50-300 RMB</td></tr>
+            <tr class="border-b border-warm-100 bg-warm-50/50"><td class="py-2.5 pr-4 font-medium text-xs">Zhongshan Suit</td><td class="py-2.5 pr-4 text-xs">Nanjing</td><td class="py-2.5 pr-4 text-xs">Heritage tailors near Confucius Temple (夫子庙)</td><td class="py-2.5 text-xs">500-1,500 RMB</td></tr>
+            <tr class="border-b border-warm-100"><td class="py-2.5 pr-4 font-medium text-xs">Silk Accessories</td><td class="py-2.5 pr-4 text-xs">Suzhou</td><td class="py-2.5 pr-4 text-xs">Pingjiang Road (平江路), Suzhou Silk Museum shop</td><td class="py-2.5 text-xs">20-300 RMB</td></tr>
+            <tr class="border-b border-warm-100 bg-warm-50/50"><td class="py-2.5 pr-4 font-medium text-xs">Silk Scarves & Fabric</td><td class="py-2.5 pr-4 text-xs">Hangzhou</td><td class="py-2.5 pr-4 text-xs">Hangzhou Silk City (杭州丝绸城), multi-story market</td><td class="py-2.5 text-xs">50-500 RMB</td></tr>
+            <tr class="border-b border-warm-100"><td class="py-2.5 pr-4 font-medium text-xs">Miao Silver & Embroidery</td><td class="py-2.5 pr-4 text-xs">Kaili (Guizhou)</td><td class="py-2.5 pr-4 text-xs">Kaili Ethnic Minorities Market, village workshops near Xijiang</td><td class="py-2.5 text-xs">50-2,000+ RMB</td></tr>
+            <tr><td class="py-2.5 pr-4 font-medium text-xs">Jade Jewelry</td><td class="py-2.5 pr-4 text-xs">Beijing</td><td class="py-2.5 pr-4 text-xs">Hongqiao Pearl Market (虹桥市场), Panjiayuan Antique Market</td><td class="py-2.5 text-xs">100-1,000+ RMB</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- City-by-City Buying Guide -->
+      <h2 class="font-display text-2xl font-bold text-warm-900 mt-14 mb-4">City-by-City Shopping Guide</h2>
+
+      <h3 class="font-display text-xl font-semibold text-warm-800 mt-8 mb-3">Shanghai — Custom Qipao & Cheongsam</h3>
+      <p class="text-warm-600 leading-relaxed">
+        Shanghai is the undisputed capital of qipao. The <strong>South Bund Fabric Market</strong> (<span lang="zh">南外滩面料市场</span>) at 399 Lujiabang Road is ground zero — three floors of tailors who can create a custom qipao from scratch in 3-5 days. How it works: you choose fabric from thousands of bolts (silk, brocade, velvet, printed cotton), get measured, and return for a fitting 2-3 days later. Final pickup on day 4-5. Prices run 300-800 RMB depending on fabric quality and tailoring complexity. Bring a reference photo on your phone.
+      </p>
+      <p class="text-warm-600 leading-relaxed mt-2">
+        <strong>Pro tip:</strong> The tailors on the 2nd and 3rd floors generally offer better quality than ground-floor stalls. Many tailors ship internationally — ask about SF Express or DHL shipping (typically 100-200 RMB to the US or Europe) if your trip is too short for the full turnaround.
+      </p>
+
+      <h3 class="font-display text-xl font-semibold text-warm-800 mt-8 mb-3">Beijing — Tang Suits, Silk Street & Hutong Tailors</h3>
+      <p class="text-warm-600 leading-relaxed">
+        Beijing's <strong>Silk Street</strong> (<span lang="zh">秀水街</span>) is the city's most famous shopping destination for traditional clothing — a multi-story indoor market with hundreds of stalls selling tang suits, qipao, silk scarves, and accessories. <strong>Bargain aggressively:</strong> start at 30-40% of the initial asking price. For a more authentic experience, seek out the hutong tailor workshops in the Dongcheng district — family-run operations that have been making tang suits for generations. Off-the-rack tang suits run 50-150 RMB at Silk Street; custom tailoring at hutong shops costs 300-800 RMB.
+      </p>
+
+      <h3 class="font-display text-xl font-semibold text-warm-800 mt-8 mb-3">Xi'an — Hanfu Shopping Streets</h3>
+      <p class="text-warm-600 leading-relaxed">
+        Xi'an's Hanfu scene has exploded, and with it, dedicated shopping streets. The area around the <strong>South Gate</strong> (<span lang="zh">永宁门</span>) and along the streets leading to the Muslim Quarter has dozens of Hanfu shops selling everything from 200 RMB student-grade sets to 3,000+ RMB premium silk ensembles with authentic dynasty patterns. Most shops also rent — try before you buy. The Datang Everbright City (<span lang="zh">大唐不夜城</span>) pedestrian zone has several high-end Hanfu boutiques that cater to serious enthusiasts.
+      </p>
+
+      <h3 class="font-display text-xl font-semibold text-warm-800 mt-8 mb-3">Suzhou — Silk Everything</h3>
+      <p class="text-warm-600 leading-relaxed">
+        Suzhou has been China's silk capital for centuries. <strong>Pingjiang Road</strong> (<span lang="zh">平江路</span>) and <strong>Shantang Street</strong> (<span lang="zh">山塘街</span>) are lined with shops selling hand-painted silk fans, embroidered pouches, qipao, and accessories. The <strong>Suzhou Silk Museum</strong> shop offers higher-quality, authenticated silk products at fixed (non-negotiable) prices. For bulk silk fabric, visit the Suzhou Silk Factory outlets on the city's outskirts. A hand-painted silk fan: 80-200 RMB. Embroidered silk qipao: 300-600 RMB.
+      </p>
+
+      <h3 class="font-display text-xl font-semibold text-warm-800 mt-8 mb-3">Guizhou — Miao Silver & Ethnic Textiles</h3>
+      <p class="text-warm-600 leading-relaxed">
+        For truly handcrafted, one-of-a-kind pieces, go to <strong>Kaili</strong> (<span lang="zh">凯里</span>) in Guizhou province. The Kaili Ethnic Minorities Market operates daily with hundreds of Miao artisans selling silver jewelry, indigo-dyed embroidery, and handwoven textiles. Nearby villages like <strong>Xijiang</strong> (<span lang="zh">西江千户苗寨</span>) and <strong>Zhouxi</strong> have workshops where you can watch silversmiths and embroiderers at work — and buy directly from them. Miao silver bracelets: 100-300 RMB. Embroidered textile panels: 50-200 RMB. Full silver headdresses: 500-2,000+ RMB. These are living craft traditions, not mass-produced souvenirs.
+      </p>
+
+      <h2 class="font-display text-2xl font-bold text-warm-900 mt-14 mb-4">Online Shops That Ship Internationally</h2>
+      <p class="text-warm-600 leading-relaxed mb-4">Can't make it to China? These online retailers ship traditional Chinese clothing worldwide:</p>
+      <div class="space-y-3">
+        <div class="bg-warm-50 rounded-xl p-5 border border-warm-200">
+          <h3 class="font-semibold text-sm text-warm-900">The Hanfu Story <span class="text-xs text-warm-400 font-normal">— thehanfustory.com</span></h3>
+          <p class="text-xs text-warm-500 mt-1">Largest international Hanfu retailer. Stocks Tang, Song, Ming dynasty styles plus modern Hanyuansu. Ships globally. Women's, men's, and children's collections. Price range: $45-$760 USD.</p>
+        </div>
+        <div class="bg-warm-50 rounded-xl p-5 border border-warm-200">
+          <h3 class="font-semibold text-sm text-warm-900">Kate Yang <span class="text-xs text-warm-400 font-normal">— kateyang.co.uk</span></h3>
+          <p class="text-xs text-warm-500 mt-1">UK-based shop specializing in qipao, cheongsam, and Tang suit jackets. Ships throughout Europe and North America. Ready-to-wear collections with detailed sizing charts. Price range: £100-£260.</p>
+        </div>
+        <div class="bg-warm-50 rounded-xl p-5 border border-warm-200">
+          <h3 class="font-semibold text-sm text-warm-900">Taobao / Tmall <span class="text-xs text-warm-400 font-normal">— taobao.com (Chinese-language)</span></h3>
+          <p class="text-xs text-warm-500 mt-1">The largest selection by far — thousands of Hanfu and qipao sellers at all price points. Requires Chinese reading ability or a shopping agent. Many sellers ship internationally via consolidated warehouse shipping (集运). Search terms: 汉服 (Hanfu), 旗袍 (Qipao), 唐装 (Tang suit).</p>
+        </div>
+      </div>
+
+      <h2 class="font-display text-2xl font-bold text-warm-900 mt-14 mb-4">How to Spot Quality vs. Tourist Traps</h2>
+      <div class="space-y-3 text-sm text-warm-600">
+        <div class="flex items-start gap-3">
+          <span class="text-green-600 font-bold mt-0.5">✓</span>
+          <div><strong>Check the seams:</strong> Quality traditional clothing has tight, even stitching with no loose threads. On qipao, the frog buttons should be firmly attached and symmetrical. On Hanfu, the sash should be reinforced at stress points.</div>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="text-green-600 font-bold mt-0.5">✓</span>
+          <div><strong>Fabric burn test:</strong> Real silk burns slowly, smells like burnt hair, and leaves a crushable ash. Synthetic fabrics melt into a hard plastic bead. Reputable silk shops will often demonstrate this if asked.</div>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="text-red-600 font-bold mt-0.5">✗</span>
+          <div><strong>Red flag — "Ancient" jade at bargain prices:</strong> Genuine antique jade is extremely expensive and requires expertise to authenticate. What's sold as "ancient jade" at tourist markets is almost always modern jadeite or dyed stone. Buy jade for its beauty, not its claimed age.</div>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="text-red-600 font-bold mt-0.5">✗</span>
+          <div><strong>Red flag — "Handmade" embroidery on mass-market qipao:</strong> True hand embroidery takes weeks and costs accordingly. A 300 RMB qipao with "hand-embroidered" dragons is machine-embroidered. That's not necessarily bad — machine embroidery can be beautiful — but don't pay hand-embroidery prices for it.</div>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="text-green-600 font-bold mt-0.5">✓</span>
+          <div><strong>Walk one block from the main street:</strong> Prices drop 30-50% just one block away from major tourist thoroughfares. The shop with the best location pays the highest rent — and passes that cost to you.</div>
+        </div>
+      </div>
+
+      <h2 class="font-display text-2xl font-bold text-warm-900 mt-14 mb-4">Payment & Shipping Tips</h2>
+      <ul class="space-y-2 text-sm text-warm-600">
+        <li><strong>Payment:</strong> Alipay and WeChat Pay dominate. Cash is accepted but less common. International credit cards work at larger stores but not at small workshops or markets. Set up Alipay TourPass before your trip.</li>
+        <li><strong>Shipping home:</strong> SF Express (顺丰速运) is the most reliable international shipper from China. A 2-3 kg package to the US or Europe costs 200-300 RMB and arrives in 5-10 business days. Most tailors and larger shops can arrange SF Express pickup. Always get a tracking number.</li>
+        <li><strong>Carry-on vs. checked:</strong> Delicate silk and embroidered pieces should go in carry-on if possible. If checking, wrap in tissue paper and place in a rigid box — soft luggage can crush brocade and damage embroidery.</li>
+        <li><strong>Customs:</strong> Personal-use clothing purchases are generally duty-free in most countries up to $800-1,000 USD total. Keep receipts. Declare high-value pieces.</li>
+      </ul>
+
+      <div class="mt-12 pt-8 border-t border-warm-200">
+        <div class="flex flex-wrap gap-2">
+          <a href="/accessories" class="text-xs px-3 py-1.5 bg-warm-100 rounded-full text-warm-600 hover:bg-warm-200 transition-colors">Accessories Guide</a>
+          <a href="/plan-trip/budget" class="text-xs px-3 py-1.5 bg-warm-100 rounded-full text-warm-600 hover:bg-warm-200 transition-colors">Trip Budget</a>
+          <a href="/plan-trip/transport" class="text-xs px-3 py-1.5 bg-warm-100 rounded-full text-warm-600 hover:bg-warm-200 transition-colors">Getting Around</a>
+        </div>
+      </div>
+
+      <p class="text-xs text-warm-400 mt-16 pt-8 border-t border-warm-200">Researched & written by Li Wei, MA in Chinese Art History · Prices verified August 2026 · ChinaStyle does not receive commissions from any recommended shops</p>
+    </div>
+  </section>
+
+  <script type="application/ld+json" is:inline={productSchema}></script>
+</BaseLayout>

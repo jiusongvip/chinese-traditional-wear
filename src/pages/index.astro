@@ -2,31 +2,30 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ExperienceMap from "../components/ExperienceMap.astro";
 
-const categories = [
-  { slug: "hanfu", name: "Hanfu", nameCN: "汉服", pinyin: "Hànfú", desc: "The foundational garment of Han Chinese civilization, worn across 3,000 years from the Yellow Emperor to the Ming Dynasty. Features crossed collars (交领, jiāolǐng), wide sleeves, and layered robes tied with a sash rather than buttons. Today's Hanfu revival movement draws millions of young enthusiasts who wear it at festivals, photoshoots, and daily life — making it the most visible symbol of China's cultural renaissance.", city: "Xi''an & Luoyang", experience: "Hanfu photoshoot at ancient city walls", img: "/images/cat-hanfu.webp", span: "md:col-span-2 md:row-span-2", variant: "large" },
-  { slug: "qipao-cheongsam", name: "Qipao & Cheongsam", nameCN: "旗袍", pinyin: "Qípáo", desc: "Born in 1920s Shanghai, the qipao fuses Manchu robes with Western tailoring into a form-fitting, one-piece dress with a high mandarin collar (立领, lìlǐng), coiled frog buttons (盘扣, pánkòu), and elegant side slits. It reached its golden age in 1930s Shanghai and remains China's most internationally recognized dress — worn at weddings, diplomacy, and red carpets worldwide.", city: "Shanghai", experience: "Custom tailoring in the French Concession", img: "/images/cat-qipao.webp", span: "", variant: "light" },
-  { slug: "tang-suit", name: "Tang Suit", nameCN: "唐装", pinyin: "Tángzhuāng", desc: "Despite its name, the Tang suit is a modern evolution of Qing-dynasty Magua (马褂) riding jackets — not Tang dynasty clothing. Popularized globally when world leaders wore them at the 2001 APEC summit, it features a stand-up mandarin collar, front-opening with knotted frog buttons, and silk brocade with auspicious patterns. Today it's China's go-to festive menswear for Chinese New Year, weddings, and formal occasions.", city: "Beijing", experience: "Traditional tailor workshops in hutongs", img: "/images/cat-tang-suit.webp", span: "", variant: "light" },
-  { slug: "zhongshan", name: "Zhongshan Suit", nameCN: "中山装", pinyin: "Zhōngshān zhuāng", desc: "Also known internationally as the Mao suit, this revolutionary menswear was designed by Dr. Sun Yat-sen (Sun Zhongshan) in the early 20th century, blending Japanese cadet uniforms with Western tailoring. Its four patch pockets represent the Four Virtues (propriety, righteousness, honesty, shame), and the five center-front buttons symbolize the five branches of government. A powerful political and cultural icon through modern Chinese history.", city: "Nanjing & Guangzhou", experience: "Suit-making at heritage tailor houses", img: "/images/cat-zhongshan.webp", span: "", variant: "light" },
-  { slug: "ethnic", name: "Ethnic & Minority", nameCN: "少数民族服饰", pinyin: "Shǎoshù mínzú fúshì", desc: "Beyond Han clothing, China's 55 officially recognized ethnic minorities each maintain distinct textile traditions — from the Miao (苗族) silver headdresses and indigo-dyed embroidery of Guizhou, to Tibetan (藏族) woolen chuba robes, to Uyghur (维吾尔族) atlas silk dresses of Xinjiang. These are living traditions, not museum pieces — still worn daily in villages, markets, and festivals across western and southern China.", city: "Guizhou & Yunnan", experience: "Miao silver-smithing & embroidery villages", img: "/images/cat-ethnic.webp", span: "md:col-span-2", variant: "light" },
-  { slug: "accessories", name: "Accessories", nameCN: "传统配饰", pinyin: "Chuántǒng pèishì", desc: "No traditional Chinese outfit is complete without accessories. Key pieces include jade pendants (玉佩, yùpèi) symbolizing virtue, silk embroidered fans (团扇, tuánshàn), ornate hairpins (发簪, fàzān) in gold and silver, intricate knotwork (中国结, zhōngguójié), and embroidered silk shoes. Suzhou and Hangzhou remain the historic centers for silk accessories and handcrafted pieces still made with centuries-old techniques.", city: "Suzhou & Hangzhou", experience: "Silk market strolls & handcrafted fan shops", img: "/images/cat-accessories.webp", span: "", variant: "light" },
-];
+const categories = [];
 
 const dynasties = [
   { name: "Han", period: "206 BC - 220 AD", desc: "Deep overlapping collars, flowing wide sleeves. The origin of the term Hanfu itself.", destination: "Xi''an  -  walk the Silk Road starting point", img: "/images/dyn-han.webp" },
   { name: "Tang", period: "618 - 907 AD", desc: "Bold colors, low-cut necklines, high-waisted skirts. China''s golden age of fashion.", destination: "Xi''an & Dunhuang  -  Tang dynasty murals and Mogao Caves", img: "/images/dyn-tang.webp" },
-  { name: "Song", period: "960 - 1279 AD", desc: "Elegant restraint, narrow sleeves, simple lines. Understated sophistication.", destination: "Hangzhou  -  Southern Song imperial capital", img: "/images/dyn-song.webp" },
-  { name: "Ming", period: "1368 - 1644 AD", desc: "Pleated skirts, circular collars. Hanfu revival''s primary reference.", destination: "Beijing & Nanjing  -  Ming imperial cities", img: "/images/dyn-ming.webp" },
+  { name: "Song", period: "960 - 1279 AD", desc: "Elegant restraint, narrow sleeves, simple lines. Understated sophistication.", destination: "Hangzhou  -  Southern Song imperial capital", img: "https://images.unsplash.com/photo-1737861617257-8315fe445e98?q=80&w=687&h=458&fit=crop&crop=entropy&auto=format&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+  { name: "Ming", period: "1368 - 1644 AD", desc: "Pleated skirts, circular collars. Hanfu revival''s primary reference.", destination: "Beijing & Nanjing  -  Ming imperial cities", img: "https://images.unsplash.com/photo-1785665359067-b30c8c11ec5c?q=80&w=687&h=458&fit=crop&crop=entropy&auto=format&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
   { name: "Qing", period: "1644 - 1912 AD", desc: "Manchu-influenced qipao origins, elaborate silk embroidery.", destination: "Shenyang  -  Manchu cultural heartland", img: "/images/dyn-qing.webp" },
   { name: "Republic", period: "1912 - 1949", desc: "Qipao''s golden age. Western tailoring meets Chinese silk.", destination: "Shanghai  -  walk the Bund in vintage style", img: "/images/dyn-republic.webp" },
 ];
 
 const galleryImages = [
+  { src: "https://images.pexels.com/photos/36587320/pexels-photo-36587320.jpeg", alt: "Traditional Chinese Hanfu dress in elegant studio portrait" },
+  { src: "https://images.pexels.com/photos/18077456/pexels-photo-18077456.jpeg", alt: "Chinese traditional clothing photoshoot at historic architecture" },
+  { src: "https://images.pexels.com/photos/16712432/pexels-photo-16712432.jpeg", alt: "Hanfu dress styled with traditional accessories and florals" },
   { src: "/images/gallery-hanfu-xian.webp", alt: "Hanfu photoshoot at Xi''an ancient city wall" },
   { src: "/images/gallery-qipao-shanghai.webp", alt: "Qipao tailoring experience in Shanghai" },
   { src: "/images/gallery-miao-guizhou.webp", alt: "Miao embroidery workshop in Guizhou" },
   { src: "/images/gallery-tang-beijing.webp", alt: "Tang suit workshop in Beijing hutong" },
   { src: "/images/gallery-silk-suzhou.webp", alt: "Silk market shopping in Suzhou" },
   { src: "/images/gallery-dunhuang-tang.webp", alt: "Dunhuang mural inspired Tang costume" },
+  { src: "https://images.unsplash.com/photo-1734594647541-170e761f58fe?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", alt: "Traditional Chinese wedding attire — couple in ceremonial Hanfu dress" },
+  { src: "https://images.unsplash.com/photo-1619107796968-a4802f920298?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", alt: "Traditional Chinese clothing experience at a cultural workshop" },
+  { src: "https://images.pexels.com/photos/37670353/pexels-photo-37670353.jpeg", alt: "Elegant Chinese traditional dress in a modern setting" },
 ];
 
 const comparisonTable = [
@@ -74,45 +73,50 @@ const schemaHomeFAQ = JSON.stringify({
   <!-- ============================================================
        HERO - Travel-Focused
        ============================================================ -->
-  <section class="min-h-[70dvh] flex items-center pt-20 pb-8">
+  <section class="min-h-[70dvh] flex items-center pt-20 pb-8 bg-warm-50 relative overflow-hidden">
+    <!-- Subtle decorative background -->
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-ink-wash opacity-80"></div>
+      <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-warm-glow opacity-60"></div>
+    </div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
         <!-- Left: Text block -->
         <div class="lg:col-span-5 lg:col-start-1">
-          <span class="text-xs font-medium text-[#b5343a] tracking-[0.15em] uppercase">The Definitive Guide</span>
-          <h1 class="font-serif-sc text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.08] tracking-tight text-stone-900">
+          <span class="text-xs font-medium text-vermillion-600 tracking-[0.15em] uppercase">The Definitive Guide</span>
+          <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.08] tracking-tight text-warm-900">
             Chinese Traditional Wear:
-            <span class="block text-[#b5343a]">Hanfu, Qipao & Beyond</span>
+            <span class="block text-vermillion-600">Hanfu, Qipao & Beyond</span>
           </h1>
-          <p class="mt-6 text-lg text-stone-500 leading-relaxed max-w-lg">
-            From 3,000-year-old Hanfu (<span lang="zh">汉服</span>) to 1920s Shanghai Qipao (<span lang="zh">旗袍</span>) — explore the complete story of Chinese traditional clothing through six iconic styles, twelve dynasties, and the cities where you can still wear them today. Your comprehensive guide to understanding and experiencing China's textile heritage.
+          <p class="mt-6 text-lg text-warm-500 leading-relaxed max-w-lg">
+            From 3,000-year-old Hanfu (<span lang="zh">汉服</span>) to 1920s Shanghai Qipao (<span lang="zh">旗袍</span>) — Chinese traditional wear spans four iconic styles, six dynasties, and the cities where you can still wear them today. Your complete guide to understanding, comparing, buying, and experiencing China's textile heritage.
           </p>
           <div class="mt-8 flex flex-col sm:flex-row gap-4">
-            <a href="#experience-map" class="inline-flex items-center justify-center px-6 py-3 bg-[#b5343a] text-white font-medium rounded-full hover:bg-[#9a2d32] transition-colors text-sm tracking-wide">
+            <a href="#what-is" class="inline-flex items-center justify-center px-6 py-3 bg-vermillion-600 text-white font-medium rounded-full hover:bg-vermillion-700 transition-colors text-sm tracking-wide">
               Explore the Styles
               <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
             </a>
-            <a href="#categories" class="inline-flex items-center justify-center px-6 py-3 border border-stone-300 text-stone-700 font-medium rounded-full hover:border-stone-400 hover:text-stone-900 transition-colors text-sm tracking-wide">
-              Plan Your Experience
+            <a href="#compare-preview" class="inline-flex items-center justify-center px-6 py-3 border border-warm-300 text-warm-700 font-medium rounded-full hover:border-warm-400 hover:text-warm-900 transition-colors text-sm tracking-wide">
+              Compare Styles
             </a>
           </div>
           <div class="mt-6 flex flex-wrap gap-2">
-            <a href="#styles" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">Types</a>
-            <a href="#dynasties" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">Dynasties</a>
-            <a href="#compare-preview" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">Compare</a>
-            <a href="#gallery" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">Gallery</a>
-            <a href="#faq" class="text-xs px-3 py-1.5 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200 transition-colors">FAQ</a>
+            <a href="#styles" class="text-xs px-3 py-1.5 bg-warm-100 rounded-full text-warm-600 hover:bg-warm-200 transition-colors">Types</a>
+            <a href="#dynasties" class="text-xs px-3 py-1.5 bg-warm-100 rounded-full text-warm-600 hover:bg-warm-200 transition-colors">Dynasties</a>
+            <a href="#compare-preview" class="text-xs px-3 py-1.5 bg-warm-100 rounded-full text-warm-600 hover:bg-warm-200 transition-colors">Compare</a>
+            <a href="#gallery" class="text-xs px-3 py-1.5 bg-warm-100 rounded-full text-warm-600 hover:bg-warm-200 transition-colors">Gallery</a>
+            <a href="#faq" class="text-xs px-3 py-1.5 bg-warm-100 rounded-full text-warm-600 hover:bg-warm-200 transition-colors">FAQ</a>
           </div>
         </div>
         <!-- Right: Travel scene image -->
         <div class="lg:col-span-7 lg:col-start-6">
           <div class="relative aspect-[4/5] lg:aspect-[5/4] overflow-hidden rounded-2xl">
             <img
-              src="/images/hero-hanfu.webp"
-              alt="Traveler in traditional Chinese Hanfu standing before ancient pagoda"
+              src="https://images.unsplash.com/photo-1601023883270-4a06cf948063?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="Woman in traditional Chinese Hanfu dress posing at an ancient temple courtyard"
               class="w-full h-full object-cover"
               loading="eager"
-              decoding="async" width="1672" height="941" />
+              decoding="async" width="1740" height="2610" />
             <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/60 to-transparent">
               <span class="text-white/80 text-xs tracking-wide uppercase">Featured experience</span>
               <p class="text-white font-medium mt-1">Hanfu photoshoot at Xi''an Ancient City Wall</p>
@@ -125,7 +129,8 @@ const schemaHomeFAQ = JSON.stringify({
 
   </section>
 
-  <section class="py-12 bg-[#b5343a]">
+  <section class="py-12 bg-vermillion-600 pattern-clouds relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-vermillion-700/20 to-transparent pointer-events-none" aria-hidden="true"></div>
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
         <div>
@@ -149,62 +154,97 @@ const schemaHomeFAQ = JSON.stringify({
   </section>
 
   <!-- ============================================================
-       NEW HERE? - Beginner''s Guide
+       WHAT IS CHINESE TRADITIONAL WEAR? - Featured Snippet Target
        ============================================================ -->
-  <section class="py-24 bg-white">
+  <section class="py-16 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="font-display text-2xl sm:text-3xl font-bold tracking-tight text-warm-900">
+        What Is Chinese Traditional Wear?
+      </h2>
+      <p class="mt-4 text-warm-600 leading-relaxed">
+        Chinese traditional wear encompasses <strong>over 3,000 years of clothing history</strong>, from the flowing robes of ancient dynasties to the tailored elegance of modern Shanghai. The umbrella term covers four major styles: <strong>Hanfu</strong> (<span lang="zh">汉服</span>, Hànfú) — loose layered robes worn since the Han dynasty, <strong>Qipao</strong> (<span lang="zh">旗袍</span>, Qípáo) — the form-fitting silk dress born in 1920s Shanghai, <strong>Tang suit</strong> (<span lang="zh">唐装</span>, Tángzhuāng) — a mandarin-collar jacket popular for festivals, and the <strong>Zhongshan suit</strong> (<span lang="zh">中山装</span>, Zhōngshān zhuāng) — China's iconic revolutionary-era menswear. Beyond these, 55 ethnic minorities maintain distinct textile traditions from Miao silver headdresses to Tibetan woolen robes.
+      </p>
+      <p class="mt-4 text-warm-600 leading-relaxed">
+        Unlike Western fashion — which changes by decade — Chinese clothing evolved by <strong>dynasty</strong>: the Han set the foundation with crossed collars and wide sleeves, the Tang introduced bold colors and Persian influences, the Song refined elegance into restrained simplicity, the Ming revived Han traditions with pleated skirts and circular collars, and the Qing brought Manchu styles that directly inspired the modern qipao. Each dynasty left its mark not just on fabric, but on the cities where you can still experience these styles today.
+      </p>
+      <div class="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3 text-center text-xs">
+        <a href="/hanfu" class="bg-warm-50 hover:bg-vermillion-600/5 border border-warm-100 hover:border-vermillion-600/20 rounded-lg py-3 px-2 transition-colors group">
+          <span class="block font-semibold text-warm-800 group-hover:text-vermillion-600">Hanfu <span lang="zh" class="font-normal text-warm-400">汉服</span></span>
+          <span class="text-warm-400">3,000 yrs of robes</span>
+        </a>
+        <a href="/qipao-cheongsam" class="bg-warm-50 hover:bg-vermillion-600/5 border border-warm-100 hover:border-vermillion-600/20 rounded-lg py-3 px-2 transition-colors group">
+          <span class="block font-semibold text-warm-800 group-hover:text-vermillion-600">Qipao <span lang="zh" class="font-normal text-warm-400">旗袍</span></span>
+          <span class="text-warm-400">1920s Shanghai glamour</span>
+        </a>
+        <a href="/tang-suit" class="bg-warm-50 hover:bg-vermillion-600/5 border border-warm-100 hover:border-vermillion-600/20 rounded-lg py-3 px-2 transition-colors group">
+          <span class="block font-semibold text-warm-800 group-hover:text-vermillion-600">Tang Suit <span lang="zh" class="font-normal text-warm-400">唐装</span></span>
+          <span class="text-warm-400">Festive mandarin collar</span>
+        </a>
+        <a href="/zhongshan" class="bg-warm-50 hover:bg-vermillion-600/5 border border-warm-100 hover:border-vermillion-600/20 rounded-lg py-3 px-2 transition-colors group">
+          <span class="block font-semibold text-warm-800 group-hover:text-vermillion-600">Zhongshan <span lang="zh" class="font-normal text-warm-400">中山装</span></span>
+          <span class="text-warm-400">Revolutionary menswear</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       THE FOUR ICONIC STYLES - Cards + Comparison
+       ============================================================ -->
+  <section class="py-24 bg-warm-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="mb-14 max-w-2xl">
-        <span class="text-xs font-medium text-[#b5343a] tracking-[0.15em] uppercase">New Here?</span>
-        <h2 class="font-serif-sc text-3xl sm:text-4xl font-bold tracking-tight text-stone-900">
-          Chinese Traditional Wear at a Glance
+        <span class="text-xs font-medium text-vermillion-600 tracking-[0.15em] uppercase">The Four Iconic Styles</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-warm-900">
+          Hanfu, Qipao, Tang Suit & Zhongshan Suit
         </h2>
-        <p class="mt-4 text-stone-500 leading-relaxed">
-          Four iconic styles, each with its own story. Tap any to explore deeper.
+        <p class="mt-4 text-warm-500 leading-relaxed">
+          Four styles, four eras, four stories. Each linked to a city where you can experience it firsthand.
         </p>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <a href="/hanfu" class="group block bg-stone-50 rounded-xl overflow-hidden border border-stone-100 hover:border-[#b5343a]/30 hover:shadow-md transition-all">
+        <a href="/hanfu" class="group block card-elevated overflow-hidden">
           <div class="aspect-[3/2] overflow-hidden">
             <img src="/images/cat-hanfu.webp" alt="Hanfu traditional Chinese clothing" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="1536" height="1024" />
           </div>
           <div class="p-5">
-            <span class="text-[10px] font-medium text-[#b5343a] tracking-widest uppercase">Han to Ming Dynasties · c. 2700 BC – 1644 AD</span>
-            <h3 class="text-lg font-semibold text-stone-900 mt-1">Hanfu <span lang="zh" class="text-base font-normal text-stone-400">汉服</span> <span class="text-xs font-normal text-stone-400">Hànfú</span></h3>
-            <p class="text-sm text-stone-500 mt-2 leading-relaxed">Crossed collars (交领), flowing wide sleeves, sash-tied layered robes. The foundational garment of Han civilization, now experiencing a massive youth-led revival.</p>
-            <span class="inline-flex items-center gap-1 mt-3 text-xs font-medium text-[#b5343a] group-hover:gap-2 transition-all">Explore Hanfu <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></span>
+            <span class="text-[10px] font-medium text-vermillion-600 tracking-widest uppercase">Han to Ming Dynasties · c. 2700 BC – 1644 AD</span>
+            <h3 class="text-lg font-semibold text-warm-900 mt-1">Hanfu <span lang="zh" class="text-base font-normal text-warm-400">汉服</span> <span class="text-xs font-normal text-warm-400">Hànfú</span></h3>
+            <p class="text-sm text-warm-500 mt-2 leading-relaxed">Crossed collars (交领), flowing wide sleeves, sash-tied layered robes. The foundational garment of Han civilization, now experiencing a massive youth-led revival.</p>
+            <span class="inline-flex items-center gap-1 mt-3 text-xs font-medium text-vermillion-600 group-hover:gap-2 transition-all">Explore Hanfu <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></span>
           </div>
         </a>
-        <a href="/qipao-cheongsam" class="group block bg-stone-50 rounded-xl overflow-hidden border border-stone-100 hover:border-[#b5343a]/30 hover:shadow-md transition-all">
+        <a href="/qipao-cheongsam" class="group block card-elevated overflow-hidden">
           <div class="aspect-[3/2] overflow-hidden">
             <img src="/images/cat-qipao.webp" alt="Qipao traditional Chinese dress" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="1536" height="1024" />
           </div>
           <div class="p-5">
-            <span class="text-[10px] font-medium text-[#b5343a] tracking-widest uppercase">1920s Shanghai to Present</span>
-            <h3 class="text-lg font-semibold text-stone-900 mt-1">Qipao <span lang="zh" class="text-base font-normal text-stone-400">旗袍</span> <span class="text-xs font-normal text-stone-400">Qípáo</span></h3>
-            <p class="text-sm text-stone-500 mt-2 leading-relaxed">Form-fitting silk dress with high mandarin collar (立领), coiled frog buttons (盘扣), and side slits. China's most globally recognized fashion export.</p>
-            <span class="inline-flex items-center gap-1 mt-3 text-xs font-medium text-[#b5343a] group-hover:gap-2 transition-all">Explore Qipao <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></span>
+            <span class="text-[10px] font-medium text-vermillion-600 tracking-widest uppercase">1920s Shanghai to Present</span>
+            <h3 class="text-lg font-semibold text-warm-900 mt-1">Qipao <span lang="zh" class="text-base font-normal text-warm-400">旗袍</span> <span class="text-xs font-normal text-warm-400">Qípáo</span></h3>
+            <p class="text-sm text-warm-500 mt-2 leading-relaxed">Form-fitting silk dress with high mandarin collar (立领), coiled frog buttons (盘扣), and side slits. China's most globally recognized fashion export.</p>
+            <span class="inline-flex items-center gap-1 mt-3 text-xs font-medium text-vermillion-600 group-hover:gap-2 transition-all">Explore Qipao <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></span>
           </div>
         </a>
-        <a href="/tang-suit" class="group block bg-stone-50 rounded-xl overflow-hidden border border-stone-100 hover:border-[#b5343a]/30 hover:shadow-md transition-all">
+        <a href="/tang-suit" class="group block card-elevated overflow-hidden">
           <div class="aspect-[3/2] overflow-hidden">
             <img src="/images/cat-tang-suit.webp" alt="Tang suit traditional Chinese jacket" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="1536" height="1024" />
           </div>
           <div class="p-5">
-            <span class="text-[10px] font-medium text-[#b5343a] tracking-widest uppercase">Qing Dynasty to Modern · Festive Tradition</span>
-            <h3 class="text-lg font-semibold text-stone-900 mt-1">Tang Suit <span lang="zh" class="text-base font-normal text-stone-400">唐装</span> <span class="text-xs font-normal text-stone-400">Tángzhuāng</span></h3>
-            <p class="text-sm text-stone-500 mt-2 leading-relaxed">Mandarin-collar jacket with knotted frog buttons and silk brocade. Modern evolution of Qing Magua (马褂), popularized at 2001 APEC summit.</p>
-            <span class="inline-flex items-center gap-1 mt-3 text-xs font-medium text-[#b5343a] group-hover:gap-2 transition-all">Explore Tang Suit <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></span>
+            <span class="text-[10px] font-medium text-vermillion-600 tracking-widest uppercase">Qing Dynasty to Modern · Festive Tradition</span>
+            <h3 class="text-lg font-semibold text-warm-900 mt-1">Tang Suit <span lang="zh" class="text-base font-normal text-warm-400">唐装</span> <span class="text-xs font-normal text-warm-400">Tángzhuāng</span></h3>
+            <p class="text-sm text-warm-500 mt-2 leading-relaxed">Mandarin-collar jacket with knotted frog buttons and silk brocade. Modern evolution of Qing Magua (马褂), popularized at 2001 APEC summit.</p>
+            <span class="inline-flex items-center gap-1 mt-3 text-xs font-medium text-vermillion-600 group-hover:gap-2 transition-all">Explore Tang Suit <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></span>
           </div>
         </a>
-        <a href="/zhongshan" class="group block bg-stone-50 rounded-xl overflow-hidden border border-stone-100 hover:border-[#b5343a]/30 hover:shadow-md transition-all">
+        <a href="/zhongshan" class="group block card-elevated overflow-hidden">
           <div class="aspect-[3/2] overflow-hidden">
             <img src="/images/cat-zhongshan.webp" alt="Zhongshan suit traditional Chinese menswear" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="1536" height="1024" />
           </div>
           <div class="p-5">
-            <span class="text-[10px] font-medium text-[#b5343a] tracking-widest uppercase">20th Century Revolutionary to Present</span>
-            <h3 class="text-lg font-semibold text-stone-900 mt-1">Zhongshan Suit <span lang="zh" class="text-base font-normal text-stone-400">中山装</span> <span class="text-xs font-normal text-stone-400">Zhōngshān zhuāng</span></h3>
-            <p class="text-sm text-stone-500 mt-2 leading-relaxed">Designed by Dr. Sun Yat-sen — four patch pockets for the Four Virtues, five buttons for government branches. China's most iconic political garment.</p>
-            <span class="inline-flex items-center gap-1 mt-3 text-xs font-medium text-[#b5343a] group-hover:gap-2 transition-all">Explore Zhongshan <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></span>
+            <span class="text-[10px] font-medium text-vermillion-600 tracking-widest uppercase">20th Century Revolutionary to Present</span>
+            <h3 class="text-lg font-semibold text-warm-900 mt-1">Zhongshan Suit <span lang="zh" class="text-base font-normal text-warm-400">中山装</span> <span class="text-xs font-normal text-warm-400">Zhōngshān zhuāng</span></h3>
+            <p class="text-sm text-warm-500 mt-2 leading-relaxed">Designed by Dr. Sun Yat-sen — four patch pockets for the Four Virtues, five buttons for government branches. China's most iconic political garment.</p>
+            <span class="inline-flex items-center gap-1 mt-3 text-xs font-medium text-vermillion-600 group-hover:gap-2 transition-all">Explore Zhongshan <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></span>
           </div>
         </a>
       </div>
@@ -212,45 +252,45 @@ const schemaHomeFAQ = JSON.stringify({
   </section>
 
   <!-- ============================================================
-       AT A GLANCE - Comparison Table
+       AT A GLANCE - Comparison Table (subsection of Four Iconic Styles)
        ============================================================ -->
-  <section id="compare-preview" class="py-24 bg-white">
+  <section id="compare-preview" class="pb-24 bg-warm-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="mb-14 max-w-2xl">
-        <span class="text-xs font-medium text-[#b5343a] tracking-[0.15em] uppercase">At a Glance</span>
-        <h2 class="font-serif-sc text-3xl sm:text-4xl font-bold tracking-tight text-stone-900">
+        <span class="text-xs font-medium text-vermillion-600 tracking-[0.15em] uppercase">At a Glance</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-warm-900">
           Hanfu vs Qipao vs Tang Suit vs Zhongshan
         </h2>
-        <p class="mt-4 text-stone-500 leading-relaxed">
-          Four iconic styles, four distinct stories. See how they compare across history, design, and modern use.
+        <p class="mt-4 text-warm-500 leading-relaxed">
+          Quick differences at a glance. For a deeper comparison, see the <a href="/compare" class="text-vermillion-600 hover:underline">full interactive guide</a>.
         </p>
       </div>
-      <div class="overflow-x-auto">
-        <table class="w-full text-sm border-collapse min-w-[800px]">
+      <div class="overflow-x-auto rounded-2xl border border-warm-200/60 shadow-sm">
+        <table class="table-comparison min-w-[800px]">
           <thead>
-            <tr class="border-b-2 border-stone-300 text-left">
-              <th class="py-3 pr-4 font-semibold text-stone-800 text-xs tracking-wider uppercase w-[120px]">Feature</th>
-              <th class="py-3 pr-4 font-semibold text-stone-800">Hanfu <span lang="zh" class="font-normal text-stone-400 text-[10px]">汉服</span></th>
-              <th class="py-3 pr-4 font-semibold text-stone-800">Qipao <span lang="zh" class="font-normal text-stone-400 text-[10px]">旗袍</span></th>
-              <th class="py-3 pr-4 font-semibold text-stone-800">Tang Suit <span lang="zh" class="font-normal text-stone-400 text-[10px]">唐装</span></th>
-              <th class="py-3 font-semibold text-stone-800">Zhongshan <span lang="zh" class="font-normal text-stone-400 text-[10px]">中山装</span></th>
+            <tr>
+              <th class="w-[120px]">Feature</th>
+              <th>Hanfu <span lang="zh" class="font-normal text-warm-400 text-[10px]">汉服</span></th>
+              <th>Qipao <span lang="zh" class="font-normal text-warm-400 text-[10px]">旗袍</span></th>
+              <th>Tang Suit <span lang="zh" class="font-normal text-warm-400 text-[10px]">唐装</span></th>
+              <th>Zhongshan <span lang="zh" class="font-normal text-warm-400 text-[10px]">中山装</span></th>
             </tr>
           </thead>
           <tbody>
-            {comparisonTable.map((row, i) => (
-              <tr class={i % 2 === 0 ? "bg-stone-50/50" : "bg-white"}>
-                <td class="py-3 pr-4 font-medium text-stone-700 text-xs">{row.feature}</td>
-                <td class="py-3 pr-4 text-stone-600 leading-relaxed text-xs">{row.hanfu}</td>
-                <td class="py-3 pr-4 text-stone-600 leading-relaxed text-xs">{row.qipao}</td>
-                <td class="py-3 pr-4 text-stone-600 leading-relaxed text-xs">{row.tang}</td>
-                <td class="py-3 text-stone-600 leading-relaxed text-xs">{row.zhongshan}</td>
+            {comparisonTable.map((row) => (
+              <tr>
+                <td>{row.feature}</td>
+                <td>{row.hanfu}</td>
+                <td>{row.qipao}</td>
+                <td>{row.tang}</td>
+                <td>{row.zhongshan}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
       <div class="mt-6 text-center">
-        <a href="/compare" class="inline-flex items-center gap-2 text-sm font-medium text-[#b5343a] hover:text-[#9a2d32] transition-colors">
+        <a href="/compare" class="inline-flex items-center gap-2 text-sm font-medium text-vermillion-600 hover:text-vermillion-700 transition-colors">
           Full interactive comparison tool
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
@@ -259,71 +299,50 @@ const schemaHomeFAQ = JSON.stringify({
   </section>
 
   <!-- ============================================================
-       NEW HERE? - Beginner''s Guide
+       BEYOND THE BIG FOUR - Ethnic & Accessories
        ============================================================ -->
-  
-
-  <!-- ============================================================
-       CATEGORIES - Bento Grid with Destination Tags
-       ============================================================ -->
-  <section id="styles" class="py-24 bg-stone-50">
+  <section id="styles" class="py-24 bg-white texture-jade">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="mb-16 max-w-xl">
-        <span class="text-xs font-medium text-[#b5343a] tracking-[0.15em] uppercase">Explore All Styles</span>
-        <h2 class="font-serif-sc text-3xl sm:text-4xl font-bold tracking-tight text-stone-900">
-          Six Styles, Six Destinations
+      <div class="mb-14 max-w-xl">
+        <span class="text-xs font-medium text-vermillion-600 tracking-[0.15em] uppercase">Beyond the Big Four</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-warm-900">
+          Ethnic Textiles & Traditional Accessories
         </h2>
-        <p class="mt-4 text-stone-500 leading-relaxed">
-          Each craft tradition is tied to a place. Pick a style, and you''ve picked where to go.
+        <p class="mt-4 text-warm-500 leading-relaxed">
+          China's 55 ethnic minorities each maintain distinct weaving, dyeing, and embroidery traditions — and accessories like jade pendants and silk fans are the portable pieces you can take home.
         </p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {categories.map((cat, i) => (
-          <a href={`/${cat.slug}`} class={`group relative overflow-hidden rounded-xl ${cat.span} ${cat.variant === "large" ? "min-h-[320px]" : cat.variant === "dark" ? "bg-stone-800" : cat.variant === "accent" ? "bg-[#b5343a]" : "bg-white border border-stone-200"} ${cat.variant !== "light" ? "" : ""}`}>
-            {cat.variant === "light" || cat.variant === "large" ? (
-              <>
-                <img src={cat.img} alt={`${cat.name} traditional clothing experience in ${cat.city}`} class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="1536" height="1024" />
-                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                <!-- Destination badge -->
-                <div class="absolute top-4 left-4">
-                  <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-medium text-stone-700">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                    {cat.city}
-                  </span>
-                </div>
-                <div class="absolute bottom-0 left-0 right-0 p-5">
-                  <h3 class="text-white text-lg font-semibold tracking-tight">{cat.name}</h3>
-                  <p class="text-white/70 text-sm mt-1 leading-snug max-w-xs">{cat.desc}</p>
-                </div>
-              </>
-            ) : (
-              <div class="p-6 h-full flex flex-col justify-end min-h-[200px]">
-                <div class="mb-auto">
-                  <span class="inline-flex items-center gap-1 px-2 py-0.5 bg-white/15 backdrop-blur-sm rounded-full text-xs font-medium text-white/90">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                    {cat.city}
-                  </span>
-                </div>
-                <h3 class="text-white text-lg font-semibold tracking-tight">{cat.name}</h3>
-                <p class="text-white/70 text-sm mt-2 leading-snug">{cat.experience}</p>
-              </div>
-            )}
-          </a>
-        ))}
-      </div>
-      <!-- Destination recommendation cards -->
-      <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {categories.map((cat) => (
-          <div class="flex items-start gap-4 p-4 bg-white rounded-xl border border-stone-200">
-            <div class="w-10 h-10 rounded-full bg-[#b5343a]/10 flex items-center justify-center flex-shrink-0">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b5343a" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-            </div>
-            <div>
-              <h4 class="font-medium text-sm text-stone-900">{cat.name}</h4>
-              <p class="text-xs text-stone-500 mt-0.5">Best in <strong class="text-stone-700">{cat.city}</strong>: {cat.experience}</p>
-            </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <a href="/ethnic" class="group relative overflow-hidden rounded-xl min-h-[280px]">
+          <img src="/images/cat-ethnic.webp" alt="Miao silver headdress and embroidery in Guizhou" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="1536" height="1024" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+          <div class="absolute top-4 left-4">
+            <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-medium text-warm-700">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              Guizhou & Yunnan
+            </span>
           </div>
-        ))}
+          <div class="absolute bottom-0 left-0 right-0 p-5">
+            <h3 class="text-white text-lg font-semibold tracking-tight">Ethnic & Minority <span lang="zh" class="text-sm font-normal text-white/60">少数民族服饰</span></h3>
+            <p class="text-white/70 text-sm mt-1 leading-snug">Miao silver headdresses, Tibetan woolen chuba robes, Uyghur atlas silk — living textile traditions worn daily in villages across western and southern China.</p>
+            <span class="inline-flex items-center gap-1 mt-3 text-xs font-medium text-white/90 group-hover:underline">Explore ethnic traditions →</span>
+          </div>
+        </a>
+        <a href="/accessories" class="group relative overflow-hidden rounded-xl min-h-[280px]">
+          <img src="/images/cat-accessories.webp" alt="Silk fans, jade pendants, and embroidered shoes in Suzhou" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="1536" height="1024" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+          <div class="absolute top-4 left-4">
+            <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-medium text-warm-700">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              Suzhou & Hangzhou
+            </span>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-5">
+            <h3 class="text-white text-lg font-semibold tracking-tight">Accessories <span lang="zh" class="text-sm font-normal text-white/60">传统配饰</span></h3>
+            <p class="text-white/70 text-sm mt-1 leading-snug">Hand-painted silk fans, jade pendants, hairpins, Chinese knotwork, and embroidered shoes — the details that complete a traditional outfit and make the best souvenirs.</p>
+            <span class="inline-flex items-center gap-1 mt-3 text-xs font-medium text-white/90 group-hover:underline">Browse accessories guide →</span>
+          </div>
+        </a>
       </div>
     </div>
   </section>
@@ -331,29 +350,29 @@ const schemaHomeFAQ = JSON.stringify({
   <!-- ============================================================
        DYNASTY TIMELINE - With Destination Mapping
        ============================================================ -->
-  <section id="dynasties" class="py-24 bg-stone-50 overflow-hidden">
+  <section id="dynasties" class="py-24 bg-warm-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-14 max-w-xl">
-      <span class="text-xs font-medium text-[#b5343a] tracking-[0.15em] uppercase">Through the Dynasties</span>
-      <h2 class="font-serif-sc text-3xl sm:text-4xl font-bold tracking-tight text-stone-900">
+      <span class="text-xs font-medium text-vermillion-600 tracking-[0.15em] uppercase">Through the Dynasties</span>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-warm-900">
         Travel Through 2,000 Years of Fashion
       </h2>
-      <p class="mt-4 text-stone-500 leading-relaxed">
+      <p class="mt-4 text-warm-500 leading-relaxed">
         Each dynasty left its mark on clothing  -  and on the cities you can still visit today.
       </p>
     </div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex gap-5 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide" style="scrollbar-width: none; -ms-overflow-style: none;">
+      <div class="flex gap-5 overflow-x-auto pb-8 pr-4 sm:pr-8" style="scrollbar-width: thin;">
         {dynasties.map((d) => (
-          <div class="flex-shrink-0 w-[280px] sm:w-[320px] snap-start group cursor-pointer">
+          <div class="flex-shrink-0 w-[280px] sm:w-[320px] group cursor-pointer">
             <div class="overflow-hidden rounded-xl mb-4 aspect-[3/2]">
               <img src={d.img} alt={`${d.name} Dynasty traditional clothing`} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="1536" height="1024" />
             </div>
-            <span class="text-xs font-medium text-[#b5343a] tracking-widest uppercase">{d.period}</span>
-            <h3 class="text-xl font-semibold mt-1 text-stone-900">{d.name} Dynasty</h3>
-            <p class="text-sm text-stone-500 mt-2 leading-relaxed">{d.desc}</p>
-            <div class="flex items-center gap-1.5 mt-3 text-xs text-[#b5343a] font-medium">
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-              {d.destination}
+            <span class="text-xs font-medium text-vermillion-600 tracking-widest uppercase">{d.period}</span>
+            <h3 class="text-xl font-semibold mt-1 text-warm-900">{d.name} Dynasty</h3>
+            <p class="text-sm text-warm-500 mt-2 leading-relaxed">{d.desc}</p>
+            <div class="flex items-start gap-1.5 mt-3 text-xs text-vermillion-600 font-medium min-w-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span class="flex-1 min-w-0 whitespace-normal leading-snug">{d.destination}</span>
             </div>
           </div>
         ))}
@@ -367,110 +386,148 @@ const schemaHomeFAQ = JSON.stringify({
   <section class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="mb-16 max-w-xl">
-        <span class="text-xs font-medium text-[#b5343a] tracking-[0.15em] uppercase">Your First Time</span>
-        <h2 class="font-serif-sc text-3xl sm:text-4xl font-bold tracking-tight text-stone-900">
+        <span class="text-xs font-medium text-vermillion-600 tracking-[0.15em] uppercase">Your First Time</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-warm-900">
           Your First Hanfu Experience in China
         </h2>
-        <p class="mt-4 text-stone-500 leading-relaxed">
+        <p class="mt-4 text-warm-500 leading-relaxed">
           Here''s what a typical cultural experience looks like, from rental to photoshoot.
         </p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
         <div class="relative group">
-          <div class="text-6xl font-serif-sc font-bold text-stone-200 mb-6">01</div>
+          <div class="text-6xl font-display font-bold text-warm-200 mb-6">01</div>
           <div class="overflow-hidden rounded-xl aspect-[4/3] mb-5">
             <img src="/images/howto-choose-style.webp" alt="Step 1: Choose your Hanfu style at a rental shop" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="1448" height="1086" />
           </div>
-          <h3 class="text-lg font-semibold text-stone-900">Pick Your Dynasty & Style</h3>
-          <p class="text-sm text-stone-500 mt-2 leading-relaxed">Most experience shops offer 50+ styles across dynasties. Tang dynasty chest-high ruqun is the most photogenic; Ming dynasty stand-collar aoqun feels the most regal. Staff help you choose based on body type and preferred era. Budget 15-20 minutes for selection and fitting.</p>
+          <h3 class="text-lg font-semibold text-warm-900">Pick Your Dynasty & Style</h3>
+          <p class="text-sm text-warm-500 mt-2 leading-relaxed">Most experience shops offer 50+ styles across dynasties. Tang dynasty chest-high ruqun is the most photogenic; Ming dynasty stand-collar aoqun feels the most regal. Staff help you choose based on body type and preferred era. Budget 15-20 minutes for selection and fitting.</p>
         </div>
         <div class="relative group">
-          <div class="text-6xl font-serif-sc font-bold text-stone-200 mb-6">02</div>
+          <div class="text-6xl font-display font-bold text-warm-200 mb-6">02</div>
           <div class="overflow-hidden rounded-xl aspect-[4/3] mb-5">
             <img src="/images/howto-hair-makeup.webp" alt="Step 2: Professional hair and makeup styling" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="1448" height="1086" />
           </div>
-          <h3 class="text-lg font-semibold text-stone-900">Hair & Makeup Styling</h3>
-          <p class="text-sm text-stone-500 mt-2 leading-relaxed">Professional hairstyling takes 20-30 minutes using traditional hairpins, flowers, and hairpieces. Makeup artists replicate dynasty-appropriate looks  -  from Tang''s bold forehead huadian to Ming''s elegant simplicity. Most rental shops include basic styling; premium packages add professional makeup.</p>
+          <h3 class="text-lg font-semibold text-warm-900">Hair & Makeup Styling</h3>
+          <p class="text-sm text-warm-500 mt-2 leading-relaxed">Professional hairstyling takes 20-30 minutes using traditional hairpins, flowers, and hairpieces. Makeup artists replicate dynasty-appropriate looks  -  from Tang''s bold forehead huadian to Ming''s elegant simplicity. Most rental shops include basic styling; premium packages add professional makeup.</p>
         </div>
         <div class="relative group">
-          <div class="text-6xl font-serif-sc font-bold text-stone-200 mb-6">03</div>
+          <div class="text-6xl font-display font-bold text-warm-200 mb-6">03</div>
           <div class="overflow-hidden rounded-xl aspect-[4/3] mb-5">
             <img src="/images/howto-photoshoot.webp" alt="Step 3: Photoshoot at iconic locations" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="1448" height="1086" />
           </div>
-          <h3 class="text-lg font-semibold text-stone-900">Explore & Photoshoot</h3>
-          <p class="text-sm text-stone-500 mt-2 leading-relaxed">Step out in full costume to iconic spots. Xi''an''s city wall at sunset, Suzhou''s classical gardens in morning light, Beijing''s Forbidden City framed by red walls  -  each location offers a different backdrop. Most rentals include 2-4 hours of wear time (150-400 RMB). Book a photographer for 500-1500 RMB for professional shots.</p>
+          <h3 class="text-lg font-semibold text-warm-900">Explore & Photoshoot</h3>
+          <p class="text-sm text-warm-500 mt-2 leading-relaxed">Step out in full costume to iconic spots. Xi''an''s city wall at sunset, Suzhou''s classical gardens in morning light, Beijing''s Forbidden City framed by red walls  -  each location offers a different backdrop. Most rentals include 2-4 hours of wear time (150-400 RMB). Book a photographer for 500-1500 RMB for professional shots.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-      
+       WHERE TO BUY - Moved up for conversion flow
+       ============================================================ -->
+  <section class="py-24 bg-warm-50">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-12 text-center">
+        <span class="text-xs font-medium text-vermillion-600 tracking-[0.15em] uppercase">For Shoppers</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-warm-900">
+          Looking to Buy Traditional Clothing?
+        </h2>
+        <p class="mt-4 text-warm-500 leading-relaxed max-w-xl mx-auto">
+          Where to find authentic pieces, from custom tailoring to ready-to-wear.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="bg-white rounded-xl p-6 border border-warm-200">
+          <h3 class="font-semibold text-warm-900">Custom Qipao</h3>
+          <p class="text-sm text-warm-500 mt-2">Bespoke cheongsam at Shanghai South Bund Fabric Market. 3-5 day turnaround, 300-800 RMB.</p>
+          <a href="/qipao-cheongsam" class="inline-block mt-3 text-xs font-medium text-vermillion-600 hover:underline">See qipao guide →</a>
+        </div>
+        <div class="bg-white rounded-xl p-6 border border-warm-200">
+          <h3 class="font-semibold text-warm-900">Tang Suit & Jackets</h3>
+          <p class="text-sm text-warm-500 mt-2">Beijing hutong tailors craft authentic mandarin-collar jackets. Off-the-rack from 50-150 RMB.</p>
+          <a href="/tang-suit" class="inline-block mt-3 text-xs font-medium text-vermillion-600 hover:underline">See tang suit guide →</a>
+        </div>
+        <div class="bg-white rounded-xl p-6 border border-warm-200">
+          <h3 class="font-semibold text-warm-900">Accessories & Textiles</h3>
+          <p class="text-sm text-warm-500 mt-2">Silk fans, jade pendants, embroidered shoes in Suzhou and Hangzhou markets.</p>
+          <a href="/accessories" class="inline-block mt-3 text-xs font-medium text-vermillion-600 hover:underline">See accessories guide →</a>
+        </div>
+      </div>
+      <div class="mt-6 text-center">
+        <a href="/where-to-buy" class="inline-flex items-center gap-2 text-sm font-medium text-vermillion-600 hover:text-vermillion-700 transition-colors">
+          Full buying guide: Where to Buy Chinese Traditional Wear
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- ============================================================
        START PLANNING - Quick Travel Links
        ============================================================ -->
-  <section class="py-24 bg-[#b5343a]/5 border-y border-[#b5343a]/10">
+  <section class="py-24 bg-vermillion-600/5 border-y border-vermillion-600/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <span class="text-xs font-medium text-[#b5343a] tracking-[0.15em] uppercase">Start Planning</span>
-      <h2 class="font-serif-sc text-3xl sm:text-4xl font-bold tracking-tight text-stone-900 mt-2">
+      <span class="text-xs font-medium text-vermillion-600 tracking-[0.15em] uppercase">Start Planning</span>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-warm-900 mt-2">
         Ready to Book Your Trip?
       </h2>
-      <p class="mt-4 text-stone-500 leading-relaxed max-w-xl mx-auto">
+      <p class="mt-4 text-warm-500 leading-relaxed max-w-xl mx-auto">
         Everything you need to turn inspiration into an itinerary.
       </p>
       <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
-        <a href="/plan-trip/visa" class="flex items-start gap-4 p-5 bg-white rounded-xl border border-stone-200 hover:border-[#b5343a]/30 hover:shadow-sm transition-all text-left group">
-          <div class="w-10 h-10 rounded-lg bg-stone-100 flex items-center justify-center flex-shrink-0 group-hover:bg-[#b5343a]/10 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b5343a" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M10 12h4"/><path d="M12 10v4"/><circle cx="17" cy="12" r="1"/></svg>
+        <a href="/plan-trip/visa" class="flex items-start gap-4 p-5 bg-white rounded-xl border border-warm-200 hover:border-vermillion-600/30 hover:shadow-sm transition-all text-left group">
+          <div class="w-10 h-10 rounded-lg bg-warm-100 flex items-center justify-center flex-shrink-0 group-hover:bg-vermillion-600/10 transition-colors text-vermillion-600">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M10 12h4"/><path d="M12 10v4"/><circle cx="17" cy="12" r="1"/></svg>
           </div>
           <div>
-            <h4 class="font-semibold text-sm text-stone-900">Visa & Entry Guide</h4>
-            <p class="text-xs text-stone-400 mt-1">144-hr transit, 15-day visa-free, L visa  -  which one you need</p>
+            <h4 class="font-semibold text-sm text-warm-900">Visa & Entry Guide</h4>
+            <p class="text-xs text-warm-400 mt-1">144-hr transit, 15-day visa-free, L visa  -  which one you need</p>
           </div>
         </a>
-        <a href="/plan-trip/transport" class="flex items-start gap-4 p-5 bg-white rounded-xl border border-stone-200 hover:border-[#b5343a]/30 hover:shadow-sm transition-all text-left group">
-          <div class="w-10 h-10 rounded-lg bg-stone-100 flex items-center justify-center flex-shrink-0 group-hover:bg-[#b5343a]/10 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b5343a" stroke-width="1.5"><path d="M5 18H3.2c-1.12 0-1.68 0-2.11.22a2 2 0 0 0-.87.87C0 19.52 0 20.08 0 21.2V22h24v-.8c0-1.12 0-1.68-.22-2.11a2 2 0 0 0-.87-.87C22.48 18 21.92 18 20.8 18H19"/><path d="M7.5 12h9"/><rect x="6" y="2" width="12" height="16" rx="2"/></svg>
+        <a href="/plan-trip/transport" class="flex items-start gap-4 p-5 bg-white rounded-xl border border-warm-200 hover:border-vermillion-600/30 hover:shadow-sm transition-all text-left group">
+          <div class="w-10 h-10 rounded-lg bg-warm-100 flex items-center justify-center flex-shrink-0 group-hover:bg-vermillion-600/10 transition-colors text-vermillion-600">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 18H3.2c-1.12 0-1.68 0-2.11.22a2 2 0 0 0-.87.87C0 19.52 0 20.08 0 21.2V22h24v-.8c0-1.12 0-1.68-.22-2.11a2 2 0 0 0-.87-.87C22.48 18 21.92 18 20.8 18H19"/><path d="M7.5 12h9"/><rect x="6" y="2" width="12" height="16" rx="2"/></svg>
           </div>
           <div>
-            <h4 class="font-semibold text-sm text-stone-900">Getting Around</h4>
-            <p class="text-xs text-stone-400 mt-1">High-speed train routes, costs, and booking tips</p>
+            <h4 class="font-semibold text-sm text-warm-900">Getting Around</h4>
+            <p class="text-xs text-warm-400 mt-1">High-speed train routes, costs, and booking tips</p>
           </div>
         </a>
-        <a href="/plan-trip/itineraries" class="flex items-start gap-4 p-5 bg-white rounded-xl border border-stone-200 hover:border-[#b5343a]/30 hover:shadow-sm transition-all text-left group">
-          <div class="w-10 h-10 rounded-lg bg-stone-100 flex items-center justify-center flex-shrink-0 group-hover:bg-[#b5343a]/10 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b5343a" stroke-width="1.5"><path d="M8 2v4"/><path d="M16 2v4"/><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/></svg>
+        <a href="/plan-trip/itineraries" class="flex items-start gap-4 p-5 bg-white rounded-xl border border-warm-200 hover:border-vermillion-600/30 hover:shadow-sm transition-all text-left group">
+          <div class="w-10 h-10 rounded-lg bg-warm-100 flex items-center justify-center flex-shrink-0 group-hover:bg-vermillion-600/10 transition-colors text-vermillion-600">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v4"/><path d="M16 2v4"/><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/></svg>
           </div>
           <div>
-            <h4 class="font-semibold text-sm text-stone-900">Sample Itineraries</h4>
-            <p class="text-xs text-stone-400 mt-1">5-day, 7-day, and 14-day trip plans</p>
+            <h4 class="font-semibold text-sm text-warm-900">Sample Itineraries</h4>
+            <p class="text-xs text-warm-400 mt-1">5-day, 7-day, and 14-day trip plans</p>
           </div>
         </a>
-        <a href="/plan-trip/budget" class="flex items-start gap-4 p-5 bg-white rounded-xl border border-stone-200 hover:border-[#b5343a]/30 hover:shadow-sm transition-all text-left group">
-          <div class="w-10 h-10 rounded-lg bg-stone-100 flex items-center justify-center flex-shrink-0 group-hover:bg-[#b5343a]/10 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b5343a" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        <a href="/plan-trip/budget" class="flex items-start gap-4 p-5 bg-white rounded-xl border border-warm-200 hover:border-vermillion-600/30 hover:shadow-sm transition-all text-left group">
+          <div class="w-10 h-10 rounded-lg bg-warm-100 flex items-center justify-center flex-shrink-0 group-hover:bg-vermillion-600/10 transition-colors text-vermillion-600">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
           </div>
           <div>
-            <h4 class="font-semibold text-sm text-stone-900">Budget Breakdown</h4>
-            <p class="text-xs text-stone-400 mt-1">Full cost estimates for a cultural clothing trip</p>
+            <h4 class="font-semibold text-sm text-warm-900">Budget Breakdown</h4>
+            <p class="text-xs text-warm-400 mt-1">Full cost estimates for a cultural clothing trip</p>
           </div>
         </a>
-        <a href="/plan-trip/seasons" class="flex items-start gap-4 p-5 bg-white rounded-xl border border-stone-200 hover:border-[#b5343a]/30 hover:shadow-sm transition-all text-left group">
-          <div class="w-10 h-10 rounded-lg bg-stone-100 flex items-center justify-center flex-shrink-0 group-hover:bg-[#b5343a]/10 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b5343a" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        <a href="/plan-trip/seasons" class="flex items-start gap-4 p-5 bg-white rounded-xl border border-warm-200 hover:border-vermillion-600/30 hover:shadow-sm transition-all text-left group">
+          <div class="w-10 h-10 rounded-lg bg-warm-100 flex items-center justify-center flex-shrink-0 group-hover:bg-vermillion-600/10 transition-colors text-vermillion-600">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
           </div>
           <div>
-            <h4 class="font-semibold text-sm text-stone-900">Best Seasons</h4>
-            <p class="text-xs text-stone-400 mt-1">When to visit each city for the best experience</p>
+            <h4 class="font-semibold text-sm text-warm-900">Best Seasons</h4>
+            <p class="text-xs text-warm-400 mt-1">When to visit each city for the best experience</p>
           </div>
         </a>
-        <a href="/plan-trip/packing" class="flex items-start gap-4 p-5 bg-white rounded-xl border border-stone-200 hover:border-[#b5343a]/30 hover:shadow-sm transition-all text-left group">
-          <div class="w-10 h-10 rounded-lg bg-stone-100 flex items-center justify-center flex-shrink-0 group-hover:bg-[#b5343a]/10 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b5343a" stroke-width="1.5"><path d="M20 7h-4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2Z"/><path d="M8 3H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z"/></svg>
+        <a href="/plan-trip/packing" class="flex items-start gap-4 p-5 bg-white rounded-xl border border-warm-200 hover:border-vermillion-600/30 hover:shadow-sm transition-all text-left group">
+          <div class="w-10 h-10 rounded-lg bg-warm-100 flex items-center justify-center flex-shrink-0 group-hover:bg-vermillion-600/10 transition-colors text-vermillion-600">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7h-4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2Z"/><path d="M8 3H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z"/></svg>
           </div>
           <div>
-            <h4 class="font-semibold text-sm text-stone-900">What to Pack</h4>
-            <p class="text-xs text-stone-400 mt-1">Apps, clothing, and photoshoot essentials</p>
+            <h4 class="font-semibold text-sm text-warm-900">What to Pack</h4>
+            <p class="text-xs text-warm-400 mt-1">Apps, clothing, and photoshoot essentials</p>
           </div>
         </a>
       </div>
@@ -484,14 +541,14 @@ const schemaHomeFAQ = JSON.stringify({
   <!-- ============================================================
        GALLERY - Travel-Focused
        ============================================================ -->
-  <section class="py-24 bg-stone-50">
+  <section class="py-24 bg-warm-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="mb-14 max-w-xl">
-        <span class="text-xs font-medium text-[#b5343a] tracking-[0.15em] uppercase">Travel Inspiration</span>
-        <h2 class="font-serif-sc text-3xl sm:text-4xl font-bold tracking-tight text-stone-900">
+        <span class="text-xs font-medium text-vermillion-600 tracking-[0.15em] uppercase">Travel Inspiration</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-warm-900">
           Real Travelers, Real Experiences
         </h2>
-        <p class="mt-4 text-stone-500 leading-relaxed">
+        <p class="mt-4 text-warm-500 leading-relaxed">
           See how visitors bring Chinese traditional clothing to life at iconic destinations across the country.
         </p>
       </div>
@@ -516,43 +573,43 @@ const schemaHomeFAQ = JSON.stringify({
   <section class="py-24 bg-white">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="mb-14 text-center">
-        <span class="text-xs font-medium text-[#b5343a] tracking-[0.15em] uppercase">Plan Your Trip</span>
-        <h2 class="font-serif-sc text-3xl sm:text-4xl font-bold tracking-tight text-stone-900">
+        <span class="text-xs font-medium text-vermillion-600 tracking-[0.15em] uppercase">Plan Your Trip</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-warm-900">
           Travel Questions About Chinese Traditional Wear
         </h2>
-        <p class="mt-3 text-stone-500 leading-relaxed">
+        <p class="mt-3 text-warm-500 leading-relaxed">
           Everything you need to know before booking your cultural experience.
         </p>
       </div>
       <div class="space-y-3">
         {travelFAQs.map((faq, i) => (
-          <details class="group bg-white rounded-xl border border-stone-200 overflow-hidden">
-            <summary class="flex items-center justify-between p-5 cursor-pointer hover:bg-stone-50 transition-colors list-none">
-              <span class="text-sm font-medium text-stone-800 pr-4 flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#b5343a" stroke-width="2.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <details class="group bg-white rounded-xl border border-warm-200 overflow-hidden">
+            <summary class="flex items-center justify-between p-5 cursor-pointer hover:bg-warm-50 transition-colors list-none">
+              <span class="text-sm font-medium text-warm-800 pr-4 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-vermillion-600 flex-shrink-0" stroke-width="2.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                 {faq.q}
               </span>
-              <svg class="w-4 h-4 text-stone-400 flex-shrink-0 transition-transform group-open:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              <svg class="w-4 h-4 text-warm-400 flex-shrink-0 transition-transform group-open:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
             </summary>
             <div class="px-5 pb-5">
-              <p class="text-sm text-stone-600 leading-relaxed">{faq.a}</p>
+              <p class="text-sm text-warm-600 leading-relaxed">{faq.a}</p>
             </div>
           </details>
         ))}
       </div>
       
       <!-- General FAQs in compact layout -->
-      <div class="mt-12 pt-10 border-t border-stone-100">
-        <h3 class="font-serif-sc text-lg font-semibold text-stone-900 mb-6">General Clothing Questions</h3>
+      <div class="mt-12 pt-10 border-t border-warm-100">
+        <h3 class="font-display text-lg font-semibold text-warm-900 mb-6">General Clothing Questions</h3>
         <div class="space-y-3">
           {generalFAQs.map((faq, i) => (
-            <details class="group bg-white rounded-xl border border-stone-200 overflow-hidden">
-              <summary class="flex items-center justify-between p-5 cursor-pointer hover:bg-stone-50 transition-colors list-none">
-                <span class="text-sm font-medium text-stone-800 pr-4">{faq.q}</span>
-                <svg class="w-4 h-4 text-stone-400 flex-shrink-0 transition-transform group-open:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            <details class="group bg-white rounded-xl border border-warm-200 overflow-hidden">
+              <summary class="flex items-center justify-between p-5 cursor-pointer hover:bg-warm-50 transition-colors list-none">
+                <span class="text-sm font-medium text-warm-800 pr-4">{faq.q}</span>
+                <svg class="w-4 h-4 text-warm-400 flex-shrink-0 transition-transform group-open:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
               </summary>
               <div class="px-5 pb-5">
-                <p class="text-sm text-stone-600 leading-relaxed">{faq.a}</p>
+                <p class="text-sm text-warm-600 leading-relaxed">{faq.a}</p>
               </div>
             </details>
           ))}
@@ -560,7 +617,7 @@ const schemaHomeFAQ = JSON.stringify({
       </div>
 
       <div class="mt-10 text-center">
-        <a href="/faq" class="inline-flex items-center gap-2 text-sm font-medium text-[#b5343a] hover:text-[#9a2d32] transition-colors">
+        <a href="/faq" class="inline-flex items-center gap-2 text-sm font-medium text-vermillion-600 hover:text-vermillion-700 transition-colors">
           See all travel & clothing FAQs
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
@@ -572,75 +629,20 @@ const schemaHomeFAQ = JSON.stringify({
        CTA - Travel Conversion
        ============================================================ -->
   
-  <section id="compare" class="py-20 bg-[#b5343a]">
+  <section id="compare" class="py-20 bg-vermillion-600">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <span class="text-xs font-medium text-white/60 tracking-[0.15em] uppercase">Not Sure Which Style?</span>
-      <h2 class="font-serif-sc text-3xl sm:text-4xl font-bold tracking-tight text-white mt-2">
+      <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-white mt-2">
         Compare All Styles Side by Side
       </h2>
       <p class="mt-4 text-white/70 leading-relaxed max-w-lg mx-auto">
         See how Hanfu, Qipao, Tang Suit, and Zhongshan Suit compare — silhouette, cost, prep time, and which city offers the best experience for each.
       </p>
-      <a href="/compare" class="inline-flex items-center justify-center mt-8 px-8 py-3.5 bg-white text-[#b5343a] font-medium rounded-full hover:bg-stone-100 transition-colors text-sm tracking-wide">
+      <a href="/compare" class="inline-flex items-center justify-center mt-8 px-8 py-3.5 bg-white text-vermillion-600 font-medium rounded-full hover:bg-warm-100 transition-colors text-sm tracking-wide">
         See Style Comparisons
         <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
       </a>
     </div>
-  </section>
-
-  <section class="py-24 bg-white">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="mb-12 text-center">
-        <span class="text-xs font-medium text-[#b5343a] tracking-[0.15em] uppercase">For Shoppers</span>
-        <h2 class="font-serif-sc text-3xl sm:text-4xl font-bold tracking-tight text-stone-900">
-          Looking to Buy Traditional Clothing?
-        </h2>
-        <p class="mt-4 text-stone-500 leading-relaxed max-w-xl mx-auto">
-          Where to find authentic pieces, from custom tailoring to ready-to-wear.
-        </p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div class="bg-stone-50 rounded-xl p-6 border border-stone-100">
-          <h3 class="font-semibold text-stone-900">Custom Qipao</h3>
-          <p class="text-sm text-stone-500 mt-2">Bespoke cheongsam at Shanghai South Bund Fabric Market. 3-5 day turnaround, 300-800 RMB.</p>
-          <a href="/qipao-cheongsam" class="inline-block mt-3 text-xs font-medium text-[#b5343a] hover:underline">See qipao guide →</a>
-        </div>
-        <div class="bg-stone-50 rounded-xl p-6 border border-stone-100">
-          <h3 class="font-semibold text-stone-900">Tang Suit & Jackets</h3>
-          <p class="text-sm text-stone-500 mt-2">Beijing hutong tailors craft authentic mandarin-collar jackets. Off-the-rack from 50-150 RMB.</p>
-          <a href="/tang-suit" class="inline-block mt-3 text-xs font-medium text-[#b5343a] hover:underline">See tang suit guide →</a>
-        </div>
-        <div class="bg-stone-50 rounded-xl p-6 border border-stone-100">
-          <h3 class="font-semibold text-stone-900">Accessories & Textiles</h3>
-          <p class="text-sm text-stone-500 mt-2">Silk fans, jade pendants, embroidered shoes in Suzhou and Hangzhou markets.</p>
-          <a href="/accessories" class="inline-block mt-3 text-xs font-medium text-[#b5343a] hover:underline">See accessories guide →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-<section class="py-24 bg-[#b5343a]">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="font-serif-sc text-3xl sm:text-4xl font-bold tracking-tight text-white">
-        Ready to Explore Chinese Traditional Wear?
-      </h2>
-      <p class="mt-4 text-white/80 leading-relaxed max-w-xl mx-auto">
-        From the Silk Road to Shanghai''s jazz lanes, Chinese traditional clothing is at its most vivid when experienced in the places that shaped it. Find your destination, book an experience, and step into the past.
-      </p>
-      <div class="mt-8 flex flex-col sm:flex-row justify-center gap-4">
-        <a href="#experience-map" class="inline-flex items-center justify-center px-6 py-3 bg-white text-[#b5343a] font-medium rounded-full hover:bg-stone-100 transition-colors text-sm tracking-wide">
-          Explore Experiences on Map
-        </a>
-        <a href="#dynasties" class="inline-flex items-center justify-center px-6 py-3 border border-white/40 text-white font-medium rounded-full hover:bg-white/10 transition-colors text-sm tracking-wide">
-          Browse by Dynasty
-        </a>
-      </div>
-    </div>
-  </section>
-
-  
   <script type="application/ld+json" is:inline={schemaHomeFAQ}></script>
     <p class="text-xs text-center text-white/40 py-3">Researched & written by Li Wei, MA in Chinese Art History · Fact-checked against Palace Museum (故宫博物院) & China National Silk Museum (中国丝绸博物馆) archives · Updated August 2026</p>
   </BaseLayout>
-
-<script type="application/ld+json" is:inline={schemaHomeFAQ}></script>

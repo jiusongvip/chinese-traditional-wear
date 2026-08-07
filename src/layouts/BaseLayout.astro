@@ -133,6 +133,30 @@ const schemaFAQ = isFAQPage ? JSON.stringify({
         "@type": "Answer",
         "text": "Chinese emperors wore the dragon robe (longpao) in brilliant yellow silk embroidered with nine dragons, clouds, and waves. You can see original robes at the Palace Museum in Beijing's Forbidden City."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to book Hanfu experiences in advance?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Walk-ins are fine at most Hanfu rental shops, but booking ahead on Meituan or Xiaohongshu typically saves 20-30%. For custom qipao or tang suit tailoring, book your first fitting as early in your trip as possible."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the best season for a Chinese traditional clothing trip?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Spring (March-May) and autumn (September-November) offer the most comfortable temperatures for outdoor photoshoots. Avoid Chinese national holidays, especially the first week of October and Spring Festival."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can men wear traditional Chinese clothing too?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely. Men's options include Hanfu (scholar robes, warrior costumes), Tang suits (mandarin-collar jackets), Zhongshan suits (formal menswear), and ethnic minority attire. Many Hanfu rental shops in Xi'an, Luoyang, and Chengdu carry extensive men's collections."
+      }
     }
   ]
 }) : "";
@@ -204,74 +228,85 @@ const schemaBreadcrumbs = (breadcrumbs && breadcrumbs.length > 0) ? JSON.stringi
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
   </head>
-  <body class="bg-white text-stone-900 font-sans antialiased">
-    <header class="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur-md border-b border-stone-100">
+  <body class="bg-warm-50 text-warm-900 font-sans antialiased">
+    <header class="fixed top-0 inset-x-0 z-50 bg-warm-50/85 backdrop-blur-xl border-b border-warm-200/50">
       <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        <a href="/" class="flex items-center gap-2">
-          <span class="font-serif-sc font-bold text-xl text-stone-900 tracking-tight">ChinaStyle</span>
+        <a href="/" class="flex items-center gap-3">
+          <span class="w-8 h-8 rounded-lg bg-vermillion-600 flex items-center justify-center text-white font-display font-bold text-sm">中</span>
+          <span class="font-display font-bold text-xl text-warm-900 tracking-tight">ChinaStyle</span>
         </a>
-        <div class="hidden md:flex items-center gap-6 text-sm font-medium text-stone-600">
-          <a href="/hanfu" class="hover:text-stone-900 transition-colors">Experiences</a>
-          <a href="/dynasties" class="hover:text-stone-900 transition-colors">Destinations</a>
-          <a href="/plan-trip" class="hover:text-stone-900 transition-colors">Plan Your Trip</a>
-          <a href="/gallery" class="hover:text-stone-900 transition-colors">Gallery</a>
+        <div class="hidden md:flex items-center gap-1 text-sm font-medium">
+          <a href="/hanfu" class="px-3 py-2 text-warm-600 hover:text-warm-900 transition-colors rounded-lg hover:bg-warm-100">Experiences</a>
+          <a href="/dynasties" class="px-3 py-2 text-warm-600 hover:text-warm-900 transition-colors rounded-lg hover:bg-warm-100">Destinations</a>
+          <a href="/plan-trip" class="px-3 py-2 text-warm-600 hover:text-warm-900 transition-colors rounded-lg hover:bg-warm-100">Plan Your Trip</a>
+          <a href="/gallery" class="px-3 py-2 text-warm-600 hover:text-warm-900 transition-colors rounded-lg hover:bg-warm-100">Gallery</a>
         </div>
-        <button class="md:hidden text-stone-600" aria-label="Menu">
+        <button class="md:hidden text-warm-600 hover:text-warm-900 transition-colors" aria-label="Menu">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         </button>
       </nav>
     </header>
     <main>
       <slot />
+      {articleDate && (
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+          <p class="text-xs text-warm-400 border-t border-warm-100 pt-6">
+            Last verified: {new Date(articleDate).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })} · Our editorial team reviews and updates all guides regularly to keep pricing, hours, and travel advice current.
+          </p>
+        </div>
+      )}
     </main>
-    <footer class="bg-stone-950 text-stone-400 py-16">
+    <footer class="bg-warm-900 text-warm-400 py-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-10">
           <div>
-            <span class="text-white font-serif-sc font-bold text-lg">ChinaStyle</span>
-            <p class="mt-3 text-sm leading-relaxed">Discover where to experience Chinese traditional clothing firsthand.</p>
+            <div class="flex items-center gap-2 mb-4">
+              <span class="w-7 h-7 rounded-md bg-vermillion-600 flex items-center justify-center text-white font-display font-bold text-xs">中</span>
+              <span class="text-warm-100 font-display font-bold text-lg">ChinaStyle</span>
+            </div>
+            <p class="text-sm leading-relaxed text-warm-400">Discover where to experience Chinese traditional clothing firsthand.</p>
           </div>
           <div>
-            <h4 class="text-white text-sm font-semibold mb-3">Experiences</h4>
-            <ul class="space-y-2 text-sm">
-              <li><a href="/hanfu" class="hover:text-white transition-colors">Hanfu Photoshoots</a></li>
-              <li><a href="/qipao-cheongsam" class="hover:text-white transition-colors">Qipao Tailoring</a></li>
-              <li><a href="/tang-suit" class="hover:text-white transition-colors">Tang Suit Workshops</a></li>
-              <li><a href="/ethnic" class="hover:text-white transition-colors">Ethnic Textile Villages</a></li>
+            <h4 class="text-warm-100 text-sm font-semibold mb-4">Experiences</h4>
+            <ul class="space-y-2.5 text-sm">
+              <li><a href="/hanfu" class="text-warm-400 hover:text-warm-100 transition-colors">Hanfu Photoshoots</a></li>
+              <li><a href="/qipao-cheongsam" class="text-warm-400 hover:text-warm-100 transition-colors">Qipao Tailoring</a></li>
+              <li><a href="/tang-suit" class="text-warm-400 hover:text-warm-100 transition-colors">Tang Suit Workshops</a></li>
+              <li><a href="/ethnic" class="text-warm-400 hover:text-warm-100 transition-colors">Ethnic Textile Villages</a></li>
             </ul>
           </div>
           <div>
-            <h4 class="text-white text-sm font-semibold mb-3">Plan Your Trip</h4>
-            <ul class="space-y-2 text-sm">
-              <li><a href="/plan-trip" class="hover:text-white transition-colors">Travel Guide & Itineraries</a></li>
-              <li><a href="/dynasties" class="hover:text-white transition-colors">Destinations Map</a></li>
-              <li><a href="/how-to-wear" class="hover:text-white transition-colors">What to Expect</a></li>
-              <li><a href="/faq" class="hover:text-white transition-colors">Travel FAQ</a></li>
+            <h4 class="text-warm-100 text-sm font-semibold mb-4">Plan Your Trip</h4>
+            <ul class="space-y-2.5 text-sm">
+              <li><a href="/plan-trip" class="text-warm-400 hover:text-warm-100 transition-colors">Travel Guide & Itineraries</a></li>
+              <li><a href="/dynasties" class="text-warm-400 hover:text-warm-100 transition-colors">Destinations Map</a></li>
+              <li><a href="/how-to-wear" class="text-warm-400 hover:text-warm-100 transition-colors">What to Expect</a></li>
+              <li><a href="/faq" class="text-warm-400 hover:text-warm-100 transition-colors">Travel FAQ</a></li>
             </ul>
           </div>
           <div>
-            <h4 class="text-white text-sm font-semibold mb-3">More</h4>
-            <ul class="space-y-2 text-sm">
-              <li><a href="/gallery" class="hover:text-white transition-colors">Travel Gallery</a></li>
-              <li><a href="/about" class="hover:text-white transition-colors">About Us</a></li>
-              <li><a href="/compare" class="hover:text-white transition-colors">Style Comparisons</a></li>
-              <li><a href="/accessories" class="hover:text-white transition-colors">Accessories Guide</a></li>
+            <h4 class="text-warm-100 text-sm font-semibold mb-4">More</h4>
+            <ul class="space-y-2.5 text-sm">
+              <li><a href="/gallery" class="text-warm-400 hover:text-warm-100 transition-colors">Travel Gallery</a></li>
+              <li><a href="/about" class="text-warm-400 hover:text-warm-100 transition-colors">About Us</a></li>
+              <li><a href="/compare" class="text-warm-400 hover:text-warm-100 transition-colors">Style Comparisons</a></li>
+              <li><a href="/hanfu-vs-qipao" class="text-warm-400 hover:text-warm-100 transition-colors">Hanfu vs Qipao</a></li>
+              <li><a href="/accessories" class="text-warm-400 hover:text-warm-100 transition-colors">Accessories Guide</a></li>
             </ul>
           </div>
         </div>
-        <div class="mt-12 pt-8 border-t border-stone-800 text-xs text-stone-500 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+        <div class="mt-14 pt-8 border-t border-warm-800 text-xs text-warm-500 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
           <span>&copy; {new Date().getFullYear()} ChinaStyle. A cultural travel guide to Chinese traditional clothing experiences.</span>
-          <span class="flex gap-4"><a href="/contact" class="hover:text-stone-300 transition-colors">Contact</a><a href="/privacy" class="hover:text-stone-300 transition-colors">Privacy</a></span>
+          <span class="flex gap-5"><a href="/contact" class="hover:text-warm-300 transition-colors">Contact</a><a href="/privacy" class="hover:text-warm-300 transition-colors">Privacy</a></span>
         </div>
+      </div>
     </footer>
   </body>
 </html>
 
 <style is:global>
+  /* Legacy class kept for backward compatibility */
   .font-serif-sc {
-    font-family: ''Noto Serif SC'', serif;
-  }
-  .font-sans {
-    font-family: ''Outfit'', system-ui, sans-serif;
+    font-family: 'Noto Serif SC', Georgia, serif;
   }
 </style>

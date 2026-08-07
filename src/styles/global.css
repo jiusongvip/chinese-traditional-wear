@@ -1,3 +1,168 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ============================================================
+   TYPOGRAPHY DEFAULTS
+   ============================================================ */
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-warm-50 text-warm-900 font-sans;
+  }
+  ::selection {
+    @apply bg-vermillion-600/15 text-vermillion-900;
+  }
+}
+
+/* ============================================================
+   CHINESE-INSPIRED DECORATIVE PATTERNS
+   ============================================================ */
+
+/* Cloud scroll pattern — subtle repeating motif */
+@layer components {
+  .pattern-clouds {
+    background-image:
+      radial-gradient(ellipse 18px 12px at 50% 60%, rgba(181,52,58,0.04) 0%, transparent 100%),
+      radial-gradient(ellipse 14px 8px at 20% 40%, rgba(181,52,58,0.03) 0%, transparent 100%),
+      radial-gradient(ellipse 14px 8px at 80% 40%, rgba(181,52,58,0.03) 0%, transparent 100%);
+    background-size: 80px 40px, 100px 60px, 100px 60px;
+    background-position: 0 0, 20px 10px, 60px 10px;
+  }
+
+  /* Subtle silk texture — diagonal weave */
+  .texture-silk {
+    background-image:
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 2px,
+        rgba(26,23,20,0.015) 2px,
+        rgba(26,23,20,0.015) 4px
+      );
+  }
+
+  /* Jade vein pattern — for accent sections */
+  .texture-jade {
+    background-image:
+      radial-gradient(ellipse at 30% 20%, rgba(45,106,79,0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 80%, rgba(45,106,79,0.04) 0%, transparent 50%);
+  }
+
+  /* Gold accent line — thin decorative divider */
+  .divider-gold {
+    @apply relative;
+  }
+  .divider-gold::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-16 h-0.5 bg-vermillion-500/30 rounded-full;
+  }
+}
+
+/* ============================================================
+   CARD & COMPONENT PRESETS
+   ============================================================ */
+
+@layer components {
+  /* Elevated card with subtle hover lift */
+  .card-elevated {
+    @apply bg-white rounded-2xl border border-warm-200/60
+           shadow-sm shadow-warm-900/[0.03]
+           transition-all duration-300;
+  }
+  .card-elevated:hover {
+    @apply -translate-y-0.5 shadow-md shadow-warm-900/[0.06]
+           border-warm-300/80;
+  }
+
+  /* Soft pill tag */
+  .tag-pill {
+    @apply inline-flex items-center px-3 py-1 text-xs font-medium
+           rounded-full border transition-colors duration-200;
+  }
+  .tag-pill-default {
+    @apply tag-pill bg-warm-100 text-warm-700 border-warm-200
+           hover:bg-warm-200 hover:text-warm-800;
+  }
+  .tag-pill-accent {
+    @apply tag-pill bg-vermillion-50 text-vermillion-700 border-vermillion-200
+           hover:bg-vermillion-100 hover:text-vermillion-800;
+  }
+
+  /* Shimmer loading / decorative gradient text */
+  .text-shimmer {
+    background: linear-gradient(
+      110deg,
+      theme('colors.vermillion.600') 0%,
+      theme('colors.vermillion.600') 30%,
+      theme('colors.vermillion.400') 50%,
+      theme('colors.vermillion.600') 70%,
+      theme('colors.vermillion.600') 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+}
+
+/* ============================================================
+   TABLE STYLING
+   ============================================================ */
+
+@layer components {
+  .table-comparison {
+    @apply w-full text-sm border-collapse;
+  }
+  .table-comparison thead th {
+    @apply text-left font-semibold text-warm-900 py-3 px-4
+           border-b-2 border-warm-200 bg-warm-100/50;
+  }
+  .table-comparison thead th:first-child {
+    @apply text-warm-500 font-medium text-xs uppercase tracking-wider;
+  }
+  .table-comparison tbody td {
+    @apply py-3 px-4 border-b border-warm-100 text-warm-700 leading-relaxed;
+  }
+  .table-comparison tbody td:first-child {
+    @apply font-medium text-warm-500 text-xs uppercase tracking-wide;
+  }
+  .table-comparison tbody tr {
+    @apply transition-colors duration-150;
+  }
+  .table-comparison tbody tr:hover {
+    @apply bg-warm-50/80;
+  }
+  .table-comparison tbody tr:last-child td {
+    @apply border-b-0;
+  }
+}
+
+/* ============================================================
+   SCROLL-DRIVEN FADE-IN (progressive enhancement)
+   ============================================================ */
+
+@layer utilities {
+  @supports (animation-timeline: scroll()) {
+    .animate-on-scroll {
+      animation: fadeUp 1s ease-out both;
+      animation-timeline: view();
+      animation-range: entry 10% entry 90%;
+    }
+  }
+}
+
+/* ============================================================
+   FOCUS RING — accessible, brand-colored
+   ============================================================ */
+
+@layer base {
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-vermillion-500/60 rounded;
+  }
+}

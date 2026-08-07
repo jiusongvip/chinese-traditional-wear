@@ -5,9 +5,10 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 <BaseLayout
   title="Plan Your Trip: Traditional Wear Guide | ChinaStyle"
   description="Plan your Chinese traditional clothing trip: visa tips, train routes, 5-14 day itineraries, budget breakdowns, best seasons, and hotel recommendations."
+  ogImage="/images/og-plan-trip.webp"
   canonicalUrl="/plan-trip"
-  articleDate="2026-08-03"
-  breadcrumbs={{ name: "Home", url: "/" }, { name: "Plan Your Trip", url: "/plan-trip/" }, { name: "Plan Your Trip", url: "/plan-trip/" }}>
+  articleDate="2026-08-06"
+  breadcrumbs={[{ name: "Home", url: "/" }, { name: "Plan Your Trip", url: "/plan-trip/" }]}>
   <section class="pt-24 pb-16">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <span class="text-xs font-medium text-[#b5343a] tracking-[0.15em] uppercase">Travel Planning</span>
@@ -17,6 +18,18 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       <p class="mt-6 text-lg text-stone-500 leading-relaxed max-w-2xl">
         Everything you need to turn "I want to try Hanfu in China" into an actual trip with flights, trains, hotels, and booked experiences.
       </p>
+
+      <!-- Hero image -->
+      <div class="mt-8 overflow-hidden rounded-2xl aspect-[2/1] bg-stone-100">
+        <img
+          src="https://images.unsplash.com/photo-1619107796968-a4802f920298?q=80&w=1374&h=687&fit=crop&crop=entropy&auto=format&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Travelers experiencing traditional Chinese clothing at a cultural workshop"
+          class="w-full h-full object-cover"
+          loading="eager"
+          width="1374" height="687"
+          decoding="async"
+        />
+      </div>
 
       <!-- Quick jump nav -->
       <div class="mt-8 flex flex-wrap gap-2">
@@ -205,6 +218,12 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
             <li>· A friend or selfie stick — or book a photographer.</li>
           </ul>
         </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-16 bg-stone-900 rounded-2xl p-8 sm:p-10 text-center">
+        <h2 class="font-serif-sc text-xl sm:text-2xl font-bold text-white mb-3">Ready to Plan Your Hanfu Trip?</h2>
+        <p class="text-stone-300 text-sm leading-relaxed max-w-lg mx-auto">Browse our <a href="/hanfu" class="text-white underline hover:text-stone-200">Hanfu guide</a> for costume details, check <a href="/dynasties" class="text-white underline hover:text-stone-200">dynasty styles</a> to pick your era, or explore <a href="/where-to-buy" class="text-white underline hover:text-stone-200">where to buy</a> authentic pieces.</p>
       </div>
 
     </div>
