@@ -19,11 +19,11 @@ const {
   breadcrumbs,
 } = Astro.props;
 
-const SITE_URL = "https://chinesetraditionalwear.com";
+const SITE_URL = "https://www.chinese-traditional-wear.com";
 const pageUrl = canonicalUrl ? `${SITE_URL}${canonicalUrl}` : SITE_URL;
 const SITE_NAME = "ChinaStyle";
 const AUTHOR_NAME = "Li Wei";
-const AUTHOR_URL = "https://chinesetraditionalwear.com/about";
+const AUTHOR_URL = "https://www.chinese-traditional-wear.com/about/";
 
 // Precompute all schema JSON-LD strings to avoid Astro template parsing issues
 const schemaOrganization = JSON.stringify({
@@ -244,10 +244,10 @@ const schemaBreadcrumbs = (breadcrumbs && breadcrumbs.length > 0) ? JSON.stringi
           <span class="font-display font-bold text-xl text-warm-900 tracking-tight">ChinaStyle</span>
         </a>
         <div class="hidden md:flex items-center gap-1 text-sm font-medium">
-          <a href="/hanfu" class="px-3 py-2 text-warm-600 hover:text-warm-900 transition-colors rounded-lg hover:bg-warm-100">Experiences</a>
-          <a href="/dynasties" class="px-3 py-2 text-warm-600 hover:text-warm-900 transition-colors rounded-lg hover:bg-warm-100">Destinations</a>
-          <a href="/plan-trip" class="px-3 py-2 text-warm-600 hover:text-warm-900 transition-colors rounded-lg hover:bg-warm-100">Plan Your Trip</a>
-          <a href="/gallery" class="px-3 py-2 text-warm-600 hover:text-warm-900 transition-colors rounded-lg hover:bg-warm-100">Gallery</a>
+          <a href="/hanfu/" class="px-3 py-2 text-warm-600 hover:text-warm-900 transition-colors rounded-lg hover:bg-warm-100">Experiences</a>
+          <a href="/dynasties/" class="px-3 py-2 text-warm-600 hover:text-warm-900 transition-colors rounded-lg hover:bg-warm-100">Destinations</a>
+          <a href="/plan-trip/" class="px-3 py-2 text-warm-600 hover:text-warm-900 transition-colors rounded-lg hover:bg-warm-100">Plan Your Trip</a>
+          <a href="/gallery/" class="px-3 py-2 text-warm-600 hover:text-warm-900 transition-colors rounded-lg hover:bg-warm-100">Gallery</a>
         </div>
         <button class="md:hidden text-warm-600 hover:text-warm-900 transition-colors" aria-label="Menu">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
@@ -277,35 +277,35 @@ const schemaBreadcrumbs = (breadcrumbs && breadcrumbs.length > 0) ? JSON.stringi
           <div>
             <h4 class="text-warm-100 text-sm font-semibold mb-4">Experiences</h4>
             <ul class="space-y-2.5 text-sm">
-              <li><a href="/hanfu" class="text-warm-400 hover:text-warm-100 transition-colors">Hanfu Photoshoots</a></li>
-              <li><a href="/qipao-cheongsam" class="text-warm-400 hover:text-warm-100 transition-colors">Qipao Tailoring</a></li>
-              <li><a href="/tang-suit" class="text-warm-400 hover:text-warm-100 transition-colors">Tang Suit Workshops</a></li>
-              <li><a href="/ethnic" class="text-warm-400 hover:text-warm-100 transition-colors">Ethnic Textile Villages</a></li>
+              <li><a href="/hanfu/" class="text-warm-400 hover:text-warm-100 transition-colors">Hanfu Photoshoots</a></li>
+              <li><a href="/qipao-cheongsam/" class="text-warm-400 hover:text-warm-100 transition-colors">Qipao Tailoring</a></li>
+              <li><a href="/tang-suit/" class="text-warm-400 hover:text-warm-100 transition-colors">Tang Suit Workshops</a></li>
+              <li><a href="/ethnic/" class="text-warm-400 hover:text-warm-100 transition-colors">Ethnic Textile Villages</a></li>
             </ul>
           </div>
           <div>
             <h4 class="text-warm-100 text-sm font-semibold mb-4">Plan Your Trip</h4>
             <ul class="space-y-2.5 text-sm">
-              <li><a href="/plan-trip" class="text-warm-400 hover:text-warm-100 transition-colors">Travel Guide & Itineraries</a></li>
-              <li><a href="/dynasties" class="text-warm-400 hover:text-warm-100 transition-colors">Destinations Map</a></li>
-              <li><a href="/how-to-wear" class="text-warm-400 hover:text-warm-100 transition-colors">What to Expect</a></li>
-              <li><a href="/faq" class="text-warm-400 hover:text-warm-100 transition-colors">Travel FAQ</a></li>
+              <li><a href="/plan-trip/" class="text-warm-400 hover:text-warm-100 transition-colors">Travel Guide & Itineraries</a></li>
+              <li><a href="/dynasties/" class="text-warm-400 hover:text-warm-100 transition-colors">Destinations Map</a></li>
+              <li><a href="/how-to-wear/" class="text-warm-400 hover:text-warm-100 transition-colors">What to Expect</a></li>
+              <li><a href="/faq/" class="text-warm-400 hover:text-warm-100 transition-colors">Travel FAQ</a></li>
             </ul>
           </div>
           <div>
             <h4 class="text-warm-100 text-sm font-semibold mb-4">More</h4>
             <ul class="space-y-2.5 text-sm">
-              <li><a href="/gallery" class="text-warm-400 hover:text-warm-100 transition-colors">Travel Gallery</a></li>
-              <li><a href="/about" class="text-warm-400 hover:text-warm-100 transition-colors">About Us</a></li>
-              <li><a href="/compare" class="text-warm-400 hover:text-warm-100 transition-colors">Style Comparisons</a></li>
-              <li><a href="/hanfu-vs-qipao" class="text-warm-400 hover:text-warm-100 transition-colors">Hanfu vs Qipao</a></li>
-              <li><a href="/accessories" class="text-warm-400 hover:text-warm-100 transition-colors">Accessories Guide</a></li>
+              <li><a href="/gallery/" class="text-warm-400 hover:text-warm-100 transition-colors">Travel Gallery</a></li>
+              <li><a href="/about/" class="text-warm-400 hover:text-warm-100 transition-colors">About Us</a></li>
+              <li><a href="/compare/" class="text-warm-400 hover:text-warm-100 transition-colors">Style Comparisons</a></li>
+              <li><a href="/hanfu-vs-qipao/" class="text-warm-400 hover:text-warm-100 transition-colors">Hanfu vs Qipao</a></li>
+              <li><a href="/accessories/" class="text-warm-400 hover:text-warm-100 transition-colors">Accessories Guide</a></li>
             </ul>
           </div>
         </div>
         <div class="mt-14 pt-8 border-t border-warm-800 text-xs text-warm-500 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
           <span>&copy; {new Date().getFullYear()} ChinaStyle. A cultural travel guide to Chinese traditional clothing experiences.</span>
-          <span class="flex gap-5"><a href="/contact" class="hover:text-warm-300 transition-colors">Contact</a><a href="/privacy" class="hover:text-warm-300 transition-colors">Privacy</a></span>
+          <span class="flex gap-5"><a href="/contact/" class="hover:text-warm-300 transition-colors">Contact</a><a href="/privacy/" class="hover:text-warm-300 transition-colors">Privacy</a></span>
         </div>
       </div>
     </footer>

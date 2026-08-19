@@ -4,8 +4,8 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://chinese-traditional-wear.com',
-  trailingSlash: 'never',
+  site: 'https://www.chinese-traditional-wear.com',
+  trailingSlash: 'always',
   integrations: [tailwind(), sitemap({
     filter: (url) => !url.endsWith('/qipao') && !url.endsWith('/tang'),
   })],
