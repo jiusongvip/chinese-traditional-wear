@@ -327,18 +327,27 @@ const schemaBreadcrumbs = (breadcrumbs && breadcrumbs.length > 0) ? JSON.stringi
         </div>
       </div>
     </footer>
-    <!-- Google tag (gtag.js) — deferred: loads after first paint to protect LCP/INP -->
+    <!-- Google tag (gtag.js) — loads on first interaction or after 8s idle fallback, off the TBT window -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-YDS092NCMF');
       (function () {
-        var s = document.createElement('script');
-        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-YDS092NCMF';
-        s.async = true;
+        var loaded = false;
+        function loadGA() {
+          if (loaded) return;
+          loaded = true;
+          var s = document.createElement('script');
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=G-YDS092NCMF';
+          s.async = true;
+          document.head.appendChild(s);
+        }
+        ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach(function (evt) {
+          window.addEventListener(evt, loadGA, { once: true, passive: true });
+        });
         (window.requestIdleCallback || function (cb) { return setTimeout(cb, 1); })(function () {
-          document.body.appendChild(s);
+          setTimeout(loadGA, 8000);
         });
       })();
     </script>
