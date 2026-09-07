@@ -1,0 +1,42 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Page Not Found (404) | ChinaStyle"
+  description="The page you are looking for does not exist. Explore our guides to Hanfu, Qipao, Tang suits, and Chinese traditional clothing experiences instead."
+  noindex>
+  <section class="pt-24 pb-16">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="font-serif-sc text-7xl font-bold text-vermillion-600">404</p>
+      <h1 class="font-serif-sc text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-stone-900 mt-6">
+        Page Not Found
+      </h1>
+      <p class="mt-6 text-lg text-stone-500 leading-relaxed max-w-xl mx-auto">
+        The page you are looking for may have been moved or no longer exists. Explore one of our most popular guides below instead.
+      </p>
+      <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+        <a href="/" class="inline-flex items-center justify-center px-6 py-3 bg-vermillion-600 text-white font-medium rounded-full hover:bg-vermillion-700 transition-colors text-sm tracking-wide">
+          Back to Home
+        </a>
+        <a href="/plan-trip/" class="inline-flex items-center justify-center px-6 py-3 border border-stone-300 text-stone-700 font-medium rounded-full hover:border-stone-400 transition-colors text-sm tracking-wide">
+          Plan Your Trip
+        </a>
+      </div>
+      <div class="mt-14 grid grid-cols-1 sm:grid-cols-3 gap-6 text-left">
+        <a href="/hanfu/" class="p-6 bg-stone-50 rounded-xl hover:bg-stone-100 transition-colors">
+          <h2 class="font-serif-sc text-lg font-semibold text-stone-900">Hanfu Guide</h2>
+          <p class="text-sm text-stone-500 mt-2">History, styles, and where to experience Hanfu firsthand.</p>
+        </a>
+        <a href="/qipao-cheongsam/" class="p-6 bg-stone-50 rounded-xl hover:bg-stone-100 transition-colors">
+          <h2 class="font-serif-sc text-lg font-semibold text-stone-900">Qipao & Cheongsam</h2>
+          <p class="text-sm text-stone-500 mt-2">The iconic 1920s Shanghai dress, from silk to tailoring.</p>
+        </a>
+        <a href="/where-to-buy/" class="p-6 bg-stone-50 rounded-xl hover:bg-stone-100 transition-colors">
+          <h2 class="font-serif-sc text-lg font-semibold text-stone-900">Where to Buy</h2>
+          <p class="text-sm text-stone-500 mt-2">Best cities and markets for authentic traditional clothing.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
