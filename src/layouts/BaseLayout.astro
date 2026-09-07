@@ -34,7 +34,10 @@ const schemaOrganization = JSON.stringify({
   "name": SITE_NAME,
   "url": SITE_URL,
   "description": "Your comprehensive guide to Chinese traditional wear — Hanfu (汉服), Qipao (旗袍), Tang suits (唐装), and more. Explore history, styles, and where to experience Chinese clothing firsthand.",
-  "sameAs": []
+  "sameAs": [
+    AUTHOR_URL,
+    `${SITE_URL}/contact/`
+  ]
 });
 
 const schemaWebsite = JSON.stringify({
@@ -44,15 +47,33 @@ const schemaWebsite = JSON.stringify({
   "url": SITE_URL
 });
 
+const schemaPerson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": AUTHOR_NAME,
+  "url": AUTHOR_URL,
+  "jobTitle": "Founder & Lead Researcher",
+  "description": "Li Wei, MA in Chinese Art History, is the author and lead researcher of ChinaStyle, a cultural travel guide to Chinese traditional clothing experiences across China.",
+  "knowsLanguage": ["en", "zh"],
+  "knowsAbout": ["Hanfu", "Qipao", "Cheongsam", "Tang suit", "Chinese dynastic clothing", "Chinese textile heritage"],
+  "worksFor": {
+    "@type": "Organization",
+    "name": SITE_NAME,
+    "url": SITE_URL
+  },
+  "sameAs": [AUTHOR_URL]
+});
+
 const schemaArticle = canonicalUrl ? JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": title,
   "description": description,
   "author": {
-    "@type": "Organization",
+    "@type": "Person",
     "name": AUTHOR_NAME,
-    "url": AUTHOR_URL
+    "url": AUTHOR_URL,
+    "jobTitle": "Founder & Lead Researcher"
   },
   "publisher": {
     "@type": "Organization",
@@ -191,7 +212,7 @@ const schemaBreadcrumbs = (breadcrumbs && breadcrumbs.length > 0) ? JSON.stringi
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={pageUrl} />
-    <meta property="og:type" content={canonicalUrl ? "article" : "website"} />
+    <meta property="og:type" content={canonicalUrl && canonicalUrl !== "/" ? "article" : "website"} />
     <meta property="og:site_name" content={SITE_NAME} />
     <meta property="og:image" content={`${SITE_URL}${ogImage}`} />
     <meta property="og:image:width" content="1200" />
@@ -216,9 +237,11 @@ const schemaBreadcrumbs = (breadcrumbs && breadcrumbs.length > 0) ? JSON.stringi
     <!-- Schema: WebSite -->
     <script type="application/ld+json" set:html={schemaWebsite}></script>
 
+    <!-- Schema: Person (author identity) -->
+    <script type="application/ld+json" set:html={schemaPerson}></script>
 
-    <!-- Schema: Article (for content pages) -->
-    {canonicalUrl && <script type="application/ld+json" set:html={schemaArticle}></script>}
+    <!-- Schema: Article (home + content pages) -->
+    {pageUrl !== SITE_URL || canonicalUrl === "/" ? <script type="application/ld+json" set:html={schemaArticle}></script> : null}
 
     <!-- Schema: FAQPage (for pages with FAQ content) -->
     {isFAQPage && <script type="application/ld+json" set:html={schemaFAQ}></script>}
@@ -255,7 +278,7 @@ const schemaBreadcrumbs = (breadcrumbs && breadcrumbs.length > 0) ? JSON.stringi
       {articleDate && (
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
           <p class="text-xs text-warm-400 border-t border-warm-100 pt-6">
-            Last verified: {new Date(articleDate).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })} · Our editorial team reviews and updates all guides regularly to keep pricing, hours, and travel advice current.
+            Written by <a href="/about/" class="underline hover:text-warm-600">Li Wei</a> · Last verified: {new Date(articleDate).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })} · Our editorial team reviews and updates all guides regularly to keep pricing, hours, and travel advice current.
           </p>
         </div>
       )}
@@ -271,7 +294,7 @@ const schemaBreadcrumbs = (breadcrumbs && breadcrumbs.length > 0) ? JSON.stringi
             <p class="text-sm leading-relaxed text-warm-400">Discover where to experience Chinese traditional clothing firsthand.</p>
           </div>
           <div>
-            <h4 class="text-warm-100 text-sm font-semibold mb-4">Experiences</h4>
+            <h3 class="text-warm-100 text-sm font-semibold mb-4">Experiences</h4>
             <ul class="space-y-2.5 text-sm">
               <li><a href="/hanfu/" class="text-warm-400 hover:text-warm-100 transition-colors">Hanfu Photoshoots</a></li>
               <li><a href="/qipao-cheongsam/" class="text-warm-400 hover:text-warm-100 transition-colors">Qipao Tailoring</a></li>
@@ -280,7 +303,7 @@ const schemaBreadcrumbs = (breadcrumbs && breadcrumbs.length > 0) ? JSON.stringi
             </ul>
           </div>
           <div>
-            <h4 class="text-warm-100 text-sm font-semibold mb-4">Plan Your Trip</h4>
+            <h3 class="text-warm-100 text-sm font-semibold mb-4">Plan Your Trip</h4>
             <ul class="space-y-2.5 text-sm">
               <li><a href="/plan-trip/" class="text-warm-400 hover:text-warm-100 transition-colors">Travel Guide & Itineraries</a></li>
               <li><a href="/dynasties/" class="text-warm-400 hover:text-warm-100 transition-colors">Destinations Map</a></li>
@@ -289,7 +312,7 @@ const schemaBreadcrumbs = (breadcrumbs && breadcrumbs.length > 0) ? JSON.stringi
             </ul>
           </div>
           <div>
-            <h4 class="text-warm-100 text-sm font-semibold mb-4">More</h4>
+            <h3 class="text-warm-100 text-sm font-semibold mb-4">More</h4>
             <ul class="space-y-2.5 text-sm">
               <li><a href="/gallery/" class="text-warm-400 hover:text-warm-100 transition-colors">Travel Gallery</a></li>
               <li><a href="/about/" class="text-warm-400 hover:text-warm-100 transition-colors">About Us</a></li>
@@ -301,7 +324,7 @@ const schemaBreadcrumbs = (breadcrumbs && breadcrumbs.length > 0) ? JSON.stringi
         </div>
         <div class="mt-14 pt-8 border-t border-warm-800 text-xs text-warm-500 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
           <span>&copy; {new Date().getFullYear()} ChinaStyle. A cultural travel guide to Chinese traditional clothing experiences.</span>
-          <span class="flex gap-5"><a href="/contact/" class="hover:text-warm-300 transition-colors">Contact</a><a href="/privacy/" class="hover:text-warm-300 transition-colors">Privacy</a></span>
+          <span class="flex gap-5"><a href="/contact/" class="hover:text-warm-300 transition-colors">Contact</a><a href="/privacy/" class="hover:text-warm-300 transition-colors">Privacy</a><a href="/terms/" class="hover:text-warm-300 transition-colors">Terms</a></span>
         </div>
       </div>
     </footer>
