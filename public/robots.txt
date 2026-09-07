@@ -1,8 +1,4 @@
 User-agent: *
 Allow: /
 
-# Machine-readable site overview for AI crawlers
-# https://llmstxt.org
-<https://www.chinese-traditional-wear.com/llms.txt>; rel="llms"
-
 Sitemap: https://www.chinese-traditional-wear.com/sitemap-index.xml
