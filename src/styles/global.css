@@ -124,13 +124,13 @@
            border-b-2 border-warm-200 bg-warm-100/50;
   }
   .table-comparison thead th:first-child {
-    @apply text-warm-500 font-medium text-xs uppercase tracking-wider;
+    @apply text-warm-700 font-medium text-xs uppercase tracking-wider;
   }
   .table-comparison tbody td {
     @apply py-3 px-4 border-b border-warm-100 text-warm-700 leading-relaxed;
   }
   .table-comparison tbody td:first-child {
-    @apply font-medium text-warm-500 text-xs uppercase tracking-wide;
+    @apply font-medium text-warm-700 text-xs uppercase tracking-wide;
   }
   .table-comparison tbody tr {
     @apply transition-colors duration-150;
@@ -165,4 +165,11 @@
   *:focus-visible {
     @apply outline-2 outline-offset-2 outline-vermillion-500/60 rounded;
   }
+}
+
+.ghost-numeral {
+  color: transparent;
+  background-image: linear-gradient(180deg, #e8dfd1 0%, #d6c9b4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
