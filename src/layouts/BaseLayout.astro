@@ -250,8 +250,8 @@ const schemaBreadcrumbs = (breadcrumbs && breadcrumbs.length > 0) ? JSON.stringi
       <script type="application/ld+json" set:html={schemaBreadcrumbs}></script>
     )}
 
+    <link rel="preload" href="/fonts/outfit-var.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/noto-serif-sc-700.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/fonts/outfit-400.woff2" as="font" type="font/woff2" crossorigin />
     <slot name="head" />
   </head>
   <body class="bg-warm-50 text-warm-900 font-sans antialiased">

@@ -104,6 +104,8 @@ const chinaPath = "M 520 100 L 560 95 L 590 100 L 620 110 L 640 115 L 660 130 L 
     "nanjing": { name: "Nanjing", type: "Ming Dynasty & Silk", desc: "Ming dynasty hanfu at Ming Xiaoling Mausoleum, silk brocade (yunjin) museum and workshops, qipao at Confucius Temple area.", price: "100-300 RMB", rating: "Recommended" },
   };
 
+  // Defer map wiring off the critical path to reduce TBT
+  (window.requestIdleCallback || ((fn) => setTimeout(fn, 1)))(() => {
   const detail = document.getElementById("city-detail");
   const dn = document.getElementById("detail-name");
   const dt = document.getElementById("detail-type");
@@ -160,5 +162,6 @@ const chinaPath = "M 520 100 L 560 95 L 590 100 L 620 110 L 640 115 L 660 130 L 
     if (!e.target.closest("#city-detail") && !e.target.closest(".city-marker") && !e.target.closest(".city-chip")) {
       hideDetail();
     }
+  });
   });
 </script>

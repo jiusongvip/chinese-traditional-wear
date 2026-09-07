@@ -4,46 +4,20 @@
 
 /* ============================================================
    SELF-HOSTED FONTS (subset to the site's unique 564 chars)
+   Outfit = variable font (wght 400-700); Noto Serif SC = single
+   static 700 face declared as covering 500-700 (semibold maps to it)
    ============================================================ */
 @font-face {
   font-family: 'Outfit';
   font-style: normal;
-  font-weight: 400;
+  font-weight: 400 700;
   font-display: swap;
-  src: url('/fonts/outfit-400.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Outfit';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url('/fonts/outfit-500.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Outfit';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url('/fonts/outfit-600.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Outfit';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('/fonts/outfit-700.woff2') format('woff2');
+  src: url('/fonts/outfit-var.woff2') format('woff2');
 }
 @font-face {
   font-family: 'Noto Serif SC';
   font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url('/fonts/noto-serif-sc-500.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Noto Serif SC';
-  font-style: normal;
-  font-weight: 700;
+  font-weight: 500 700;
   font-display: swap;
   src: url('/fonts/noto-serif-sc-700.woff2') format('woff2');
 }
