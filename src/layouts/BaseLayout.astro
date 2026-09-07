@@ -254,6 +254,7 @@ const schemaBreadcrumbs = (breadcrumbs && breadcrumbs.length > 0) ? JSON.stringi
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet" /></noscript>
+    <slot name="head" />
   </head>
   <body class="bg-warm-50 text-warm-900 font-sans antialiased">
     <header class="fixed top-0 inset-x-0 z-50 bg-warm-50/85 backdrop-blur-xl border-b border-warm-200/50">

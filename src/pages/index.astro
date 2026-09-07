@@ -69,6 +69,7 @@ const schemaHomeFAQ = JSON.stringify({
 ---
 
 <BaseLayout title="Chinese Traditional Wear: Hanfu, Qipao & Tang Suit Guide" description="A complete guide to Chinese traditional wear: Hanfu, Qipao, Tang Suit & more. Explore styles, history, and where to buy authentic garments in China." canonicalUrl="/" articleDate="2026-08-06">
+  <link slot="head" rel="preload" as="image" href="/images/hero-portrait.webp" imagesrcset="/images/hero-portrait.webp 800w, /images/hero-landscape.webp 1000w" imagesizes="(min-width: 1024px) 58vw, 100vw" fetchpriority="high" />
 
   <!-- ============================================================
        HERO - Travel-Focused
@@ -111,13 +112,15 @@ const schemaHomeFAQ = JSON.stringify({
         <!-- Right: Travel scene image -->
         <div class="lg:col-span-7 lg:col-start-6">
           <div class="relative aspect-[4/5] lg:aspect-[5/4] overflow-hidden rounded-2xl">
-            <img
-              src="https://images.unsplash.com/photo-1601023883270-4a06cf948063?q=60&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Woman in traditional Chinese Hanfu dress posing at an ancient temple courtyard"
-              class="w-full h-full object-cover"
-              loading="eager"
-              fetchpriority="high"
-              decoding="async" width="1200" height="1800" />
+            <picture>
+              <source media="(min-width: 1024px)" srcset="/images/hero-landscape.webp" width="1000" height="800" />
+              <img
+                src="/images/hero-portrait.webp"
+                alt="Woman in traditional Chinese Hanfu dress posing at an ancient temple courtyard"
+                class="w-full h-full object-cover"
+                fetchpriority="high"
+                decoding="async" width="800" height="1000" />
+            </picture>
             <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/60 to-transparent">
               <span class="text-white/80 text-xs tracking-wide uppercase">Featured experience</span>
               <p class="text-white font-medium mt-1">Hanfu photoshoot at Xi''an Ancient City Wall</p>

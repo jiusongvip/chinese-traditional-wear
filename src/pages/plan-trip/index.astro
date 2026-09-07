@@ -8,6 +8,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   canonicalUrl="/plan-trip/"
   articleDate="2026-08-06"
   breadcrumbs={[{ name: "Home", url: "/" }, { name: "Plan Your Trip", url: "/plan-trip/" }]}>
+  <link slot="head" rel="preload" as="image" href="/images/plan-trip-hero.webp" fetchpriority="high" />
   <section class="pt-24 pb-16">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <span class="text-xs font-medium text-[#b5343a] tracking-[0.15em] uppercase">Travel Planning</span>
@@ -21,11 +22,12 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       <!-- Hero image -->
       <div class="mt-8 overflow-hidden rounded-2xl aspect-[2/1] bg-stone-100">
         <img
-          src="https://images.unsplash.com/photo-1619107796968-a4802f920298?q=80&w=1374&h=687&fit=crop&crop=entropy&auto=format&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          src="/images/plan-trip-hero.webp"
           alt="Travelers experiencing traditional Chinese clothing at a cultural workshop"
           class="w-full h-full object-cover"
           loading="eager"
-          width="1374" height="687"
+          fetchpriority="high"
+          width="1200" height="600"
           decoding="async"
         />
       </div>
