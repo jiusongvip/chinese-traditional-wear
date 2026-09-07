@@ -14,18 +14,18 @@ const dynasties = [
 ];
 
 const galleryImages = [
-  { src: "https://images.pexels.com/photos/36587320/pexels-photo-36587320.jpeg", alt: "Traditional Chinese Hanfu dress in elegant studio portrait" },
-  { src: "https://images.pexels.com/photos/18077456/pexels-photo-18077456.jpeg", alt: "Chinese traditional clothing photoshoot at historic architecture" },
-  { src: "https://images.pexels.com/photos/16712432/pexels-photo-16712432.jpeg", alt: "Hanfu dress styled with traditional accessories and florals" },
-  { src: "/images/gallery-hanfu-xian.webp", alt: "Hanfu photoshoot at Xi''an ancient city wall" },
-  { src: "/images/gallery-qipao-shanghai.webp", alt: "Qipao tailoring experience in Shanghai" },
-  { src: "/images/gallery-miao-guizhou.webp", alt: "Miao embroidery workshop in Guizhou" },
-  { src: "/images/gallery-tang-beijing.webp", alt: "Tang suit workshop in Beijing hutong" },
-  { src: "/images/gallery-silk-suzhou.webp", alt: "Silk market shopping in Suzhou" },
-  { src: "/images/gallery-dunhuang-tang.webp", alt: "Dunhuang mural inspired Tang costume" },
-  { src: "https://images.unsplash.com/photo-1734594647541-170e761f58fe?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", alt: "Traditional Chinese wedding attire — couple in ceremonial Hanfu dress" },
-  { src: "https://images.unsplash.com/photo-1619107796968-a4802f920298?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", alt: "Traditional Chinese clothing experience at a cultural workshop" },
-  { src: "https://images.pexels.com/photos/37670353/pexels-photo-37670353.jpeg", alt: "Elegant Chinese traditional dress in a modern setting" },
+  { src: "https://images.pexels.com/photos/36587320/pexels-photo-36587320.jpeg?auto=compress&cs=tinysrgb&w=800", alt: "Traditional Chinese Hanfu dress in elegant studio portrait", width: 800, height: 1236 },
+  { src: "https://images.pexels.com/photos/18077456/pexels-photo-18077456.jpeg?auto=compress&cs=tinysrgb&w=800", alt: "Chinese traditional clothing photoshoot at historic architecture", width: 800, height: 1200 },
+  { src: "https://images.pexels.com/photos/16712432/pexels-photo-16712432.jpeg?auto=compress&cs=tinysrgb&w=800", alt: "Hanfu dress styled with traditional accessories and florals", width: 800, height: 1200 },
+  { src: "/images/gallery-hanfu-xian.webp", alt: "Hanfu photoshoot at Xi''an ancient city wall", width: 1024, height: 1536 },
+  { src: "/images/gallery-qipao-shanghai.webp", alt: "Qipao tailoring experience in Shanghai", width: 1024, height: 1536 },
+  { src: "/images/gallery-miao-guizhou.webp", alt: "Miao embroidery workshop in Guizhou", width: 1024, height: 1536 },
+  { src: "/images/gallery-tang-beijing.webp", alt: "Tang suit workshop in Beijing hutong", width: 1024, height: 1536 },
+  { src: "/images/gallery-silk-suzhou.webp", alt: "Silk market shopping in Suzhou", width: 1024, height: 1536 },
+  { src: "/images/gallery-dunhuang-tang.webp", alt: "Dunhuang mural inspired Tang costume", width: 1024, height: 1536 },
+  { src: "https://images.unsplash.com/photo-1734594647541-170e761f58fe?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", alt: "Traditional Chinese wedding attire — couple in ceremonial Hanfu dress", width: 687, height: 1031 },
+  { src: "https://images.unsplash.com/photo-1619107796968-a4802f920298?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", alt: "Traditional Chinese clothing experience at a cultural workshop", width: 687, height: 1030 },
+  { src: "https://images.pexels.com/photos/37670353/pexels-photo-37670353.jpeg?auto=compress&cs=tinysrgb&w=800", alt: "Elegant Chinese traditional dress in a modern setting", width: 800, height: 1200 },
 ];
 
 const comparisonTable = [
@@ -215,7 +215,7 @@ const schemaHomeFAQ = JSON.stringify({
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <a href="/hanfu/" class="group block card-elevated overflow-hidden">
           <div class="aspect-[3/2] overflow-hidden">
-            <img src="/images/cat-hanfu.webp" alt="Hanfu traditional Chinese clothing" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="1536" height="1024" />
+            <img src="/images/cat-hanfu.webp" alt="Hanfu traditional Chinese clothing" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="662" height="441" />
           </div>
           <div class="p-5">
             <span class="text-[10px] font-medium text-vermillion-600 tracking-widest uppercase">Han to Ming Dynasties · c. 2700 BC – 1644 AD</span>
@@ -226,7 +226,7 @@ const schemaHomeFAQ = JSON.stringify({
         </a>
         <a href="/qipao-cheongsam/" class="group block card-elevated overflow-hidden">
           <div class="aspect-[3/2] overflow-hidden">
-            <img src="/images/cat-qipao.webp" alt="Qipao traditional Chinese dress" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="1536" height="1024" />
+            <img src="/images/cat-qipao.webp" alt="Qipao traditional Chinese dress" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="662" height="441" />
           </div>
           <div class="p-5">
             <span class="text-[10px] font-medium text-vermillion-600 tracking-widest uppercase">1920s Shanghai to Present</span>
@@ -237,7 +237,7 @@ const schemaHomeFAQ = JSON.stringify({
         </a>
         <a href="/tang-suit/" class="group block card-elevated overflow-hidden">
           <div class="aspect-[3/2] overflow-hidden">
-            <img src="/images/cat-tang-suit.webp" alt="Tang suit traditional Chinese jacket" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="1536" height="1024" />
+            <img src="/images/cat-tang-suit.webp" alt="Tang suit traditional Chinese jacket" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="662" height="441" />
           </div>
           <div class="p-5">
             <span class="text-[10px] font-medium text-vermillion-600 tracking-widest uppercase">Qing Dynasty to Modern · Festive Tradition</span>
@@ -248,7 +248,7 @@ const schemaHomeFAQ = JSON.stringify({
         </a>
         <a href="/zhongshan/" class="group block card-elevated overflow-hidden">
           <div class="aspect-[3/2] overflow-hidden">
-            <img src="/images/cat-zhongshan.webp" alt="Zhongshan suit traditional Chinese menswear" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="1536" height="1024" />
+            <img src="/images/cat-zhongshan.webp" alt="Zhongshan suit traditional Chinese menswear" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="662" height="441" />
           </div>
           <div class="p-5">
             <span class="text-[10px] font-medium text-vermillion-600 tracking-widest uppercase">20th Century Revolutionary to Present</span>
@@ -324,7 +324,7 @@ const schemaHomeFAQ = JSON.stringify({
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <a href="/ethnic/" class="group relative overflow-hidden rounded-xl min-h-[280px]">
-          <img src="/images/cat-ethnic.webp" alt="Miao silver headdress and embroidery in Guizhou" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="1536" height="1024" />
+          <img src="/images/cat-ethnic.webp" alt="Miao silver headdress and embroidery in Guizhou" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="662" height="441" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
           <div class="absolute top-4 left-4">
             <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-medium text-warm-700">
@@ -339,7 +339,7 @@ const schemaHomeFAQ = JSON.stringify({
           </div>
         </a>
         <a href="/accessories/" class="group relative overflow-hidden rounded-xl min-h-[280px]">
-          <img src="/images/cat-accessories.webp" alt="Silk fans, jade pendants, and embroidered shoes in Suzhou" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="1536" height="1024" />
+          <img src="/images/cat-accessories.webp" alt="Silk fans, jade pendants, and embroidered shoes in Suzhou" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="662" height="441" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
           <div class="absolute top-4 left-4">
             <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-medium text-warm-700">
@@ -567,6 +567,8 @@ const schemaHomeFAQ = JSON.stringify({
           <div class="break-inside-avoid mb-4 overflow-hidden rounded-xl">
             <img
               src={img.src}
+              width={img.width}
+              height={img.height}
               alt={img.alt}
               class="w-full object-cover transition-transform duration-500 hover:scale-105"
               loading="lazy"
