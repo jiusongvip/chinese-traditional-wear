@@ -69,7 +69,7 @@ const schemaHomeFAQ = JSON.stringify({
 ---
 
 <BaseLayout title="Chinese Traditional Wear: Hanfu, Qipao & Tang Suit Guide" description="A complete guide to Chinese traditional wear: Hanfu, Qipao, Tang Suit & more. Explore styles, history, and where to buy authentic garments in China." canonicalUrl="/" articleDate="2026-08-06">
-  <link slot="head" rel="preload" as="image" href="/images/hero-portrait.webp" imagesrcset="/images/hero-portrait.webp 800w, /images/hero-landscape.webp 1000w" imagesizes="(min-width: 1024px) 58vw, 100vw" fetchpriority="high" />
+  <link slot="head" rel="preload" as="image" href="/images/hero-portrait.webp" imagesrcset="/images/hero-portrait-sm.webp 400w, /images/hero-portrait.webp 680w, /images/hero-landscape.webp 1000w" imagesizes="(min-width: 1024px) 58vw, 92vw" fetchpriority="high" />
 
   <!-- ============================================================
        HERO - Travel-Focused
@@ -116,6 +116,8 @@ const schemaHomeFAQ = JSON.stringify({
               <source media="(min-width: 1024px)" srcset="/images/hero-landscape.webp" width="1000" height="800" />
               <img
                 src="/images/hero-portrait.webp"
+                srcset="/images/hero-portrait-sm.webp 400w, /images/hero-portrait.webp 680w"
+                sizes="(min-width: 1024px) 58vw, 92vw"
                 alt="Woman in traditional Chinese Hanfu dress posing at an ancient temple courtyard"
                 class="w-full h-full object-cover"
                 fetchpriority="high"
@@ -218,7 +220,7 @@ const schemaHomeFAQ = JSON.stringify({
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <a href="/hanfu/" class="group block card-elevated overflow-hidden">
           <div class="aspect-[3/2] overflow-hidden">
-            <img src="/images/cat-hanfu.webp" alt="Hanfu traditional Chinese clothing" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="662" height="441" />
+            <img src="/images/cat-hanfu.webp" srcset="/images/cat-hanfu-sm.webp 380w, /images/cat-hanfu.webp 662w" sizes="(min-width: 640px) 45vw, 92vw" alt="Hanfu traditional Chinese clothing" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="662" height="441" />
           </div>
           <div class="p-5">
             <span class="text-[10px] font-medium text-vermillion-600 tracking-widest uppercase">Han to Ming Dynasties · c. 2700 BC – 1644 AD</span>
@@ -229,7 +231,7 @@ const schemaHomeFAQ = JSON.stringify({
         </a>
         <a href="/qipao-cheongsam/" class="group block card-elevated overflow-hidden">
           <div class="aspect-[3/2] overflow-hidden">
-            <img src="/images/cat-qipao.webp" alt="Qipao traditional Chinese dress" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="662" height="441" />
+            <img src="/images/cat-qipao.webp" srcset="/images/cat-qipao-sm.webp 380w, /images/cat-qipao.webp 662w" sizes="(min-width: 640px) 45vw, 92vw" alt="Qipao traditional Chinese dress" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="662" height="441" />
           </div>
           <div class="p-5">
             <span class="text-[10px] font-medium text-vermillion-600 tracking-widest uppercase">1920s Shanghai to Present</span>
@@ -240,7 +242,7 @@ const schemaHomeFAQ = JSON.stringify({
         </a>
         <a href="/tang-suit/" class="group block card-elevated overflow-hidden">
           <div class="aspect-[3/2] overflow-hidden">
-            <img src="/images/cat-tang-suit.webp" alt="Tang suit traditional Chinese jacket" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="662" height="441" />
+            <img src="/images/cat-tang-suit.webp" srcset="/images/cat-tang-suit-sm.webp 380w, /images/cat-tang-suit.webp 662w" sizes="(min-width: 640px) 45vw, 92vw" alt="Tang suit traditional Chinese jacket" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="662" height="441" />
           </div>
           <div class="p-5">
             <span class="text-[10px] font-medium text-vermillion-600 tracking-widest uppercase">Qing Dynasty to Modern · Festive Tradition</span>
@@ -251,7 +253,7 @@ const schemaHomeFAQ = JSON.stringify({
         </a>
         <a href="/zhongshan/" class="group block card-elevated overflow-hidden">
           <div class="aspect-[3/2] overflow-hidden">
-            <img src="/images/cat-zhongshan.webp" alt="Zhongshan suit traditional Chinese menswear" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="662" height="441" />
+            <img src="/images/cat-zhongshan.webp" srcset="/images/cat-zhongshan-sm.webp 380w, /images/cat-zhongshan.webp 662w" sizes="(min-width: 640px) 45vw, 92vw" alt="Zhongshan suit traditional Chinese menswear" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="662" height="441" />
           </div>
           <div class="p-5">
             <span class="text-[10px] font-medium text-vermillion-600 tracking-widest uppercase">20th Century Revolutionary to Present</span>
