@@ -191,7 +191,7 @@ const schemaBreadcrumbs = (breadcrumbs && breadcrumbs.length > 0) ? JSON.stringi
     "@type": "ListItem",
     "position": i + 1,
     "name": b.name,
-    "item": SITE_URL + b.url
+    "item": /^https?:\/\//.test(b.url) ? b.url : SITE_URL + (b.url === "/" || b.url.endsWith("/") ? b.url : b.url + "/")
   }))
 }) : "";
 ---
@@ -293,16 +293,17 @@ const schemaBreadcrumbs = (breadcrumbs && breadcrumbs.length > 0) ? JSON.stringi
             <p class="text-sm leading-relaxed text-warm-400">Discover where to experience Chinese traditional clothing firsthand.</p>
           </div>
           <div>
-            <h3 class="text-warm-100 text-sm font-semibold mb-4">Experiences</h4>
+            <h3 class="text-warm-100 text-sm font-semibold mb-4">Experiences</h3>
             <ul class="space-y-2.5 text-sm">
               <li><a href="/hanfu/" class="text-warm-400 hover:text-warm-100 transition-colors">Hanfu Photoshoots</a></li>
               <li><a href="/qipao-cheongsam/" class="text-warm-400 hover:text-warm-100 transition-colors">Qipao Tailoring</a></li>
               <li><a href="/tang-suit/" class="text-warm-400 hover:text-warm-100 transition-colors">Tang Suit Workshops</a></li>
+              <li><a href="/zhongshan/" class="text-warm-400 hover:text-warm-100 transition-colors">Zhongshan Suit</a></li>
               <li><a href="/ethnic/" class="text-warm-400 hover:text-warm-100 transition-colors">Ethnic Textile Villages</a></li>
             </ul>
           </div>
           <div>
-            <h3 class="text-warm-100 text-sm font-semibold mb-4">Plan Your Trip</h4>
+            <h3 class="text-warm-100 text-sm font-semibold mb-4">Plan Your Trip</h3>
             <ul class="space-y-2.5 text-sm">
               <li><a href="/plan-trip/" class="text-warm-400 hover:text-warm-100 transition-colors">Travel Guide & Itineraries</a></li>
               <li><a href="/dynasties/" class="text-warm-400 hover:text-warm-100 transition-colors">Destinations Map</a></li>
@@ -311,8 +312,9 @@ const schemaBreadcrumbs = (breadcrumbs && breadcrumbs.length > 0) ? JSON.stringi
             </ul>
           </div>
           <div>
-            <h3 class="text-warm-100 text-sm font-semibold mb-4">More</h4>
+            <h3 class="text-warm-100 text-sm font-semibold mb-4">More</h3>
             <ul class="space-y-2.5 text-sm">
+              <li><a href="/where-to-buy/" class="text-warm-400 hover:text-warm-100 transition-colors">Where to Buy</a></li>
               <li><a href="/gallery/" class="text-warm-400 hover:text-warm-100 transition-colors">Travel Gallery</a></li>
               <li><a href="/about/" class="text-warm-400 hover:text-warm-100 transition-colors">About Us</a></li>
               <li><a href="/compare/" class="text-warm-400 hover:text-warm-100 transition-colors">Style Comparisons</a></li>

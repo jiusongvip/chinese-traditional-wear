@@ -5,19 +5,19 @@ import ExperienceMap from "../components/ExperienceMap.astro";
 const categories = [];
 
 const dynasties = [
-  { name: "Han", period: "206 BC - 220 AD", desc: "Deep overlapping collars, flowing wide sleeves. The origin of the term Hanfu itself.", destination: "Xi''an  -  walk the Silk Road starting point", img: "/images/dyn-han.webp" },
-  { name: "Tang", period: "618 - 907 AD", desc: "Bold colors, low-cut necklines, high-waisted skirts. China''s golden age of fashion.", destination: "Xi''an & Dunhuang  -  Tang dynasty murals and Mogao Caves", img: "/images/dyn-tang.webp" },
-  { name: "Song", period: "960 - 1279 AD", desc: "Elegant restraint, narrow sleeves, simple lines. Understated sophistication.", destination: "Hangzhou  -  Southern Song imperial capital", img: "https://images.unsplash.com/photo-1737861617257-8315fe445e98?q=80&w=687&h=458&fit=crop&crop=entropy&auto=format&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
-  { name: "Ming", period: "1368 - 1644 AD", desc: "Pleated skirts, circular collars. Hanfu revival''s primary reference.", destination: "Beijing & Nanjing  -  Ming imperial cities", img: "https://images.unsplash.com/photo-1785665359067-b30c8c11ec5c?q=80&w=687&h=458&fit=crop&crop=entropy&auto=format&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
-  { name: "Qing", period: "1644 - 1912 AD", desc: "Manchu-influenced qipao origins, elaborate silk embroidery.", destination: "Shenyang  -  Manchu cultural heartland", img: "/images/dyn-qing.webp" },
-  { name: "Republic", period: "1912 - 1949", desc: "Qipao''s golden age. Western tailoring meets Chinese silk.", destination: "Shanghai  -  walk the Bund in vintage style", img: "/images/dyn-republic.webp" },
+  { name: "Han", period: "206 BC - 220 AD", desc: "Deep overlapping collars, flowing wide sleeves. The origin of the term Hanfu itself.", destination: "Xi'an — walk the Silk Road starting point", img: "/images/dyn-han.webp" },
+  { name: "Tang", period: "618 - 907 AD", desc: "Bold colors, low-cut necklines, high-waisted skirts. China's golden age of fashion.", destination: "Xi'an & Dunhuang — Tang dynasty murals and Mogao Caves", img: "/images/dyn-tang.webp" },
+  { name: "Song", period: "960 - 1279 AD", desc: "Elegant restraint, narrow sleeves, simple lines. Understated sophistication.", destination: "Hangzhou — Southern Song imperial capital", img: "https://images.unsplash.com/photo-1737861617257-8315fe445e98?q=80&w=687&h=458&fit=crop&crop=entropy&auto=format&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+  { name: "Ming", period: "1368 - 1644 AD", desc: "Pleated skirts, circular collars. Hanfu revival's primary reference.", destination: "Beijing & Nanjing — Ming imperial cities", img: "https://images.unsplash.com/photo-1785665359067-b30c8c11ec5c?q=80&w=687&h=458&fit=crop&crop=entropy&auto=format&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+  { name: "Qing", period: "1644 - 1912 AD", desc: "Manchu-influenced qipao origins, elaborate silk embroidery.", destination: "Shenyang — Manchu cultural heartland", img: "/images/dyn-qing.webp" },
+  { name: "Republic", period: "1912 - 1949", desc: "Qipao's golden age. Western tailoring meets Chinese silk.", destination: "Shanghai — walk the Bund in vintage style", img: "/images/dyn-republic.webp" },
 ];
 
 const galleryImages = [
   { src: "https://images.pexels.com/photos/36587320/pexels-photo-36587320.jpeg?auto=compress&cs=tinysrgb&w=800", alt: "Traditional Chinese Hanfu dress in elegant studio portrait", width: 800, height: 1236 },
   { src: "https://images.pexels.com/photos/18077456/pexels-photo-18077456.jpeg?auto=compress&cs=tinysrgb&w=800", alt: "Chinese traditional clothing photoshoot at historic architecture", width: 800, height: 1200 },
   { src: "https://images.pexels.com/photos/16712432/pexels-photo-16712432.jpeg?auto=compress&cs=tinysrgb&w=800", alt: "Hanfu dress styled with traditional accessories and florals", width: 800, height: 1200 },
-  { src: "/images/gallery-hanfu-xian.webp", alt: "Hanfu photoshoot at Xi''an ancient city wall", width: 1024, height: 1536 },
+  { src: "/images/gallery-hanfu-xian.webp", alt: "Hanfu photoshoot at Xi'an ancient city wall", width: 1024, height: 1536 },
   { src: "/images/gallery-qipao-shanghai.webp", alt: "Qipao tailoring experience in Shanghai", width: 1024, height: 1536 },
   { src: "/images/gallery-miao-guizhou.webp", alt: "Miao embroidery workshop in Guizhou", width: 1024, height: 1536 },
   { src: "/images/gallery-tang-beijing.webp", alt: "Tang suit workshop in Beijing hutong", width: 1024, height: 1536 },
@@ -41,17 +41,17 @@ const comparisonTable = [
 ];
 
 const travelFAQs = [
-  { q: "Where can I try on Chinese traditional clothing in China?", a: "The best cities for hands-on experiences: Xi''an (Hanfu photoshoots at the ancient city wall and Daming Palace, costume rentals from 100-300 RMB), Shanghai (qipao tailoring in the French Concession, South Bund Fabric Market for custom pieces), Beijing (tang suit workshops in hutong tailor houses), Suzhou (silk qipao rentals for classical garden photoshoots), and Guizhou (Miao embroidery villages near Kaili where you can dress in full silver headdresses). Most major museums including the China National Silk Museum in Hangzhou offer costume try-on sessions." },
-  { q: "Which city is best for Hanfu experiences?", a: "Xi''an tops the list  -  the ancient city wall, Daming Palace ruins, and Datang Everbright City are packed with Hanfu rental shops and photoshoot studios. Luoyang (Longmen Grottoes area) and Chengdu (Jinli Ancient Street) are close seconds, each with thriving Hanfu streets where locals and tourists alike stroll in period costume. For the most immersive experience, visit Xi''an during the annual Hanfu Culture Festival (usually in April)." },
-  { q: "How much does a Hanfu rental and photoshoot cost?", a: "Typical costs: basic Hanfu rental 100-200 RMB for 2-4 hours including basic hairstyling; premium sets with professional makeup and hair 300-500 RMB; full photoshoot package with photographer 500-1500 RMB for 1-2 hours at iconic locations. Xi''an city wall has an entry fee of 54 RMB on top of rental. Most shops require a 200-500 RMB refundable deposit. Booking through Chinese apps like Meituan or Xiaohongshu often gets you 20-30% off walk-in prices." },
-  { q: "Where can I buy authentic Chinese traditional clothing while traveling?", a: "Shanghai''s South Bund Fabric Market for custom qipao (3-5 day turnaround), Beijing''s Silk Street for tang suits and off-the-rack Hanfu, Suzhou for silk brocades and accessories, and Xi''an''s Muslim Quarter surroundings for Hanfu shops. For ethnic minority textiles, head to Kaili in Guizhou or Dali in Yunnan for authentic handmade pieces direct from artisans." },
+  { q: "Where can I try on Chinese traditional clothing in China?", a: "The best cities for hands-on experiences: Xi'an (Hanfu photoshoots at the ancient city wall and Daming Palace, costume rentals from 100-300 RMB), Shanghai (qipao tailoring in the French Concession, South Bund Fabric Market for custom pieces), Beijing (tang suit workshops in hutong tailor houses), Suzhou (silk qipao rentals for classical garden photoshoots), and Guizhou (Miao embroidery villages near Kaili where you can dress in full silver headdresses). Most major museums including the China National Silk Museum in Hangzhou offer costume try-on sessions." },
+  { q: "Which city is best for Hanfu experiences?", a: "Xi'an tops the list — the ancient city wall, Daming Palace ruins, and Datang Everbright City are packed with Hanfu rental shops and photoshoot studios. Luoyang (Longmen Grottoes area) and Chengdu (Jinli Ancient Street) are close seconds, each with thriving Hanfu streets where locals and tourists alike stroll in period costume. For the most immersive experience, visit Xi'an during the annual Hanfu Culture Festival (usually in April)." },
+  { q: "How much does a Hanfu rental and photoshoot cost?", a: "Typical costs: basic Hanfu rental 100-200 RMB for 2-4 hours including basic hairstyling; premium sets with professional makeup and hair 300-500 RMB; full photoshoot package with photographer 500-1500 RMB for 1-2 hours at iconic locations. Xi'an city wall has an entry fee of 54 RMB on top of rental. Most shops require a 200-500 RMB refundable deposit. Booking through Chinese apps like Meituan or Xiaohongshu often gets you 20-30% off walk-in prices." },
+  { q: "Where can I buy authentic Chinese traditional clothing while traveling?", a: "Shanghai's South Bund Fabric Market for custom qipao (3-5 day turnaround), Beijing's Silk Street for tang suits and off-the-rack Hanfu, Suzhou for silk brocades and accessories, and Xi'an's Muslim Quarter surroundings for Hanfu shops. For ethnic minority textiles, head to Kaili in Guizhou or Dali in Yunnan for authentic handmade pieces direct from artisans." },
 ];
 
 const generalFAQs = [
   { q: "What is Chinese traditional wear called?", a: "The most common term is \"Hanfu\" for traditional Han Chinese clothing from ancient dynasties. \"Qipao\" or \"Cheongsam\" refers to the form-fitting dress popularized in 1920s Shanghai. \"Tang suit\" describes the mandarin-collared jacket worn for festivals and formal occasions. Each name refers to a different style, silhouette, and historical period." },
   { q: "What is the difference between Hanfu and Qipao?", a: "Hanfu dates back over 3,000 years and features loose, flowing robes with crossed collars and wide sleeves. Qipao emerged in 1920s Shanghai with a form-fitting, one-piece silhouette, high mandarin collar, and side slits. Hanfu represents ancient imperial China; Qipao represents modern Shanghai glamour and the fusion of East and West." },
   { q: "Is it appropriate for non-Chinese people to wear traditional Chinese clothing?", a: "Generally yes, when worn with respect and understanding of cultural context. Cultural appreciation vs. appropriation depends on intent and context: learning about and honoring the tradition is widely welcomed. Many Chinese cultural organizations and historical sites actively encourage visitors to try on traditional clothing as a way to engage with and celebrate Chinese heritage." },
-  { q: "What did Chinese emperors wear?", a: "Chinese emperors wore the \"dragon robe\" (longpao) in brilliant yellow silk embroidered with nine dragons, clouds, waves, and the twelve imperial symbols. Yellow was reserved exclusively for the emperor. The robe was worn with a jeweled crown, jade belt, and ornate court beads. You can see original imperial robes at the Palace Museum in Beijing''s Forbidden City." },
+  { q: "What did Chinese emperors wear?", a: "Chinese emperors wore the \"dragon robe\" (longpao) in brilliant yellow silk embroidered with nine dragons, clouds, waves, and the twelve imperial symbols. Yellow was reserved exclusively for the emperor. The robe was worn with a jeweled crown, jade belt, and ornate court beads. You can see original imperial robes at the Palace Museum in Beijing's Forbidden City." },
 ];
 
 const schemaHomeFAQ = JSON.stringify({
@@ -123,9 +123,10 @@ const schemaHomeFAQ = JSON.stringify({
                 fetchpriority="high"
                 decoding="async" width="680" height="850" />
             </picture>
-            <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/60 to-transparent">
-              <span class="text-white/80 text-xs tracking-wide uppercase">Featured experience</span>
-              <p class="text-white font-medium mt-1">Hanfu photoshoot at Xi''an Ancient City Wall</p>
+            <div class="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6">
+              <span class="text-white/90 text-xs tracking-wide uppercase">Featured experience</span>
+              <p class="text-white font-medium mt-1">Hanfu photoshoot at Xi'an Ancient City Wall</p>
             </div>
           </div>
         </div>
@@ -338,7 +339,7 @@ const schemaHomeFAQ = JSON.stringify({
             </span>
           </div>
           <div class="absolute bottom-0 left-0 right-0 p-5">
-            <h3 class="text-white text-lg font-semibold tracking-tight">Ethnic & Minority <span lang="zh" class="text-sm font-normal text-white/60">少数民族服饰</span></h3>
+            <h3 class="text-white text-lg font-semibold tracking-tight">Ethnic & Minority <span lang="zh" class="text-sm font-normal text-white/85">少数民族服饰</span></h3>
             <p class="text-white/70 text-sm mt-1 leading-snug">Miao silver headdresses, Tibetan woolen chuba robes, Uyghur atlas silk — living textile traditions worn daily in villages across western and southern China.</p>
             <span class="inline-flex items-center gap-1 mt-3 text-xs font-medium text-white/90 group-hover:underline">Explore ethnic traditions →</span>
           </div>
@@ -353,7 +354,7 @@ const schemaHomeFAQ = JSON.stringify({
             </span>
           </div>
           <div class="absolute bottom-0 left-0 right-0 p-5">
-            <h3 class="text-white text-lg font-semibold tracking-tight">Accessories <span lang="zh" class="text-sm font-normal text-white/60">传统配饰</span></h3>
+            <h3 class="text-white text-lg font-semibold tracking-tight">Accessories <span lang="zh" class="text-sm font-normal text-white/85">传统配饰</span></h3>
             <p class="text-white/70 text-sm mt-1 leading-snug">Hand-painted silk fans, jade pendants, hairpins, Chinese knotwork, and embroidered shoes — the details that complete a traditional outfit and make the best souvenirs.</p>
             <span class="inline-flex items-center gap-1 mt-3 text-xs font-medium text-white/90 group-hover:underline">Browse accessories guide →</span>
           </div>
@@ -372,7 +373,7 @@ const schemaHomeFAQ = JSON.stringify({
         Travel Through 2,000 Years of Fashion
       </h2>
       <p class="mt-4 text-warm-600 leading-relaxed">
-        Each dynasty left its mark on clothing  -  and on the cities you can still visit today.
+        Each dynasty left its mark on clothing — and on the cities you can still visit today.
       </p>
     </div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -406,7 +407,7 @@ const schemaHomeFAQ = JSON.stringify({
           Your First Hanfu Experience in China
         </h2>
         <p class="mt-4 text-warm-600 leading-relaxed">
-          Here''s what a typical cultural experience looks like, from rental to photoshoot.
+          Here's what a typical cultural experience looks like, from rental to photoshoot.
         </p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -424,7 +425,7 @@ const schemaHomeFAQ = JSON.stringify({
             <img src="/images/howto-hair-makeup.webp" alt="Step 2: Professional hair and makeup styling" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="1448" height="1086" />
           </div>
           <h3 class="text-lg font-semibold text-warm-900">Hair & Makeup Styling</h3>
-          <p class="text-sm text-warm-600 mt-2 leading-relaxed">Professional hairstyling takes 20-30 minutes using traditional hairpins, flowers, and hairpieces. Makeup artists replicate dynasty-appropriate looks  -  from Tang''s bold forehead huadian to Ming''s elegant simplicity. Most rental shops include basic styling; premium packages add professional makeup.</p>
+          <p class="text-sm text-warm-600 mt-2 leading-relaxed">Professional hairstyling takes 20-30 minutes using traditional hairpins, flowers, and hairpieces. Makeup artists replicate dynasty-appropriate looks — from Tang's bold forehead huadian to Ming's elegant simplicity. Most rental shops include basic styling; premium packages add professional makeup.</p>
         </div>
         <div class="relative group">
           <div aria-hidden="true" class="text-6xl font-display font-bold ghost-numeral mb-6">03</div>
@@ -432,7 +433,7 @@ const schemaHomeFAQ = JSON.stringify({
             <img src="/images/howto-photoshoot.webp" alt="Step 3: Photoshoot at iconic locations" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="1448" height="1086" />
           </div>
           <h3 class="text-lg font-semibold text-warm-900">Explore & Photoshoot</h3>
-          <p class="text-sm text-warm-600 mt-2 leading-relaxed">Step out in full costume to iconic spots. Xi''an''s city wall at sunset, Suzhou''s classical gardens in morning light, Beijing''s Forbidden City framed by red walls  -  each location offers a different backdrop. Most rentals include 2-4 hours of wear time (150-400 RMB). Book a photographer for 500-1500 RMB for professional shots.</p>
+          <p class="text-sm text-warm-600 mt-2 leading-relaxed">Step out in full costume to iconic spots. Xi'an's city wall at sunset, Suzhou's classical gardens in morning light, Beijing's Forbidden City framed by red walls — each location offers a different backdrop. Most rentals include 2-4 hours of wear time (150-400 RMB). Book a photographer for 500-1500 RMB for professional shots.</p>
         </div>
       </div>
     </div>
@@ -497,7 +498,7 @@ const schemaHomeFAQ = JSON.stringify({
           </div>
           <div>
             <h3 class="font-semibold text-sm text-warm-900">Visa & Entry Guide</h3>
-            <p class="text-xs text-warm-600 mt-1">144-hr transit, 15-day visa-free, L visa  -  which one you need</p>
+            <p class="text-xs text-warm-600 mt-1">30-day visa-free entry, 240-hour transit, L visa — which one fits your passport</p>
           </div>
         </a>
         <a href="/plan-trip/transport/" class="flex items-start gap-4 p-5 bg-white rounded-xl border border-warm-200 hover:border-vermillion-600/30 hover:shadow-sm transition-all text-left group">

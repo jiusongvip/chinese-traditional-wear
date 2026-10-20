@@ -1,12 +1,37 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const planTripFAQ = [
+  {
+    q: "How many days should I allow for a traditional clothing trip?",
+    a: "The constraint is costume time, not sightseeing. Five days lets you stay in one city and still book two full shoot days; a week adds a second city and one rail journey; two weeks is where you can fit tailoring, because a made-to-measure qipao or tang suit needs a fitting day and a collection day with travel in between. The itineraries page lays each length out day by day.",
+  },
+  {
+    q: "What order should I make my planning decisions in?",
+    a: "Season first, because it decides which cities are pleasant to be in and which weeks are unusable. Then the era you want to wear, which narrows the cities. Then the number of days that routing needs, and only then the flights — the rail legs, rentals and fittings can all be arranged after you know those three. Each of the planning guides on this page covers one of those steps.",
+  },
+  {
+    q: "Can I do this trip properly in one city?",
+    a: "Yes, and for photography it is often the better call. One city deep means you learn the light, the shop owners and which backdrops are quiet at which hour, instead of spending the trip on station platforms. The experience map shows how dense a single city's offer is before you commit to a multi-city route.",
+  },
+];
+
+const schemaPlanTripFAQ = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": planTripFAQ.map((faq) => ({
+    "@type": "Question",
+    "name": faq.q,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.a },
+  })),
+});
 ---
 
 <BaseLayout
-  title="Plan Your Trip: Traditional Wear Guide | ChinaStyle"
-  description="Plan your Chinese traditional clothing trip: visa tips, train routes, 5-14 day itineraries, budget breakdowns, best seasons, and hotel recommendations."
+  title="Plan a Traditional Chinese Clothing Trip"
+  description="Plan a traditional clothing trip to China: entry rules, day-by-day itineraries, budgets, best months, rail travel and packing — one page per decision."
   canonicalUrl="/plan-trip/"
-  articleDate="2026-08-06"
+  articleDate="2026-10-20"
   breadcrumbs={[{ name: "Home", url: "/" }, { name: "Plan Your Trip", url: "/plan-trip/" }]}>
   <link slot="head" rel="preload" as="image" href="/images/plan-trip-hero.webp" fetchpriority="high" />
   <section class="pt-24 pb-16">
@@ -15,7 +40,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       <h1 class="font-serif-sc text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-stone-900 mt-3">
         Plan Your Traditional Wear Journey
       </h1>
-      <p class="mt-6 text-lg text-stone-500 leading-relaxed max-w-2xl">
+      <p class="mt-6 text-lg text-stone-600 leading-relaxed max-w-2xl">
         Everything you need to turn "I want to try Hanfu in China" into an actual trip with flights, trains, hotels, and booked experiences.
       </p>
 
@@ -45,181 +70,100 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       <!-- ===== VISA ===== -->
       <h2 id="visa" class="font-serif-sc text-2xl font-bold text-stone-900 mt-16 mb-4">Visa & Entry: Getting into China</h2>
       <p class="text-stone-600 leading-relaxed mb-4">
-        <strong>144-hour (6-day) Transit Visa-Free:</strong> Available in 27 Chinese cities including Beijing, Shanghai, Xi'an, Chengdu, Hangzhou, and Nanjing. You must arrive from one country and depart to a different country. Perfect for a focused 5-6 day trip covering 2 cities. Most nationalities qualify.
+        <strong>30-day visa-free entry:</strong> Citizens of around 50 countries — most of Europe plus the UK, Canada and several Asian passports — may enter for tourism without a visa or a fee and stay up to 30 days. The published waiver runs through 31 December 2026. Check your passport against the current list on the <a href="https://en.nia.gov.cn/n147418/n147463/c183390/content.html" class="text-[#b5343a] underline" target="_blank" rel="noopener">National Immigration Administration site</a>.
       </p>
       <p class="text-stone-600 leading-relaxed mb-4">
-        <strong>15-day Visa-Free (new!):</strong> As of 2024, citizens of France, Germany, Italy, Netherlands, Spain, Malaysia, Switzerland, Ireland, Hungary, Austria, Belgium, Luxembourg, Australia, New Zealand, Poland, and several others can enter China visa-free for up to 15 days. This is the easiest option — just show up with your passport.
+        <strong>240-hour transit waiver:</strong> If your passport is not on that list, routing can solve it. Travellers from 57 countries may stay up to 10 days visa-free when they arrive from one country or region and depart to another, across 65 open ports including Beijing, Shanghai, Xi'an, Chengdu, Hangzhou, Nanjing and Guangzhou. A cheap onward hop to Hong Kong converts a round trip into a valid transit.
       </p>
       <p class="text-stone-600 leading-relaxed mb-4">
-        <strong>Standard Tourist Visa (L Visa):</strong> If your country isn't on the visa-free list, apply at your nearest Chinese Visa Application Service Center (CVASC). Processing takes 4-7 business days. Required: passport (6+ months validity), completed form, passport photo, flight + hotel bookings, itinerary. Cost: approximately 30-150 USD depending on nationality and visa type.
+        <strong>Tourist L visa:</strong> For longer stays and passports outside both waivers, apply at a Chinese Visa Application Service Center. Standard turnaround is about four business days, express two to three; fees are reciprocal and set by nationality. Have your passport, form, photo, flight and hotel bookings and a printed itinerary ready.
       </p>
       <div class="bg-stone-50 border border-stone-200 rounded-xl p-5 text-sm">
-        <p class="text-stone-700"><strong>Pro tip:</strong> Book refundable flights and hotels for your visa application, then adjust once approved. Always check the latest policy — China's visa rules change frequently and have been getting more relaxed.</p>
+        <p class="text-stone-700"><strong>Full walkthrough:</strong> our <a href="/plan-trip/visa/" class="text-[#b5343a] underline font-medium">China entry and visa guide</a> covers which waiver fits your routing, what the border officer asks for, and how to present a cultural-tourism itinerary. Book refundable flights and hotels for any visa application, then adjust once it is approved.</p>
+      </div>
+
+      <!-- ===== PLAN IN DETAIL ===== -->
+      <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-16 mb-4">Plan It in Detail</h2>
+      <p class="text-stone-600 leading-relaxed mb-6">Each part of the trip has its own page, with the numbers kept current and cross-checked before every season.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <a href="/plan-trip/visa/" class="block bg-stone-50 border border-stone-200 rounded-xl p-5 hover:border-[#b5343a]/40 hover:bg-white transition-colors"><h3 class="font-semibold text-stone-900 text-sm">Visa & entry rules</h3><p class="text-xs text-stone-600 mt-1.5 leading-relaxed">Which waiver applies to your passport and routing, and what to carry through immigration.</p></a>
+        <a href="/plan-trip/seasons/" class="block bg-stone-50 border border-stone-200 rounded-xl p-5 hover:border-[#b5343a]/40 hover:bg-white transition-colors"><h3 class="font-semibold text-stone-900 text-sm">Best months to go</h3><p class="text-xs text-stone-600 mt-1.5 leading-relaxed">Weather, light and crowd patterns for photoshoots, city by city.</p></a>
+        <a href="/plan-trip/itineraries/" class="block bg-stone-50 border border-stone-200 rounded-xl p-5 hover:border-[#b5343a]/40 hover:bg-white transition-colors"><h3 class="font-semibold text-stone-900 text-sm">Day-by-day itineraries</h3><p class="text-xs text-stone-600 mt-1.5 leading-relaxed">5, 7 and 14-day routes built around rental shops, tailors and shoot locations.</p></a>
+        <a href="/plan-trip/budget/" class="block bg-stone-50 border border-stone-200 rounded-xl p-5 hover:border-[#b5343a]/40 hover:bg-white transition-colors"><h3 class="font-semibold text-stone-900 text-sm">What the trip costs</h3><p class="text-xs text-stone-600 mt-1.5 leading-relaxed">Rental, tailoring, rail and hotel ranges, plus how China compares with Japan and Korea.</p></a>
+        <a href="/plan-trip/transport/" class="block bg-stone-50 border border-stone-200 rounded-xl p-5 hover:border-[#b5343a]/40 hover:bg-white transition-colors"><h3 class="font-semibold text-stone-900 text-sm">Getting between cities</h3><p class="text-xs text-stone-600 mt-1.5 leading-relaxed">Train times and fares, app setup, and how to buy a ticket as a first-timer.</p></a>
+        <a href="/plan-trip/packing/" class="block bg-stone-50 border border-stone-200 rounded-xl p-5 hover:border-[#b5343a]/40 hover:bg-white transition-colors"><h3 class="font-semibold text-stone-900 text-sm">What to pack</h3><p class="text-xs text-stone-600 mt-1.5 leading-relaxed">Apps to install before you fly, and what to bring for a costume photoshoot.</p></a>
       </div>
 
       <!-- ===== GETTING AROUND ===== -->
       <h2 id="getting-around" class="font-serif-sc text-2xl font-bold text-stone-900 mt-16 mb-4">Getting Around China</h2>
-      <p class="text-stone-600 leading-relaxed mb-6">
-        China's high-speed rail network is the best way to travel between cities for a traditional wear tour. It's fast, punctual, and connects all the key destinations on our map.
+      <p class="text-stone-600 leading-relaxed mb-4">
+        High-speed rail is the backbone of a traditional wear trip. It connects every city on our experience map, runs punctually, and makes an awkward pairing work: a morning fitting in Suzhou and an afternoon shoot in Hangzhou are realistic on the same day. Signage on the major routes is bilingual and station staff are used to travellers presenting paper passports.
       </p>
-
-      <div class="overflow-x-auto">
-        <table class="w-full text-sm border-collapse">
-          <thead>
-            <tr class="border-b border-stone-200 text-left">
-              <th class="py-3 pr-4 font-semibold text-stone-800">Route</th>
-              <th class="py-3 pr-4 font-semibold text-stone-800">Duration</th>
-              <th class="py-3 pr-4 font-semibold text-stone-800">Approx. Cost</th>
-              <th class="py-3 font-semibold text-stone-800">Experience Link</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Beijing → Xi'an</td><td class="py-2.5 pr-4">4.5 - 5.5 hrs</td><td class="py-2.5 pr-4">515 - 825 RMB</td><td class="py-2.5 text-[#b5343a]">Tang suit + Hanfu</td></tr>
-            <tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Xi'an → Chengdu</td><td class="py-2.5 pr-4">3 - 4 hrs</td><td class="py-2.5 pr-4">263 - 420 RMB</td><td class="py-2.5 text-[#b5343a]">Hanfu + Tea culture</td></tr>
-            <tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Shanghai → Suzhou</td><td class="py-2.5 pr-4">25 - 30 min</td><td class="py-2.5 pr-4">40 - 70 RMB</td><td class="py-2.5 text-[#b5343a]">Qipao + Silk</td></tr>
-            <tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Shanghai → Hangzhou</td><td class="py-2.5 pr-4">45 - 60 min</td><td class="py-2.5 pr-4">73 - 117 RMB</td><td class="py-2.5 text-[#b5343a]">Silk + Song hanfu</td></tr>
-            <tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Hangzhou → Nanjing</td><td class="py-2.5 pr-4">1.5 - 2 hrs</td><td class="py-2.5 pr-4">118 - 190 RMB</td><td class="py-2.5 text-[#b5343a]">Ming hanfu</td></tr>
-            <tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Guiyang → Kaili (Guizhou)</td><td class="py-2.5 pr-4">40 min</td><td class="py-2.5 pr-4">59 - 95 RMB</td><td class="py-2.5 text-[#b5343a]">Miao embroidery</td></tr>
-            <tr><td class="py-2.5 pr-4">Kunming → Dali</td><td class="py-2.5 pr-4">2 hrs</td><td class="py-2.5 pr-4">145 - 230 RMB</td><td class="py-2.5 text-[#b5343a]">Bai tie-dye</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="text-xs text-stone-400 mt-3">Book trains via <strong>trip.com</strong> or <strong>12306.cn</strong>. Book 1-2 weeks ahead for best availability. All stations have English signage on major routes.</p>
+      <p class="text-stone-600 leading-relaxed mb-4">
+        Inside the cities, the metro reaches nearly every rental shop, tailor street and shoot location we list. For the gaps, Didi and taxis are inexpensive — but an English hotel address often fails, so keep each destination written in Chinese characters on your phone before you get in.
+      </p>
+      <p class="text-stone-600 leading-relaxed mb-4">
+        The transport guide carries the route-by-route table with times and fares, plus the first-timer walkthrough of buying a ticket, which app to use, and how far ahead tickets go on sale.
+      </p>
+      <a href="/plan-trip/transport/" class="inline-flex items-center gap-2 text-sm font-medium text-[#b5343a] underline underline-offset-4">See every route, fare and how to buy your first ticket →</a>
 
       <!-- ===== ITINERARIES ===== -->
       <h2 id="itineraries" class="font-serif-sc text-2xl font-bold text-stone-900 mt-16 mb-4">Sample Itineraries</h2>
-
-      <div class="space-y-8">
-        <!-- 7-day -->
-        <div class="bg-stone-50 border border-stone-200 rounded-xl p-6">
-          <div class="flex items-center gap-3 mb-4">
-            <span class="text-xs px-2.5 py-1 bg-[#b5343a] text-white rounded-full font-medium">7 Days</span>
-            <h3 class="text-lg font-semibold text-stone-900">Golden Triangle: Beijing → Xi'an</h3>
-          </div>
-          <div class="space-y-2 text-sm text-stone-600">
-            <p><strong>Days 1-2 (Beijing):</strong> Arrive Beijing. Day 1: tang suit fitting in a hutong tailor shop (Nanluoguxiang). Day 2: Forbidden City tour, wear your tang suit for photos at Jingshan Park at sunset. Evening: Peking duck in Qianmen.</p>
-            <p><strong>Days 3-4 (Beijing → Xi'an by train):</strong> Morning high-speed train (4.5 hrs). Afternoon: settle into hotel near city wall. Evening: walk the Muslim Quarter.</p>
-            <p><strong>Days 5-6 (Xi'an):</strong> Day 5: Hanfu rental near South Gate, full photoshoot on city wall (budget 3-4 hrs). Evening: Datang Everbright City in full costume. Day 6: Terracotta Warriors (half-day trip), afternoon explore Daming Palace ruins.</p>
-            <p><strong>Day 7 (Xi'an):</strong> Morning free for last photos or shopping. Afternoon departure.</p>
-          </div>
-        </div>
-
-        <!-- 14-day -->
-        <div class="bg-stone-50 border border-stone-200 rounded-xl p-6">
-          <div class="flex items-center gap-3 mb-4">
-            <span class="text-xs px-2.5 py-1 bg-[#b5343a] text-white rounded-full font-medium">14 Days</span>
-            <h3 class="text-lg font-semibold text-stone-900">Silk Road of Style: Shanghai → Suzhou → Hangzhou → Nanjing → Xi'an</h3>
-          </div>
-          <div class="space-y-2 text-sm text-stone-600">
-            <p><strong>Days 1-2 (Shanghai):</strong> Day 1: visit South Bund Fabric Market, get measured for a custom qipao. Day 2: French Concession walking tour in vintage style. Evening: Bund riverfront.</p>
-            <p><strong>Day 3 (Suzhou, 30 min by train):</strong> Day trip. Morning: silk qipao rental, photos in Humble Administrator's Garden. Afternoon: Pingjiang Road for handcrafted fans and silk accessories. Return to Shanghai at night.</p>
-            <p><strong>Days 4-5 (Hangzhou, 1 hr by train):</strong> Day 4: China National Silk Museum (free entry, costume try-on sessions). West Lake walk in Song dynasty hanfu. Day 5: tea plantation visit (Longjing Village), Hangzhou Silk City shopping.</p>
-            <p><strong>Days 6-7 (Nanjing, 1.5 hrs by train):</strong> Day 6: Ming dynasty hanfu at Ming Xiaoling. Yunjin (silk brocade) museum. Day 7: Confucius Temple area, qipao shops, night market.</p>
-            <p><strong>Days 8-10 (Xi'an, 5 hrs by train):</strong> Day 8: travel day, settle in. Day 9: full Hanfu day — Daming Palace morning, city wall sunset shoot. Day 10: Terracotta Warriors, Muslim Quarter.</p>
-            <p><strong>Days 11-13 (Chengdu, 3.5 hrs by train):</strong> Day 11: travel + Jinli Ancient Street Hanfu stroll. Day 12: tea ceremony in traditional teahouse, Shu embroidery workshop. Day 13: panda base (morning), free afternoon.</p>
-            <p><strong>Day 14:</strong> Departure from Chengdu.</p>
-          </div>
-        </div>
-
-        <!-- 5-day -->
-        <div class="bg-stone-50 border border-stone-200 rounded-xl p-6">
-          <div class="flex items-center gap-3 mb-4">
-            <span class="text-xs px-2.5 py-1 bg-stone-500 text-white rounded-full font-medium">5 Days</span>
-            <h3 class="text-lg font-semibold text-stone-900">Quick Hanfu Fix: Xi'an Deep Dive</h3>
-          </div>
-          <div class="space-y-2 text-sm text-stone-600">
-            <p><strong>Day 1:</strong> Arrive Xi'an. Evening: Bell Tower + Drum Tower lit up at night. Muslim Quarter street food.</p>
-            <p><strong>Day 2:</strong> Morning: Hanfu rental fitting + hair/makeup (budget 1 hr). Full day in costume: city wall (3-4 hrs, rent a bike). Late afternoon: change dynasty style, head to Daming Palace for golden hour.</p>
-            <p><strong>Day 3:</strong> Terracotta Warriors (half-day trip, arrange through hotel). Afternoon: Shaanxi History Museum. Evening: Tang Dynasty music and dance show.</p>
-            <p><strong>Day 4:</strong> Second Hanfu day — try a different dynasty. Morning: Small Wild Goose Pagoda + Jianfu Temple. Afternoon: Qujiang Pool Park. Evening: Datang Everbright City in costume.</p>
-            <p><strong>Day 5:</strong> Last morning shopping for silk souvenirs. Departure.</p>
-          </div>
-        </div>
-      </div>
+      <p class="text-stone-600 leading-relaxed mb-4">
+        Four tested routes, each built around costume time first and sightseeing second: a five-day Xi'an immersion that squeezes the most shoot days out of one city; a qipao and silk trail through Shanghai, Suzhou and Hangzhou; an ethnic textile trail through Guizhou and Yunnan; and a fourteen-day route that starts in Beijing, works through the eastern silk cities and finishes in Xi'an.
+      </p>
+      <p class="text-stone-600 leading-relaxed mb-4">
+        Every day is named against a real rental shop, tailor street or shoot location, with the best months for that routing. Take a route whole, or lift segments from two and join them at a rail hub.
+      </p>
+      <a href="/plan-trip/itineraries/" class="inline-flex items-center gap-2 text-sm font-medium text-[#b5343a] underline underline-offset-4">Open the four day-by-day itineraries →</a>
 
       <!-- ===== BUDGET ===== -->
-      <h2 id="budget" class="font-serif-sc text-2xl font-bold text-stone-900 mt-16 mb-4">Budget Breakdown</h2>
-      <p class="text-stone-600 leading-relaxed mb-6">Per-person estimates for a 7-day Beijing-Xi'an trip (mid-range, not including international flights).</p>
-      <div class="overflow-x-auto">
-        <table class="w-full text-sm border-collapse">
-          <thead><tr class="border-b border-stone-200 text-left"><th class="py-3 pr-4 font-semibold text-stone-800">Item</th><th class="py-3 pr-4 font-semibold text-stone-800">Cost (RMB)</th><th class="py-3 font-semibold text-stone-800">Notes</th></tr></thead>
-          <tbody>
-            <tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Hotels (6 nights, mid-range)</td><td class="py-2.5 pr-4">1,800 - 3,600</td><td class="py-2.5">300-600 RMB/night</td></tr>
-            <tr class="border-b border-stone-100"><td class="py-2.5 pr-4">High-speed train (Beijing-Xi'an)</td><td class="py-2.5 pr-4">515 - 825</td><td class="py-2.5">Second or first class</td></tr>
-            <tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Metro + taxi within cities</td><td class="py-2.5 pr-4">300 - 500</td><td class="py-2.5">Metro 3-9 RMB/ride</td></tr>
-            <tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Meals (7 days)</td><td class="py-2.5 pr-4">700 - 1,400</td><td class="py-2.5">Street food to mid-range restaurants</td></tr>
-            <tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Hanfu rental + styling (2 sessions)</td><td class="py-2.5 pr-4">300 - 800</td><td class="py-2.5">Basic to premium package</td></tr>
-            <tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Hanfu photoshoot (1 session w/ pro)</td><td class="py-2.5 pr-4">500 - 1,500</td><td class="py-2.5">Optional but recommended</td></tr>
-            <tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Attraction tickets</td><td class="py-2.5 pr-4">400 - 700</td><td class="py-2.5">Wall, Forbidden City, Warriors, etc.</td></tr>
-            <tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Tang suit (custom)</td><td class="py-2.5 pr-4">300 - 800</td><td class="py-2.5">Off-rack to custom silk</td></tr>
-            <tr><td class="py-2.5 pr-4 font-semibold">Total (excluding flights)</td><td class="py-2.5 pr-4 font-semibold">4,800 - 10,100</td><td class="py-2.5">~660 - 1,390 USD</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <h2 id="budget" class="font-serif-sc text-2xl font-bold text-stone-900 mt-16 mb-4">What the Trip Costs</h2>
+      <p class="text-stone-600 leading-relaxed mb-4">
+        Two choices set the size of your budget: how many shoot days you book, and whether you buy made-to-measure pieces or rent them. Rail, food and hotel costs are low and fairly flat by comparison, and paying is almost entirely cashless once Alipay or WeChat Pay is linked to your card.
+      </p>
+      <p class="text-stone-600 leading-relaxed mb-4">
+        The budget guide gives per-person tables for a seven-day and a fourteen-day trip at both a hostel tier and a comfortable tier, a side-by-side with Japan and South Korea, the line items first-timers miss — rental deposits, retouching fees, garden photography surcharges — and the booking habits that cut the total.
+      </p>
+      <a href="/plan-trip/budget/" class="inline-flex items-center gap-2 text-sm font-medium text-[#b5343a] underline underline-offset-4">Get the full cost breakdown and saving tips →</a>
 
-      <!-- ===== BEST SEASONS ===== -->
+      <!-- ===== SEASONS ===== -->
       <h2 id="seasons" class="font-serif-sc text-2xl font-bold text-stone-900 mt-16 mb-4">When to Go</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
-          <h3 class="font-semibold text-stone-900 text-sm flex items-center gap-2">
-            <span class="text-lg">🌸</span> Spring (March-May)
-          </h3>
-          <p class="text-xs text-stone-500 mt-1.5 leading-relaxed"><strong>Best overall.</strong> Comfortable 15-25dC. Cherry blossoms in Xi'an, peonies in Luoyang, West Lake in Hangzhou at its most beautiful. Book ahead for May holidays (first week).</p>
-        </div>
-        <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
-          <h3 class="font-semibold text-stone-900 text-sm flex items-center gap-2">
-            <span class="text-lg">🍂</span> Autumn (September-November)
-          </h3>
-          <p class="text-xs text-stone-500 mt-1.5 leading-relaxed"><strong>Second best.</strong> Clear skies, golden light for photos. Xi'an city wall at sunset is spectacular. Avoid first week of October (National Day — extremely crowded everywhere).</p>
-        </div>
-        <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
-          <h3 class="font-semibold text-stone-900 text-sm flex items-center gap-2">
-            <span class="text-lg">❄️</span> Winter (December-February)
-          </h3>
-          <p class="text-xs text-stone-500 mt-1.5 leading-relaxed">Beijing can hit -10dC — tang suit under a coat works. Xi'an is milder. Fewer tourists = empty photos. Chinese New Year (late Jan/Feb): festive but everything closes for 3-5 days.</p>
-        </div>
-        <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
-          <h3 class="font-semibold text-stone-900 text-sm flex items-center gap-2">
-            <span class="text-lg">☀️</span> Summer (June-August)
-          </h3>
-          <p class="text-xs text-stone-500 mt-1.5 leading-relaxed">Hot and humid (30-38dC). Tang dynasty chest-high ruqun is lightweight and comfortable. Morning and evening photoshoots recommended. July-August is domestic school holiday — sites are busy.</p>
-        </div>
-      </div>
+      <p class="text-stone-600 leading-relaxed mb-4">
+        Spring and autumn are the default answers, and for good reason: comfortable temperatures for full costume days, and light that flatters both silk and stone. The real planning constraint is the domestic holiday calendar — a route that is empty on a Tuesday in late April can be unusable during a national golden week the same month.
+      </p>
+      <p class="text-stone-600 leading-relaxed mb-4">
+        The seasons page goes city by city: which months give the clearest skies and the best golden hour, where the blossom and foliage calendar puts you in front of the camera, how to work summer heat around a layered outfit, and which weeks to avoid entirely.
+      </p>
+      <a href="/plan-trip/seasons/" class="inline-flex items-center gap-2 text-sm font-medium text-[#b5343a] underline underline-offset-4">Compare months, city by city →</a>
 
       <!-- ===== PACKING ===== -->
       <h2 id="packing" class="font-serif-sc text-2xl font-bold text-stone-900 mt-16 mb-4">What to Pack</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
-          <h3 class="font-semibold text-stone-900 text-sm">Essential Apps</h3>
-          <ul class="text-xs text-stone-500 mt-2 space-y-1.5">
-            <li>· <strong>Alipay / WeChat Pay</strong> — set up before arrival, link your card. Cash is rarely used.</li>
-            <li>· <strong>Didi</strong> — Chinese Uber, available in English.</li>
-            <li>· <strong>trip.com / 12306</strong> — train bookings.</li>
-            <li>· <strong>Meituan</strong> — book Hanfu rentals at a discount.</li>
-            <li>· <strong>Google Translate</strong> — download Chinese offline.</li>
-          </ul>
-        </div>
-        <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
-          <h3 class="font-semibold text-stone-900 text-sm">Clothing & Gear</h3>
-          <ul class="text-xs text-stone-500 mt-2 space-y-1.5">
-            <li>· Comfortable walking shoes (you'll walk 15K+ steps/day at sites).</li>
-            <li>· Slip-on shoes for Hanfu (easier to remove for costume changes).</li>
-            <li>· Layers — spring/autumn mornings are cool, afternoons warm.</li>
-            <li>· Portable charger (20,000 mAh) — you'll use your phone a lot.</li>
-            <li>· VPN installed and tested before departure.</li>
-          </ul>
-        </div>
-        <div class="bg-stone-50 border border-stone-200 rounded-xl p-5">
-          <h3 class="font-semibold text-stone-900 text-sm">For the Photoshoot</h3>
-          <ul class="text-xs text-stone-500 mt-2 space-y-1.5">
-            <li>· Nude undergarments (strapless bra, skin-colored shorts).</li>
-            <li>· Minimal jewelry — Hanfu comes with its own accessories.</li>
-            <li>· Light makeup base if you're sensitive to shared products.</li>
-            <li>· Reference photos of looks you want (show the stylist).</li>
-            <li>· A friend or selfie stick — or book a photographer.</li>
-          </ul>
-        </div>
+      <p class="text-stone-600 leading-relaxed mb-4">
+        Two things trip people up: arriving with no payment app set up, and having no plan for what to wear under a rented costume. Everything else — shoes, layers, chargers — is either cheap to replace locally or supplied by the rental shop.
+      </p>
+      <p class="text-stone-600 leading-relaxed mb-4">
+        The packing guide covers the apps to install and test before you fly, the clothing and gear that survives fifteen thousand steps a day at a heritage site, and the undergarment, makeup and reference-photo checklist to hand your stylist on shoot day.
+      </p>
+      <a href="/plan-trip/packing/" class="inline-flex items-center gap-2 text-sm font-medium text-[#b5343a] underline underline-offset-4">Open the pre-trip packing checklist →</a>
+
+      <!-- ===== FAQ ===== -->
+      <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-16 mb-4">Planning Questions</h2>
+      <div class="space-y-3">
+        <details class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+          <summary class="font-semibold text-sm text-stone-900 cursor-pointer">How many days should I allow for a traditional clothing trip?</summary>
+          <p class="text-sm text-stone-600 mt-2 leading-relaxed">The constraint is costume time, not sightseeing. Five days lets you stay in one city and still book two full shoot days; a week adds a second city and one rail journey; two weeks is where you can fit tailoring, because a made-to-measure qipao or tang suit needs a fitting day and a collection day with travel in between. The <a href="/plan-trip/itineraries/" class="text-[#b5343a] underline">itineraries</a> page lays each length out day by day.</p>
+        </details>
+        <details class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+          <summary class="font-semibold text-sm text-stone-900 cursor-pointer">What order should I make my planning decisions in?</summary>
+          <p class="text-sm text-stone-600 mt-2 leading-relaxed">Season first, because it decides which cities are pleasant to be in and which weeks are unusable. Then the era you want to wear, which narrows the cities. Then the number of days that routing needs, and only then the flights — the rail legs, rentals and fittings can all be arranged after you know those three. Each of the <a href="/plan-trip/" class="text-[#b5343a] underline">planning guides</a> on this page covers one of those steps.</p>
+        </details>
+        <details class="bg-stone-50 border border-stone-200 rounded-xl p-5">
+          <summary class="font-semibold text-sm text-stone-900 cursor-pointer">Can I do this trip properly in one city?</summary>
+          <p class="text-sm text-stone-600 mt-2 leading-relaxed">Yes, and for photography it is often the better call. One city deep means you learn the light, the shop owners and which backdrops are quiet at which hour, instead of spending the trip on station platforms. The <a href="/#experience-map" class="text-[#b5343a] underline">experience map</a> shows how dense a single city's offer is before you commit to a multi-city route.</p>
+        </details>
       </div>
+      <script type="application/ld+json" set:html={schemaPlanTripFAQ}></script>
 
       <!-- CTA -->
       <div class="mt-16 bg-stone-900 rounded-2xl p-8 sm:p-10 text-center">

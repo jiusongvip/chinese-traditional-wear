@@ -1,52 +1,100 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+const visaFAQ = [
+  { q: "Do I need a visa to visit China for a clothing and photoshoot trip?", a: "Not necessarily. Citizens of around 50 countries can enter visa-free for up to 30 days for tourism, and citizens of 57 countries can stay up to 240 hours (10 days) visa-free when transiting between two other countries. If your passport is on neither list, apply for a tourist (L) visa at your nearest Chinese Visa Application Service Center before you fly." },
+  { q: "Is the 30-day visa-free entry good for the whole trip?", a: "It covers tourism, business, family visits and exchange trips — but not paid work or study. Your passport must be valid for your intended stay, and you enter through an international port. Stays run from the day after entry; overstay is fined, so set a phone reminder for your departure date before you leave home." },
+  { q: "How does the 240-hour transit waiver work in practice?", a: "You need a confirmed onward ticket to a third country or region — Hong Kong, Macau and Taiwan count as separate destinations for this purpose. You then stay inside the designated areas for up to 10 days. Shanghai, Beijing, Guangzhou, Chengdu and Xi'an are all inside those areas, which is what makes the waiver useful for a Hanfu or qipao trip." },
+  { q: "Can I leave Xi'an and go to Shanghai on a 240-hour transit permit?", a: "Only if both cities sit inside permitted areas and you stay within them for the whole 240 hours. Cross-provincial movement is allowed within the approved regions, so a Xi'an-to-Shanghai pairing works, but a detour outside them breaks the terms. Check the current region list on the <a href='https://en.nia.gov.cn/n147418/n147468/c217849/content.html' class='text-[#b5343a] underline' target='_blank' rel='noopener'>National Immigration Administration</a> page before you book internal flights." },
+  { q: "How long does a Chinese tourist visa take?", a: "Standard service at a visa centre is about four business days, with express options around two to three days for an extra charge. Fee schedules are reciprocal and differ by nationality, so each centre publishes its own rates — check them on the <a href='https://www.visaforchina.cn' class='text-[#b5343a] underline' target='_blank' rel='noopener'>official visa centre portal</a> before you go. Apply about a month ahead." },
+  { q: "What documents should I carry through Chinese immigration?", a: "Passport with blank pages, your return or onward ticket, and the address of your first night's accommodation. Add printed rental, tailor and photoshoot confirmations: they show a clear, short cultural itinerary, which is exactly what officers expect to see on a visa-free entry." },
+];
+
+const schemaVisaFAQ = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": visaFAQ.map(faq => ({
+    "@type": "Question",
+    "name": faq.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.a.replace(/<[^>]*>/g, '')
+    }
+  }))
+});
 ---
+
 <BaseLayout
   title="China Visa Guide: Transit & Visa-Free Options"
-  description="China visa options: 144-hour transit visa-free in 27 cities, 15-day visa-free for 30+ nationalities, tourist L visa process, costs, and requirements."
+  description="Do you need a China visa? Visa-free entry gives 50 nationalities 30 days, 240-hour transit covers 57 more — plus how to apply for a tourist L visa."
   canonicalUrl="/plan-trip/visa/"
-  articleDate="2026-08-03"
+  articleDate="2026-10-20"
   breadcrumbs={[{ name: "Home", url: "/" }, { name: "Plan Your Trip", url: "/plan-trip/" }, { name: "Visa Guide", url: "/plan-trip/visa/" }]}>
   <section class="pt-24 pb-16"><div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
     <span class="text-xs font-medium text-[#b5343a] tracking-[0.15em] uppercase">Plan Your Trip · Visa Guide</span>
-    <h1 class="font-serif-sc text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-stone-900 mt-3">China Visa Guide: Which Option Is Right for You?</h1>
-    <p class="mt-6 text-lg text-stone-500 leading-relaxed max-w-2xl">China''s entry policies have been rapidly relaxing. Depending on your nationality, you may not even need a visa for a focused traditional clothing trip.</p>
+    <h1 class="font-serif-sc text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-stone-900 mt-3">China Entry Rules: Which Option Fits Your Trip?</h1>
+    <p class="mt-6 text-lg text-stone-600 leading-relaxed max-w-2xl">Entry rules have loosened faster than most travellers have caught up. Before you budget for a visa, work down this list — most clothing-trip itineraries fit one of the two waiver routes.</p>
+
     <div class="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
-      <div class="bg-stone-50 border border-stone-200 rounded-xl p-5"><span class="text-xs px-2 py-0.5 bg-green-100 text-green-700 rounded-full font-medium">Easiest</span><h2 class="font-semibold text-stone-900 mt-2">15-Day Visa-Free</h2><p class="text-xs text-stone-500 mt-1 leading-relaxed">30+ countries including most of Western Europe, Australia, New Zealand, Malaysia. Just show up with your passport. No forms, no fees.</p></div>
-      <div class="bg-stone-50 border border-stone-200 rounded-xl p-5"><span class="text-xs px-2 py-0.5 bg-blue-100 text-blue-700 rounded-full font-medium">Flexible</span><h2 class="font-semibold text-stone-900 mt-2">144-Hour Transit</h2><p class="text-xs text-stone-500 mt-1 leading-relaxed">27 cities. Arrive from Country A, depart to Country B. Stay up to 6 days in the approved region. No visa. Most nationalities qualify.</p></div>
-      <div class="bg-stone-50 border border-stone-200 rounded-xl p-5"><span class="text-xs px-2 py-0.5 bg-stone-500 text-white rounded-full font-medium">Standard</span><h2 class="font-semibold text-stone-900 mt-2">Tourist L Visa</h2><p class="text-xs text-stone-500 mt-1 leading-relaxed">For longer stays or nationals not covered by visa-free. Apply at CVASC. 4-7 business days. 30-150 USD.</p></div>
+      <div class="bg-stone-50 border border-stone-200 rounded-xl p-5"><span class="text-xs px-2 py-0.5 bg-green-100 text-green-700 rounded-full font-medium">Easiest</span><h2 class="font-semibold text-stone-900 mt-2">30-Day Visa-Free Entry</h2><p class="text-xs text-stone-600 mt-1 leading-relaxed">Around 50 nationalities, including the UK and most of Europe. Thirty days, tourism allowed, no form and no fee. Published to run through 31 December 2026.</p></div>
+      <div class="bg-stone-50 border border-stone-200 rounded-xl p-5"><span class="text-xs px-2 py-0.5 bg-blue-100 text-blue-700 rounded-full font-medium">Flexible</span><h2 class="font-semibold text-stone-900 mt-2">240-Hour Transit Waiver</h2><p class="text-xs text-stone-600 mt-1 leading-relaxed">57 nationalities, 65 open ports, up to 10 days. Needs a confirmed onward ticket to a third country or region, and you stay inside designated areas.</p></div>
+      <div class="bg-stone-50 border border-stone-200 rounded-xl p-5"><span class="text-xs px-2 py-0.5 bg-stone-500 text-white rounded-full font-medium">Standard</span><h2 class="font-semibold text-stone-900 mt-2">Tourist L Visa</h2><p class="text-xs text-stone-600 mt-1 leading-relaxed">For longer stays and passports not covered above. Applied for at a visa centre, roughly four business days standard, fees set by nationality.</p></div>
     </div>
-    <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-16 mb-4">15-Day Visa-Free: The Easy Option</h2>
-    <p class="text-stone-600 leading-relaxed mb-4">Available to citizens of 30+ countries (list expanding regularly — check before travel). Requirements: valid passport (6+ months validity), return/onward flight ticket. No forms, no advance applications, no fees. Enter through any international port. Stay up to 15 days from midnight of arrival day.</p>
-    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-4 mb-4">
-      <div class="bg-green-50 rounded-lg p-2.5 text-xs"><span class="font-medium text-green-800">France</span></div>
-      <div class="bg-green-50 rounded-lg p-2.5 text-xs"><span class="font-medium text-green-800">Germany</span></div>
-      <div class="bg-green-50 rounded-lg p-2.5 text-xs"><span class="font-medium text-green-800">Italy</span></div>
-      <div class="bg-green-50 rounded-lg p-2.5 text-xs"><span class="font-medium text-green-800">Spain</span></div>
-      <div class="bg-green-50 rounded-lg p-2.5 text-xs"><span class="font-medium text-green-800">Netherlands</span></div>
-      <div class="bg-green-50 rounded-lg p-2.5 text-xs"><span class="font-medium text-green-800">Switzerland</span></div>
-      <div class="bg-green-50 rounded-lg p-2.5 text-xs"><span class="font-medium text-green-800">Australia</span></div>
-      <div class="bg-green-50 rounded-lg p-2.5 text-xs"><span class="font-medium text-green-800">New Zealand</span></div>
-      <div class="bg-green-50 rounded-lg p-2.5 text-xs"><span class="font-medium text-green-800">Malaysia</span></div>
-      <div class="bg-green-50 rounded-lg p-2.5 text-xs"><span class="font-medium text-green-800">Ireland</span></div>
-      <div class="bg-green-50 rounded-lg p-2.5 text-xs"><span class="font-medium text-green-800">Austria</span></div>
-      <div class="bg-green-50 rounded-lg p-2.5 text-xs"><span class="font-medium text-green-800">Belgium</span></div>
-    </div>
-    <p class="text-xs text-stone-400">Partial list as of 2026. Check with your nearest Chinese embassy for the latest eligible nationalities — China has been expanding this list every 6-12 months.</p>
-    <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-14 mb-4">144-Hour Transit: Strategic Entry</h2>
-    <p class="text-stone-600 leading-relaxed mb-4">Key rule: arrive from Country A, depart to Country B. Hong Kong, Macau, and Taiwan count as separate destinations. A cheap flight or ferry to Hong Kong (as low as 50 USD) turns any round-trip into a valid transit itinerary.</p>
-    <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-14 mb-4">L Visa: Step by Step</h2>
-    <p class="text-stone-600 leading-relaxed mb-4">Apply at your nearest CVASC. Required: passport, completed form, passport photo, flight + hotel bookings, itinerary. 4-7 business days. Visa agencies (VisaHQ, iVisa) handle the process for 50-100 USD extra.</p>
-        <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-14 mb-4">How to Apply for an L Visa</h2>
+
+    <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-16 mb-4">Check in this order</h2>
+    <p class="text-stone-600 leading-relaxed mb-4">Open the <a href="https://en.nia.gov.cn/n147418/n147463/c183390/content.html" class="text-[#b5343a] underline" target="_blank" rel="noopener">National Immigration Administration's country lists</a> and search your passport. If you are on the unilateral waiver list, you are finished: pack, fly, and stay up to 30 days. If you are not, look at your routing — a two-city trip that arrives from one country and leaves to another can qualify for 240 hours without any paperwork. Only when neither applies should you book a visa-centre appointment.</p>
+    <p class="text-stone-600 leading-relaxed mb-4">Eligibility numbers move every few months, and the two waiver routes cover different country lists. Confirm your nationality against the official page in the week you book flights rather than the week you plan the trip.</p>
+
+    <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-14 mb-4">30-day visa-free entry</h2>
+    <p class="text-stone-600 leading-relaxed mb-4">This route covers tourism, business, visiting relatives and exchange visits — not paid work or study. Requirements at the border are minimal: a passport valid for your stay, and a plausible return or onward plan. No application, no fee, no advance registration. Enter through any international port, and remember the clock starts the day after arrival.</p>
+    <p class="text-stone-600 leading-relaxed mb-4">For a clothing trip, 30 days is generous. The <a href="/plan-trip/itineraries/" class="text-[#b5343a] underline">three sample itineraries</a> run 5-12 days, which leaves room for a custom qipao's fitting cycle — allow three to five days between the first fitting and collection, as covered in the <a href="/where-to-buy/" class="text-[#b5343a] underline">buying guide</a>.</p>
+
+    <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-14 mb-4">240-hour transit: the routing trick</h2>
+    <p class="text-stone-600 leading-relaxed mb-4">The rule is directional rather than financial: arrive from one country or region and depart to a different one, with a confirmed interline ticket and dated itinerary. Hong Kong, Macau and Taiwan count as separate destinations, so an itinerary that tacks on a cheap hop to Hong Kong converts a round trip into a valid transit.</p>
+    <p class="text-stone-600 leading-relaxed mb-4">Movement is limited to the designated areas, which now permit crossing provincial boundaries inside the approved regions. Shanghai, Beijing, Guangzhou, Chengdu and Xi'an are all inside them, so the standard clothing circuit — Xi'an for Hanfu rentals, Shanghai for qipao tailoring, Beijing for Tang suits — is workable on ten days. Tracing the exact permitted map is worth doing before you buy an internal flight: <a href="https://en.nia.gov.cn/n147418/n147468/c217849/content.html" class="text-[#b5343a] underline" target="_blank" rel="noopener">the NIA's transit page</a> lists ports and areas.</p>
+    <div class="mt-6 overflow-x-auto"><table class="w-full text-sm border-collapse"><thead><tr class="border-b border-stone-200 text-left"><th class="py-3 pr-4 font-semibold">Route</th><th class="py-3 pr-4 font-semibold">Days available</th><th class="py-3 font-semibold">What it covers</th></tr></thead><tbody><tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Fly home via Hong Kong</td><td class="py-2.5 pr-4">Up to 10</td><td class="py-2.5">Xi'an wall photoshoot plus Beijing markets</td></tr><tr class="border-b border-stone-100"><td class="py-2.5 pr-4">Arrive Bangkok, depart Singapore</td><td class="py-2.5 pr-4">Up to 10</td><td class="py-2.5">Guangzhou, then Shanghai for a qipao fitting</td></tr><tr><td class="py-2.5 pr-4">Straight round trip, same country</td><td class="py-2.5 pr-4">0 — not valid</td><td class="py-2.5">Needs the 30-day waiver or an L visa instead</td></tr></tbody></table></div>
+
+    <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-14 mb-4">Hainan: a regional option</h2>
+    <p class="text-stone-600 leading-relaxed mb-4">Citizens of 61 countries may enter Hainan Province visa-free for up to 30 days, staying within the province's administrative region. It is the wrong tool for a Hanfu trip — the rental and tailoring scenes are in Xi'an, Shanghai, Beijing and Suzhou — but it earns its place on the list when you are already finishing a longer China trip on the beach and want to extend without paperwork.</p>
+
+    <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-14 mb-4">Tourist L visa, step by step</h2>
     <div class="space-y-3 text-sm text-stone-600">
-      <p><strong>Step 1:</strong> Gather documents: passport (valid 6+ months beyond entry, 2+ blank pages), completed visa application form (Form V.2013), passport photo (33mm x 48mm, white background), flight itinerary, hotel bookings, and bank statements showing sufficient funds.</p>
-      <p><strong>Step 2:</strong> Submit at your nearest Chinese Visa Application Service Center (CVASC) or Chinese embassy/consulate. Most countries now require in-person fingerprinting. Processing time: 4-5 business days standard, 2-3 days express (extra fee).</p>
-      <p><strong>Step 3:</strong> Pay the fee. Single-entry L visa: ~140 USD (varies by nationality). Double-entry: ~210 USD. Multiple-entry (6-12 months): ~280-420 USD.</p>
-      <p><strong>Tip:</strong> If visiting for traditional clothing experiences, list "cultural tourism" as your purpose. Include your Hanfu/qipao rental confirmations as supporting documents — this helps establish a legitimate travel itinerary.</p>
+      <p><strong>Step 1:</strong> Gather documents. Passport with at least six months' validity and two blank pages, the completed application form, a passport photo on a white background, flight and hotel bookings, and an itinerary. Some centres also ask for bank statements showing you can fund the trip.</p>
+      <p><strong>Step 2:</strong> Book an appointment at your nearest Chinese Visa Application Service Center. Most locations now take fingerprints in person, so the visit is not a drop-off. Submit roughly a month before departure.</p>
+      <p><strong>Step 3:</strong> Choose a service level. Standard turnaround is about four business days; express runs two to three for an added charge. Fees are reciprocal, so they differ by nationality — your centre publishes its own schedule alongside the application fee.</p>
+      <p><strong>Step 4:</strong> Check the visa the moment you collect it: entry count, validity dates and the number of days permitted per stay. Errors are corrected free of charge before you leave the counter, and impossible to fix from abroad.</p>
     </div>
-    <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-14 mb-4">Embassy Links by Country</h2>
-    <p class="text-sm text-stone-500">Find your nearest Chinese embassy or visa center: <a href="https://www.visaforchina.cn" class="text-[#b5343a] underline" target="_blank" rel="noopener">visaforchina.cn</a> (global portal). For US citizens: check your state's CVASC jurisdiction at the Chinese Embassy DC website. For EU citizens: most countries have CVASC centers in major cities.</p>
-    
-    <div class="mt-8"><a href="/plan-trip/" class="text-sm text-stone-400 hover:text-stone-600 transition-colors">Back to Plan Your Trip</a></div>
+    <p class="text-stone-600 leading-relaxed mt-4 mb-4"><strong>Worth stating on the itinerary:</strong> describe the purpose as cultural tourism, and attach your rental, tailor and photoshoot confirmations. A one-page schedule naming Xi'an, Shanghai and Suzhou reads as exactly the kind of short, defined trip officers expect.</p>
+
+    <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-14 mb-4">What to carry through immigration</h2>
+    <ul class="list-disc pl-5 space-y-2 text-sm text-stone-600">
+      <li><strong>Passport with blank pages</strong> — stamps still happen, and a waiver endorsement uses one page.</li>
+      <li><strong>Onward or return ticket</strong> — the single document most likely to be asked for on a visa-free entry.</li>
+      <li><strong>First-night address</strong> — hotel booking screenshot or printed confirmation is enough.</li>
+      <li><strong>Rental, tailor and photoshoot confirmations</strong> — these turn "tourism" into an itinerary you can point at.</li>
+      <li><strong>Entry card</strong> — completed on the plane; the address field is where travellers get stalled.</li>
+    </ul>
+
+    <h2 class="font-serif-sc text-2xl font-bold text-stone-900 mt-16 mb-6">Frequently Asked Questions</h2>
+    <div class="space-y-3">
+      {visaFAQ.map((faq) => (
+        <details class="group bg-white rounded-xl border border-stone-200 overflow-hidden">
+          <summary class="flex items-center justify-between p-5 cursor-pointer hover:bg-stone-50 transition-colors list-none">
+            <span class="text-sm font-medium text-stone-800 pr-4">{faq.q}</span>
+            <svg class="w-4 h-4 text-stone-600 flex-shrink-0 transition-transform group-open:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="px-5 pb-5">
+            <p class="text-sm text-stone-600 leading-relaxed" set:html={faq.a}></p>
+          </div>
+        </details>
+      ))}
+    </div>
+
+    <div class="mt-12 p-6 bg-[#b5343a]/5 border border-[#b5343a]/20 rounded-xl">
+      <p class="text-sm text-stone-700"><strong>Entry sorted?</strong> The rest of the <a href="/plan-trip/" class="text-[#b5343a] underline font-medium">Plan Your Trip</a> hub covers <a href="/plan-trip/seasons/" class="text-[#b5343a] underline font-medium">best months for photoshoots</a>, <a href="/plan-trip/budget/" class="text-[#b5343a] underline font-medium">what the trip costs</a>, <a href="/plan-trip/transport/" class="text-[#b5343a] underline font-medium">getting between the clothing cities</a> and <a href="/plan-trip/packing/" class="text-[#b5343a] underline font-medium">what to pack</a>. If you are deciding between two garments once you arrive, the <a href="/hanfu-vs-qipao/" class="text-[#b5343a] underline font-medium">Hanfu vs Qipao comparison</a> settles it.</p>
+    </div>
+
+    <div class="mt-8"><a href="/plan-trip/" class="text-sm text-stone-600 hover:text-stone-600 transition-colors">Back to Plan Your Trip</a></div>
   </div></section>
+  <script type="application/ld+json" set:html={schemaVisaFAQ}></script>
 </BaseLayout>
